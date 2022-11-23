@@ -7,7 +7,8 @@ import {
     CaretDownOutlined,
     LogoutOutlined,
     ExportOutlined,
-    InfoCircleOutlined
+    InfoCircleOutlined,
+    ApartmentOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
@@ -32,7 +33,7 @@ const items = [
         getItem(<NavLink to='/admin/list-job-type' style={{ textDecoration: 'none' }}>Loại công việc</NavLink>, '5'),
         getItem(<NavLink to='/admin/list-detail-job-type' style={{ textDecoration: 'none' }}>Chi tiết loại công việc</NavLink>, '6')
     ]),
-    getItem('Q.L loại công việc', '7', <OrderedListOutlined />, [
+    getItem('Q.L dịch vụ', '7', < ApartmentOutlined />, [
         getItem(<NavLink to='/admin/list-rent-job' style={{ textDecoration: 'none' }}>Thuê công việc</NavLink>, '8'),
         getItem(<NavLink to='/admin/list-comment' style={{ textDecoration: 'none' }}>Bình luận</NavLink>, '9')
     ])

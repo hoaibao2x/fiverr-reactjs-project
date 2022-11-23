@@ -23,7 +23,7 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-          <Footer/>
+          {/* <Footer/> */}
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
