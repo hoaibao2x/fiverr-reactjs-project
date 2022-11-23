@@ -9,17 +9,17 @@ export const history = createBrowserHistory();
 
 function App() {
   return (
-    <Loading />
-    // <Router histpry={history}>
+    <Router histpry={history}>
+      <Loading />
 
-    //   <Switch>
-    //     {/* User Route */}
+      <Switch>
+        {/* User Route */}
 
-    //     {/* Admin Route */}
+        {/* Admin Route */}
 
-    //     {/* Default Route */}
-    //   </Switch>
-    // </Router>
+        {/* Default Route */}
+      </Switch>
+    </Router>
   );
 }
 
