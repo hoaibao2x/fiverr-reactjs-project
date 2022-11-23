@@ -3,6 +3,7 @@ import './App.css';
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Loading from './components/LoadingComponent/Loading';
+import Footer from './components/User/FooterComponent/Footer';
 import { AdminTemplate } from './templates/Admin/AdminTemplate';
 import ListUserPage from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import Dashboard from './pages/Admin/Dashboard';
@@ -22,7 +23,7 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-
+          <Footer/>
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
