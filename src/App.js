@@ -7,8 +7,10 @@ import { AdminTemplate } from './templates/Admin/AdminTemplate';
 import ListUserPage from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import Dashboard from './pages/Admin/Dashboard';
 import ListJobPage from './pages/Admin/QL.Job/ListJobPage/ListJobPage';
-import ListJobType from './pages/Admin/QL.JobType/ListJobType/ListJobType';
-import ListServicePage from './pages/Admin/QL.Service/ListServicePage/ListServicePage';
+import ListJobType from './pages/Admin/QL.JobType/JobType/ListJobType/ListJobType';
+import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDetail';
+import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
+import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
 
 export const history = createBrowserHistory();
 
@@ -26,7 +28,9 @@ function App() {
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
         <AdminTemplate exact path='/admin/list-job' component={ListJobPage} />
         <AdminTemplate exact path='/admin/list-job-type' component={ListJobType} />
-        <AdminTemplate exact path='/admin/list-service' component={ListServicePage} />
+        <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
+        <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
+        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
 
         {/* Default Route */}
       </Switch>

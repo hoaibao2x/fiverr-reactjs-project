@@ -26,10 +26,16 @@ function getItem(label, key, icon, children) {
 
 const items = [
     getItem(<NavLink style={{ fontSize: '22px', fontWeight: 'bold', textDecoration: 'none' }} to='/admin'>Dashboard</NavLink>, '1', <PieChartOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-user'>Quản lý người dùng</NavLink>, '2', <UserOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-job'>Quản lý công việc</NavLink>, '3', <SnippetsOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-job-type'>Quản lý loại công việc</NavLink>, '4', <OrderedListOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-service'>Quản lý dịch vụ</NavLink>, '5', <CustomerServiceOutlined />),
+    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-user'>Q.L người dùng</NavLink>, '2', <UserOutlined />),
+    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-job'>Q.L công việc</NavLink>, '3', <SnippetsOutlined />),
+    getItem('Q.L loại công việc', '4', <OrderedListOutlined />, [
+        getItem(<NavLink to='/admin/list-job-type' style={{ textDecoration: 'none' }}>Loại công việc</NavLink>, '5'),
+        getItem(<NavLink to='/admin/list-detail-job-type' style={{ textDecoration: 'none' }}>Chi tiết loại công việc</NavLink>, '6')
+    ]),
+    getItem('Q.L loại công việc', '7', <OrderedListOutlined />, [
+        getItem(<NavLink to='/admin/list-rent-job' style={{ textDecoration: 'none' }}>Thuê công việc</NavLink>, '8'),
+        getItem(<NavLink to='/admin/list-comment' style={{ textDecoration: 'none' }}>Bình luận</NavLink>, '9')
+    ])
 ];
 
 export const AdminTemplate = (props) => {
