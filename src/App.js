@@ -9,9 +9,9 @@ export const history = createBrowserHistory();
 
 function App() {
   return (
+
     <Router histpry={history}>
       <Loading />
-
       <Switch>
         {/* User Route */}
 
