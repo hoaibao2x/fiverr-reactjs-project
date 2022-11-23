@@ -12,6 +12,9 @@ import ListJobType from './pages/Admin/QL.JobType/JobType/ListJobType/ListJobTyp
 import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDetail';
 import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
 import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
+import { UserTemplate } from './templates/User/UserTemplate';
+import Home from './pages/User/Home/Home';
+import Header from './components/User/HeaderComponent/Header';
 
 export const history = createBrowserHistory();
 
@@ -23,7 +26,8 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-          {/* <Footer/> */}
+        {/* <UserTemplate exact path='/home' component={Home}/> */}
+        <Header/>
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />

@@ -7,7 +7,7 @@ import { Route } from "react-router-dom"
 export const UserTemplate = (props) => {
     return <Route exact path={props.path} render={(propsRouter) => {
         return <Fragment>
-           <Header/>
+          <Header/>
             <props.component {...propsRouter} />
          <Footer/>
         </Fragment>
