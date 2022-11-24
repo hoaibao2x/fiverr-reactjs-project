@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
   Form,
   Input,
@@ -11,10 +12,67 @@ import TextArea from 'antd/lib/input/TextArea';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { getJobTypeDetail, getJobTypeDetailByID } from '../../../../services/Admin/JobService/jopTypeDetailService';
+import { displayLoadingAction, hideLoadingAction } from '../../../../redux/loadingAction';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
 function AddJobPage() {
+
+  let dispatch = useDispatch();
+
+  const [state, setState] = useState({
+    jobArr: [],
+    jobDetailArr: []
+  });
+
+  const getJobArr = async () => {
+    try {
+      dispatch(displayLoadingAction);
+      let result = await getJobTypeDetail();
+
+      setState({
+        ...state,
+        jobArr: result.data.content
+      });
+
+      dispatch(hideLoadingAction);
+
+    } catch (errors) {
+      dispatch(hideLoadingAction);
+      console.log(errors);
+    }
+  }
+
+  const convertSelectJob = () => {
+    return state.jobArr.map((jobItem) => {
+      return { label: jobItem.tenNhom, value: jobItem.id }
+    })
+  }
+
+  const handleChangeJob = async (value) => {
+    try {
+      dispatch(displayLoadingAction);
+      let result = await getJobTypeDetailByID(value);
+
+      setState({
+        ...state,
+        jobDetailArr: result.data.content.dsChiTietLoai
+      })
+
+      dispatch(hideLoadingAction);
+
+    } catch (errors) {
+      dispatch(hideLoadingAction);
+      console.log(errors);
+    }
+  }
+
+  const convertSelectDetail = () => {
+    return state.jobDetailArr.map((detailItem) => {
+      return { label: detailItem.tenChiTiet, value: detailItem.id }
+    })
+  }
 
   const [componentSize, setComponentSize] = useState('default');
 
@@ -32,20 +90,24 @@ function AddJobPage() {
       maChiTietLoaiCongViec: 0,
       moTaNgan: "",
       saoCongViec: 0
-    }, onSubmit: (values) => { 
+    }, onSubmit: (values) => {
       return console.log(values);
-     }
+    }
   })
 
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
 
+  useEffect(() => {
+    getJobArr();
+  }, []);
+
   return (
     <div className='container mx-auto'>
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'>Quản lý công việc / </NavLink>Thêm mới công việc</h4>
       <Form
-      onSubmitCapture={formik.handleSubmit}
+        onSubmitCapture={formik.handleSubmit}
         labelCol={{
           span: 4,
         }}
@@ -96,19 +158,11 @@ function AddJobPage() {
         </Form.Item>
 
         <Form.Item label="Nhóm công việc">
-          <Select>
-            <Select.Option value="1">Social</Select.Option>
-            <Select.Option value="2">Advertising</Select.Option>
-            <Select.Option value="3">Content Writing & Editing</Select.Option>
-          </Select>
+          <Select options={convertSelectJob()} onChange={handleChangeJob} placeholder="Chọn nhóm công việc" />
         </Form.Item>
 
         <Form.Item label="Chi tiết loại công việc">
-          <Select>
-            <Select.Option value="4">Social Media Marketing</Select.Option>
-            <Select.Option value="5">Search Engine Marketing (SEM)</Select.Option>
-            <Select.Option value="6">Articles & Blog Posts</Select.Option>
-          </Select>
+          <Select options={convertSelectDetail()} placeholder="Chọn chi tiết loại công việc" />
         </Form.Item>
 
         <Form.Item label="Mô tả ngắn">
