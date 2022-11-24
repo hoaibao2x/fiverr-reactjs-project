@@ -85,8 +85,6 @@ export default function Header() {
 
                   </div>
                 </div>
-
-
               </li>
               <li className='sub-menu'>
                 <a href="#">Video &amp; Animation</a>
