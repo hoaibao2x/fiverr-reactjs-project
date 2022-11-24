@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { DOMAIN, TOKEN, TOKEN_CYBER } from './varsSetting;'
+import { DOMAIN, TOKEN, TOKEN_CYBER } from './varsSetting'
 
-export const htttp = axios.create({
+export const http = axios.create({
     baseURL: DOMAIN,
     timeout: 3000
 });
 
-htttp.interceptors.request.use((config) => {
+http.interceptors.request.use((config) => {
     config.headers = {
         ...config.headers,
         'tokenCybersoft': TOKEN_CYBER,
