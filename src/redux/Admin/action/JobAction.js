@@ -1,8 +1,10 @@
 import { getListJob, getListJobByName } from "../../../services/Admin/JobService/jobService"
+import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
 export const getListJobAction = () => {
     return async (dispatch) => {
         try {
+            dispatch(displayLoadingAction);
             let result = await getListJob();
 
             let action = {
@@ -10,7 +12,10 @@ export const getListJobAction = () => {
                 jobArr: result.data.content
             }
             dispatch(action);
+
+            dispatch(hideLoadingAction);
         } catch (errors) {
+            dispatch(hideLoadingAction);
             console.log(errors)
         }
     }
