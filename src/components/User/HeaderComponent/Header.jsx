@@ -62,41 +62,62 @@ export default function Header() {
 
             </div>
           </div>
-          
+
         </div>
         <div className='categories'>
-              <nav className='categories-content'>
-                <ul className='categories-menu'>
-                    <li className='sub-menu'>
-                      <a href="#">Graphics &amp; Design</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Digital Marketing</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Writing &amp; Translation</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Video &amp; Animation</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Music &amp; Audio</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Programming &amp; Tech</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Business</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Lifestyle</a>
-                    </li>
-                    <li className='sub-menu'>
-                      <a href="#">Trending</a>
-                    </li>
-                
-                </ul>
-              </nav>
+          <nav className='categories-content'>
+            <ul className='categories-menu'>
+              <li className='sub-menu'>
+                <a href="#">Graphics &amp; Design</a>
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Digital Marketing</a>
+              </li>
+              <li className='sub-menu'>
+                <div className='drop-down'>
+                  <a className='drop-menu' href="#">Writing &amp; Translation</a>
+                  <div className="dropdown-content">
+                    <div>
+                      <a href="#">Logo &amp; Brand Identity</a>
+                      <a href="#">Logo Design</a>
+                      <a href="#">Brand Style Guides</a>
+                    </div>
+
+                  </div>
+                </div>
+
+
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Video &amp; Animation</a>
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Music &amp; Audio</a>
+              </li>
+              <li className='sub-menu'>
+                <div className='drop-down'>
+                  <a className='drop-menu' href="#">Programming &amp; Tech</a>
+                  <div className="dropdown-content">
+                    <div>
+                      <a href="#">Web &amp; App Design</a>
+                      <a href="#">Website Design</a>
+                      <a href="#">App Design</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Business</a>
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Lifestyle</a>
+              </li>
+              <li className='sub-menu'>
+                <a href="#">Trending</a>
+              </li>
+
+            </ul>
+          </nav>
         </div>
       </header>
     </div>
