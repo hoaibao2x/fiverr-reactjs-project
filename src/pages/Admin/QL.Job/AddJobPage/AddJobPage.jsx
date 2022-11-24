@@ -9,6 +9,8 @@ import {
 } from 'antd';
 import TextArea from 'antd/lib/input/TextArea';
 import { NavLink } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const desc = ['terrible', 'bad', 'normal', 'good', 'wonderful'];
 
@@ -16,17 +18,34 @@ function AddJobPage() {
 
   const [componentSize, setComponentSize] = useState('default');
 
+  const [value, setValue] = useState(3);
+
+  const formik = useFormik({
+    initialValues: {
+      id: 0,
+      tenCongViec: "",
+      danhGia: 0,
+      giaTien: 0,
+      nguoiTao: 0,
+      hinhAnh: {},
+      moTa: "",
+      maChiTietLoaiCongViec: 0,
+      moTaNgan: "",
+      saoCongViec: 0
+    }, onSubmit: (values) => { 
+      return console.log(values);
+     }
+  })
+
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
-
-  const [value, setValue] = useState(3);
-
 
   return (
     <div className='container mx-auto'>
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'>Quản lý công việc / </NavLink>Thêm mới công việc</h4>
       <Form
+      onSubmitCapture={formik.handleSubmit}
         labelCol={{
           span: 4,
         }}
@@ -102,7 +121,7 @@ function AddJobPage() {
         </Form.Item>
 
         <Form.Item label="Hành động">
-          <button className='btn btn-success'>Thêm công việc</button>
+          <button type='submit' className='btn btn-success'>Thêm công việc</button>
         </Form.Item>
       </Form>
     </div>

@@ -24,6 +24,7 @@ export const getListJobAction = () => {
 export const getListJobByNameAction = (tenJob) => {
     return async (dispatch) => {
         try {
+            dispatch(displayLoadingAction);
             let result = await getListJobByName(tenJob);
 
             let tempResult = result.data.content;
@@ -37,7 +38,10 @@ export const getListJobByNameAction = (tenJob) => {
                 jobArr: tempArr
             }
             dispatch(action);
+
+            dispatch(hideLoadingAction);
         } catch (errors) {
+            dispatch(hideLoadingAction);
             console.log(errors)
         }
     }
