@@ -3,7 +3,7 @@ import './footer.css';
 
 export default function Footer(props) {
   return (
-    <div id='footer'>
+    <div>
       <footer className='site-footer'>
         <div className='footer-warpper max-width-container'>
           <div className='footer-collapsibles'>
