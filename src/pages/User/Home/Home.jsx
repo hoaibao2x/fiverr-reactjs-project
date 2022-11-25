@@ -1,9 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-export default function Home() {
+export default function Home(props) {
   return (
-    <div>
-      áđâsklnfdsjkldsfjkldfsjkl;dfsm,;adshjkladshjkdáhjkladsioủeiouỷewnjkdfsjklcvxjkiocvxklndfjksl;adfksl;adskl;'adskl;adskl;;adklsadkls;adkls;adkls;adkls;'
-    </div>
+    <div>Home</div>
   )
 }

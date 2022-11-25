@@ -15,7 +15,6 @@
 }
 .site-footer a {
     color: #74767e;
-    font-size: 20px;
 }
 .site-footer a:hover {
     color: #74767e;
@@ -47,7 +46,7 @@
     padding-bottom: 20px;
     color: #404145;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .footer-items {
