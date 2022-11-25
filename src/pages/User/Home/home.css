@@ -1,0 +1,25 @@
+
+.bg-tructed-by{
+    background-color: #FAFAFA;
+}
+
+.tructed-by {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+.tructed {
+    color: #c2c2c5;
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+.tructed-img {
+    display: flex;
+    align-items: center;
+}
+.tructed-img-item {
+    margin-right: 40px;
+}

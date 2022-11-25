@@ -1,5 +1,6 @@
-.carousel-control-prev,.carousel-control-next {
-    display: none!important;
+.carousel-control-prev,
+.carousel-control-next {
+    display: none !important;
 }
 .carousel-indicators {
     position: absolute;
@@ -7,7 +8,7 @@
     bottom: 0;
     left: 0;
     z-index: 15;
-    display: none!important;
+    display: none !important;
     justify-content: center;
     padding-left: 0;
     margin-right: 15%;
@@ -17,23 +18,99 @@
 
 .carousel-caption {
     position: absolute;
-    right: -50%!important;
-    bottom: 0!important;
+    right: -50% !important;
+    bottom: 0 !important;
     left: 15%;
     z-index: 10;
     padding-top: 20px;
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
-    overflow: hidden!important;
+    overflow: hidden !important;
 }
 
 .color-icon {
     color: yellow;
 }
-.title-hero{
+.title-hero {
     font-size: 16px;
     margin-left: 90px;
     margin-bottom: 0;
     overflow: hidden;
 }
+
+/* Carousel content */
+.list-carousel-hero {
+    position: relative;
+}
+
+.carousel-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+}
+.carousel-content .nav-cr {
+    color: #fff !important;
+}
+
+.btnicon3 {
+    padding: 5px 20px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+}
+.btnicon3:hover {
+    background-color: #28a745;
+}
+
+.carousel-title {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+}
+.carousel-title h1{
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.freelance{
+   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.search-cr {
+    margin-left: 0;
+}
+
+.popular {
+    color: #fff;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+.popular-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+.popular-text-content {
+    border: 1px solid #fff;
+    padding: 1px 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: all 0.2s ease-in-out;
+}
+.popular-text-content a{
+    color: #fff;
+}
+.popular-text-content:hover  a {
+    color: #404145;
+    text-decoration: none;
+}
+.popular-text-content:hover{
+    background-color: #fff;
+}
+
