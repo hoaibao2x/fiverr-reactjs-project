@@ -81,7 +81,7 @@
     padding-bottom: 0;
 }
 .footer-bottom .right-icon i{
-    font-size: 28px;
+    font-size: 25px;
 }
 .label {
     padding-left: 5px;
@@ -98,7 +98,7 @@
     background-color: transparent;
     color: #74767e;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 16px;
     transition: all .5s ;
 }
 .button-right:hover{

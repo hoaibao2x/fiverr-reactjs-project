@@ -1,0 +1,39 @@
+.carousel-control-prev,.carousel-control-next {
+    display: none!important;
+}
+.carousel-indicators {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 15;
+    display: none!important;
+    justify-content: center;
+    padding-left: 0;
+    margin-right: 15%;
+    margin-left: 15%;
+    list-style: none;
+}
+
+.carousel-caption {
+    position: absolute;
+    right: -50%!important;
+    bottom: 0!important;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden!important;
+}
+
+.color-icon {
+    color: yellow;
+}
+.title-hero{
+    font-size: 16px;
+    margin-left: 90px;
+    margin-bottom: 0;
+    overflow: hidden;
+}

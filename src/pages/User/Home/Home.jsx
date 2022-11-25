@@ -1,8 +1,14 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import CarouselComponent from '../../../components/User/Carousel/Carousel';
+
+
+
+
 
 export default function Home(props) {
   return (
-    <div>Home</div>
+    <div>
+      <CarouselComponent/>
+    </div>
   )
 }
