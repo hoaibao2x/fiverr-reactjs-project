@@ -1,10 +1,7 @@
-import React from 'react';
-import CarouselComponent from '../../../components/User/Carousel/Carousel';
+import React, { Fragment } from 'react';
+import CarouselComponent from '../../../components/User/CarouselComponent/Carousel';
+import ServicesComponent from '../../../components/User/ServicesComponent/ServicesComponent';
 import './home.css';
-
-
-
-
 
 export default function Home(props) {
   return (
@@ -41,7 +38,9 @@ export default function Home(props) {
           </ul>
         </div>
       </div>
-
+      
+        <ServicesComponent />
+   
     </div>
   )
 }

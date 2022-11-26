@@ -1,0 +1,61 @@
+.services-title{
+    padding-bottom: 80px;
+}
+
+.services-title h3 {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    font-weight: 700;
+}
+
+.slick-slider .slick-list {
+    margin: 0 140px !important;
+    overflow: hidden;
+}
+
+.slides-item {
+    height: 260px !important;
+    width: 100%;
+    cursor: pointer;
+    border-radius:5px;
+    transition: all .2s linear;
+}
+.slides-item:hover{
+    opacity: 0.85;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-size: 2rem !important;
+    color: black !important;
+    opacity: 1 !important;
+   
+}
+.slick-prev {
+    left: 8% !important;
+    z-index: 10;
+}
+.slick-next {
+    right: 11% !important;
+    z-index: 10;
+}
+
+.slides-item-content {
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    width: 100%;
+    z-index: 10;
+    color: #fff;
+}
+
+.text-item-title {
+    font-size: 12px;
+    font-weight: 600;
+}
+.text-item-logo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+

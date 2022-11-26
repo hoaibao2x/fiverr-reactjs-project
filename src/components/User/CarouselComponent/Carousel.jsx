@@ -6,10 +6,8 @@ import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
 
 import './carousel.css';
 
-
 export default function CarouselComponent(props) {
     return (
-
         <div className="list-carousel-hero">
             <Carousel slide={false}>
                 <Carousel.Item >
@@ -111,7 +109,6 @@ export default function CarouselComponent(props) {
                 </div>
             </div>
         </div>
-
     )
 }
 
