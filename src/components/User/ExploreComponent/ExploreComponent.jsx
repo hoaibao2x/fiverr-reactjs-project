@@ -40,6 +40,58 @@ export default function ExploreComponent(props) {
                     </div>
                 </div>
             </div>
+            <div className='explore-market'>
+                <h2>Explore the marketplace</h2>
+                <div className='explore-product-market'>
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-palette" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-ranking-star" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-file-word" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-photo-film" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-volume-high" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-laptop-code" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-briefcase" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-mug-hot" />
+                    </div>
+
+                    <div className='explore-item'>
+                        <i className="fa-solid fa-database" />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+

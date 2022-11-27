@@ -99,3 +99,19 @@
     border-radius: 3px;
     height: 260px;
 }
+
+/* explore market */
+.explore-product-market {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 40px 20px;
+    text-align: center;
+    padding: 80px 0;
+}
+.explore-item{
+    font-size: 48px;
+    color: #A2F4C0;
+}
+.explore-market h2{
+    font-weight: 600;
+}
