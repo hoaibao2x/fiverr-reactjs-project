@@ -13,8 +13,8 @@ export default function SellingComponent(props) {
     return (
         <div className='selling'>
             <div className='container'>
-                <div className="row">
-                    <div className="col-5 selling-left">
+                <div className="row selling-product">
+                    <div className="col-6 selling-left">
                         <h2>A whole world of freelance <br />
                             talent at your fingertips</h2>
                         <ul className='selling-option'>
@@ -56,8 +56,8 @@ export default function SellingComponent(props) {
 
                         </ul>
                     </div>
-                    <div className="col-7 selling-right">
-                        <img className='img-selling' src={imgSelling} alt="Video teaser img" />
+                    <div className="col-6 selling-right">
+                        <img className='img-selling' src={imgSelling} alt="" />
 
                         <Button className='button-play' onClick={() => setLgShow(true)}></Button>
                         <Modal

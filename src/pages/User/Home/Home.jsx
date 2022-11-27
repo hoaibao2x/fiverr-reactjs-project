@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import CarouselComponent from '../../../components/User/CarouselComponent/Carousel';
+import ExploreComponent from '../../../components/User/ExploreComponent/ExploreComponent';
 import SellingComponent from '../../../components/User/SellingComponent/SellingComponent';
 import ServicesComponent from '../../../components/User/ServicesComponent/ServicesComponent';
 import './home.css';
@@ -41,7 +42,7 @@ export default function Home(props) {
       </div>
       <ServicesComponent />
       <SellingComponent/>
-   
+      <ExploreComponent/>
     </div>
   )
 }

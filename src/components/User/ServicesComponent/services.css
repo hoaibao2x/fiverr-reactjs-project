@@ -26,11 +26,9 @@
 
 .slick-prev {
     left: 8% !important;
-   
 }
 .slick-next {
     right: 10% !important;
-   
 }
 
 .slides-item-content {
@@ -53,12 +51,12 @@
 
 .services-title .slick-prev,
 .services-title .slick-next {
-    background-color: #fff!important;
+    background-color: #fff !important;
     position: absolute;
     z-index: 10;
-    top: 58%;
-    width: 48px;
-    height: 48px;
+    top: 60%;
+    width: 40px;
+    height: 40px;
     margin-top: -24px;
     text-align: center;
     -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
@@ -67,7 +65,7 @@
     font-size: 16px;
     line-height: 100%;
     border-radius: 30px;
-    opacity: 1!important;
+    opacity: 1 !important;
 }
 
 .services-title .slick-prev:before {
@@ -78,19 +76,16 @@
     background-size: 16px 64px;
     width: 16px;
     height: 16px;
-    margin-top: 16px;
-  
+    margin-top: 13px;
 }
 .services-title .slick-next:before {
     content: "";
     display: inline-block;
-    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg) no-repeat;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
+        no-repeat;
     background-size: 16px 64px;
     width: 16px;
     height: 16px;
-    margin-top: 16px;
+    margin-top: 13px;
     transform: rotate(180deg);
 }
-  
-
-

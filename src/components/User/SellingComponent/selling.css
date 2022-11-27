@@ -1,7 +1,7 @@
 .selling {
     background-color: #f1fdf7;
-    padding-top: 80px;
-    padding-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 30px;
 }
 .selling h2 {
     font-weight: 700;
@@ -13,6 +13,12 @@
     color: #7b7d85 !important;
     margin-right: 10px;
 }
+
+.selling-product {
+    justify-content: center;
+    align-items: center;
+}
+
 .selling-item-title {
     display: flex;
     align-items: center;
@@ -37,15 +43,15 @@
 
 .img-selling {
     width: 100%;
-    padding-top: 20px;
-    height: 460px;
+    height: 400px;
     cursor: pointer;
+    border-radius: 3px;
 }
 .selling-right {
     position: relative;
 }
 
-.button-play{
+.button-play {
     content: "";
     display: inline-block;
     background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/desktop-play-button.c1196d6.png)
@@ -60,20 +66,20 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     cursor: pointer;
-  background-color: transparent!important;
-  border: none!important;
+    background-color: transparent !important;
+    border: none !important;
 }
 
 .btn-primary:focus {
-    box-shadow:none!important;
+    box-shadow: none !important;
 }
 
-.orca-video{
+.orca-video {
     width: 100%;
     height: 100%;
     text-align: center;
     left: 20%;
 }
-.modal-body{
-    padding: 0!important;
+.modal-body {
+    padding: 0 !important;
 }
