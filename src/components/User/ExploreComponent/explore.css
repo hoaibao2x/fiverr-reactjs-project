@@ -1,0 +1,117 @@
+.explore {
+    padding-top: 80px;
+    padding-bottom: 160px;
+}
+
+.explore-product {
+    justify-items: center;
+    align-items: center;
+    position: relative;
+}
+
+.explore-left {
+    background-color: #fff !important;
+    position: absolute;
+    z-index: 10;
+    left: -2%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 30px;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+.explore-right {
+    background-color: #fff !important;
+    position: absolute;
+    z-index: 10;
+    right: -4%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -24px;
+    text-align: center;
+    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 30px;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+
+.explore-left::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
+        no-repeat;
+    background-size: 16px 64px;
+    width: 16px;
+    height: 16px;
+    margin-top: 13px;
+    left: 31%;
+}
+
+.explore-right::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
+        no-repeat;
+    background-size: 16px 64px;
+    width: 16px;
+    height: 16px;
+    margin-top: 13px;
+    left: 31%;
+    transform: rotate(180deg);
+}
+
+.explore-title {
+    color: #74767e;
+    font-size: 20px;
+    margin: 0;
+    padding-bottom: 16px;
+}
+.explore-logo {
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}
+
+.explore-content {
+    color: #003912;
+    font-size: 28px;
+    margin-bottom: 0;
+}
+.explore-img {
+    width: 100%;
+    border-radius: 3px;
+    height: 260px;
+}
+
+/* explore market */
+.explore-product-market {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 40px 20px;
+    text-align: center;
+    padding: 80px 0;
+}
+.explore-item{
+    font-size: 48px;
+    color: #A2F4C0;
+}
+.explore-market h2{
+    font-weight: 600;
+}
