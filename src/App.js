@@ -3,7 +3,6 @@ import './App.css';
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Loading from './components/LoadingComponent/Loading';
-import Footer from './components/User/FooterComponent/Footer';
 import { AdminTemplate } from './templates/Admin/AdminTemplate';
 import ListUserPage from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import Dashboard from './pages/Admin/Dashboard';
@@ -12,6 +11,8 @@ import ListJobType from './pages/Admin/QL.JobType/JobType/ListJobType/ListJobTyp
 import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDetail';
 import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
 import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
+import { UserTemplate } from './templates/User/UserTemplate';
+import Home from './pages/User/Home/Home';
 import AddJobPage from './pages/Admin/QL.Job/AddJobPage/AddJobPage';
 import TempLogin from './pages/Admin/TempLogin/TempLogin';
 import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
@@ -28,7 +29,8 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-        {/* <Footer/> */}
+        <UserTemplate exact path='/home' component={Home}/>
+       
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
@@ -44,6 +46,7 @@ function App() {
         <Route exact path='/login-temp' component={TempLogin} />
 
         {/* Default Route */}
+        <UserTemplate exact path='/' component={Home}/>
 
         {/* Error Route */}
         <Route exact path='/error' component={ErrorPage} />
