@@ -18,6 +18,7 @@ import TempLogin from './pages/Admin/TempLogin/TempLogin';
 import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
 import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ListJob from './pages/User/ListJob/ListJob';
 
 export const history = createBrowserHistory();
 
@@ -30,6 +31,7 @@ function App() {
       <Switch>
         {/* User Route */}
         <UserTemplate exact path='/home' component={Home}/>
+        <UserTemplate exact path='/listjob/:id' component={ListJob}/>
        
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />

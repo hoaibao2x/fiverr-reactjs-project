@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import { useDispatch, useSelector } from 'react-redux';
 import testImg from '../../../assets/User/images/big-carousel-1.jpg';
 import testImg2 from '../../../assets/User/images/big-carousel-2.jpg';
 import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
@@ -7,6 +8,15 @@ import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
 import './carousel.css';
 
 export default function CarouselComponent(props) {
+
+    const dispatch  = useDispatch();
+    const {listjob} = useSelector(state => state.ListJobByNameReducer)
+  
+    console.log(listjob)
+
+
+
+
     return (
         <div className="list-carousel-hero">
             <Carousel slide={false}>
@@ -89,7 +99,9 @@ export default function CarouselComponent(props) {
                                 </h1>
                             </div>
                         </div>
-                        <div className="search search-cr">
+                        <div onClick={() => {
+                            
+                        }} className="search search-cr">
                             <input className="form-control" type="search" placeholder='"building mobile app"' aria-label="Search" />
 
                             <button className="btn btn-success btnicon" type="submit">
