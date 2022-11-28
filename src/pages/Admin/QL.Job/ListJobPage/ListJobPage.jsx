@@ -4,8 +4,9 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import { getListJobAction, getListJobByNameAction } from "../../../../redux/Admin/action/JobAction";
+import { getJobInfoAction, getListJobAction, getListJobByNameAction, removeJobAction, updateJobAction } from "../../../../redux/Admin/action/JobAction";
 import { history } from '../../../../App'
+import { getJobTypeDetailAction } from "../../../../redux/Admin/action/jobTypeDetailAction";
 
 const { Search } = Input;
 
@@ -82,10 +83,16 @@ function ListJobPage() {
     {
       title: 'Hành động',
       width: 200,
-      render: () => {
+      render: (text, job) => {
         return <>
-          <button key={1} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
-          <button key={2} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+          <button key={1} onClick={() => {
+            dispatch(getJobInfoAction(job.id))
+          }} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
+          <button key={2} onClick={() => {
+            if (window.confirm(`Bạn có muốn xóa công việc này ?`)) {
+              dispatch(removeJobAction(job.id));
+            }
+          }} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
         </>
       }
     }

@@ -13,6 +13,10 @@ import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDe
 import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
 import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
 import AddJobPage from './pages/Admin/QL.Job/AddJobPage/AddJobPage';
+import TempLogin from './pages/Admin/TempLogin/TempLogin';
+import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
+import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 export const history = createBrowserHistory();
 
@@ -24,18 +28,25 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-          {/* <Footer/> */}
+        {/* <Footer/> */}
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
         <AdminTemplate exact path='/admin/list-job' component={ListJobPage} />
         <AdminTemplate exact path='/admin/list-job/add' component={AddJobPage} />
+        <AdminTemplate exact path='/admin/list-job/add/upload-image' component={UploadImageJob} />
+        <AdminTemplate exact path='/admin/list-job/edit-job/:id' component={EditJobPage} />
         <AdminTemplate exact path='/admin/list-job-type' component={ListJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
         <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
 
+        <Route exact path='/login-temp' component={TempLogin} />
+
         {/* Default Route */}
+
+        {/* Error Route */}
+        <Route exact path='/error' component={ErrorPage} />
       </Switch>
     </Router>
   );
