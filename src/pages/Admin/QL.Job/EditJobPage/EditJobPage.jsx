@@ -151,6 +151,12 @@ function EditJobPage(props) {
     }
   }
 
+  const updateImgOrNot = () => {
+    localStorage.setItem(JOB_ID, jobInfo.id);
+    localStorage.setItem(JOB_IMG, jobInfo.hinhAnh);
+    history.push(`/admin/list-job/add/upload-image`);
+  }
+
   useEffect(() => {
     getJobArr();
     dispatch(getJobInfoAction(id));
@@ -252,11 +258,13 @@ function EditJobPage(props) {
         </Form.Item>
 
         <Form.Item label="Hành động">
-          <button type='submit' className='btn btn-success mr-3'>Xác nhận thông tin</button>
           <button onClick={() => {
-            localStorage.setItem(JOB_ID, jobInfo.id);
-            localStorage.setItem(JOB_IMG, jobInfo.hinhAnh);
-            history.push(`/admin/list-job/add/upload-image`);
+            if (window.confirm(`Bạn có muốn cập nhật hình ảnh ?`)) {
+              updateImgOrNot();
+            }
+          }} type='submit' className='btn btn-success mr-3'>Xác nhận thông tin</button>
+          <button onClick={() => {
+            updateImgOrNot();
           }} type='button' className='btn btn-info'>Cập nhật hình ảnh</button>
         </Form.Item>
       </Form>
