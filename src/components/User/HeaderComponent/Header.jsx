@@ -1,8 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'
+import { loginAction } from '../../../redux/User/action/signInAndSignUpAction';
 import './header.css';
+import { Formik, useFormik } from 'formik';
+import * as Yup from "yup";
 
 export default function Header() {
+
+  const dispatch = useDispatch();
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required('Email không được để trống !'),
+      password: Yup.string().required('Mật khẩu không được để trống !')
+    }),
+    onSubmit: (values) => {
+      document.getElementById('signInBtn').click()
+      dispatch(loginAction(values));
+    }
+  })
+
   return (
+    <>
       <header>
         <div className='header container-fluid '>
           <div className='pdheader'>
@@ -16,7 +39,6 @@ export default function Header() {
                 </a>
                 <div className="search">
                   <input className="form-control" type="search" placeholder="html?" aria-label="Search" />
-
                   <button className="btn btn-success btnicon" type="submit">
                     Search
                   </button>
@@ -27,13 +49,12 @@ export default function Header() {
                   <a className="nav-link" href="#">Become a Seller</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Sign In</a>
+                  <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
                 </li>
                 <form className="form-inline my-2 my-lg-0">
-                  <button className="btn btn-outline-success btnicon2" type="submit">Join</button>
+                  <button className="btn btn-outline-success btnicon2" type="button">Join</button>
                 </form>
               </ul>
-
             </nav>
           </div>
         </div>
@@ -90,5 +111,42 @@ export default function Header() {
           </nav>
         </div>
       </header>
+
+      {/* <!-- Modal --> */}
+      <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header bg-info">
+              <h4 className="modal-title text-white" id="exampleModalLabel">Đăng nhập</h4>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <form onSubmitCapture={formik.handleSubmit} className='container my-2'>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input id='email' name='email' type="text" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                  {formik.touched.email && formik.errors.email ? (
+                    <div className="alert alert-danger mt-2">{formik.errors.email}</div>
+                  ) : null}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input id='password' name='password' type="password" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                  {formik.touched.password && formik.errors.password ? (
+                    <div className="alert alert-danger mt-2">{formik.errors.password}</div>
+                  ) : null}
+                </div>
+                <div className="form-group">
+                  <button type='submit' className='btn btn-success mr-3'>Đăng nhập</button>
+                  <button type='button' className='btn btn-secondary'>Đăng ký</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
