@@ -1,20 +1,27 @@
-import React, { Fragment } from 'react';
+import { useFormik } from 'formik'; 
+import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import testImg from '../../../assets/User/images/big-carousel-1.jpg';
 import testImg2 from '../../../assets/User/images/big-carousel-2.jpg';
 import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
+import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
+
 
 import './carousel.css';
 
 export default function CarouselComponent(props) {
 
-    const dispatch  = useDispatch();
-    const {listjob} = useSelector(state => state.ListJobByNameReducer)
-  
-    console.log(listjob)
-
-
+    const dispatch = useDispatch();
+    const formik = useFormik({
+        initialValues: {
+            nameJob: ""
+        }, onSubmit: (values) => {
+            if (values.nameJob !== "") {
+                dispatch(getListJobByNameAction(values.nameJob))
+            }
+        }
+    });
 
 
     return (
@@ -99,17 +106,16 @@ export default function CarouselComponent(props) {
                                 </h1>
                             </div>
                         </div>
-                        <div onClick={() => {
-                            
-                        }} className="search search-cr">
-                            <input className="form-control" type="search" placeholder='"building mobile app"' aria-label="Search" />
-
-                            <button className="btn btn-success btnicon" type="submit">
-                                Search
-                            </button>
+                        <div >
+                            <form className="search search-cr" onSubmitCapture={formik.handleSubmit} >
+                                <input onChange={formik.handleChange} className="form-control" name='nameJob' type="search" placeholder='"building mobile app"' aria-label="Search" />
+                                <button className="btn btn-success btnicon" type="submit">
+                                    Search
+                                </button>
+                            </form>
                         </div>
                         <div className="popular row mt-3 ml-1">
-                          <span>  Popular : </span>
+                            <span>  Popular : </span>
                             <ul className='popular-text'>
                                 <li className='popular-text-content'><a href="#">Website Design</a></li>
                                 <li className='popular-text-content'><a href="#">WordPress</a></li>

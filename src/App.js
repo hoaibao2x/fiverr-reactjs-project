@@ -20,6 +20,7 @@ import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import ListJob from './pages/User/ListJob/ListJob';
 
+
 export const history = createBrowserHistory();
 
 
@@ -30,9 +31,9 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
-        <UserTemplate exact path='/home' component={Home}/>
-        <UserTemplate exact path='/listjob/:id' component={ListJob}/>
-       
+        <UserTemplate exact path='/home' component={Home} />
+        <UserTemplate exact path='/listjob' component={ListJob} />
+
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
@@ -48,7 +49,7 @@ function App() {
         <Route exact path='/login-temp' component={TempLogin} />
 
         {/* Default Route */}
-        <UserTemplate exact path='/' component={Home}/>
+        <UserTemplate exact path='/' component={Home} />
 
         {/* Error Route */}
         <Route exact path='/error' component={ErrorPage} />
