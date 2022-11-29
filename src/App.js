@@ -17,6 +17,10 @@ import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
 import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
+import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
+
+
+
 export const history = createBrowserHistory();
 
 
@@ -31,7 +35,6 @@ function App() {
        
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
-        <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
         <AdminTemplate exact path='/admin/list-job' component={ListJobPage} />
         <AdminTemplate exact path='/admin/list-job/add' component={AddJobPage} />
         <AdminTemplate exact path='/admin/list-job/add/upload-image' component={UploadImageJob} />
@@ -40,6 +43,11 @@ function App() {
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
         <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+        
+        <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
+        {/* <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} /> */}
+
+
 
         {/* Default Route */}
         <UserTemplate exact path='/' component={Home}/>
