@@ -3,7 +3,6 @@ import {
     UserOutlined,
     SnippetsOutlined,
     OrderedListOutlined,
-    CustomerServiceOutlined,
     CaretDownOutlined,
     LogoutOutlined,
     ExportOutlined,
@@ -13,6 +12,7 @@ import {
 import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { NavLink, Route } from "react-router-dom";
+import { history } from '../../App';
 
 const { Header, Content, Sider } = Layout;
 
@@ -41,6 +41,9 @@ const items = [
 
 export const AdminTemplate = (props) => {
     const [collapsed, setCollapsed] = useState(false);
+
+
+
     return (
         <Route exact path={props.path} render={(propsRoute) => {
             return (
@@ -73,7 +76,9 @@ export const AdminTemplate = (props) => {
                                         <Menu.Item key="info-admin" icon={<InfoCircleOutlined />}>
                                             Thông tin tài khoản
                                         </Menu.Item>
-                                        <Menu.Item key="exit-admin" icon={<ExportOutlined />}>
+                                        <Menu.Item key="exit-admin" onClick={() => {
+                                            history.push('/')
+                                        }} icon={<ExportOutlined />}>
                                             Thoát trang admin
                                         </Menu.Item>
                                         <Menu.Item key="log-out" icon={<LogoutOutlined />}>

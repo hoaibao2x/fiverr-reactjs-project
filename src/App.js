@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Router, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
@@ -14,7 +13,6 @@ import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListCommen
 import { UserTemplate } from './templates/User/UserTemplate';
 import Home from './pages/User/Home/Home';
 import AddJobPage from './pages/Admin/QL.Job/AddJobPage/AddJobPage';
-import TempLogin from './pages/Admin/TempLogin/TempLogin';
 import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
 import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
@@ -45,8 +43,6 @@ function App() {
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
         <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
-
-        <Route exact path='/login-temp' component={TempLogin} />
 
         {/* Default Route */}
         <UserTemplate exact path='/' component={Home} />
