@@ -7,4 +7,11 @@
 
 .register__content .content__form {
     /* background-color: red; */
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.site-tag-plus {
+    background: #fff;
+    border-style: dashed;
 }
