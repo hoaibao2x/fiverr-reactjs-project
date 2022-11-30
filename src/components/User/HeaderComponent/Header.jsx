@@ -1,12 +1,14 @@
 import React from 'react';
 import './header.css';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
 import { loginAction } from '../../../redux/User/action/signInAndSignUpAction';
 import * as Yup from 'yup';
 
 export default function Header(props) {
+  const { listjob } = useSelector(state => state.ListJobByNameReducer)
+  console.log(listjob)
 
   const dispatch = useDispatch();
 
@@ -76,58 +78,59 @@ export default function Header(props) {
             </nav>
           </div>
         </div>
-        <div className='categories'>
-          <nav className='categories-content'>
-            <ul className='categories-menu'>
-              <li className='sub-menu'>
-                <a href="#">Graphics &amp; Design</a>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Digital Marketing</a>
-              </li>
-              <li className='sub-menu'>
-                <div className='drop-down'>
-                  <a className='drop-menu' href="#">Writing &amp; Translation</a>
-                  <div className="dropdown-content">
-                    <div>
-                      <a href="#">Logo &amp; Brand Identity</a>
-                      <a href="#">Logo Design</a>
-                      <a href="#">Brand Style Guides</a>
-                    </div>
-
-                  </div>
-                </div>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Video &amp; Animation</a>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Music &amp; Audio</a>
-              </li>
-              <li className='sub-menu'>
-                <div className='drop-down'>
-                  <a className='drop-menu' href="#">Programming &amp; Tech</a>
-                  <div className="dropdown-content">
-                    <div>
-                      <a href="#">Web &amp; App Design</a>
-                      <a href="#">Website Design</a>
-                      <a href="#">App Design</a>
+        {window.location.pathname === '/' ? null : (
+          <div className='categories'>
+            <nav className='categories-content'>
+              <ul className='categories-menu'>
+                <li className='sub-menu'>
+                  <a href="#">Graphics &amp; Design</a>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Digital Marketing</a>
+                </li>
+                <li className='sub-menu'>
+                  <div className='drop-down'>
+                    <a className='drop-menu' href="#">Writing &amp; Translation</a>
+                    <div className="dropdown-content">
+                      <div>
+                        <a href="#">Logo &amp; Brand Identity</a>
+                        <a href="#">Logo Design</a>
+                        <a href="#">Brand Style Guides</a>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Data <button className='data-new'>New</button></a>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Business</a>
-              </li>
-              <li className='sub-menu'>
-                <a href="#">Lifestyle</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Video &amp; Animation</a>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Music &amp; Audio</a>
+                </li>
+                <li className='sub-menu'>
+                  <div className='drop-down'>
+                    <a className='drop-menu' href="#">Programming &amp; Tech</a>
+                    <div className="dropdown-content">
+                      <div>
+                        <a href="#">Web &amp; App Design</a>
+                        <a href="#">Website Design</a>
+                        <a href="#">App Design</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Data <button className='data-new'>New</button></a>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Business</a>
+                </li>
+                <li className='sub-menu'>
+                  <a href="#">Lifestyle</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* <!-- Login Modal --> */}
