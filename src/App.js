@@ -16,6 +16,9 @@ import AddJobPage from './pages/Admin/QL.Job/AddJobPage/AddJobPage';
 import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
 import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import RegisterPage from './pages/User/Register/RegisterPage';
+import ListJob from './pages/User/ListJob/ListJob';
+
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
@@ -34,7 +37,11 @@ function App() {
       <Switch>
         {/* User Route */}
         <UserTemplate exact path='/home' component={Home}/>
+        <Route exact path='/register' component={RegisterPage}/>
        
+        <UserTemplate exact path='/home' component={Home} />
+        <UserTemplate exact path='/listjob' component={ListJob} />
+
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
         <AdminTemplate exact path='/admin/list-job' component={ListJobPage} />
@@ -52,7 +59,7 @@ function App() {
 
 
         {/* Default Route */}
-        <UserTemplate exact path='/' component={Home}/>
+        <UserTemplate exact path='/' component={Home} />
 
         {/* Error Route */}
         <Route exact path='/error' component={ErrorPage} />

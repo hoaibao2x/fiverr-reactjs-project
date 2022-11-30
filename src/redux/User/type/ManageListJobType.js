@@ -1,0 +1,1 @@
+export const GET_NAME_JOB = 'GET_NAME_JOB';

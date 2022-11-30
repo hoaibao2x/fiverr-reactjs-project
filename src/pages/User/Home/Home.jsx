@@ -6,6 +6,8 @@ import ServicesComponent from '../../../components/User/ServicesComponent/Servic
 import './home.css';
 
 export default function Home(props) {
+
+
   return (
     <div>
       <CarouselComponent />

@@ -1,15 +1,28 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux'
-import { loginAction } from '../../../redux/User/action/signInAndSignUpAction';
+import React from 'react';
 import './header.css';
-import { Formik, useFormik } from 'formik';
-import * as Yup from "yup";
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
+import { loginAction } from '../../../redux/User/action/signInAndSignUpAction';
+import * as Yup from 'yup';
 
-export default function Header() {
+export default function Header(props) {
 
   const dispatch = useDispatch();
 
   const formik = useFormik({
+    initialValues: {
+      nameJob: ""
+    },
+    onSubmit: (values) => {
+      if (values.nameJob !== "") {
+        dispatch(getListJobByNameAction(values.nameJob))
+      }
+    }
+
+  })
+
+  const formikLogin = useFormik({
     initialValues: {
       email: '',
       password: ''
@@ -37,11 +50,15 @@ export default function Header() {
                 <a className="navbar-brand" href="#">
                   <svg width="89" height="27" viewBox="0 0 89 27" fill="none" xmlns="http://www.w3.org/2000/svg"><g fill="#404145"><path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path></g><g fill="#1dbf73"><path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path></g></svg>
                 </a>
-                <div className="search">
-                  <input className="form-control" type="search" placeholder="html?" aria-label="Search" />
-                  <button className="btn btn-success btnicon" type="submit">
-                    Search
-                  </button>
+                <div >
+                  <form onSubmitCapture={formik.handleSubmit} className="search">
+                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob' placeholder="html?" aria-label="Search" />
+
+                    <button className="btn btn-success btnicon" type="submit">
+                      Search
+                    </button>
+                  </form>
+
                 </div>
               </div>
               <ul className="navbar-nav mr-auto">
@@ -52,9 +69,10 @@ export default function Header() {
                   <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
                 </li>
                 <form className="form-inline my-2 my-lg-0">
-                  <button className="btn btn-outline-success btnicon2" type="button">Join</button>
+                  <button className="btn btn-outline-success btnicon2" type="submit">Join</button>
                 </form>
               </ul>
+
             </nav>
           </div>
         </div>
@@ -112,8 +130,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* <!-- Modal --> */}
-      <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {/* <!-- Login Modal --> */}
+      <div className="modal fade" id="exampleModal" tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
@@ -123,19 +141,19 @@ export default function Header() {
               </button>
             </div>
             <div className="modal-body">
-              <form onSubmitCapture={formik.handleSubmit} className='container my-2'>
+              <form onSubmitCapture={formikLogin.handleSubmit} className='container my-2'>
                 <div className="form-group">
                   <label htmlFor="email">Email:</label>
-                  <input id='email' name='email' type="text" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="alert alert-danger mt-2">{formik.errors.email}</div>
+                  <input id='email' name='email' type="text" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.email && formikLogin.errors.email ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.email}</div>
                   ) : null}
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password:</label>
-                  <input id='password' name='password' type="password" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className="alert alert-danger mt-2">{formik.errors.password}</div>
+                  <input id='password' name='password' type="password" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.password && formikLogin.errors.password ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.password}</div>
                   ) : null}
                 </div>
                 <div className="form-group">
