@@ -9,7 +9,7 @@ export default function Header() {
 
   const dispatch = useDispatch();
 
-  const formik = useFormik({
+  const formikLogin = useFormik({
     initialValues: {
       email: '',
       password: ''
@@ -123,19 +123,19 @@ export default function Header() {
               </button>
             </div>
             <div className="modal-body">
-              <form onSubmitCapture={formik.handleSubmit} className='container my-2'>
+              <form onSubmitCapture={formikLogin.handleSubmit} className='container my-2'>
                 <div className="form-group">
                   <label htmlFor="email">Email:</label>
-                  <input id='email' name='email' type="text" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="alert alert-danger mt-2">{formik.errors.email}</div>
+                  <input id='email' name='email' type="text" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.email && formikLogin.errors.email ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.email}</div>
                   ) : null}
                 </div>
                 <div className="form-group">
                   <label htmlFor="password">Password:</label>
-                  <input id='password' name='password' type="password" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} />
-                  {formik.touched.password && formik.errors.password ? (
-                    <div className="alert alert-danger mt-2">{formik.errors.password}</div>
+                  <input id='password' name='password' type="password" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.password && formikLogin.errors.password ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.password}</div>
                   ) : null}
                 </div>
                 <div className="form-group">
@@ -148,7 +148,7 @@ export default function Header() {
         </div>
       </div>
 
-      
+
 
     </>
   )
