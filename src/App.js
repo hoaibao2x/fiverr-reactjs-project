@@ -16,6 +16,7 @@ import AddJobPage from './pages/Admin/QL.Job/AddJobPage/AddJobPage';
 import UploadImageJob from './pages/Admin/QL.Job/UploadImageJob/UploadImageJob';
 import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import RegisterPage from './pages/User/Register/RegisterPage';
 import ListJob from './pages/User/ListJob/ListJob';
 
 
@@ -29,6 +30,9 @@ function App() {
       <Loading />
       <Switch>
         {/* User Route */}
+        <UserTemplate exact path='/home' component={Home}/>
+        <Route exact path='/register' component={RegisterPage}/>
+       
         <UserTemplate exact path='/home' component={Home} />
         <UserTemplate exact path='/listjob' component={ListJob} />
 
