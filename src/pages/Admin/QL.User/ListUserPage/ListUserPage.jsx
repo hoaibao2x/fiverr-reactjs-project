@@ -25,70 +25,95 @@ function DanhSachUser() {
     dispatch(action);
   };
 
-  //   "id": 1,
-  //   "name": "admin",
-  //   "email": "admin@gmail.com",
+  // {
+  //   "id": 1459,
+  //   "name": "Khánh",
+  //   "email": "trongtin2309@gmail.com",
   //   "password": "",
   //   "phone": null,
-  //   "birthday": "0",
+  //   "birthday": "Invalid date",
   //   "avatar": null,
-  //   "gender": true,
+  //   "gender": false,
   //   "role": "ADMIN",
-  //   "skill": [
-  //     "string"
-  //   ],
-  //   "certification": [
-  //     "string"
-  //   ],
-  //   "bookingJob": [
-  //     "string"
-  //   ]
+  //   "skill": null,
+  //   "certification": null,
+  //   "bookingJob": []
   // },
 
   const columns = [
     {
       title: "ID",
       dataIndex: "id",
-      width: 100,
+      width:'3%',
     },
     {
       title: 'Họ Tên',
       dataIndex: 'name',
       defaultSortOrder: 'descend',
+      width:'5%'  
     },
     {
       title: 'Email',
       dataIndex: 'email',
+      width:'5%'
     },
     {
       title: 'Mật Khẩu',
       dataIndex: 'password',
+      width:'7%'
     },
     {
       title: 'Số Điện Thoại',
       dataIndex: 'phone',
+      width:'7%'
     },
     {
       title: 'ngày sinh',
       dataIndex: 'birthday',
+      width:'7%'
       // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       // sortDirections: ['descend','ascend'],
     },
     {
-      title: 'hình ảnh',
-      dataIndex: 'avatar'
+      title: "Hình ảnh",
+      dataIndex: "avatar",
+      render: (text, user, index) => {
+        return (
+          <>
+            <img
+              src={user.avatar}
+              alt={user.avatar}
+              width={50}
+              height={50}
+              onError={(e) => {
+                e.target.onError = null;
+                e.target.src = `https://picsum.photos/id/${index}/100/120`;
+              }}
+            />
+          </>
+        );
+      },
     },
     {
-      title: 'gender',
+      title: 'giới tính',
       dataIndex: 'gender',
     },
     {
-      title: 'Role',
+      title: 'phân loại',
       dataIndex: 'role',
     },
     {
-      title: 'skill',
+      title: 'kỹ năng',
       dataIndex: 'skill',
+      width : '5%'
+    },
+    {
+      title: 'chứng nhận',
+      dataIndex: 'certification',
+    },
+    {
+      title: 'đặt công việc',
+      dataIndex: 'bookingJob',
     },
     {
       title: "Chỉnh Sửa",

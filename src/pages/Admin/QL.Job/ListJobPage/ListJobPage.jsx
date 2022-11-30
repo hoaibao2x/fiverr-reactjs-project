@@ -36,7 +36,7 @@ function ListJobPage() {
     {
       title: "Hình ảnh",
       dataIndex: "hinhAnh",
-      render: (text, job, index) => {
+      render: (text, job, index) => { 
         return (
           <>
             <img

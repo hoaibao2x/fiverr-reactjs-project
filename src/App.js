@@ -18,6 +18,8 @@ import EditJobPage from './pages/Admin/QL.Job/EditJobPage/EditJobPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
+import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
+
 
 
 
@@ -45,7 +47,7 @@ function App() {
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
-        {/* <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} /> */}
+        <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} />
 
 
 
