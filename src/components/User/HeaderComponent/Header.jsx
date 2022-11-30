@@ -112,8 +112,8 @@ export default function Header() {
         </div>
       </header>
 
-      {/* <!-- Modal --> */}
-      <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
+      {/* <!-- Login Modal --> */}
+      <div className="modal fade" id="exampleModal" tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
@@ -147,6 +147,9 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      
+
     </>
   )
 }
