@@ -13,12 +13,14 @@ export const ListJobByNameReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case GET_NAME_JOB: {
-      if (action.jobList.length == 0) {
-        alert('404 not found!')
-      } else {
-        state.listjob = action.jobList
-        history.push('/listjob')
-      }
+      // if (action.jobList.length == 0) {
+      //   alert('404 not found!')
+      // } else {
+      //   state.listjob = action.jobList
+      //   history.push('/listjob')
+      // }
+      state.listjob = action.jobList
+      history.push('/listjob')
       return { ...state }
     }
 

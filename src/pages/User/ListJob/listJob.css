@@ -1,0 +1,13 @@
+.imgEmpty .empty {
+   height: 350px;
+}
+
+.empty-br{
+    padding: 60px 0;
+}
+.text-empty .text-notification{
+    font-weight: 600;
+}
+.text-notification-ct{
+    font-size: 18px;
+}
