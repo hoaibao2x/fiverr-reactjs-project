@@ -1,11 +1,11 @@
 import { history } from "../../../App";
-import { danhSachUser, ThemUser, ThemUserupload } from "../../../services/Admin/UserService/UserService";
+import { danhSachUser, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
 
 
-export const danhSachUserAction = () => {
+export const danhSachUserAction = (name="") => {
     return async (dispatch) => {
         try {
-            const result = await danhSachUser()
+            const result = await danhSachUser(name)
             dispatch({
                 type: 'GET_USER_LIST',
                 arrUser: result.data.content
@@ -48,4 +48,34 @@ export const ThemUseruploadAction = (formData) => {
 
     }
 
+}
+
+export const xoaUserAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await xoaUser(id);
+            alert('Xoá người dùng thành công !');
+            console.log(result.data.content);
+            dispatch(danhSachUserAction());
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
+export const searchUserAction = (name) => {
+    return async (dispatch) => {
+        try {
+            const result = await searchUser(name);         
+            console.log(result.data.content);
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
 }

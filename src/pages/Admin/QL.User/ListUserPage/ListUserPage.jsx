@@ -5,7 +5,7 @@ import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../../App';
-import { danhSachUserAction } from '../../../../redux/Admin/action/UserAction';
+import { danhSachUserAction, searchUserAction, xoaUserAction } from '../../../../redux/Admin/action/UserAction';
 import { QLNDreducer } from '../../../../redux/Admin/reducer/QLNDReducer';
 
 
@@ -117,13 +117,13 @@ function DanhSachUser() {
     },
     {
       title: "Chỉnh Sửa",
-      dataIndex: "taiKhoan",
-      render: (text, users) => {
+      dataIndex: "id",
+      render: (text, users) => {  
         return <>
-          <NavLink key={1} className="" to={`/admin/list-user/edituser/${users.taiKhoan}`}><EditOutlined /> </NavLink>
-          <span key={2} className="" onClick={() => {
-            if (window.confirm("bạn có chắt muốn xoá dữ liệu này" + users.taiKhoan)) {
-              // dispatch(xoaUserAction(users.taiKhoan));
+          <NavLink key={1} className="" to={`/admin/list-user/edituser/${users.id}`}><EditOutlined /> </NavLink>
+          <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
+            if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
+              dispatch(xoaUserAction(users.id));
             }
           }}><DeleteOutlined /></span>
         </>
@@ -134,8 +134,8 @@ function DanhSachUser() {
   const data = arrUser;
 
   const onSearch = value => {
-    // console.log(value)
-    // dispatch(getUserListAction(value))
+    console.log(value)
+    dispatch(searchUserAction(value))
 
 
   };

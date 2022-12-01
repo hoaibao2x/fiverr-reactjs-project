@@ -22,6 +22,7 @@ import ListJob from './pages/User/ListJob/ListJob';
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
+import EditUser from './pages/Admin/QL.User/EditUserPage/EditUserPage';
 
 
 
@@ -55,6 +56,7 @@ function App() {
         
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
         <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} />
+        <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
 
 
 
