@@ -2,27 +2,60 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
+import { Rate } from 'antd';
+import { HeartOutlined } from '@ant-design/icons';
 
 
 
 
 
 export default function ListJob(props) {
+  const { listjob } = useSelector(state => state.ListJobByNameReducer);
 
-  // if (listjob.length == 0) {
-  //   return <div className='container empty-br'>
-  //     <div className='imgEmpty text-center'>
-  //       <img className='empty' src={emptyImg} alt="empty-search-results" />
-  //     </div>
-  //     <div className='text-empty text-center'>
-  //       <h2 className='text-notification'>No Results Found Your For Search</h2>
-  //       <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
-  //         from our community of freelancers.
-  //       </p>
-  //     </div>
+  if (listjob.length == 0) {
+    return <div className='container empty-br'>
+      <div className='imgEmpty text-center'>
+        <img className='empty' src={emptyImg} alt="empty-search-results" />
+      </div>
+      <div className='text-empty text-center'>
+        <h2 className='text-notification'>No Results Found Your For Search</h2>
+        <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
+          from our community of freelancers.
+        </p>
+      </div>
 
-  //   </div>
-  // }
+    </div>
+  }
+
+  const renderListJob = () => {
+    return listjob.map((job, index) => {
+      const { congViec } = job
+      return <div className="card" key={index}>
+        <div className='card-img'>
+          <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
+        </div>
+        <div className="card-body">
+          <div className='card-avatar'>
+            <div className='card-avatar-job'>
+              <img className='img-avatar' src={job.avatar} alt="" />
+            </div>
+            <div className='card-content'>
+              <p className='card-content-adim'>{job.tenNguoiTao}</p>
+              <p className='card-content-adimCV '>{job.tenLoaiCongViec}</p>
+            </div>
+          </div>
+          <p className="card-title">{congViec.tenCongViec}</p>
+
+          <Rate allowHalf value={congViec.saoCongViec} />
+          <span className='card-text'>{congViec.danhGia}</span>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item"><i className="fa-solid fa-heart icon-heart"></i></li>
+          <li className='list-group-item'>STARTING AT ${congViec.giaTien}</li>
+        </ul>
+      </div>
+    })
+  }
 
   return (
     <div>
@@ -79,18 +112,7 @@ export default function ListJob(props) {
         </div>
 
         <div className='list-job'>
-          <div className="card">
-            <div className='card-img'>
-              <img src="..." className="card-img-job" alt="..." />
-            </div>
-            <div className="card-body">
-              <h5 className="card-title">Card title</h5>
-              <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item ">An item</li>
-            </ul>
-          </div>
+          {renderListJob()}
         </div>
         <div>
         </div>

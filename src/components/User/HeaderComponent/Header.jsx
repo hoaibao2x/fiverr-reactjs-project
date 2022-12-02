@@ -1,16 +1,55 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
 import './header.css';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
 import { loginAction } from '../../../redux/User/action/signInAndSignUpAction';
 import * as Yup from 'yup';
+import _ from 'lodash';
+import { getListMenuAction } from '../../../redux/User/action/getListMenuAction'
+
+
 
 export default function Header(props) {
-  const { listjob } = useSelector(state => state.ListJobByNameReducer)
-  console.log(listjob)
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    let action = getListMenuAction()
+    dispatch(action)
+  }, [])
+
+  const { listjob } = useSelector(state => state.ListJobByNameReducer)
+  const { listMenu } = useSelector(state => state.ListMenuJobReducer)
+
+  const renderMenu = () => {
+    return listMenu.map((typeJob, index) => {
+      const { dsNhomChiTietLoai } = typeJob
+      return <li className='sub-menu' key={index}>
+        <div className='drop-down'>
+          <a className='drop-menu' href="#">{typeJob.tenLoaiCongViec}</a>
+          <div className="dropdown-content">
+            {dsNhomChiTietLoai.map((groupName, index) => {
+              const { dsChiTietLoai } = groupName
+              return <div className="dropdown show" key={index}>
+                <a className="dropdown-toggle" href="#" data-toggle="dropdown">
+                  {groupName.tenNhom}
+                </a>
+                <div className="dropdown-menu" >
+                  {dsChiTietLoai.map((name, index) => {
+                    return <a className="dropdown-item" href='#' key={index}>{name.tenChiTiet}</a>
+                  })}
+                </div>
+              </div>
+            })
+            }
+          </div>
+        </div>
+      </li>
+    })
+  }
+
+
 
   const formik = useFormik({
     initialValues: {
@@ -21,7 +60,6 @@ export default function Header(props) {
         dispatch(getListJobByNameAction(values.nameJob))
       }
     }
-
   })
 
   const formikLogin = useFormik({
@@ -82,51 +120,7 @@ export default function Header(props) {
           <div className='categories'>
             <nav className='categories-content'>
               <ul className='categories-menu'>
-                <li className='sub-menu'>
-                  <a href="#">Graphics &amp; Design</a>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Digital Marketing</a>
-                </li>
-                <li className='sub-menu'>
-                  <div className='drop-down'>
-                    <a className='drop-menu' href="#">Writing &amp; Translation</a>
-                    <div className="dropdown-content">
-                      <div>
-                        <a href="#">Logo &amp; Brand Identity</a>
-                        <a href="#">Logo Design</a>
-                        <a href="#">Brand Style Guides</a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Video &amp; Animation</a>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Music &amp; Audio</a>
-                </li>
-                <li className='sub-menu'>
-                  <div className='drop-down'>
-                    <a className='drop-menu' href="#">Programming &amp; Tech</a>
-                    <div className="dropdown-content">
-                      <div>
-                        <a href="#">Web &amp; App Design</a>
-                        <a href="#">Website Design</a>
-                        <a href="#">App Design</a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Data <button className='data-new'>New</button></a>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Business</a>
-                </li>
-                <li className='sub-menu'>
-                  <a href="#">Lifestyle</a>
-                </li>
+                {renderMenu()}
               </ul>
             </nav>
           </div>
