@@ -31,7 +31,7 @@ export const registerAction = (formData) => {
             dispatch(hideLoadingAction);
 
             alert('Đăng ký thành công !');
-            // history.push('/');
+            history.push('/');
         } catch (errors) {
             dispatch(hideLoadingAction);
             alert(errors.response.data.content);
