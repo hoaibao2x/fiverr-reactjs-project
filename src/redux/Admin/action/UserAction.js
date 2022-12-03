@@ -71,6 +71,11 @@ export const searchUserAction = (name) => {
         try {
             const result = await searchUser(name);         
             console.log(result.data.content);
+            dispatch({
+                type : "TIM_USER",
+                timUser:result.data.content
+            })
+
 
         } catch (error) {
             console.log(error.response?.data);
