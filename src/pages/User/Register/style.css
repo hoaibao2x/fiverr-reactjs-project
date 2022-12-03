@@ -21,21 +21,21 @@
     overflow-y: scroll;
 }
 
-.ant-form-item-label>label,
-.ant-form-item-extra {
+.register__content .ant-form-item-label>label,
+.register__content .ant-form-item-extra {
     font-weight: bold;
     color: white;
 }
 
-.ant-row {
+.register__content .ant-row {
     align-content: center;
 }
 
-.ant-input {
+.register__content .ant-input {
     border-radius: 5px;
 }
 
-.site-tag-plus {
+.register__content .site-tag-plus {
     cursor: pointer;
     padding: 8px 15px;
     border-radius: 5px;
@@ -44,15 +44,15 @@
     transition: all .5s;
 }
 
-.site-tag-plus:hover {
+.register__content .site-tag-plus:hover {
     filter: brightness(85%);
 }
 
-.skill-tag {
+.register__content .skill-tag {
     background: #ffdf00;
 }
 
-.cert-tag {
+.register__content .cert-tag {
     background: #0e1d32;
     color: white;
 }
