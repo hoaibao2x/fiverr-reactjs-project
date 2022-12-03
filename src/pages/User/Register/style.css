@@ -1,10 +1,58 @@
 .register__content {
-    background-color: rgba(0, 0, 0, .5);
+    background-image: url('https://img.freepik.com/free-vector/isometric-notary-services-horizontal-composition-flowchart-with-images-human-hands-stamps-envelopes-text-captions_1284-32166.jpg?w=996&t=st=1669975998~exp=1669976598~hmac=a4f41be8bef8b8fb9be69ae324aeeeb18f77723692dbd9f684efa57066655c3a');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     width: 100%;
     height: 100%;
     position: fixed;
 }
 
 .register__content .content__form {
-    /* background-color: red; */
+    padding: 15px 0;
+    border-radius: 25px;
+    background: rgba(0, 0, 0, 0.7);
+    position: relative;
+    overflow: hidden;
+}
+
+.register__content .content__form .my__form {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.ant-form-item-label>label,
+.ant-form-item-extra {
+    font-weight: bold;
+    color: white;
+}
+
+.ant-row {
+    align-content: center;
+}
+
+.ant-input {
+    border-radius: 5px;
+}
+
+.site-tag-plus {
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    transition: all .5s;
+}
+
+.site-tag-plus:hover {
+    filter: brightness(85%);
+}
+
+.skill-tag {
+    background: #ffdf00;
+}
+
+.cert-tag {
+    background: #0e1d32;
+    color: white;
 }
