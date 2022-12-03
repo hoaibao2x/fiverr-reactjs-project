@@ -21,7 +21,8 @@
     overflow-y: scroll;
 }
 
-.ant-form-item-label>label {
+.ant-form-item-label>label,
+.ant-form-item-extra {
     font-weight: bold;
     color: white;
 }
