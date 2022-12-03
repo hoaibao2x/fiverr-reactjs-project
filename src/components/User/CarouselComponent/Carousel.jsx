@@ -1,7 +1,8 @@
-import { useFormik } from 'formik'; 
+import { useFormik } from 'formik';
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useDispatch } from 'react-redux';
+import { history } from '../../../App';
 import testImg from '../../../assets/User/images/big-carousel-1.jpg';
 import testImg2 from '../../../assets/User/images/big-carousel-2.jpg';
 import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
@@ -93,7 +94,9 @@ export default function CarouselComponent(props) {
                                 <a id='signInBtn' type='button' className="nav-link text-white" data-toggle="modal" data-target="#exampleModal">Sign In</a>
                             </li>
                             <form className="form-inline my-2 my-lg-0">
-                                <button className="btn  btnicon3" type="submit">Join</button>
+                                <button onClick={() => {
+                                    history.push('/register')
+                                }} className="btn  btnicon3" type="button">Join</button>
                             </form>
                         </ul>
 

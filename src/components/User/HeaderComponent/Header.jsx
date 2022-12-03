@@ -9,6 +9,7 @@ import _ from 'lodash';
 import { getListMenuAction } from '../../../redux/User/action/getListMenuAction'
 
 
+import { history } from '../../../App';
 
 export default function Header(props) {
 
@@ -109,7 +110,9 @@ export default function Header(props) {
                   <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
                 </li>
                 <form className="form-inline my-2 my-lg-0">
-                  <button className="btn btn-outline-success btnicon2" type="submit">Join</button>
+                  <button onClick={() => {
+                    history.push('/register')
+                  }} className="btn btn-outline-success btnicon2" type="button">Join</button>
                 </form>
               </ul>
 
@@ -155,7 +158,10 @@ export default function Header(props) {
                 </div>
                 <div className="form-group">
                   <button type='submit' className='btn btn-success mr-3'>Đăng nhập</button>
-                  <button type='button' className='btn btn-secondary'>Đăng ký</button>
+                  <button onClick={() => {
+                    document.getElementById('signInBtn').click()
+                    history.push('/register')
+                  }} type='button' className='btn btn-secondary'>Đăng ký</button>
                 </div>
               </form>
             </div>
