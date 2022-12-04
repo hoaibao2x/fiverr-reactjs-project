@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     JobReducer,
     JobTypeDetailReducer,
     ListJobByNameReducer,
-    ListMenuJobReducer
+    ListMenuJobReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))

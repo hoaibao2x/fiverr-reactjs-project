@@ -1,18 +1,23 @@
-import React from 'react';
+import React,{ useState }  from 'react';
 import { useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
 import { Rate } from 'antd';
-import { HeartOutlined } from '@ant-design/icons';
-
+import { Pagination } from 'antd';
 
 
 
 
 export default function ListJob(props) {
   const { listjob } = useSelector(state => state.ListJobByNameReducer);
+  
+  const [current, setCurrent] = useState(1);
+  const onChange = (page) => {
+   setCurrent(page);
+  };
 
-  if (listjob.length == 0) {
+
+  if (listjob.length === 0) {
     return <div className='container empty-br'>
       <div className='imgEmpty text-center'>
         <img className='empty' src={emptyImg} alt="empty-search-results" />
@@ -26,7 +31,9 @@ export default function ListJob(props) {
 
     </div>
   }
+  
 
+ 
   const renderListJob = () => {
     return listjob.map((job, index) => {
       const { congViec } = job
@@ -41,7 +48,7 @@ export default function ListJob(props) {
             </div>
             <div className='card-content'>
               <p className='card-content-adim'>{job.tenNguoiTao}</p>
-              <p className='card-content-adimCV '>{job.tenLoaiCongViec}</p>
+              <p className='card-content-adimCV '>{job.tenChiTietLoai}</p>
             </div>
           </div>
           <p className="card-title">{congViec.tenCongViec}</p>
@@ -56,6 +63,8 @@ export default function ListJob(props) {
       </div>
     })
   }
+
+
 
   return (
     <div>
@@ -110,17 +119,13 @@ export default function ListJob(props) {
             </div>
           </div>
         </div>
-
         <div className='list-job'>
-          {renderListJob()}
+         {renderListJob()}
         </div>
+        <Pagination style={{textAlign:'center' ,marginBottom:'20px'}} current={current} onChange={onChange} total={50} />
         <div>
         </div>
-
-
       </div>
     </div>
-
-
   )
 }
