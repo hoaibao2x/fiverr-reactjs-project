@@ -32,6 +32,16 @@ function ListJobPage() {
         return <span>{text}</span>;
       },
       width: 100,
+      sorter: (a, b) => { 
+        let tenA = a.id;
+        let tenB = b.id;
+
+        if (tenA > tenB) {
+          return 1;
+        }
+        return -1;
+       },
+      sortDirections: ['descend', 'ascend']
     },
     {
       title: "Hình ảnh",

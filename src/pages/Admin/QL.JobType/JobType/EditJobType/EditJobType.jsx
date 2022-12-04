@@ -1,8 +1,88 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Button, Col, Form, Input, InputNumber, Row } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch, useSelector } from 'react-redux'
+import { addJobTypeAction, getJobTypeByIDAction, updateJobTypeAction } from '../../../../../redux/Admin/action/jobTypeAction';
+import { getListJobAction } from '../../../../../redux/Admin/action/JobAction';
+import { history } from '../../../../../App';
 
-function EditJobType() {
+const layout = {
+  labelCol: {
+    span: 4,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 4,
+    span: 16,
+  },
+};
+
+function EditJobType(props) {
+
+  let { id } = props.match.params;
+  console.log('id of param', id);
+
+  const dispatch = useDispatch();
+
+  const [form] = Form.useForm();
+
+  const { jobTypeInfo } = useSelector((state) => {
+    return state.JobTypeReducer
+  })
+
+  console.log('reducer id', jobTypeInfo.id)
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      tenLoaiCongViec: jobTypeInfo.tenLoaiCongViec ?? ''
+    }, validationSchema: Yup.object({
+      tenLoaiCongViec: Yup.string().required('Tên loại công việc không được để trống !')
+    }), onSubmit: (values) => {
+      dispatch(updateJobTypeAction(id, values));
+      dispatch(getListJobAction());
+    }
+  })
+
+  const paramIsMatch = () => {
+    if (localStorage.getItem('Job_Type_ID') !== undefined) {
+      if (id != localStorage.getItem('Job_Type_ID') ) {
+        history.push('/error')
+      }
+    }
+  }
+
+  useEffect(() => {
+    dispatch(getJobTypeByIDAction(id));
+    paramIsMatch()
+  }, [])
+
   return (
-    <div>EditJobType</div>
+    <div className='container mx-auto'>
+
+      <h4 className="text-info my-3"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink> <span className='myNavLink'>Quản lý loại công việc</span> <NavLink className='myNavLink' to='/admin/list-job-type'>/ Loại công việc / </NavLink> Chỉnh sửa loại công việc </h4>
+
+      <Form {...layout} form={form} name="control-hooks" onSubmitCapture={formik.handleSubmit}>
+
+        <Form.Item
+          label='Tên loại công việc'>
+          <Input name='tenLoaiCongViec' value={formik.values.tenLoaiCongViec} allowClear onChange={formik.handleChange} onBlur={formik.handleBlur} />
+          {formik.touched.tenLoaiCongViec && formik.errors.tenLoaiCongViec ? <>
+            <div className="alert alert-danger">{formik.errors.tenLoaiCongViec}</div>
+          </> : null}
+        </Form.Item>
+
+        <Form.Item {...tailLayout}>
+          <button className='btn btn-info' type='submit'>Cập nhật loại công việc</button>
+        </Form.Item>
+      </Form>
+    </div>
   )
 }
 
