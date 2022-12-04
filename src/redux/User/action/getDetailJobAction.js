@@ -10,7 +10,7 @@ export const getDetailJobAction = (id) => {
                 id: result.data.content
             }
             dispatch(action)
-            console.log(result)
+            console.log(result.data.content)
         } catch (error) {
             console.log(error)
         }

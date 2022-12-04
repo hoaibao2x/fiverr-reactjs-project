@@ -1,0 +1,172 @@
+.graphic {
+    margin: 0 60px;
+}
+.graphic-bg {
+    background-image: url(../../../assets/User/images/graphics-design-desktop.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    min-height: 320px;
+    position: relative;
+}
+.graphic-content {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+.graphic-title {
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 50px;
+}
+.graphic-text {
+    font-size: 18px;
+    letter-spacing: 3px;
+}
+.graphic-bg-under {
+    position: relative;
+    display: flex;
+    justify-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.graphic-arrow-left {
+    background-color: #fff !important;
+    position: absolute;
+    z-index: 10;
+    left: 92%;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -24px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 30px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+.graphic-arrow-left::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
+        no-repeat;
+    background-size: 16px 64px;
+    width: 16px;
+    height: 16px;
+    margin-top: 13px;
+    left: 31%;
+}
+.graphic-arrow-right {
+    background-color: #fff !important;
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -24px;
+    text-align: center;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
+    border: 0;
+    font-size: 16px;
+    line-height: 100%;
+    border-radius: 30px;
+    opacity: 1 !important;
+    cursor: pointer;
+}
+.graphic-arrow-right::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
+        no-repeat;
+    background-size: 16px 64px;
+    width: 16px;
+    height: 16px;
+    margin-top: 13px;
+    left: 31%;
+    transform: rotate(180deg);
+}
+/*  */
+.graphic-btn {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.graphic-left h3 {
+    margin: 0;
+    font-weight: 600;
+}
+.img-logo {
+    height: 50px;
+}
+.text-logo {
+    margin: 0 5px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+.btn-logo {
+    background-color: transparent;
+    padding: 10px;
+    border: 1px solid #efeff0;
+    align-items: center;
+    box-shadow: 0 0.14px 2.29266px rgb(0 0 0 / 3%), 0 0.37px 4.42626px rgb(0 0 0 / 5%), 0 3px 7px rgb(0 0 0 / 9%);
+    border-radius: 10px;
+}
+.btn-logo:hover .text-logo {
+    color: #1dbf73;
+}
+/*  */
+.explore-graphic-design {
+    margin: 30px 0;
+}
+.explore-graphic-design h3 {
+    font-weight: 600;
+}
+.groupJob {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+.card-img-detail {
+    border-radius: 5px;
+    width: 100%;
+    height: 180px;
+}
+.card-detail {
+    overflow: hidden;
+}
+.card-body-group {
+    padding: 10px 3px;
+    margin: 15px 0;
+}
+.card-title-group {
+    font-size: 20px;
+    font-weight: 600;
+}
+.list-detal {
+    padding: 0;
+}
+.name-item {
+    color: #62646a;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 35px;
+    padding: 0 3px;
+    margin-bottom: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.name-item:hover {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}

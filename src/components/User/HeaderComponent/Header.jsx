@@ -32,7 +32,7 @@ export default function Header(props) {
           <NavLink onClick={() => {
             let action = getDetailJobAction(typeJob.id)
             dispatch(action)
-          }} className='drop-menu' to={'/listTypeJob'}>{typeJob.tenLoaiCongViec}</NavLink>
+          }} className='drop-menu' to={'/user/listdetail'}>{typeJob.tenLoaiCongViec}</NavLink>
         <div className="dropdown-content">
           {dsNhomChiTietLoai.map((groupName, index) => {
             const { dsChiTietLoai } = groupName

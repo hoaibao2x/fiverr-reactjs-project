@@ -4,7 +4,7 @@ const initialState = {
     listDetail: []
 }
 
-export default (state = initialState, action) => {
+export const ListDetailReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case GET_DETAIL_JOB: {

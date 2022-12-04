@@ -15,7 +15,7 @@ export const ListJobByNameReducer = (state = initialState, action) => {
 
     case GET_NAME_JOB: {
       state.listjob = action.jobList
-      history.push('/listjob')
+      history.push('/user/listjob')
       return { ...state }
     }
     case GET_LIST_JOB_ID: {
