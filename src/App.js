@@ -37,6 +37,7 @@ function App() {
        
         <UserTemplate exact path='/home' component={Home} />
         <UserTemplate exact path='/listjob' component={ListJob} />
+        <UserTemplate exact path='/listTypeJob' component={ListJobType} />
 
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
