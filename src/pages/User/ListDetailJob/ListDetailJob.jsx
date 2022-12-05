@@ -7,12 +7,14 @@ import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
 import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
 import { Rate } from 'antd';
+import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
 
 export default function ListDetailJob(props) {
 
   const dispatch = useDispatch()
 
   const { listDetail } = useSelector(state => state.ListDetailReducer);
+  const { listjob } = useSelector(state => state.ListJobByNameReducer)
 
 
   const renderGroupJob = () => {
@@ -29,7 +31,10 @@ export default function ListDetailJob(props) {
               <h4 className="card-title-group">{groupJob.tenNhom}</h4>
               <ul className="list-detal">
                 {dsChiTietLoai.map((nameDetail, index) => {
-                  return <li className="name-item" key={index}>{nameDetail.tenChiTiet}</li>
+                  return <li onClick={() => {
+                    let action = getListJobByIDAction(nameDetail.id)
+                    dispatch(action)
+                  }} className="name-item" key={index}>{nameDetail.tenChiTiet}</li>
                 })}
               </ul>
             </div>
@@ -40,35 +45,35 @@ export default function ListDetailJob(props) {
     })
   }
 
-  // const renderListJobDetail = () => {
-  //   return listjob.map((job, index) => {
-  //     const { congViec } = job
-  //     return <div className="card" key={index}>
-  //       <div className='card-img'>
-  //         <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
-  //       </div>
-  //       <div className="card-body">
-  //         <div className='card-avatar'>
-  //           <div className='card-avatar-job'>
-  //             <img className='img-avatar' src={job.avatar} alt="" />
-  //           </div>
-  //           <div className='card-content'>
-  //             <p className='card-content-adim'>{job.tenNguoiTao}</p>
-  //             <p className='card-content-adimCV '>{job.tenChiTietLoai}</p>
-  //           </div>
-  //         </div>
-  //         <p className="card-title">{congViec.tenCongViec}</p>
+  const renderListJob = () => {
+    return listjob.map((job, index) => {
+      const { congViec } = job
+      return <div className="card" key={index}>
+        <div className='card-img'>
+          <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
+        </div>
+        <div className="card-body">
+          <div className='card-avatar'>
+            <div className='card-avatar-job'>
+              <img className='img-avatar' src={job.avatar} alt="" />
+            </div>
+            <div className='card-content'>
+              <p className='card-content-adim'>{job.tenNguoiTao}</p>
+              <p className='card-content-adimCV '>{job.tenChiTietLoai}</p>
+            </div>
+          </div>
+          <p className="card-title">{congViec.tenCongViec}</p>
 
-  //         <Rate allowHalf value={congViec.saoCongViec} />
-  //         <span className='card-text'>{congViec.danhGia}</span>
-  //       </div>
-  //       <ul className="list-group list-group-flush">
-  //         <li className="list-group-item"><i className="fa-solid fa-heart icon-heart"></i></li>
-  //         <li className='list-group-item'>STARTING AT ${congViec.giaTien}</li>
-  //       </ul>
-  //     </div>
-  //   })
-  // } 
+          <Rate allowHalf value={congViec.saoCongViec} />
+          <span className='card-text'>{congViec.danhGia}</span>
+        </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item"><i className="fa-solid fa-heart icon-heart"></i></li>
+          <li className='list-group-item'>STARTING AT ${congViec.giaTien}</li>
+        </ul>
+      </div>
+    })
+  }
 
 
 
@@ -125,7 +130,36 @@ export default function ListDetailJob(props) {
       <div className='explore-graphic-design'>
         <h3>Explore Graphic & Design</h3>
         <div className='groupJob'>
-          {renderGroupJob()}
+          {listjob.length === 0 ? renderGroupJob() : renderListJob()}
+        </div>
+      </div>
+      <div className='services-graphic'>
+        <h3 className='services-graphic-title'>Services Ralated To Graphic & Design</h3>
+        <div className='button-top'>
+          <button className='button-item'>Minimalist Logo Design</button>
+          <button className='button-item'>Signature logo design</button>
+          <button className='button-item'>Mascot logo design</button>
+          <button className='button-item'>3d logo design</button>
+          <button className='button-item'>Hand drawn logo design</button>
+          <button className='button-item'>VItage logo design</button>
+          <button className='button-item'>Remove background</button>
+        </div>
+        <div className='button-middle'>
+          <button className='button-item'>Photo restoration</button>
+          <button className='button-item'>Photo retouChing</button>
+          <button className='button-item'>Image resize</button>
+          <button className='button-item'>Product label design</button>
+          <button className='button-item'>Custom twitch overlay</button>
+          <button className='button-item'>Custom twitch emotes</button>
+          <button className='button-item'>Gaming logo</button>
+          <button className='button-item'>Children book llustration</button>
+        </div>
+        <div className='button-bottom'>
+          <button className='button-item'>Instagram design</button>
+          <button className='button-item'>Movle poster design</button>
+          <button className='button-item'>Box design</button>
+          <button className='button-item'>Logo maker</button>
+          <button className='button-item'>Logo Ideas</button>
         </div>
       </div>
     </div>

@@ -132,11 +132,13 @@
 }
 .explore-graphic-design h3 {
     font-weight: 600;
+    margin-bottom: 30px;
 }
 .groupJob {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+    grid-gap: 30px;
+    margin-bottom: 50px;
 }
 .card-img-detail {
     border-radius: 5px;
@@ -169,4 +171,45 @@
 .name-item:hover {
     background-color: #e0e0e0;
     border-radius: 5px;
+}
+
+/*  */
+.services-graphic {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 30px 0;
+}
+.services-graphic-title {
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+.button-item {
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 3px 12px;
+    background: #efeff0;
+    border-color: #efeff0;
+    color: #74767e;
+    font-weight: 700;
+   
+}
+
+.button-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+.button-bottom {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 300px;
+}
+.button-middle {
+    margin: 18px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
