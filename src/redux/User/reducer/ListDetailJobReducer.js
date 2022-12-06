@@ -1,7 +1,9 @@
-import { GET_DETAIL_JOB } from "../type/ManageListJobType"
+import { GET_DETAIL_JOB, GET_DETAIL_JOB_ID } from "../type/ManageListJobType";
+
 
 const initialState = {
-    listDetail: []
+    listDetail: [],
+    listjobID: []
 }
 
 export const ListDetailReducer = (state = initialState, action) => {
@@ -9,6 +11,11 @@ export const ListDetailReducer = (state = initialState, action) => {
 
         case GET_DETAIL_JOB: {
             state.listDetail = action.id
+            state.listjobID = []
+            return { ...state }
+        }
+        case GET_DETAIL_JOB_ID: {
+            state.listjobID = action.id
             return { ...state }
         }
 

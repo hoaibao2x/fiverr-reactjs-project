@@ -7,14 +7,22 @@ import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
 import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
 import { Rate } from 'antd';
-import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
+import { getDetailJobIDAction } from '../../../redux/User/action/getDetailJobIDAction'
+
+
 
 export default function ListDetailJob(props) {
 
   const dispatch = useDispatch()
 
-  const { listDetail } = useSelector(state => state.ListDetailReducer);
-  const { listjob } = useSelector(state => state.ListJobByNameReducer)
+  const { listDetail,listjobID } = useSelector(state => state.ListDetailReducer);
+
+
+  console.log('listDetail', listDetail)
+  console.log('listjobID',listjobID)
+
+
+
 
 
   const renderGroupJob = () => {
@@ -32,7 +40,7 @@ export default function ListDetailJob(props) {
               <ul className="list-detal">
                 {dsChiTietLoai.map((nameDetail, index) => {
                   return <li onClick={() => {
-                    let action = getListJobByIDAction(nameDetail.id)
+                    let action = getDetailJobIDAction(nameDetail.id)
                     dispatch(action)
                   }} className="name-item" key={index}>{nameDetail.tenChiTiet}</li>
                 })}
@@ -45,8 +53,8 @@ export default function ListDetailJob(props) {
     })
   }
 
-  const renderListJob = () => {
-    return listjob.map((job, index) => {
+  const renderJob = () => {
+    return listjobID.map((job, index) => {
       const { congViec } = job
       return <div className="card" key={index}>
         <div className='card-img'>
@@ -74,8 +82,6 @@ export default function ListDetailJob(props) {
       </div>
     })
   }
-
-
 
 
   return (
@@ -130,7 +136,7 @@ export default function ListDetailJob(props) {
       <div className='explore-graphic-design'>
         <h3>Explore Graphic & Design</h3>
         <div className='groupJob'>
-          {listjob.length === 0 ? renderGroupJob() : renderListJob()}
+          {listjobID.length === 0 ? renderGroupJob()  : renderJob()}
         </div>
       </div>
       <div className='services-graphic'>

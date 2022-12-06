@@ -5,7 +5,7 @@ import { GET_LIST_JOB_ID } from '../../../redux/User/type/ManageListJobType';
 
 
 const initialState = {
-  listjob: []
+  listjob: [],
 }
 
 
