@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { danhSachUser, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { danhSachUser, listThueCongViec, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
 
 
 export const danhSachUserAction = (name="") => {
@@ -83,4 +83,44 @@ export const searchUserAction = (name) => {
         }
 
     }
+}
+
+
+
+
+
+
+
+// dịch vụ action
+export const listThueCongViecAction = () => {
+    return async (dispatch) => {
+        try {
+            const result = await listThueCongViec();
+            dispatch({
+                type: 'LIST_TCV',
+                arrTCV: result.data.content
+            })
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+}
+
+
+export const ThemCongViecAction = () => {
+    return async (dispatch) => {
+        try {
+            const result = await postThueCongViec();
+            alert('Thêm người thuê công việc thành công !');
+            console.log(result.data.content);
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thêm thất bại!")
+        }
+
+    }
+
 }

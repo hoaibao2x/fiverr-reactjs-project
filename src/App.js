@@ -8,7 +8,6 @@ import Dashboard from './pages/Admin/Dashboard';
 import ListJobPage from './pages/Admin/QL.Job/ListJobPage/ListJobPage';
 import ListJobType from './pages/Admin/QL.JobType/JobType/ListJobType/ListJobType';
 import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDetail';
-import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
 import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
 import { UserTemplate } from './templates/User/UserTemplate';
 import Home from './pages/User/Home/Home';
@@ -25,6 +24,11 @@ import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobTyp
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
 import EditUser from './pages/Admin/QL.User/EditUserPage/EditUserPage';
+import ListTCV from './pages/Admin/QL.Service/RentJob/RentJobList/ListTCV';
+import AddTCV from './pages/Admin/QL.Service/RentJob/AddRentJob/AddTCV';
+import EditTCV from './pages/Admin/QL.Service/RentJob/EditRentJob/EditTCV';
+
+
 
 
 
@@ -56,9 +60,12 @@ function App() {
         <AdminTemplate exact path='/admin/list-job-type/add' component={AddJobType} />
         <AdminTemplate exact path='/admin/list-job-type/edit-job-type/:id' component={EditJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
-        <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
-        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+
+        <AdminTemplate exact path='/admin/list-rent-job' component={ListTCV} />
+        <AdminTemplate exact path='/admin/list-rent-job/add' component={AddTCV} />
+        <AdminTemplate exact path='/admin/list-rent-job/edit/:id' component={EditTCV} />
         
+        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
         <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />

@@ -151,7 +151,19 @@ return (
     <Form.Item label="hình ảnh">
       <input type="file" name='avatar' onChange={handleChangeFile} accept='image/png,image/jpeg,image/gif,image/jpg' />
       <br />
-      <img width={50} height={50} src={img} alt='...' />
+    
+      <img
+                        style={{ width: 150, height: 150 }}
+                        src={img}
+                        alt="..."
+                    />
+                    {img === undefined ? (
+                        <div
+                            className='alert alert-danger mt-2'
+                        >
+                            <span>Hình ảnh không được để trống !</span>
+                        </div>
+                    ) : null}
     </Form.Item>
     <Form.Item label="giới tính" valuePropName="checked">
       Nữ <Switch onChange={handleChangGender('gender')} /> Nam

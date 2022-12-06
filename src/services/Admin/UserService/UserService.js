@@ -21,3 +21,25 @@ export const xoaUser = (id) => {
 export const searchUser = (name) => {
     return http.get(`/users/search?TenNguoiDung=${name}`)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// dịch vụ sevice
+export const listThueCongViec = () => { 
+    return http.get("/thue-cong-viec")
+ }
+
+ export const postThueCongViec = () => { 
+    return http.post("/thue-cong-viec")
+ }

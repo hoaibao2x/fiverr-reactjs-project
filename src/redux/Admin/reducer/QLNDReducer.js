@@ -1,6 +1,7 @@
 const initialState = {
     arrUser: [],
-    timUser: {}
+    timUser: {},
+    arrTCV: [],
 
 
 }
@@ -16,6 +17,12 @@ export const QLNDreducer = (state = initialState, action) => {
             console.log(action.timUser);
             state.timUser = action.timUser
             return { ...state }
+        
+
+        // TCV
+        case "LIST_TCV" : 
+        state.arrTCV = action.arrTCV
+        return {...state}
 
         default:
             return state
