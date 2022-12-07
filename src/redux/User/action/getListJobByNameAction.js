@@ -7,7 +7,7 @@ import { GET_NAME_JOB } from "../type/ManageListJobType";
 export const getListJobByNameAction = (namejob) => {
     return async (dispatch) => {
         try {
-            dispatch(displayLoadingAction);
+            dispatch(displayLoadingAction)
             const result = await getListJobByName(namejob);
             let action = {
                 type: GET_NAME_JOB,
