@@ -10,6 +10,7 @@ export const getListJobByIDAction = (id) => {
                 id: result.data.content
             }
             dispatch(action)
+            console.log(result.data.content)
         } catch (error) {
             console.log(error)
         }

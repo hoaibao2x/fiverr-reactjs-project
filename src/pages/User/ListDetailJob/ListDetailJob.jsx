@@ -7,7 +7,7 @@ import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
 import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
 import { Rate } from 'antd';
-import { getDetailJobIDAction } from '../../../redux/User/action/getDetailJobIDAction'
+import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
 
 
 
@@ -15,15 +15,19 @@ export default function ListDetailJob(props) {
 
   const dispatch = useDispatch()
 
-  const { listDetail,listjobID } = useSelector(state => state.ListDetailReducer);
+  const { listDetail, listjob } = useSelector(state => state.ManegeListJobReducer);
 
 
-  console.log('listDetail', listDetail)
-  console.log('listjobID',listjobID)
-
-
-
-
+  const listGp = () => {
+    return listDetail.map((nameJob, index) => {
+      const { dsNhomChiTietLoai } = nameJob
+      if (dsNhomChiTietLoai.length == 0) {
+        return <div className='container' key={index}>
+          <h2 className='text-center'>This Group is updating</h2>
+        </div>
+      }
+    })
+  }
 
   const renderGroupJob = () => {
     return listDetail.map((nameJob, index) => {
@@ -40,7 +44,7 @@ export default function ListDetailJob(props) {
               <ul className="list-detal">
                 {dsChiTietLoai.map((nameDetail, index) => {
                   return <li onClick={() => {
-                    let action = getDetailJobIDAction(nameDetail.id)
+                    let action = getListJobByIDAction(nameDetail.id)
                     dispatch(action)
                   }} className="name-item" key={index}>{nameDetail.tenChiTiet}</li>
                 })}
@@ -54,7 +58,7 @@ export default function ListDetailJob(props) {
   }
 
   const renderJob = () => {
-    return listjobID.map((job, index) => {
+    return listjob.map((job, index) => {
       const { congViec } = job
       return <div className="card" key={index}>
         <div className='card-img'>
@@ -136,7 +140,10 @@ export default function ListDetailJob(props) {
       <div className='explore-graphic-design'>
         <h3>Explore Graphic & Design</h3>
         <div className='groupJob'>
-          {listjobID.length === 0 ? renderGroupJob()  : renderJob()}
+          {listjob.length === 0 ? renderGroupJob() : renderJob()}
+        </div>
+        <div>
+          {listGp()}
         </div>
       </div>
       <div className='services-graphic'>

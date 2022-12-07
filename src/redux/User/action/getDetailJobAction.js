@@ -1,4 +1,4 @@
-import {getDetailJob} from '../../../services/User/getDetailJobService'
+import { getDetailJob } from '../../../services/User/getDetailJobService'
 import { GET_DETAIL_JOB } from "../type/ManageListJobType"
 
 export const getDetailJobAction = (id) => {
@@ -9,7 +9,7 @@ export const getDetailJobAction = (id) => {
                 type: GET_DETAIL_JOB,
                 id: result.data.content
             }
-         await dispatch(action)
+            dispatch(action)
         } catch (error) {
             console.log(error)
         }
