@@ -1,4 +1,4 @@
-import { getDetailJob } from "../../../services/User/getDetailJob"
+import { getDetailJob } from '../../../services/User/getDetailJobService'
 import { GET_DETAIL_JOB } from "../type/ManageListJobType"
 
 export const getDetailJobAction = (id) => {
@@ -10,7 +10,6 @@ export const getDetailJobAction = (id) => {
                 id: result.data.content
             }
             dispatch(action)
-            console.log(result)
         } catch (error) {
             console.log(error)
         }
