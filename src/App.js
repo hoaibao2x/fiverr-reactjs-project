@@ -20,6 +20,8 @@ import RegisterPage from './pages/User/Register/RegisterPage';
 import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
+import AddDetail from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddDetail';
+import AddDetailJobArr from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddDetailJobArr';
 
 
 export const history = createBrowserHistory();
@@ -50,6 +52,8 @@ function App() {
         <AdminTemplate exact path='/admin/list-job-type/add' component={AddJobType} />
         <AdminTemplate exact path='/admin/list-job-type/edit-job-type/:id' component={EditJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/add' component={AddDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/add/add-detail-arr' component={AddDetailJobArr} />
         <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
 

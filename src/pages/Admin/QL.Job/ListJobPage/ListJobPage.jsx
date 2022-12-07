@@ -114,7 +114,7 @@ function ListJobPage() {
     if (value !== '') {
       dispatch(getListJobByNameAction(value));
     }
-    getListJob()
+    getListJob();
   };
 
   return (
@@ -125,7 +125,7 @@ function ListJobPage() {
         history.push('/admin/list-job/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm công việc</button>
 
-      <Search className='mb-5' placeholder="input search text" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="Nhập tên công việc cần tìm kiếm" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>
