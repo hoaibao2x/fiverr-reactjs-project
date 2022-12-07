@@ -9,7 +9,7 @@ import { Pagination } from 'antd';
 
 
 export default function ListJob(props) {
-  const { listjob } = useSelector(state => state.ListJobByNameReducer);
+  const { listjob } = useSelector(state => state.ManegeListJobReducer);
   
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
