@@ -32,149 +32,149 @@ export default function Header(props) {
           <NavLink onClick={() => {
             let action = getDetailJobAction(typeJob.id)
             dispatch(action)
-          }} className='drop-menu' to={'/listTypeJob'}>{typeJob.tenLoaiCongViec}</NavLink>
-        <div className="dropdown-content">
-          {dsNhomChiTietLoai.map((groupName, index) => {
-            const { dsChiTietLoai } = groupName
-            return <div className="dropdown show" key={index}>
-              <a className="dropdown-toggle" href="#" data-toggle="dropdown">
-                {groupName.tenNhom}
-              </a>
-              <div className="dropdown-menu" >
-                {dsChiTietLoai.map((name, index) => {
-                  return <a onClick={() => {
-                    let action = getListJobByIDAction(name.id)
-                    dispatch(action)
-                  }} className="dropdown-item" href='#' key={index}>{name.tenChiTiet}</a>
-                })}
+          }} className='drop-menu' to={'/user/listdetail'}>{typeJob.tenLoaiCongViec}</NavLink>
+          <div className="dropdown-content">
+            {dsNhomChiTietLoai.map((groupName, index) => {
+              const { dsChiTietLoai } = groupName
+              return <div className="dropdown show" key={index}>
+                <a className="dropdown-toggle" href="#" data-toggle="dropdown">
+                  {groupName.tenNhom}
+                </a>
+                <div className="dropdown-menu" >
+                  {dsChiTietLoai.map((name, index) => {
+                    return <a onClick={() => {
+                      let action = getListJobByIDAction(name.id)
+                      dispatch(action)
+                    }} className="dropdown-item" href='#' key={index}>{name.tenChiTiet}</a>
+                  })}
+                </div>
               </div>
-            </div>
-          })
-          }
+            })
+            }
+          </div>
         </div>
-      </div>
       </li >
     })
   }
 
 
 
-const formik = useFormik({
-  initialValues: {
-    nameJob: ""
-  },
-  onSubmit: (values) => {
-    if (values.nameJob !== "") {
-      dispatch(getListJobByNameAction(values.nameJob))
+  const formik = useFormik({
+    initialValues: {
+      nameJob: ""
+    },
+    onSubmit: (values) => {
+      if (values.nameJob !== "") {
+        dispatch(getListJobByNameAction(values.nameJob))
+      }
     }
-  }
-})
+  })
 
-const formikLogin = useFormik({
-  initialValues: {
-    email: '',
-    password: ''
-  },
-  validationSchema: Yup.object({
-    email: Yup.string().required('Email không được để trống !'),
-    password: Yup.string().required('Mật khẩu không được để trống !')
-  }),
-  onSubmit: (values) => {
-    document.getElementById('signInBtn').click()
-    dispatch(loginAction(values));
-  }
-})
+  const formikLogin = useFormik({
+    initialValues: {
+      email: '',
+      password: ''
+    },
+    validationSchema: Yup.object({
+      email: Yup.string().required('Email không được để trống !'),
+      password: Yup.string().required('Mật khẩu không được để trống !')
+    }),
+    onSubmit: (values) => {
+      document.getElementById('signInBtn').click()
+      dispatch(loginAction(values));
+    }
+  })
 
-return (
-  <>
-    <header>
-      <div className='header container-fluid '>
-        <div className='pdheader'>
-          <nav className="navbar  navbar-expand-lg navbar-light">
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-              <NavLink className="navbar-brand" to={'/'}>
-                <svg width="89" height="27" viewBox="0 0 89 27" fill="none" xmlns="http://www.w3.org/2000/svg"><g fill="#404145"><path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path></g><g fill="#1dbf73"><path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path></g></svg>
-              </NavLink>
-              <div >
-                <form onSubmitCapture={formik.handleSubmit} className="search">
-                  <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob' placeholder="html?" aria-label="Search" />
+  return (
+    <>
+      <header>
+        <div className='header container-fluid '>
+          <div className='pdheader'>
+            <nav className="navbar  navbar-expand-lg navbar-light">
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <NavLink className="navbar-brand" to={'/'}>
+                  <svg width="89" height="27" viewBox="0 0 89 27" fill="none" xmlns="http://www.w3.org/2000/svg"><g fill="#404145"><path d="m81.6 13.1h-3.1c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-13.4h-2.5c-2 0-3.1 1.5-3.1 4.1v9.3h-6v-18.4h6v2.8c1-2.2 2.3-2.8 4.3-2.8h7.3v2.8c1-2.2 2.3-2.8 4.3-2.8h2zm-25.2 5.6h-12.4c.3 2.1 1.6 3.2 3.7 3.2 1.6 0 2.7-.7 3.1-1.8l5.3 1.5c-1.3 3.2-4.5 5.1-8.4 5.1-6.5 0-9.5-5.1-9.5-9.5 0-4.3 2.6-9.4 9.1-9.4 6.9 0 9.2 5.2 9.2 9.1 0 .9 0 1.4-.1 1.8zm-5.7-3.5c-.1-1.6-1.3-3-3.3-3-1.9 0-3 .8-3.4 3zm-22.9 11.3h5.2l6.6-18.3h-6l-3.2 10.7-3.2-10.8h-6zm-24.4 0h5.9v-13.4h5.7v13.4h5.9v-18.4h-11.6v-1.1c0-1.2.9-2 2.2-2h3.5v-5h-4.4c-4.3 0-7.2 2.7-7.2 6.6v1.5h-3.4v5h3.4z"></path></g><g fill="#1dbf73"><path d="m85.3 27c2 0 3.7-1.7 3.7-3.7s-1.7-3.7-3.7-3.7-3.7 1.7-3.7 3.7 1.7 3.7 3.7 3.7z"></path></g></svg>
+                </NavLink>
+                <div >
+                  <form onSubmitCapture={formik.handleSubmit} className="search">
+                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob' placeholder="html?" aria-label="Search" />
 
-                  <button className="btn btn-success btnicon" type="submit">
-                    Search
-                  </button>
+                    <button className="btn btn-success btnicon" type="submit">
+                      Search
+                    </button>
+                  </form>
+
+                </div>
+              </div>
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item active">
+                  <a className="nav-link" href="#">Become a Seller</a>
+                </li>
+                <li className="nav-item">
+                  <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+                </li>
+                <form className="form-inline my-2 my-lg-0">
+                  <button onClick={() => {
+                    history.push('/register')
+                  }} className="btn btn-outline-success btnicon2" type="button">Join</button>
                 </form>
+              </ul>
 
-              </div>
+            </nav>
+          </div>
+        </div>
+        {window.location.pathname === '/' ? null : (
+          <div className='categories'>
+            <nav className='categories-content'>
+              <ul className='categories-menu'>
+                {renderMenu()}
+              </ul>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      {/* <!-- Login Modal --> */}
+      <div className="modal fade" id="exampleModal" tabIndex={-1}>
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header bg-info">
+              <h4 className="modal-title text-white" id="exampleModalLabel">Đăng nhập</h4>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
+              </button>
             </div>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <a className="nav-link" href="#">Become a Seller</a>
-              </li>
-              <li className="nav-item">
-                <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
-              </li>
-              <form className="form-inline my-2 my-lg-0">
-                <button onClick={() => {
-                  history.push('/register')
-                }} className="btn btn-outline-success btnicon2" type="button">Join</button>
+            <div className="modal-body">
+              <form onSubmitCapture={formikLogin.handleSubmit} className='container my-2'>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input id='email' name='email' type="text" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.email && formikLogin.errors.email ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.email}</div>
+                  ) : null}
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input id='password' name='password' type="password" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
+                  {formikLogin.touched.password && formikLogin.errors.password ? (
+                    <div className="alert alert-danger mt-2">{formikLogin.errors.password}</div>
+                  ) : null}
+                </div>
+                <div className="form-group">
+                  <button type='submit' className='btn btn-success mr-3'>Đăng nhập</button>
+                  <button onClick={() => {
+                    document.getElementById('signInBtn').click()
+                    history.push('/register')
+                  }} type='button' className='btn btn-secondary'>Đăng ký</button>
+                </div>
               </form>
-            </ul>
-
-          </nav>
-        </div>
-      </div>
-      {window.location.pathname === '/' ? null : (
-        <div className='categories'>
-          <nav className='categories-content'>
-            <ul className='categories-menu'>
-              {renderMenu()}
-            </ul>
-          </nav>
-        </div>
-      )}
-    </header>
-
-    {/* <!-- Login Modal --> */}
-    <div className="modal fade" id="exampleModal" tabIndex={-1}>
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header bg-info">
-            <h4 className="modal-title text-white" id="exampleModalLabel">Đăng nhập</h4>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
-            </button>
-          </div>
-          <div className="modal-body">
-            <form onSubmitCapture={formikLogin.handleSubmit} className='container my-2'>
-              <div className="form-group">
-                <label htmlFor="email">Email:</label>
-                <input id='email' name='email' type="text" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
-                {formikLogin.touched.email && formikLogin.errors.email ? (
-                  <div className="alert alert-danger mt-2">{formikLogin.errors.email}</div>
-                ) : null}
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input id='password' name='password' type="password" className="form-control" onChange={formikLogin.handleChange} onBlur={formikLogin.handleBlur} />
-                {formikLogin.touched.password && formikLogin.errors.password ? (
-                  <div className="alert alert-danger mt-2">{formikLogin.errors.password}</div>
-                ) : null}
-              </div>
-              <div className="form-group">
-                <button type='submit' className='btn btn-success mr-3'>Đăng nhập</button>
-                <button onClick={() => {
-                  document.getElementById('signInBtn').click()
-                  history.push('/register')
-                }} type='button' className='btn btn-secondary'>Đăng ký</button>
-              </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
-)
+    </>
+  )
 }

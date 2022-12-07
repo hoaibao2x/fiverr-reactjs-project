@@ -19,6 +19,7 @@ import RegisterPage from './pages/User/Register/RegisterPage';
 import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
+import ListDetailJob from './pages/User/ListDetailJob/ListDetailJob';
 
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
@@ -47,8 +48,8 @@ function App() {
         <Route exact path='/register' component={RegisterPage}/>
        
         <UserTemplate exact path='/home' component={Home} />
-        <UserTemplate exact path='/listjob' component={ListJob} />
-        <UserTemplate exact path='/listTypeJob' component={ListJobType} />
+        <UserTemplate exact path='/user/listjob' component={ListJob} />
+        <UserTemplate exact path='/user/listdetail' component={ListDetailJob} />
 
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />

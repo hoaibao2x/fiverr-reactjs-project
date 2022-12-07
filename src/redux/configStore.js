@@ -5,17 +5,19 @@ import { JobReducer } from './Admin/reducer/JobReducer';
 import { JobTypeDetailReducer } from './Admin/reducer/JobTypeDetailReducer';
 import { QLNDreducer } from './Admin/reducer/QLNDReducer';
 import { JobTypeReducer } from './Admin/reducer/JobTypeReducer';
-import { ListJobByNameReducer } from './User/reducer/ListJobByNameReducer';
-import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer'
+import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer';
+import { ManegeListJobReducer } from './User/reducer/ManegeListJobReducer';
+
 
 const rootReducer = combineReducers({
     LoadingReducer,
     JobReducer,
     JobTypeDetailReducer,
     QLNDreducer,
-    ListJobByNameReducer,
+    // ListJobByNameReducer,
+    ManegeListJobReducer,
     ListMenuJobReducer,
-    JobTypeReducer
+    JobTypeReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
