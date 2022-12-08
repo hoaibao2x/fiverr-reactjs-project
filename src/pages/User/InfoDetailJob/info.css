@@ -1,0 +1,21 @@
+.nav {
+    display: flex;
+}
+
+.nav-item1 {
+    width: 33.33%;
+}
+
+.nav-tabs .nav-link {
+    width: 100%;
+    margin-bottom: -1px;
+    background-color: #FAFAFA;
+    border:2px solid #dee2e6;
+    padding: 1rem;
+}
+
+.nav-tabs .nav-link.active {
+    color: #19c37a;
+    background-color: #fff;
+    border-bottom: 2px solid #28a745;
+}
