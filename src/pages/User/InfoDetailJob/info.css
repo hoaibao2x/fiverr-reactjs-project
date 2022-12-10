@@ -90,6 +90,11 @@
     align-items: center;
     margin-bottom: 20px;
 }
+.text-type-name {
+    font-size: 18px;
+    color: #447bdd;
+    margin-right: 5px;
+}
 .name-job {
     margin-bottom: 20px;
 }
@@ -110,6 +115,10 @@
     border-radius: 50%;
 }
 .img-content {
+    margin-left: 20px;
+    font-weight: 600;
+}
+.img-start {
     margin-left: 20px;
 }
 .coming-back {
@@ -135,7 +144,7 @@
     height: 352px;
     border-radius: 5px;
 }
-.info-difference-bg{
+.info-difference-bg {
     border-bottom: 1px solid #dee2e6;
     padding: 20px 0;
     font-size: 16px;
@@ -152,10 +161,95 @@
 .info-mores {
     padding-left: 15px;
 }
-.language{
+.language {
     display: flex;
     margin-top: 20px;
+    font-size: 16px;
+    font-weight: 600;
 }
-.language-left{
-    margin-right: 40px;
+.language-left {
+    margin-right: 80px;
+}
+.text-gray {
+    color: #ababad;
+    margin-bottom: 0;
+}
+.p2 {
+    margin-bottom: 0;
+}
+.text-bold {
+    font-weight: bold;
+}
+.p1 {
+    font-size: 18px;
+}
+.text-own {
+    font-weight: bold;
+    background-color: #feedd2;
+    display: inline-block;
+    font-size: 18px;
+}
+.section {
+    font-size: 18px;
+    word-spacing: 1px;
+}
+
+.info-user-create-job h5 {
+    margin-top:50px;
+    margin-bottom: 20px;
+}
+.info-user{
+    display: flex;
+    align-items: center;
+}
+.info-user-right{
+    margin-left: 20px;
+}
+.info-user-left {
+    height: 100px;
+    width: 100px;
+   
+}
+.img-user {
+    width: 100%;
+    border-radius: 10px;
+}
+.button-user{
+    margin-top: 10px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3px 12px;
+}
+/*  */
+.FAQ h5{
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+.span-collapse{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.question {
+    padding: 5px 5px;
+    margin-bottom: 0;
+    background-color:transparent;
+    border:none;
+}
+.button-faq{
+    background-color: transparent;
+    padding: 15px 0;
+    border: none;
+    border-bottom:1px solid #dee2e6 ;
+}
+.text-faq{
+    font-size: 16px;
+    font-weight: 600;
+}
+.icon.faq{
+    vertical-align: sub;
+    margin-left: auto;
 }
