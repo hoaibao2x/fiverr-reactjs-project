@@ -7,6 +7,7 @@ import { RightOutlined, DownOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
 
 
+
 export default function InfoDetailJob(props) {
 
     const { infoJob } = useSelector(state => state.InfoDetailJobReducer)
@@ -121,14 +122,7 @@ export default function InfoDetailJob(props) {
                                         </button>
 
                                     </div>
-                                    <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                        <div className="card-body">
-                                            HTML/CSS
-                                        </div>
-                                    </div>
                                 </div>
-                                {/* co1 */}
-
                                 <div className='ques2'>
                                     <div className="question" id="headingTwo">
                                         <button className="button-faq  btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -140,14 +134,7 @@ export default function InfoDetailJob(props) {
                                         </button>
 
                                     </div>
-                                    <div id="collapseTwo" className="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                        <div className="card-body">
-                                            Reactjs
-                                        </div>
-                                    </div>
                                 </div>
-                                {/* co2 */}
-
                                 <div className='ques3'>
                                     <div className="question" id="headingThree">
 
@@ -160,14 +147,7 @@ export default function InfoDetailJob(props) {
                                         </button>
 
                                     </div>
-
-                                    <div id="collapseThree" className="collapse show" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                        <div className="card-body">
-                                           IT - Support
-                                        </div>
-                                    </div>
                                 </div>
-                                {/*  */}
                                 <div className='ques4'>
                                     <div className="question" id="headingFour">
 
@@ -180,22 +160,69 @@ export default function InfoDetailJob(props) {
                                         </button>
 
                                     </div>
-
-                                    <div id="collapseFour" className="collapse show" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                        <div className="card-body">
-                                           PSD to HTML 
-                                        </div>
-                                    </div>
                                 </div>
-
-
-
                             </div>
                         </div>
+                        <div className='reviews'>
+                            <div className='review'>
+                                <span style={{ fontWeight: 'bold', fontSize: '16px' }}>335 Reviews</span> <Rate className='rate' allowHalf value={5} />  <span style={{ color: '#FFB237', fontWeight: 'bold' }}>5</span>
+                            </div>
+                            <div className='relevant'>
+                                Sort By <span style={{ fontWeight: 'bold' }}>Most relevant <DownOutlined className='arrowsDown' /></span>
+                            </div>
+                        </div>
+                        <div className='progess'>
+                            <div className='progess-left col-6'>
+                                <div className='starts'>
+                                    <span className='info-start'>5 Starts</span>
+                                    <span className='progess-middle'></span>
+                                    <span className='info-start'>(333)</span>
+                                </div>
+                                <div className='starts'>
+                                    <span className='info-start'>4 Starts</span>
+                                    <span className='progess-gr'></span>
+                                    <span className='info-start'>(2)</span>
+                                </div>
+                                <div className='starts'>
+                                    <span className='info-g'>3 Starts</span>
+                                    <span className='progess-g'></span>
+                                    <span className='info-g'>(0)</span>
+                                </div>
+                                <div className='starts'>
+                                    <span className='info-g'>2 Starts</span>
+                                    <span className='progess-g'></span>
+                                    <span className='info-g'>(0)</span>
+                                </div>
+                                <div className='starts'>
+                                    <span className='info-g mr-2'>1 Start</span>
+                                    <span className='progess-g'></span>
+                                    <span className='info-g'>(0)</span>
+                                </div>
 
+                                <div className='filter'>
+                                <p className='filter-title'>Filters</p>
+                                <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
+                            </div>
+
+                            </div>
+                            <div className='progess-right col-6'>
+                                <div className='starts own'>
+                                    Rating Breakdown
+                                </div>
+                                <div className='starts-content'>
+                                    <span className='five-start-text'>Seller communication level</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
+                                </div>
+                                <div className='starts-content'>
+                                    <span className='five-start-text'>Recommened to a friend</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
+                                </div>
+                                <div className='starts-content'>
+                                    <span className='five-start-text'>Service  as described</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
+                                </div>
+                            </div>
+                          
+                        </div>
 
                     </div>
-
                 </div>
                 <div className='col-4 pt-5'>
                     <div className='card'>
@@ -254,7 +281,7 @@ export default function InfoDetailJob(props) {
 
     return (
         <div className='container-fluid'>
-            <div className='info-job'>
+            <div className='info-job container'>
                 {/* <div className='row py-5'>
                     <div className='col-8'>
                         <div className='info-job-right'>
