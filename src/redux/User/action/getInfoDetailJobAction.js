@@ -11,7 +11,6 @@ export const getInfoDetailJobAction = (id) => {
                 idJob: result.data.content
             }
             dispatch(action)
-            console.log(result.data.content)
         } catch (error) {
             console.log(error)
         }

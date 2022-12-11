@@ -2,28 +2,35 @@ import React from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getInfoDetailJobAction } from '../../../redux/User/action/getInfoDetailJobAction';
+import { getCommentByIdJobAction } from '../../../redux/User/action/getCommentByIdJobAction'
 import './info.css';
 import { RightOutlined, DownOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
+import { Avatar, Comment } from 'antd';
 
 
 
 export default function InfoDetailJob(props) {
 
-    const { infoJob } = useSelector(state => state.InfoDetailJobReducer)
+    const { infoJob } = useSelector(state => state.InfoDetailJobReducer);
+    const { listComment } = useSelector(state => state.ManegeCommentReducer);
+    console.log(listComment)
     const dispatch = useDispatch();
 
     useEffect(() => {
         let { id } = props.match.params
+       console.log(id)
+    
         dispatch(getInfoDetailJobAction(id))
-    }, [])
+        dispatch(getCommentByIdJobAction(id))
+    }, []);
 
 
 
+   
     const renderInfoJob = () => {
         return infoJob.map((job, index) => {
             const { congViec } = job
-            console.log(job)
             return <div className='row py-5' key={index}>
                 <div className='col-8'>
                     <div className='info-job-right'>
@@ -200,9 +207,9 @@ export default function InfoDetailJob(props) {
                                 </div>
 
                                 <div className='filter'>
-                                <p className='filter-title'>Filters</p>
-                                <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
-                            </div>
+                                    <p className='filter-title'>Filters</p>
+                                    <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
+                                </div>
 
                             </div>
                             <div className='progess-right col-6'>
@@ -219,7 +226,10 @@ export default function InfoDetailJob(props) {
                                     <span className='five-start-text'>Service  as described</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
                                 </div>
                             </div>
-                          
+
+                        </div>
+                        <div className='comment'>
+                            <ExampleComment />
                         </div>
 
                     </div>
@@ -277,6 +287,25 @@ export default function InfoDetailJob(props) {
                 </div>
             </div>
         })
+    }
+    const ExampleComment = () => {
+        return listComment.map((comment, index) => {
+            return <Comment
+                actions={[<span key="comment-nested-reply-to">Reply to</span>]}
+                author={<div>
+                    <span style={{ fontWeight: 'bold', color: 'black' }}>{comment.tenNguoiBinhLuan}</span>
+                    <span style={{ color: '#ffb237' }} className="fa-solid fa-star ml-2"> {comment.saoBinhLuan}</span>
+                </div>}
+                avatar={<Avatar src={comment.avatar} alt={comment.tenNguoiBinhLuan} />}
+                content={<div>
+                    <p>{comment.noiDung}</p>
+                    <p style={{ color: '#ccc' }}>{comment.ngayBinhLuan}</p>
+                </div>}
+                key={index} >
+
+            </Comment>
+        })
+
     }
 
     return (
