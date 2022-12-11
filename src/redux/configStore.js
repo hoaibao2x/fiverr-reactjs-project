@@ -7,6 +7,7 @@ import { JobTypeReducer } from './Admin/reducer/JobTypeReducer';
 import { InfoDetailJobReducer } from './User/reducer/InfoDetailJobReducer';
 import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer';
 import { ManegeListJobReducer } from './User/reducer/ManegeListJobReducer';
+import { UserReducer } from './User/reducer/UserReducer';
 
 
 const rootReducer = combineReducers({
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     ManegeListJobReducer,
     ListMenuJobReducer,
     JobTypeReducer,
-    InfoDetailJobReducer
+    InfoDetailJobReducer,
+    UserReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
