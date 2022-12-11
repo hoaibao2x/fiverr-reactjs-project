@@ -106,6 +106,7 @@
 }
 .card-img-job {
     width: 100%;
+    cursor: pointer;
 }
 /* custom card */
 

@@ -5,6 +5,7 @@ import { JobReducer } from './Admin/reducer/JobReducer';
 import { JobTypeDetailReducer } from './Admin/reducer/JobTypeDetailReducer';
 import { QLNDreducer } from './Admin/reducer/QLNDReducer';
 import { JobTypeReducer } from './Admin/reducer/JobTypeReducer';
+import { InfoDetailJobReducer } from './User/reducer/InfoDetailJobReducer';
 import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer';
 import { ManegeListJobReducer } from './User/reducer/ManegeListJobReducer';
 import { UserReducer } from './User/reducer/UserReducer';
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
     ManegeListJobReducer,
     ListMenuJobReducer,
     JobTypeReducer,
+    InfoDetailJobReducer,
     UserReducer
 });
 

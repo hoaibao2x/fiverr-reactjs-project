@@ -1,19 +1,21 @@
-import React,{ useState }  from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
 import { Rate } from 'antd';
 import { Pagination } from 'antd';
+import {history} from '../../../App'
 
 
 
 
 export default function ListJob(props) {
+
   const { listjob } = useSelector(state => state.ManegeListJobReducer);
-  
+
   const [current, setCurrent] = useState(1);
   const onChange = (page) => {
-   setCurrent(page);
+    setCurrent(page);
   };
 
 
@@ -31,15 +33,17 @@ export default function ListJob(props) {
 
     </div>
   }
-  
 
- 
+
+
   const renderListJob = () => {
     return listjob.map((job, index) => {
       const { congViec } = job
       return <div className="card" key={index}>
         <div className='card-img'>
-          <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
+          <img onClick={() => {
+           history.push(`/user/infojob/${job.id}`)
+          }} src={congViec.hinhAnh} className="card-img-job" alt="..." />
         </div>
         <div className="card-body">
           <div className='card-avatar'>
@@ -120,9 +124,9 @@ export default function ListJob(props) {
           </div>
         </div>
         <div className='list-job'>
-         {renderListJob()}
+          {renderListJob()}
         </div>
-        <Pagination style={{textAlign:'center' ,marginBottom:'20px'}} current={current} onChange={onChange} total={50} />
+        <Pagination style={{ textAlign: 'center', marginBottom: '20px' }} current={current} onChange={onChange} total={50} />
         <div>
         </div>
       </div>
