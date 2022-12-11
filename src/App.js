@@ -21,8 +21,8 @@ import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
 import ListDetailJob from './pages/User/ListDetailJob/ListDetailJob';
-import ProfilePage from './pages/User/Profile/ProfilePage';
-
+import InfoDetailJob from './pages/User/InfoDetailJob/InfoDetailJob'
+import ProfilePage from './pages/User/Profile/ProfilePage'
 
 export const history = createBrowserHistory();
 
@@ -41,6 +41,7 @@ function App() {
         <UserTemplate exact path='/home' component={Home} />
         <UserTemplate exact path='/user/listjob' component={ListJob} />
         <UserTemplate exact path='/user/listdetail' component={ListDetailJob} />
+        <UserTemplate exact path='/user/infojob/:id' component={InfoDetailJob} />
 
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
