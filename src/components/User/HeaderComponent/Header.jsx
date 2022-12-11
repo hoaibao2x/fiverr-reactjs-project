@@ -11,14 +11,35 @@ import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDA
 import { history } from '../../../App';
 import { NavLink } from 'react-router-dom';
 import { getDetailJobAction } from '../../../redux/User/action/getDetailJobAction';
+import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from '../../../utils/varsSetting';
+import { getInfoByIDAction } from '../../../redux/User/action/getInfoAndUpdateAction';
 
 export default function Header(props) {
 
   const dispatch = useDispatch();
 
+  const loginOrNot = () => {
+    if (localStorage.getItem(TOKEN) !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const adminOrUser = () => {
+    if (localStorage.getItem(USER_ROLE) !== null) {
+      if(localStorage.getItem(USER_ROLE) == 'ADMIN') {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
   useEffect(() => {
     let action = getListMenuAction()
-    dispatch(action)
+    dispatch(action);
+    adminOrUser()
   }, [])
 
 
@@ -56,8 +77,6 @@ export default function Header(props) {
       </li >
     })
   }
-
-
 
   const formik = useFormik({
     initialValues: {
@@ -106,21 +125,38 @@ export default function Header(props) {
                       Search
                     </button>
                   </form>
-
                 </div>
               </div>
               <ul className="navbar-nav mr-auto">
                 <li className="nav-item active">
                   <a className="nav-link" href="#">Become a Seller</a>
                 </li>
-                <li className="nav-item">
-                  <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#exampleModal">Sign In</a>
-                </li>
-                <form className="form-inline my-2 my-lg-0">
-                  <button onClick={() => {
-                    history.push('/register')
-                  }} className="btn btn-outline-success btnicon2" type="button">Join</button>
-                </form>
+                {loginOrNot() ? <>
+                  <div className="btn-group">
+                    <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
+                      <i className="fa-solid fa-circle-user"></i> {localStorage.getItem(USER_NAME) !== null ? <>
+                        <span>{localStorage.getItem(USER_NAME)}</span>
+                      </> : null}
+                    </button>
+                    <div className="dropdown-menu dropdown-menu-lg-right">
+                      <NavLink  to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">Thông tin cá nhân</NavLink>
+                      {adminOrUser() ? <>
+                        <NavLink to='/admin' className="dropdown-item" type="button">Truy cập trang quản trị</NavLink>
+                      </> : null}
+                      <button className="dropdown-item" type="button">Đăng xuất</button>
+                    </div>
+                  </div>
+                </> : <>
+                  <li className="nav-item">
+                      <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#loginModal">Sign In</a>
+                  </li>
+                  <form className="form-inline my-2 my-lg-0">
+                    <button onClick={() => {
+                      history.push('/register')
+                    }} className="btn btn-outline-success btnicon2" type="button">Join</button>
+                  </form>
+                </>}
+
               </ul>
 
             </nav>
@@ -138,11 +174,11 @@ export default function Header(props) {
       </header>
 
       {/* <!-- Login Modal --> */}
-      <div className="modal fade" id="exampleModal" tabIndex={-1}>
+      <div className="modal fade" id="loginModal" tabIndex={-1}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
-              <h4 className="modal-title text-white" id="exampleModalLabel">Đăng nhập</h4>
+              <h4 className="modal-title text-white" id="loginModalLabel">Đăng nhập</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
               </button>

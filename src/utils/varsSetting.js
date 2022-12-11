@@ -7,3 +7,6 @@ export const JOB_ID = 'jobID';
 export const JOB_INFO = 'job_Info';
 export const JOB_TYPE = 'job_type';
 export const JOB_IMG = 'job_image';
+export const USER_ID = 'user_id';
+export const USER_NAME = 'user_name';
+export const USER_ROLE = 'user_role';
