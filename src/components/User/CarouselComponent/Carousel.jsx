@@ -92,7 +92,7 @@ export default function CarouselComponent(props) {
                                 <a className="nav-link nav-cr" href="#">Become a Seller</a>
                             </li>
                             <li className="nav-item">
-                                <a id='signInBtn' type='button' className="nav-link text-white" data-toggle="modal" data-target="#exampleModal">Sign In</a>
+                                <a id='signInBtn' type='button' className="nav-link text-white" data-toggle="modal" data-target="#loginModal">Sign In</a>
                             </li>
                             <form className="form-inline my-2 my-lg-0">
                                 <button onClick={() => {
