@@ -20,6 +20,7 @@ import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
 import ListDetailJob from './pages/User/ListDetailJob/ListDetailJob';
+import ProfilePage from './pages/User/Profile/ProfilePage';
 
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
@@ -46,6 +47,7 @@ function App() {
         {/* User Route */}
         <UserTemplate exact path='/home' component={Home}/>
         <Route exact path='/register' component={RegisterPage}/>
+        <UserTemplate exact path='/profile/:id' component={ProfilePage}/>
        
         <UserTemplate exact path='/home' component={Home} />
         <UserTemplate exact path='/user/listjob' component={ListJob} />
