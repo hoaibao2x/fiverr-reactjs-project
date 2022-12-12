@@ -12,8 +12,7 @@ import moment from 'moment';
 import { useState } from 'react';
 import { Input, Tag } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
-import learn_logo from "../../../assets/User/images/learn_logo.jpg"
-import { render } from 'react-dom';
+import learn_logo from "../../../assets/User/images/learn_logo.jpg";
 
 function ProfilePage(props) {
 
