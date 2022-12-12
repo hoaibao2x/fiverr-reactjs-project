@@ -125,11 +125,17 @@ export default function CarouselComponent(props) {
                                         </> : null}
                                     </button>
                                     <div className="dropdown-menu dropdown-menu-lg-right">
-                                        <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">Thông tin cá nhân</NavLink>
+                                        <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">My Info</NavLink>
                                         {adminOrUser() ? <>
-                                            <NavLink to='/admin' className="dropdown-item" type="button">Truy cập trang quản trị</NavLink>
+                                            <NavLink to='/admin' className="dropdown-item" type="button">Admin Page</NavLink>
                                         </> : null}
-                                        <button className="dropdown-item" type="button">Đăng xuất</button>
+                                        <button onClick={() => {
+                                            if (window.confirm("Do you really want to signout?")) {
+                                                localStorage.clear();
+                                                history.push('/');
+                                                window.location.reload();
+                                            }
+                                        }} className="dropdown-item" type="button">Sign out</button>
                                     </div>
                                 </div>
                             </> : <>

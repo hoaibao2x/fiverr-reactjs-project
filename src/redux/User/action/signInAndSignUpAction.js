@@ -21,12 +21,14 @@ export const loginAction = (formValue) => {
 
             if (user.role == 'ADMIN') {
                 history.push('/admin');
+            } else {
+                window.location.reload();
             }
 
             dispatch(hideLoadingAction);
         } catch (errors) {
             dispatch(hideLoadingAction);
-            alert(errors.response.data.content);
+            alert('Email or password not match !');
         }
     }
 }

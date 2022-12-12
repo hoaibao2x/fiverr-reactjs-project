@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { Input, Tag } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
 import learn_logo from "../../../assets/User/images/learn_logo.jpg"
+import { render } from 'react-dom';
 
 function ProfilePage(props) {
 
@@ -22,17 +23,17 @@ function ProfilePage(props) {
 
     let [form, disFormOrNot] = useState(true);
 
+    let { userInfo, userSkillArr, userCertArr } = useSelector((state) => {
+        return state.UserReducer;
+    });
+
     const [imgSrc, setImgSrc] = useState(
-        (localStorage.getItem('user_avatar'))
+        userInfo.avatar
     );
 
     const [upAvatarStatus, setAvatarStatus] = useState(false);
 
     let [birthday, changeBirthdayOrNot] = useState(false);
-
-    let { userInfo, userSkillArr, userCertArr } = useSelector((state) => {
-        return state.UserReducer;
-    });
 
     const infoIsMatch = () => {
         if (id !== localStorage.getItem(USER_ID)) {
@@ -250,6 +251,10 @@ function ProfilePage(props) {
         setCertTags(userCertArr)
     }, [userCertArr]);
 
+    useEffect(() => {
+        setImgSrc(userInfo.avatar)
+    }, [userInfo.avatar])
+
     return (
         <>
             <div className='profile__content'>
@@ -258,10 +263,10 @@ function ProfilePage(props) {
                         <div className="col-md-4 content__left">
                             {/* Avatar Card */}
                             <div className="card">
-                                {localStorage.getItem('user_avatar') === "" ? <>
-                                    <img src="" alt="" />
-                                </> : <>
+                                {localStorage.getItem('user_avatar') !== "" ? <>
                                     <img src={imgSrc} className="card__avatar card-img-top" alt="..." />
+                                </> : <>
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png" className="w-50 mx-auto my-3 card-img-top" alt="..." />
                                 </>}
                                 <div className="card-body text-center">
                                     <h5 className="card-title">{userInfo.name}</h5>
