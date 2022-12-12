@@ -1,4 +1,4 @@
-import { getInfoByID, updateUserInfo } from "../../../services/User/getInfoAndUpdate";
+import { getInfoByID, updateUserAvatar, updateUserInfo } from "../../../services/User/getInfoAndUpdate";
 import { USER_ID, USER_NAME } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
@@ -8,6 +8,7 @@ export const getInfoByIDAction = (userID) => {
             dispatch(displayLoadingAction);
 
             let result = await getInfoByID(userID);
+            JSON.stringify(localStorage.setItem('user_avatar', result.data.content.avatar));
 
             let action = {
                 type: 'USER_INFO',
@@ -26,13 +27,13 @@ export const getInfoByIDAction = (userID) => {
 }
 
 export const updateUserInfoAction = (userID, formValue) => {
-    return async (dispatch) => { 
+    return async (dispatch) => {
         try {
             dispatch(displayLoadingAction);
 
             let result = await updateUserInfo(userID, formValue);
             localStorage.setItem(USER_NAME, result.data.content.name);
-            alert('Update successfull !');
+            alert('Update info successfull !');
             window.location.reload();
 
             dispatch(hideLoadingAction);
@@ -40,5 +41,22 @@ export const updateUserInfoAction = (userID, formValue) => {
             dispatch(hideLoadingAction);
             console.log(errors);
         }
-     }
+    }
+}
+
+export const updateUserAvatarAction = (formData) => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction);
+
+            let result = await updateUserAvatar(formData);
+            JSON.stringify(localStorage.setItem('user_avatar', result.data.content.avatar));
+            alert('Upload avatar successfull !');
+
+            dispatch(hideLoadingAction);
+        } catch (errors) {
+            dispatch(hideLoadingAction);
+            alert(errors.response.data.content);
+        }
+    }
 }
