@@ -12,7 +12,6 @@ import { history } from '../../../App';
 import { NavLink } from 'react-router-dom';
 import { getDetailJobAction } from '../../../redux/User/action/getDetailJobAction';
 import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from '../../../utils/varsSetting';
-import { getInfoByIDAction } from '../../../redux/User/action/getInfoAndUpdateAction';
 
 export default function Header(props) {
 
@@ -95,8 +94,8 @@ export default function Header(props) {
       password: ''
     },
     validationSchema: Yup.object({
-      email: Yup.string().required('Email không được để trống !'),
-      password: Yup.string().required('Mật khẩu không được để trống !')
+      email: Yup.string().required('Email is not empty !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email is wrong format !'),
+      password: Yup.string().required('Password is not empty !')
     }),
     onSubmit: (values) => {
       document.getElementById('signInBtn').click()
@@ -178,7 +177,7 @@ export default function Header(props) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
-              <h4 className="modal-title text-white" id="loginModalLabel">Đăng nhập</h4>
+              <h4 className="modal-title text-white" id="loginModalLabel">Signin Form</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
               </button>
@@ -200,11 +199,11 @@ export default function Header(props) {
                   ) : null}
                 </div>
                 <div className="form-group">
-                  <button type='submit' className='btn btn-success mr-3'>Đăng nhập</button>
+                  <button type='submit' className='btn btn-success mr-3'>Signin</button>
                   <button onClick={() => {
                     document.getElementById('signInBtn').click()
                     history.push('/register')
-                  }} type='button' className='btn btn-secondary'>Đăng ký</button>
+                  }} type='button' className='btn btn-secondary'>Signup</button>
                 </div>
               </form>
             </div>

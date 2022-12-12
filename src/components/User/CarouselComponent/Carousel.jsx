@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -8,6 +8,8 @@ import testImg from '../../../assets/User/images/big-carousel-1.jpg';
 import testImg2 from '../../../assets/User/images/big-carousel-2.jpg';
 import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
 import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
+import { getListMenuAction } from '../../../redux/User/action/getListMenuAction';
+import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from '../../../utils/varsSetting';
 
 
 import './carousel.css';
@@ -15,6 +17,25 @@ import './carousel.css';
 export default function CarouselComponent(props) {
 
     const dispatch = useDispatch();
+
+    const loginOrNot = () => {
+        if (localStorage.getItem(TOKEN) !== null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const adminOrUser = () => {
+        if (localStorage.getItem(USER_ROLE) !== null) {
+            if (localStorage.getItem(USER_ROLE) == 'ADMIN') {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
     const formik = useFormik({
         initialValues: {
             nameJob: ""
@@ -25,6 +46,11 @@ export default function CarouselComponent(props) {
         }
     });
 
+    useEffect(() => {
+        let action = getListMenuAction()
+        dispatch(action);
+        adminOrUser()
+    }, [])
 
     return (
         <div className="list-carousel-hero">
@@ -91,14 +117,31 @@ export default function CarouselComponent(props) {
                             <li className="nav-item active">
                                 <a className="nav-link nav-cr" href="#">Become a Seller</a>
                             </li>
-                            <li className="nav-item">
-                                <a id='signInBtn' type='button' className="nav-link text-white" data-toggle="modal" data-target="#loginModal">Sign In</a>
-                            </li>
-                            <form className="form-inline my-2 my-lg-0">
-                                <button onClick={() => {
-                                    history.push('/register')
-                                }} className="btn  btnicon3" type="button">Join</button>
-                            </form>
+                            {loginOrNot() ? <>
+                                <div className="btn-group">
+                                    <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
+                                        <i className="fa-solid fa-circle-user"></i> {localStorage.getItem(USER_NAME) !== null ? <>
+                                            <span>{localStorage.getItem(USER_NAME)}</span>
+                                        </> : null}
+                                    </button>
+                                    <div className="dropdown-menu dropdown-menu-lg-right">
+                                        <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">Thông tin cá nhân</NavLink>
+                                        {adminOrUser() ? <>
+                                            <NavLink to='/admin' className="dropdown-item" type="button">Truy cập trang quản trị</NavLink>
+                                        </> : null}
+                                        <button className="dropdown-item" type="button">Đăng xuất</button>
+                                    </div>
+                                </div>
+                            </> : <>
+                                <li className="nav-item">
+                                    <a id='signInBtn' type='button' className="nav-link text-white" data-toggle="modal" data-target="#loginModal">Sign In</a>
+                                </li>
+                                <form className="form-inline my-2 my-lg-0">
+                                    <button onClick={() => {
+                                        history.push('/register')
+                                    }} className="btn btn-outline-success btnicon2" type="button">Join</button>
+                                </form>
+                            </>}
                         </ul>
 
                     </nav>

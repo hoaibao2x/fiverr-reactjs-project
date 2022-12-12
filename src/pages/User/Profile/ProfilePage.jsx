@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
-import { getInfoByIDAction, updateUserInfoAction } from '../../../redux/User/action/getInfoAndUpdateAction';
+import { getInfoByIDAction, updateUserAvatarAction, updateUserInfoAction } from '../../../redux/User/action/getInfoAndUpdateAction';
 import { USER_ID } from '../../../utils/varsSetting';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -12,6 +12,7 @@ import moment from 'moment';
 import { useState } from 'react';
 import { Input, Tag } from 'antd';
 import { TweenOneGroup } from 'rc-tween-one';
+import learn_logo from "../../../assets/User/images/learn_logo.jpg"
 
 function ProfilePage(props) {
 
@@ -21,7 +22,11 @@ function ProfilePage(props) {
 
     let [form, disFormOrNot] = useState(true);
 
-    const [imgSrc, setImgSrc] = useState();
+    const [imgSrc, setImgSrc] = useState(
+        (localStorage.getItem('user_avatar'))
+    );
+
+    const [upAvatarStatus, setAvatarStatus] = useState(false);
 
     let [birthday, changeBirthdayOrNot] = useState(false);
 
@@ -160,18 +165,42 @@ function ProfilePage(props) {
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
-            name: userInfo.name,
-            email: userInfo.email,
-            phone: userInfo.phone,
+            name: userInfo.name ?? "",
+            email: userInfo.email ?? "",
+            phone: userInfo.phone ?? "",
             birthday: userInfo.birthday,
             gender: userInfo.gender,
             skill: skill_tags,
-            certification: cert_tags
+            certification: cert_tags,
+            avatar: null
         },
         validationSchema: Yup.object({
-
+            name: Yup.string().required('Name is not empty !').matches(
+                /^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/,
+                "Name is wrong format !"
+            ),
+            email: Yup.string().required('Email is not empty !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email is wrong format !'),
+            phone: Yup.string().required('Phone is not empty !').matches(
+                /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/,
+                "Phone is wrong format !"
+            )
         }),
         onSubmit: (values) => {
+
+            let formData = new FormData();
+
+            for (const key in values) {
+                if (key !== 'avatar') {
+                    formData.append(key, values[key]);
+                } else {
+                    if (values.avatar !== null) {
+                        formData.append('formFile', values.avatar, values.avatar.name);
+                        dispatch(updateUserAvatarAction(formData))
+                    }
+                }
+            }
+
+            delete values.avatar;
             dispatch(updateUserInfoAction(userInfo.id, values));
         }
     });
@@ -193,9 +222,19 @@ function ProfilePage(props) {
         })
     }
 
-    // const handleChangeFile = (e) => {
-    //     let file = 
-    // }
+    const handleChangeFile = async (e) => {
+        let file = e.target.files[0];
+
+        if (file.type === 'image/jpg' || file.type === 'image/png' || file.type === 'image/jpeg') {
+            await formik.setFieldValue('avatar', file);
+
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = (e) => {
+                setImgSrc(e.target.result)
+            }
+        }
+    }
 
     useEffect(() => {
         infoIsMatch();
@@ -219,7 +258,11 @@ function ProfilePage(props) {
                         <div className="col-md-4 content__left">
                             {/* Avatar Card */}
                             <div className="card">
-                                <img src={imgSrc} className="card__avatar card-img-top " alt="..." />
+                                {localStorage.getItem('user_avatar') === "" ? <>
+                                    <img src="" alt="" />
+                                </> : <>
+                                    <img src={imgSrc} className="card__avatar card-img-top" alt="..." />
+                                </>}
                                 <div className="card-body text-center">
                                     <h5 className="card-title">{userInfo.name}</h5>
                                     {form ? <>
@@ -229,11 +272,23 @@ function ProfilePage(props) {
                                     </> : <>
                                         <button onClick={() => {
                                             disFormOrNot(!form);
+                                            setImgSrc(localStorage.getItem('user_avatar'));
                                         }} className='btn btn-danger' type='button'>Cancel Edit</button>
+                                        {!upAvatarStatus ? <>
+                                            <button onClick={() => {
+                                                setAvatarStatus(!upAvatarStatus)
+                                            }} className='btn btn-success ml-2' type='button'>Change Avatar</button>
+
+                                        </> : <>
+                                            <button onClick={() => {
+                                                setAvatarStatus(!upAvatarStatus);
+                                                setImgSrc(localStorage.getItem('user_avatar'));
+                                            }} className='btn btn-danger ml-2' type='button'>Cancel Change</button>
+                                        </>}
                                     </>}
                                     <hr />
-                                    <div className="card__des">
-                                        <div className="des__top">
+                                    <div className="card__info">
+                                        <div className="info__top">
                                             <div className="top__left">
                                                 <i className="fa-solid fa-location-dot"></i> <span>From</span>
                                             </div>
@@ -241,13 +296,78 @@ function ProfilePage(props) {
                                                 <span>VietNam</span>
                                             </div>
                                         </div>
-                                        <div className="des__bottom">
+                                        <div className="info__bottom">
                                             <div className="bottom__left">
                                                 <i className="fa-regular fa-calendar-days" /> <span>Member since</span>
                                             </div>
                                             <div className="bottom__right">
                                                 <span>2022</span>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Learn Card */}
+                            <div className="card mt-3">
+                                <div className="card-body learn__card">
+                                    <div className="card__top">
+                                        <img src={learn_logo} alt="learn logo" />
+                                    </div>
+                                    <div className="card__bottom text-center">
+                                        <img src="https://cdn.pixabay.com/photo/2020/07/10/02/45/tattoo-5389284_960_720.png" className='w-50 my-3' alt="" />
+                                        <h5 className='font-weight-bold my-2'>Earn badges and stand out</h5>
+                                        <p>
+                                            Boost your sales, by boosting your expertise.
+                                        </p>
+                                        <button className='btn btn-success font-weight-bold' type='button'>Enroll Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            {/* Desc Card */}
+                            <div className="card mt-3 py-3">
+                                <div className="card-body desc__card">
+                                    <div className="desc__top d-flex justify-content-between">
+                                        <h5 className='desc__title'>Description:</h5>
+                                        <a href="#" className='add__tag'>Edit Description</a>
+                                    </div>
+                                    <hr className='my-5' />
+                                    <div className="desc__mid d-flex justify-content-between">
+                                        <div className='mid_left'>
+                                            <h5 className='desc__title'>Languages:</h5>
+                                            <span className='font-weight-bold'>English - <span style={{ opacity: '.5' }}>Basic</span></span>
+                                        </div>
+                                        <div className="mid__right">
+                                            <a href="#" className='add__tag'>Add new</a>
+                                        </div>
+                                    </div>
+                                    <hr className='my-5' />
+                                    <div className="desc__bot">
+                                        <div className='bot_left'>
+                                            <h5 className='desc__title'>Linked Accounts:</h5>
+                                            <ul className="left__list">
+                                                <li>
+                                                    <a href="#">
+                                                        <i className="fa-solid fa-plus"></i> Facebook
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i className="fa-solid fa-plus"></i> Google
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i className="fa-solid fa-plus"></i> GitHub
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <i className="fa-solid fa-plus"></i> Twitter
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div className="bot__right">
                                         </div>
                                     </div>
                                 </div>
@@ -397,19 +517,28 @@ function ProfilePage(props) {
                                                     <div className="col-md-6">
                                                         <div className="form-group">
                                                             <label htmlFor="name">Name:</label>
-                                                            <input id='name' name='name' className='form-control' type="text" defaultValue={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                                            <input id='name' name='name' className='form-control' type="text" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                                            {formik.touched.name && formik.errors.name ? <>
+                                                                <div className="alert alert-danger">{formik.errors.name}</div>
+                                                            </> : null}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group">
                                                             <label htmlFor="emailInput">Email:</label>
-                                                            <input id='emailInput' name='email' className='form-control' type="text" defaultValue={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                                            <input id='emailInput' name='email' className='form-control' type="text" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                                            {formik.touched.email && formik.errors.email ? <>
+                                                                <div className="alert alert-danger">{formik.errors.email}</div>
+                                                            </> : null}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
                                                         <div className="form-group">
                                                             <label htmlFor="phone">Phone:</label>
-                                                            <input className='form-control' type="text" name="phone" id="phone" defaultValue={formik.values.phone} onChange={formik.handleChange} />
+                                                            <input className='form-control' type="text" name="phone" id="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                                                            {formik.touched.phone && formik.errors.phone ? <>
+                                                                <div className="alert alert-danger">{formik.errors.phone}</div>
+                                                            </> : null}
                                                         </div>
                                                     </div>
                                                     <div className="col-md-6">
@@ -451,11 +580,13 @@ function ProfilePage(props) {
                                                             </>}
                                                         </div>
                                                     </div>
-                                                    <div className="col-md-6">
-                                                        <div className="form-group">
-                                                            <input type="file" />
+                                                    {upAvatarStatus ? <>
+                                                        <div className="col-md-6">
+                                                            <div className="form-group">
+                                                                <input type="file" onChange={handleChangeFile} accept='image/jpg,image/png,image/jpeg' />
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    </> : null}
                                                 </div>
                                                 {!form ? <>
                                                     <div className="col-md-6 p-0">
