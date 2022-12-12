@@ -7,3 +7,7 @@ export const getInfoByID = (userID) => {
 export const updateUserInfo = (userID, formValue) => {
     return http.put(`/users/${userID}`, formValue);
 }
+
+export const updateUserAvatar = (formData) => {
+    return http.post(`/users/upload-avatar`, formData);
+}
