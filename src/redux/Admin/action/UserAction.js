@@ -1,5 +1,6 @@
 import { history } from "../../../App";
 import { danhSachUser, listThueCongViec, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
 export const danhSachUserAction = (name="") => {
@@ -18,12 +19,13 @@ export const danhSachUserAction = (name="") => {
     }
 }
 
-export const ThemUserAction = () => {
+export const ThemUserAction = (formData) => {
     return async (dispatch) => {
         try {
-            const result = await ThemUser();
+            const result = await ThemUser(formData);
             alert('Thêm người dùng thành công !');
             console.log(result.data.content);
+            history.push('/admin/list-user/add/upload-avatar');
 
         } catch (error) {
             console.log(error.response?.data);
@@ -34,11 +36,13 @@ export const ThemUserAction = () => {
 
 }
 
-export const ThemUseruploadAction = (formData) => {
+export const ThemUseruploadAction = (formData,USER_ID) => {
     return async (dispatch) => {
         try {
-            const result = await ThemUserupload(formData);
+            const result = await ThemUserupload(formData,USER_ID);
             alert('Thêm người dùng thành công !');
+            localStorage.removeItem(USER_ID);
+            localStorage.removeItem(USER_AVATAR);
             console.log(result.data.content);
 
         } catch (error) {

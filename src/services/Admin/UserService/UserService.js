@@ -7,8 +7,8 @@ export const danhSachUser = (name = "") => {
     return http.get('/users');
 }
 
-export const ThemUser = () => {
-    return http.post('/users')
+export const ThemUser = (formData) => {
+    return http.post('/users' ,formData )
 }
 export const ThemUserupload = (formData) => {
     return http.post('/users/upload-avatar', formData)
