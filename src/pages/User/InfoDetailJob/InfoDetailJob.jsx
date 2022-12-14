@@ -3,12 +3,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getInfoDetailJobAction } from '../../../redux/User/action/getInfoDetailJobAction';
 import { getCommentByIdJobAction } from '../../../redux/User/action/getCommentByIdJobAction'
 import './info.css';
-import { RightOutlined, DownOutlined } from '@ant-design/icons';
+import { RightOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
 import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from "../../../utils/varsSetting";
 import { addCommentAction } from '../../../redux/User/action/getCommentByIdJobAction';
-import moment from 'moment/moment';
+import moment from 'moment';
 import { getUserByIDAction } from '../../../redux/User/action/getUserByIDAction';
+import { Avatar } from 'antd';
+import { getInfoHireJobAction } from '../../../redux/User/action/getInfoHireJobAction';
+import { message } from 'antd';
+
+
 
 
 
@@ -19,7 +24,6 @@ export default function InfoDetailJob(props) {
 
     const { infoJob } = useSelector(state => state.InfoDetailJobReducer);
     const { listComment, userInfo } = useSelector(state => state.ManegeCommentReducer);
-
     const dispatch = useDispatch();
 
 
@@ -42,7 +46,6 @@ export default function InfoDetailJob(props) {
     })
     const [noiDung, setNoiDung] = useState('')
 
-
     let handleInput = (e) => {
         let { id, value } = e.target
         setNoiDung(value)
@@ -52,7 +55,7 @@ export default function InfoDetailJob(props) {
             id: 0,
             maCongViec: props.match.params.id,
             maNguoiBinhLuan: localStorage.getItem(USER_ID),
-            ngayBinhLuan: moment('2022-12-12').toNow(),
+            ngayBinhLuan: moment().format('MMM DD YYYY h:mm A'),
             noiDung: value,
             saoBinhLuan: Math.floor(Math.random() * 5) + 1
         })
@@ -63,7 +66,6 @@ export default function InfoDetailJob(props) {
         if (userComment.noiDung.trim() === '') {
             return null
         }
-
         let action = addCommentAction(userComment)
         dispatch(action)
         setNoiDung('')
@@ -73,10 +75,11 @@ export default function InfoDetailJob(props) {
 
     const renderComment = () => {
         return listComment.map((user, index) => {
-            return <div className='mt-4' key={index}>
+            return <div className='comments-item' key={index}>
                 <div className='user-comment'>
                     <div className='avatar-user'>
-                        <img className='avatar-user-commented' src={user?.avatar} alt="" />
+                        {user.avatar === '' ? <Avatar icon={<UserOutlined />} /> : <img className='avatar-user-commented' src={user.avatar} alt="" />}
+
                     </div>
                     <div className='user-name'>
                         <span style={{ fontWeight: 'bold', color: 'black' }}>{user.tenNguoiBinhLuan}</span>
@@ -94,22 +97,26 @@ export default function InfoDetailJob(props) {
     }
 
     const addComment = () => {
-        return <Fragment>
-            <div className='addCmt mt-5'>
-                <div className='addUser'>
-                    <img className='currentUser' src={userInfo.avatar} alt="" />
-                </div>
-                <div>
-                    <form className='form' onSubmit={handleSubmit}>
-                        <textarea className='form-control' onChange={handleInput} type="text" value={noiDung} cols="80" rows="5"></textarea>
-                        <div className='button-addComment mt-2'>
-                            <button className='btn btn-primary' type='submit'> Add Comment</button>
-                        </div>
-                    </form>
-                </div>
+        if (localStorage.getItem(USER_ID) !== null) {
+            return <Fragment>
+                <div className='addCmt mt-5'>
+                    <div className='addUser'>
+                        <img className='currentUser' src={userInfo.avatar} alt="" />
+                    </div>
+                    <div>
+                        <form className='form' onSubmit={handleSubmit}>
+                            <textarea className='form-control' onChange={handleInput} type="text" value={noiDung} cols="70" rows="4"></textarea>
+                            <div className='button-addComment mt-2'>
+                                <button className='btn btn-primary' type='submit'> Add Comment</button>
+                            </div>
+                        </form>
+                    </div>
 
-            </div>
-        </Fragment>
+                </div>
+            </Fragment>
+        }
+
+
     }
 
     const renderInfoJob = () => {
@@ -312,8 +319,12 @@ export default function InfoDetailJob(props) {
                             </div>
 
                         </div>
-                        <div className='comment'>
+                        {listComment.length !== 0 ? <div className='comment'>
                             {renderComment()}
+                        </div> : <div className='mt-4'>
+                            <p>0 Comment</p>
+                        </div>}
+                        <div>
                             {addComment()}
                         </div>
 
@@ -356,7 +367,41 @@ export default function InfoDetailJob(props) {
                                             <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Include Soucre Code</li>
                                             <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>1 Page</li>
                                             <li className='button-menu-short'>
-                                                <button style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute (${congViec.giaTien})</button>
+                                                <button onClick={() => {
+                                                    if (localStorage.getItem(USER_ID) === null) {
+                                                        document.getElementById('signInBtn').click()
+                                                    } else {
+                                                        const infoHireJob = {
+                                                            id: 0,
+                                                            maCongViec: props.match.params.id,
+                                                            maNguoiThue: localStorage.getItem(USER_ID),
+                                                            ngayThue: moment().format('MMM DD YYYY h:mm A'),
+                                                            hoanThanh: true
+                                                        }
+                                                        dispatch(getInfoHireJobAction(infoHireJob))
+                                                        const key = 'updatable';
+                                                        const openMessage = () => {
+                                                            message.loading({
+                                                                content: 'Loading...',
+                                                                style: {
+                                                                    marginTop: '20vh',
+                                                                },
+                                                                key,
+                                                            })
+                                                            setTimeout(() => {
+                                                                message.success({
+                                                                    content: 'Successful!',
+                                                                    style: {
+                                                                        marginTop: '20vh',
+                                                                    },
+                                                                    key,
+                                                                    duration: 2,
+                                                                });
+                                                            }, 1000);
+                                                        }
+                                                        openMessage();
+                                                    }
+                                                }} style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute (${congViec.giaTien})</button>
                                                 <p className='text-button-menu'>Compare Packages</p>
                                             </li>
                                         </ul>
