@@ -30,6 +30,8 @@ import ListTCV from './pages/Admin/QL.Service/RentJob/RentJobList/ListTCV';
 import AddTCV from './pages/Admin/QL.Service/RentJob/AddRentJob/AddTCV';
 import EditTCV from './pages/Admin/QL.Service/RentJob/EditRentJob/EditTCV';
 import ThemUserUpAvatar from './pages/Admin/QL.User/UpAvatar/UpAvatar';
+import ThemUser2 from './pages/Admin/QL.User/AddUserPage/AddUser2';
+
 
 
 
@@ -72,7 +74,8 @@ function App() {
         
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
-        <AdminTemplate exact path='/admin/list-user/add' component={ThemUser} />
+        <AdminTemplate exact path='/admin/list-user/add' component={ThemUser2} />
+
         <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
         

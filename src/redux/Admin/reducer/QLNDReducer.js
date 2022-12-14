@@ -13,13 +13,13 @@ export const QLNDreducer = (state = initialState, action) => {
         case "GET_USER_LIST":
 
             state.arrUser = action.arrUser
-            return { ...state }
+            return { ...state } 
         case "TIM_USER":
             console.log(action.timUser);
             state.timUser = action.timUser
             return { ...state }
         case "GET_THONG_TIN_USER":
-            console.log(action.thongTinUser)
+         
             state.thongTinUser = action.thongTinUser
             return { ...state }
 

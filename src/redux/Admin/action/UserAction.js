@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { danhSachUser, listThueCongViec, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
 import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
@@ -24,9 +24,7 @@ export const ThemUserAction = (formData) => {
         try {
             const result = await ThemUser(formData);
             alert('Thêm người dùng thành công !');
-            console.log(result.data.content);
-            history.push('/admin/list-user/add/upload-avatar');
-
+            history.push('/admin/list-user');
         } catch (error) {
             console.log(error.response?.data);
             alert("Thêm thất bại!")
@@ -35,6 +33,34 @@ export const ThemUserAction = (formData) => {
     }
 
 }
+export const LayThongTinUserAction = (id) => { 
+    return async (dispatch) => {
+        try {
+            const result = await LayThongTinUser(id)
+            dispatch({
+                type : "GET_THONG_TIN_USER",
+                thongTinUser : result.data.content,
+            })  
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+ }
+
+ export const CapNhatUserAction = (id) => { 
+    return async (dispatch) => {
+        try {
+            const result = await CapNhatUser(id)
+            alert('Cập nhật người dùng thành công !');
+           
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Cập nhật thất bại!")
+
+        }
+    }
+  }
 
 export const ThemUseruploadAction = (formData,USER_ID) => {
     return async (dispatch) => {

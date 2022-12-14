@@ -13,6 +13,12 @@ export const ThemUser = (formData) => {
 export const ThemUserupload = (formData) => {
     return http.post('/users/upload-avatar', formData)
 }
+export const LayThongTinUser = (id) => {
+    return http.get(`/users/${id}`)
+}
+export const CapNhatUser = (id) => {
+    return http.put(`/users/${id}`)
+}
 
 export const xoaUser = (id) => {
     return http.delete(`/users?id=${id}`);

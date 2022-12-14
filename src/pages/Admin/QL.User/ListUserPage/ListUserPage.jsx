@@ -75,19 +75,19 @@ function DanhSachUser() {
       // sortDirections: ['descend','ascend'],
     },
     {
-      title: "Hình ảnh",
+      title: "Hình ảnh",  
       dataIndex: "avatar",
-      render: (text, user, index) => {
+      render: (text, users, index) => {
         return (
           <>
             <img
-              src={user.avatar}
-              alt={user.avatar}
+              src={users.avatar}
+              alt={users.avatar}
               width={50}
               height={50}
               onError={(e) => {
                 e.target.onError = null;
-                e.target.src = `https://picsum.photos/id/${index}/100/120`;
+                e.target.src = `https://picsum.photos/id/${index}/50/50`;
               }}
             />
           </>
@@ -105,11 +105,12 @@ function DanhSachUser() {
     {
       title: 'kỹ năng',
       dataIndex: 'skill',
-      width : '5%'
+    
     },
     {
       title: 'chứng nhận',
       dataIndex: 'certification',
+     
     },
     {
       title: 'đặt công việc',
