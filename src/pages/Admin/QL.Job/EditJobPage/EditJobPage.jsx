@@ -18,7 +18,7 @@ import { displayLoadingAction, hideLoadingAction } from '../../../../redux/loadi
 import { getJobInfoAction, updateJobInfoAction } from '../../../../redux/Admin/action/JobAction';
 import { JOB_ID, JOB_IMG } from '../../../../utils/varsSetting';
 import { history } from '../../../../App';
-import { getJobTypeDetailAction } from '../../../../redux/Admin/action/jobTypeDetailAction';
+import { getJobSearchAction } from '../../../../redux/Admin/action/jobTypeDetailAction';
 import { getJobInfo } from '../../../../services/Admin/JobService/jobService';
 
 const desc = ['Rất tệ', 'Tệ', 'Bình thường', 'Tốt', 'Rất tuyệt vời'];
@@ -138,7 +138,7 @@ function EditJobPage(props) {
     return async (dispatch) => {
       try {
         let result = await getJobInfo(id);
-        dispatch(getJobTypeDetailAction(result.data.content.maChiTietLoaiCongViec))
+        dispatch(getJobSearchAction(result.data.content.maChiTietLoaiCongViec))
       } catch (errors) {
         console.log(errors)
       }

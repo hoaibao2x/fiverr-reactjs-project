@@ -4,43 +4,25 @@ import { NavLink } from 'react-router-dom'
 import { Form, Input } from 'antd';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux'
-import { addDetailJobGroupAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
-import { useState } from 'react';
-import { displayLoadingAction, hideLoadingAction } from '../../../../../redux/loadingAction';
+import { useDispatch, useSelector } from 'react-redux'
+import { addDetailJobGroupAction, getDetailJobTypeListAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
 import { useEffect } from 'react';
-import { getListJobType } from '../../../../../services/Admin/JobService/jobTypeService';
+import { getListJobTypeAction } from '../../../../../redux/Admin/action/jobTypeAction';
 
 function AddDetail() {
 
   let dispatch = useDispatch();
 
-  const [state, setState] = useState({
-    jobGroupArr: []
+  let { jobDetailArr } = useSelector((state) => {
+    return state.JobTypeDetailReducer;
   });
 
-  const getJobGroupArr = async () => {
-    try {
-      dispatch(displayLoadingAction);
-
-      let result = await getListJobType();
-
-
-      setState({
-        ...state,
-        jobGroupArr: result.data.content
-      })
-
-      dispatch(hideLoadingAction);
-
-    } catch (errors) {
-      dispatch(hideLoadingAction);
-      console.log(errors);
-    }
-  }
+  let { jobTypeArr } = useSelector((state) => {
+    return state.JobTypeReducer;
+  });
 
   const convertSelected = () => {
-    return state.jobGroupArr.map((jobItem) => {
+    return jobTypeArr.map((jobItem) => {
       return { label: jobItem.tenLoaiCongViec, value: jobItem.id }
     })
   }
@@ -52,7 +34,8 @@ function AddDetail() {
   const formik = useFormik({
     initialValues: {
       maLoaiCongViec: '',
-      tenChiTiet: ''
+      tenChiTiet: '',
+      danhSachChiTiet: []
     },
     validationSchema: Yup.object({
       maLoaiCongViec: Yup.string().required('Mã loại công việc không được để trống !'),
@@ -60,30 +43,51 @@ function AddDetail() {
     }),
     onSubmit: (values) => {
       dispatch(addDetailJobGroupAction(values));
+      alert('Add job detail list success !');
     }
-  })
+  });
+
+  const myArr = jobDetailArr;
+
+  const options = [];
+
+  for (let i = 0; i < myArr.length; i++) {
+    options.push({
+      label: myArr[i].tenChiTiet,
+      value: myArr[i].id
+    });
+  }
+
+  const handleChangeDetail = async (value) => {
+    await formik.setFieldValue('danhSachChiTiet', value);
+  };
 
   useEffect(() => {
-    getJobGroupArr();
-  }, [])
+    dispatch(getListJobTypeAction());
+    dispatch(getDetailJobTypeListAction());
+  }, []);
+
+  const tempArr = [
+    {
+      id: 8,
+      tenChiTiet: "Social Media Marketing"
+    }
+  ]
 
   return (
     <div className='container mx-auto'>
-      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Quản lý chi tiết loại công việc / </NavLink>Thêm mới chi tiết loại công việc</h4>
+      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Detail job manager / </NavLink>Add new</h4>
 
       <Steps
-        className='w-75 mx-auto my-4'
+        className='w-50 mx-auto my-4'
         size="small"
         current={0}
         items={[
           {
-            title: 'Thêm nhóm chi tiết loại',
+            title: 'Add detail job group',
           },
           {
-            title: 'Thêm danh sách chi tiết',
-          },
-          {
-            title: 'Upload hình nhóm loại công việc'
+            title: 'Upload job group image'
           }
         ]}
       />
@@ -99,7 +103,7 @@ function AddDetail() {
         }}
       >
         <Form.Item
-          label="Loại công việc"
+          label="Job Type"
         >
           <Select
             style={{
@@ -114,12 +118,26 @@ function AddDetail() {
         </Form.Item>
 
         <Form.Item
-          label="Tên nhóm loại công việc"
+          label="Job Type Group Name"
         >
           <Input allowClear name='tenChiTiet' onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.tenChiTiet && formik.errors.tenChiTiet ? <>
             <div className="alert alert-danger">{formik.errors.tenChiTiet}</div>
           </> : null}
+        </Form.Item>
+
+        <Form.Item label='Job Detail'>
+          <Select
+            className='container mx-auto'
+            mode="multiple"
+            allowClear
+            placeholder="Please select"
+            defaultValue={tempArr.map((item) => {
+              return { label: item.tenChiTiet, value: item.id }
+            })}
+            onChange={handleChangeDetail}
+            options={options}
+          />
         </Form.Item>
 
         <Form.Item
@@ -128,7 +146,7 @@ function AddDetail() {
             span: 16,
           }}
         >
-          <button className='btn btn-success' type='submit'>Thêm nhóm chi tiết loại</button>
+          <button className='btn btn-success' type='submit'>Add job detail group</button>
         </Form.Item>
       </Form>
     </div>

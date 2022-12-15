@@ -1,7 +1,8 @@
 const initialState = {
     jobTypeDetail: {},
     jobTypeDetailArr: [],
-    jobTypeDetailOnSearch: [],
+    jobDetailArr: [],
+    jobArr: []
 }
 
 export const JobTypeDetailReducer = (state = initialState, action) => {
@@ -14,15 +15,20 @@ export const JobTypeDetailReducer = (state = initialState, action) => {
 
         case 'GET_LIST_JOB_TYPE_DETAIL':
             state.jobTypeDetailArr = [...action.jobTypeDetailArr];
+            state.jobDetailArr = [...action.jobDetailArr];
             return { ...state }
 
-        case 'ADD_DETAIL_JOB_INFO':
+        case 'ADD_JOB_GROUP':
             state.jobTypeDetail = { ...action.jobTypeDetail };
             return { ...state }
 
-        case 'ADD_DETAIL_JOB_ARR':
-            state.jobTypeDetail.danhSachChiTiet = { ...action.detailJobArr }
-            console.log(state.jobTypeDetail)
+        case 'GET_JOB_GROUP_INFO':
+            state.jobTypeDetail = { ...action.jobGroupInfo };
+            // state.jobArr = [...action.jobArr];
+            return { ...state }
+
+        case 'CLEAR__ARR':
+            state.jobTypeDetail = { ...action.emptyArr };
             return { ...state }
 
         default:

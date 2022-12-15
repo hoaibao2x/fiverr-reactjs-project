@@ -1,6 +1,6 @@
 import { history } from "../../../App";
 import { loginService, registerService } from "../../../services/User/signInAndSignUp";
-import { TOKEN } from "../../../utils/varsSetting";
+import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
 export const loginAction = (formValue) => {
@@ -11,13 +11,24 @@ export const loginAction = (formValue) => {
             let result = await loginService(formValue);
             localStorage.setItem(TOKEN, result.data.content.token);
 
-            dispatch(hideLoadingAction);
+            let { user } = result.data.content;
 
-            alert('Đăng nhập thành công !');
-            history.push('/admin');
+            localStorage.setItem(USER_NAME, user.name);
+            localStorage.setItem(USER_ID, user.id);
+            localStorage.setItem(USER_ROLE, user.role);
+
+            alert('Signin success !');
+
+            if (user.role == 'ADMIN') {
+                history.push('/admin');
+            } else {
+                window.location.reload();
+            }
+
+            dispatch(hideLoadingAction);
         } catch (errors) {
             dispatch(hideLoadingAction);
-            alert(errors.response.data.content);
+            alert('Email or password not match !');
         }
     }
 }
@@ -30,7 +41,7 @@ export const registerAction = (formData) => {
             let result = await registerService(formData);
             dispatch(hideLoadingAction);
 
-            alert('Đăng ký thành công !');
+            alert('Signup success !');
             history.push('/');
         } catch (errors) {
             dispatch(hideLoadingAction);

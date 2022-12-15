@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'antd';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
-import { getDetailJobTypeListAction, getJobTypeDetailAction, removeDetailJobGroupAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
+import { getDetailByIDAction, getDetailJobTypeListAction, getJobSearchAction, getJobTypeDetailAction, removeDetailJobGroupAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
 import './style.css'
 import { NavLink } from 'react-router-dom';
 import Search from 'antd/lib/input/Search';
@@ -86,12 +86,20 @@ function ListDetail() {
       title: 'Hành động',
       render: (text, object) => {
         return <>
-          <button key={1} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
-          <button onClick={() => { 
+          <button onClick={() => {
+            localStorage.setItem('job_type_id', object.maLoaiCongviec);
+
+            localStorage.setItem('job_group_id', object.id);
+
+            localStorage.setItem('job_detail_arr', JSON.stringify(object.dsChiTietLoai));
+
+            history.push(`/admin/list-detail-job-type/edit-job-group/${object.id}`)
+          }} key={1} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
+          <button onClick={() => {
             if (window.confirm(`Bạn có muốn xóa nhóm công việc có id là ${object.id}`)) {
               dispatch(removeDetailJobGroupAction(object.id));
             }
-           }} key={2} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+          }} key={2} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
         </>
       }
     }
@@ -101,7 +109,7 @@ function ListDetail() {
 
   const onSearch = (value) => {
     if (value !== '') {
-      dispatch(getJobTypeDetailAction(value));
+      dispatch(getJobSearchAction(value));
     }
     getDetailJobTypeList();
   };

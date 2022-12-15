@@ -1,7 +1,4 @@
-
-
-
-
+import {GET_LIST_MENU_JOB} from '../../../redux/User/type/ManageListJobType'
 
 const initialState = {
     listMenu: []
@@ -9,8 +6,7 @@ const initialState = {
 
 export const ListMenuJobReducer = (state = initialState, action) => {
     switch (action.type) {
-
-        case 'GET_LIST_MENU_JOB': {
+        case GET_LIST_MENU_JOB: {
             state.listMenu = action.listMenu
             return { ...state }
         }

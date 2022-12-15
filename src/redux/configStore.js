@@ -4,16 +4,21 @@ import { LoadingReducer } from '../redux/LoadingReducer'
 import { JobReducer } from './Admin/reducer/JobReducer';
 import { JobTypeDetailReducer } from './Admin/reducer/JobTypeDetailReducer';
 import { JobTypeReducer } from './Admin/reducer/JobTypeReducer';
-import { ListJobByNameReducer } from './User/reducer/ListJobByNameReducer';
-import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer'
+import { InfoDetailJobReducer } from './User/reducer/InfoDetailJobReducer';
+import {ListMenuJobReducer} from './User/reducer/ListMenuJobReducer';
+import { ManegeListJobReducer } from './User/reducer/ManegeListJobReducer';
+import { UserReducer } from './User/reducer/UserReducer';
+
 
 const rootReducer = combineReducers({
     LoadingReducer,
     JobReducer,
     JobTypeDetailReducer,
-    ListJobByNameReducer,
+    ManegeListJobReducer,
     ListMenuJobReducer,
-    JobTypeReducer
+    JobTypeReducer,
+    InfoDetailJobReducer,
+    UserReducer
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))

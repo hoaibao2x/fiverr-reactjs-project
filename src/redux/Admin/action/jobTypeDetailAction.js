@@ -1,11 +1,9 @@
 import { history } from "../../../App";
-import { addDetailJobGroup, confirmAddDetailJob, getJobTypeDetail, getJobTypeDetailByID, removeDetailJobGroup } from "../../../services/Admin/JobService/jopTypeDetailService";
+import { addJobDetailGroup, getJobTypeDetail, getJobTypeDetailByID, removeJobDetailGroup, updateJobDetailGroup, uploadImageCover } from "../../../services/Admin/JobService/jopTypeDetailService";
 import { http } from "../../../utils/setting";
-import { JOB_TYPE } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
-import {addDetailJobArr} from '../../../services/Admin/JobService/jopTypeDetailService'
 
-export const getJobTypeDetailAction = (jobTypeID) => {
+export const getJobSearchAction = (jobTypeID) => {
     return async (dispatch) => {
         try {
             let result = await getJobTypeDetailByID(jobTypeID);
@@ -19,7 +17,7 @@ export const getJobTypeDetailAction = (jobTypeID) => {
             }
             dispatch(action);
         } catch (errors) {
-            alert(`ID ${jobTypeID} không tồn tại !`);
+            alert(`ID ${jobTypeID} no found !`);
         }
     }
 }
@@ -30,9 +28,24 @@ export const getDetailJobTypeListAction = () => {
             dispatch(displayLoadingAction);
 
             let result = await getJobTypeDetail();
+
+            let jobDetailArr = [];
+            result.data.content.map((item) => {
+                let { dsChiTietLoai } = item;
+                dsChiTietLoai.map((chiTiet) => {
+                    jobDetailArr.push(chiTiet);
+                })
+            });
+
+            // Remove duplicate obj
+            const tempArr = jobDetailArr.filter((obj, index, arr) => {
+                return arr.map((mapObj) => mapObj.id).indexOf(obj.id) === index
+            })
+
             let action = {
                 type: 'GET_LIST_JOB_TYPE_DETAIL',
-                jobTypeDetailArr: result.data.content
+                jobTypeDetailArr: result.data.content,
+                jobDetailArr: tempArr
             }
             dispatch(action);
 
@@ -50,15 +63,18 @@ export const addDetailJobGroupAction = (formValue) => {
         try {
             dispatch(displayLoadingAction);
 
-            let result = await addDetailJobGroup(formValue);
+            let result = await addJobDetailGroup(formValue);
+
+            JSON.stringify(localStorage.setItem('job_group_id', result.data.content.id));
+
             let action = {
-                type: 'ADD_DETAIL_JOB_INFO',
+                type: 'ADD_JOB_GROUP',
                 jobTypeDetail: result.data.content
             }
             dispatch(action);
-            history.push('/admin/list-detail-job-type/add/add-detail-arr')
+            history.push('/admin/list-detail-job-type/add/upload-image-cover');
 
-            alert('Thêm nhóm loại công việc thành công !');
+            alert('Add job type group success !');
 
             dispatch(hideLoadingAction);
         } catch (errors) {
@@ -73,8 +89,8 @@ export const removeDetailJobGroupAction = (jobGroupID) => {
         try {
             dispatch(displayLoadingAction);
 
-            let result = await removeDetailJobGroup(jobGroupID);
-            alert('Xóa nhóm loại công việc thành công');
+            let result = await removeJobDetailGroup(jobGroupID);
+            alert('Remove job type grourp success !');
             dispatch(getDetailJobTypeListAction());
 
             dispatch(hideLoadingAction);
@@ -85,31 +101,54 @@ export const removeDetailJobGroupAction = (jobGroupID) => {
     }
 }
 
-// export const addDetailJobArrAction = (formValue) => {
-//     return async (dispatch) => {
-//         try {
-//             let action = {
-//                 type: 'ADD_DETAIL_JOB_ARR',
-//                 detailJobArr: formValue
-//             }
-//             dispatch(action);
-//             // let result = await addDetailJobArr(formValue);
-//             // alert('Thêm danh sách chi tiết thành công !');
-//             // console.log(result.data.content);
-//         } catch (errors) {
-//             console.log(errors);
-//         }
-//     }
-// }
-
-export const confirmAddDetailJobAction = (jobDetailID, values) => {
+export const updateJobDetailAction = (jobGroupID, formValue) => {
     return async (dispatch) => {
         try {
             dispatch(displayLoadingAction);
 
-            let result = await confirmAddDetailJob(jobDetailID, values);
-            alert('Thành công !');
+            let result = await updateJobDetailGroup(jobGroupID, formValue);
             
+            dispatch(hideLoadingAction);
+        } catch (errors) {
+            dispatch(hideLoadingAction);
+            console.log(errors);
+        }
+    }
+}
+
+export const uploadImageCoverAction = (jobGroupID, formValue) => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction);
+
+            let result = await uploadImageCover(jobGroupID, formValue);
+
+            alert('Add image cover success !');
+            history.push('/admin/list-detail-job-type');
+
+            dispatch(hideLoadingAction);
+        } catch (errors) {
+            dispatch(hideLoadingAction);
+            alert(errors.response.data.content);
+        }
+    }
+}
+
+export const getDetailByIDAction = (jobGroupID) => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction);
+
+            let result = await getJobTypeDetailByID(jobGroupID);
+
+            localStorage.setItem('job_group_id', result.data.content.id);
+
+            let action = {
+                type: "GET_JOB_GROUP_INFO",
+                jobGroupInfo: result.data.content,
+            }
+            dispatch(action);
+
             dispatch(hideLoadingAction);
         } catch (errors) {
             dispatch(hideLoadingAction);
