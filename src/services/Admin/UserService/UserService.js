@@ -25,7 +25,7 @@ export const xoaUser = (id) => {
 }
 
 export const searchUser = (name) => {
-    return http.get(`/users/search?TenNguoiDung=${name}`)
+    return http.get(`/users/search/${name}`)
 }
 
 

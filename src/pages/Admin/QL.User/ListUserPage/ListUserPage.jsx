@@ -134,11 +134,11 @@ function DanhSachUser() {
 
   const data = arrUser;
 
-  const onSearch = value => {
-    console.log(value)
-    dispatch(searchUserAction(value))
-
-
+  const onSearch = (value) => {
+    if (value !== '') {
+      dispatch(searchUserAction(value));
+    }
+    DanhSachUser()
   };
 
   const onChange = (pagination, filters, sorter, extra) => {
