@@ -89,3 +89,25 @@
     margin-top: 13px;
     transform: rotate(180deg);
 }
+/* Responsive */
+@media screen and (max-width: 992px){
+    .popular {
+        font-size: 9px;
+    }
+    .slides-item {
+        height: 180px !important;
+    }
+    .slick-prev {
+        left: 12% !important;
+    }
+    .slick-next {
+        right: 15% !important;
+    }
+    .row {
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: 0;
+    }
+    
+}
