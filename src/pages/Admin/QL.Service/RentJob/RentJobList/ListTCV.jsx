@@ -3,7 +3,7 @@ import { Table, Input, Button } from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { listThueCongViec } from '../../../../../services/Admin/UserService/UserService';
-import { listThueCongViecAction } from '../../../../../redux/Admin/action/UserAction';
+import { listThueCongViecAction, xoaTCVAction } from '../../../../../redux/Admin/action/UserAction';
 import { NavLink } from 'react-router-dom';
 import { DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
 import { history } from '../../../../../App';
@@ -68,7 +68,7 @@ const columns = [
           <NavLink key={1} className="" to={`/admin/list-rent-job/edit/${users.id}`}><EditOutlined /> </NavLink>
           <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
             if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
-            //   dispatch(xoaUserAction(users.id));
+              dispatch(xoaTCVAction(users.id));
             }
           }}><DeleteOutlined /></span>
         </>

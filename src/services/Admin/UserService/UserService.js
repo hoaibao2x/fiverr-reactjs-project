@@ -49,8 +49,9 @@ export const listThueCongViec = () => {
 export const postThueCongViec = () => {
     return http.post("/thue-cong-viec")
 }
-
-
+export const xoaTCV = (id) => {
+    return http.delete(`/thue-cong-viec/${id}`);
+}
 
 // BÌNH LUẬN
 export const binhLuan = () => {

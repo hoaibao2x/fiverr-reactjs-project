@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { binhLuan, CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaBL, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { binhLuan, CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaBL, xoaTCV, xoaUser } from "../../../services/Admin/UserService/UserService";
 import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
@@ -154,6 +154,24 @@ export const ThemCongViecAction = () => {
     }
 
 }
+
+export const xoaTCVAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await xoaTCV(id);
+            alert('Xoá thành công !');
+            console.log(result.data.content);
+            dispatch(listThueCongViecAction());
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
+
 
 
 // bình luận
