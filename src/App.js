@@ -31,6 +31,7 @@ import AddTCV from './pages/Admin/QL.Service/RentJob/AddRentJob/AddTCV';
 import EditTCV from './pages/Admin/QL.Service/RentJob/EditRentJob/EditTCV';
 import ThemUserUpAvatar from './pages/Admin/QL.User/UpAvatar/UpAvatar';
 import ThemUser2 from './pages/Admin/QL.User/AddUserPage/AddUser2';
+import AddComment from './pages/Admin/QL.Service/Comment/AddComment/AddComment';
 
 
 
@@ -72,12 +73,16 @@ function App() {
         <AdminTemplate exact path='/admin/list-rent-job/add' component={AddTCV} />
         <AdminTemplate exact path='/admin/list-rent-job/edit/:id' component={EditTCV} />
         
-        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+        
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
         <AdminTemplate exact path='/admin/list-user/add' component={ThemUser2} />
 
         <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
+
+        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+        <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
+        
         
 
 

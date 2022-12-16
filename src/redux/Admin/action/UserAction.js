@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { binhLuan, CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaBL, xoaUser } from "../../../services/Admin/UserService/UserService";
 import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
@@ -154,3 +154,55 @@ export const ThemCongViecAction = () => {
     }
 
 }
+
+
+// bình luận
+export const BinhLuanAction = () => { 
+    return async (dispatch) => {
+        try {
+            const result = await binhLuan();
+            dispatch({
+                type: 'LIST_BL',
+                arrBL: result.data.content
+            })
+
+        } catch (error) {
+            console.log(error);
+
+        }
+    }
+ }
+
+
+ export const postBinhLuanAction = () => {
+    return async (dispatch) => {
+        try {
+            const result = await postBinhLuan();
+            alert('Thêm Bình Luận thành công !');
+            console.log(result.data.content);
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thêm thất bại!")
+        }
+
+    }
+
+}
+
+export const xoaBLAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await xoaBL(id);
+            alert('Xoá thành công !');
+            console.log(result.data.content);
+            dispatch(BinhLuanAction());
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+

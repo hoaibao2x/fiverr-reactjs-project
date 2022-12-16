@@ -8,7 +8,7 @@ export const danhSachUser = (name = "") => {
 }
 
 export const ThemUser = (formData) => {
-    return http.post('/users' ,formData )
+    return http.post('/users', formData)
 }
 export const ThemUserupload = (formData) => {
     return http.post('/users/upload-avatar', formData)
@@ -42,10 +42,26 @@ export const searchUser = (name) => {
 
 
 // dịch vụ sevice
-export const listThueCongViec = () => { 
+export const listThueCongViec = () => {
     return http.get("/thue-cong-viec")
- }
+}
 
- export const postThueCongViec = () => { 
+export const postThueCongViec = () => {
     return http.post("/thue-cong-viec")
- }
+}
+
+
+
+// BÌNH LUẬN
+export const binhLuan = () => {
+    return http.get(`/binh-luan`)
+}
+
+export const postBinhLuan = () => {
+    return http.post(`/binh-luan`)
+}
+
+
+export const xoaBL = (id) => {
+    return http.delete(`/binh-luan/${id}`);
+}
