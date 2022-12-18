@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Col, Form, Input, InputNumber, Row } from 'antd';
+import { Form, Input } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -28,15 +28,11 @@ function AddJobType() {
 
   const [form] = Form.useForm();
 
-  const onReset = () => {
-    form.resetFields();
-  };
-
   const formik = useFormik({
     initialValues: {
       tenLoaiCongViec: ''
     }, validationSchema: Yup.object({
-      tenLoaiCongViec: Yup.string().required('Tên loại công việc không được để trống !')
+      tenLoaiCongViec: Yup.string().required('Job type name is not empty !')
     }), onSubmit: (values) => {
       dispatch(addJobTypeAction(values));
       dispatch(getListJobAction());
@@ -46,12 +42,12 @@ function AddJobType() {
   return (
     <div className='container mx-auto'>
 
-      <h4 className="text-info my-3"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink> <span className='myNavLink'>Quản lý loại công việc</span> <NavLink className='myNavLink' to='/admin/list-job-type'>/ Loại công việc / </NavLink> Thêm mới loại công việc </h4>
+      <h4 className="text-info my-3"><NavLink className='myNavLink' to='/admin'>Dashboard </NavLink> <NavLink className='myNavLink' to='/admin/list-job-type'>/ Manage Job Type / </NavLink> Add</h4>
 
       <Form {...layout} form={form} name="control-hooks" onSubmitCapture={formik.handleSubmit}>
 
         <Form.Item
-          label='Tên loại công việc'>
+          label='Job type name'>
           <Input name='tenLoaiCongViec' allowClear onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.tenLoaiCongViec && formik.errors.tenLoaiCongViec ? <>
             <div className="alert alert-danger">{formik.errors.tenLoaiCongViec}</div>
@@ -59,7 +55,7 @@ function AddJobType() {
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <button className='btn btn-success' type='submit'>Thêm loại công việc</button>
+          <button className='btn btn-success' type='submit'>Add job type</button>
         </Form.Item>
       </Form>
     </div>

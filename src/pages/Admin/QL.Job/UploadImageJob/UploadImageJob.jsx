@@ -13,7 +13,7 @@ function UploadImageJob() {
 
     let { jobInfo } = useSelector((state) => {
         return state.JobReducer
-    }) 
+    })
 
     const [imgSrc, setImgSrc] = useState(() => {
         if (localStorage.getItem(JOB_IMG)) {
@@ -26,10 +26,6 @@ function UploadImageJob() {
             return true;
         }
         return false;
-    }
-
-    const backPreviusPage = () => {
-        history.push(`/admin/list-job/edit-job/${localStorage.getItem(JOB_ID)}`)
     }
 
     const formik = useFormik({
@@ -63,12 +59,16 @@ function UploadImageJob() {
         youAddOrEdit();
     }, [])
 
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem(JOB_ID);
+            localStorage.removeItem(JOB_IMG);
+        }
+    }, [])
+
     return (
         <div className='container mx-auto my-5'>
-            <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'>Quản lý công việc / </NavLink> {youAddOrEdit === true ? <>
-                <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job/add'>Thêm mới công việc /</NavLink>
-            </>
-                : <span onClick={backPreviusPage} className='text-dark' style={{ cursor: 'pointer' }}>Cập nhật công việc /</span>}  Upload ảnh công việc</h4>
+            <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'> / Manage Job </NavLink>/ Upload Image</h4>
 
             <Steps
                 className='w-50 mx-auto my-4'
@@ -76,10 +76,10 @@ function UploadImageJob() {
                 current={1}
                 items={[
                     {
-                        title: 'Thông tin công việc',
+                        title: 'Job Info',
                     },
                     {
-                        title: 'Upload hình ảnh',
+                        title: 'Upload Job Image',
                     }
                 ]}
             />
@@ -92,8 +92,13 @@ function UploadImageJob() {
                     <br />
                     {formik.values.hinhAnh === null ? <button onClick={() => {
                         history.push('/admin/list-job')
-                    }} type='button' className='btn btn-success mt-5'>Trở về trang chủ</button>
-                        : <button type='submit' className='btn btn-info mt-5'>Cập nhật hình ảnh</button>}
+                    }} type='button' className='btn btn-warning mt-5'>Cancel upload</button>
+                        : <>
+                            <button type='submit' className='btn btn-info mt-5'>Upload Image</button>
+                            <button onClick={() => {
+                                history.push('/admin/list-job')
+                            }} type='button' className='btn btn-warning mt-5 ml-3'>Cancel upload</button>
+                        </>}
                 </div>
             </form>
         </div>
