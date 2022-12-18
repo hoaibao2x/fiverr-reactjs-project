@@ -64,10 +64,14 @@
 .footer-bottom .right {
     padding-top: 16px;
 }
-
+.section-right{
+    padding-left: 10px;
+}
 .footer-bottom .text-body-left {
     display: inline-block;
-    margin-left: 24px;
+    margin-left: 15px;
+    padding-top: 12px;
+    font-size: 12px;
 }
 .footer-bottom .right {
     display: flex;

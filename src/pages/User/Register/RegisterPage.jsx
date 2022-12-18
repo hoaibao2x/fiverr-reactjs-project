@@ -143,12 +143,15 @@ function RegisterPage() {
             skill: [],
             certification: []
         }, validationSchema: Yup.object({
-            name: Yup.string().required('Tên đăng nhập không được để trống !').matches(/^[a-z A-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$/, "Tên đăng nhập sai định dạng !"),
-            email: Yup.string().required('Email không được để trống !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email không đúng định dạng !'),
-            password: Yup.string().required('Mật khẩu không được trống !').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/, "Mật khẩu không đúng định dạng !"),
-            confirmPass: Yup.string().required('Xác nhận mật khẩu không được trống !').oneOf([Yup.ref("password"), null], "Không khớp mật khẩu !"),
-            phone: Yup.string().required('Số điện thoại không được để trống !').matches(/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/, "Số điện thoại không đúng định dạng !"),
-            birthday: Yup.string().required('Ngày sinh không được trống !')
+            name: Yup.string().required('Name is not empty !').matches(
+                /^(?=.*\d)(?=.*[A-Z a-z])(?!.*[ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý])(?!.*\s).{0,}$/,
+                "Name is wrong format !"
+            ),
+            email: Yup.string().required('Email is not empty !').matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Email is wrong format !'),
+            password: Yup.string().required('Password is not empty !').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{0,}$/, "Password is wrong format !"),
+            confirmPass: Yup.string().required('Confirm password is not empty !').oneOf([Yup.ref("password"), null], "Confirm password is not match !"),
+            phone: Yup.string().required('Phone is not empty !').matches(/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/, "Phone is wrong format !"),
+            birthday: Yup.string().required('Birthday is not empty !')
         }), onSubmit: (values) => {
 
             delete values.confirmPass;
@@ -171,7 +174,7 @@ function RegisterPage() {
         <div className='register__content' >
             <div className="content__form container my-5">
                 <div className="my__form">
-                    <h3 className='text-center'>Form Đăng Ký</h3>
+                    <h3 className='text-center text-white'>Signup Form</h3>
                     <Form
                         layout="vertical"
                         onSubmitCapture={formik.handleSubmit}
@@ -184,7 +187,7 @@ function RegisterPage() {
                         }}
                     >
                         <Form.Item
-                            label="Họ tên:"
+                            label="Name:"
                         >
                             <Input name="name" onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
                             {formik.touched.name && formik.errors.name ? <div className={emptyOrNot(name) ? 'alert alert-danger' : 'alert alert-warning'}>{formik.errors.name}</div> : null}
@@ -210,7 +213,7 @@ function RegisterPage() {
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             allowClear
-                                            placeholder="Mật khẩu"
+                                            placeholder="Input password"
                                         />
                                         {formik.touched.password && formik.errors.password ? <div className={emptyOrNot(password) ? 'alert alert-danger' : 'alert alert-warning'}>{formik.errors.password}</div> : null}
                                     </Space>
@@ -227,7 +230,7 @@ function RegisterPage() {
                                                 onChange={formik.handleChange}
                                                 onBlur={formik.handleBlur}
                                                 allowClear
-                                                placeholder="Xác nhận mật khẩu"
+                                                placeholder="Confirm password"
                                             />
                                             {formik.touched.confirmPass && formik.errors.confirmPass ? <div className={emptyOrNot(confirmPass) ? 'alert alert-danger' : 'alert alert-warning'}>{formik.errors.confirmPass}</div> : null}
                                             <Button
@@ -236,7 +239,7 @@ function RegisterPage() {
                                                 }}
                                                 onClick={() => setPasswordVisible((prevState) => !prevState)}
                                             >
-                                                {passwordVisible ? 'Ẩn' : 'Hiện'}
+                                                {passwordVisible ? 'Hide' : 'Show'}
                                             </Button>
                                         </Space>
                                     </Form.Item>
@@ -245,7 +248,7 @@ function RegisterPage() {
                         </Form.Item>
 
                         <Form.Item
-                            label="Số điện thoại:"
+                            label="Phone:"
                         >
                             <Input name="phone" onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
                             {formik.touched.phone && formik.errors.phone ? <div className={emptyOrNot(phone) ? 'alert alert-danger' : 'alert alert-warning'}>{formik.errors.phone}</div> : null}
@@ -256,30 +259,30 @@ function RegisterPage() {
                                 <Col xl={12}>
                                     <Form.Item>
                                         <Space direction="vertical">
-                                            <DatePicker name="birthday" format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} onBlur={formik.handleBlur} placeholder="Ngày sinh" />
+                                            <DatePicker name="birthday" format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} onBlur={formik.handleBlur} placeholder="Birthday" />
                                             {formik.touched.birthday && formik.errors.birthday ? <div className="alert alert-danger">{formik.errors.birthday}</div> : null}
                                         </Space>
                                     </Form.Item>
                                 </Col>
                                 <Col xl={12}>
-                                    <Form.Item extra="Mặc định giới tính là Nam">
+                                    <Form.Item extra="Default gender is male">
                                         <Select
                                             name="gender"
                                             onChange={(value) => {
                                                 return formik.setFieldValue('gender', value)
                                             }}
-                                            placeholder="Giới tính"
+                                            placeholder="Gender"
                                             style={{
                                                 width: 120,
                                             }}
                                             options={[
                                                 {
                                                     value: true,
-                                                    label: 'Nam',
+                                                    label: 'Male',
                                                 },
                                                 {
                                                     value: false,
-                                                    label: 'Nữ',
+                                                    label: 'Female',
                                                 }
                                             ]}
                                         />
@@ -335,7 +338,7 @@ function RegisterPage() {
                                     )}
                                     {!inputSkillVisible && (
                                         <Tag onClick={showSkillInput} className="site-tag-plus skill-tag">
-                                            Thêm skill
+                                            Add skill
                                         </Tag>
                                     )}
                                 </Col>
@@ -384,7 +387,7 @@ function RegisterPage() {
                                     )}
                                     {!inputCertVisible && (
                                         <Tag onClick={showCertInput} className="site-tag-plus cert-tag">
-                                            Thêm cert
+                                            Add cert
                                         </Tag>
                                     )}
                                 </Col>
@@ -392,19 +395,19 @@ function RegisterPage() {
                         </Form.Item>
 
                         <Form.Item
-                            label="Hành động:"
+                            label="Action:"
                         >
                             <Row>
                                 <Col xl={4}>
-                                    <button className="site-tag-plus btn-success" type="submit">
-                                        Đăng ký
+                                    <button className="site-tag-plus" type="submit">
+                                        Sign up
                                     </button>
                                 </Col>
                                 <Col xl={4}>
-                                    <button className="site-tag-plus btn-info" onClick={() => {
+                                    <button className="site-tag-plus bg-dark" onClick={() => {
                                         history.push('/')
                                     }} type="button">
-                                        Trang chủ
+                                        Home
                                     </button>
                                 </Col>
                             </Row>

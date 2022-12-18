@@ -17,16 +17,18 @@ export const loginAction = (formValue) => {
             localStorage.setItem(USER_ID, user.id);
             localStorage.setItem(USER_ROLE, user.role);
 
-            alert('Đăng nhập thành công !');
+            alert('Sign in success !');
 
             if (user.role == 'ADMIN') {
                 history.push('/admin');
+            } else {
+                window.location.reload();
             }
 
             dispatch(hideLoadingAction);
         } catch (errors) {
             dispatch(hideLoadingAction);
-            alert(errors.response.data.content);
+            alert('Email or password not match !');
         }
     }
 }
@@ -39,7 +41,7 @@ export const registerAction = (formData) => {
             let result = await registerService(formData);
             dispatch(hideLoadingAction);
 
-            alert('Đăng ký thành công !');
+            alert('Signup success !');
             history.push('/');
         } catch (errors) {
             dispatch(hideLoadingAction);

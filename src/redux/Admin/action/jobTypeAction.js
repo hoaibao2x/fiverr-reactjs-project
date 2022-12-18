@@ -52,7 +52,7 @@ export const addJobTypeAction = (formValue) => {
             dispatch(displayLoadingAction);
 
             let result = await addJobType(formValue);
-            alert('Thêm loại công việc thành công !');
+            alert('Add job type success !');
             history.push('/admin/list-job-type');
 
             dispatch(hideLoadingAction);
@@ -69,7 +69,7 @@ export const removeJobTypeAction = (jobTypeID) => {
             dispatch(displayLoadingAction);
 
             let result = await removeJobType(jobTypeID);
-            alert('Xóa loại công việc thành công !');
+            alert('Remove job type success !');
             dispatch(getListJobTypeAction());
 
             dispatch(hideLoadingAction);
@@ -87,7 +87,7 @@ export const updateJobTypeAction = (jobTypeID, jobTypeValue) => {
             dispatch(displayLoadingAction);
 
             let result = await updateJobType(jobTypeID, jobTypeValue);
-            alert('Cập nhật loại công việc thành công !');
+            alert('Edit job type success !');
             history.push('/admin/list-job-type')
 
             dispatch(hideLoadingAction);

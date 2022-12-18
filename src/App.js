@@ -20,9 +20,13 @@ import RegisterPage from './pages/User/Register/RegisterPage';
 import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
+import AddDetail from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddDetail';
 import ListDetailJob from './pages/User/ListDetailJob/ListDetailJob';
 import InfoDetailJob from './pages/User/InfoDetailJob/InfoDetailJob'
 import ProfilePage from './pages/User/Profile/ProfilePage'
+import AddImageCover from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddImageCover';
+import EditDetail from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditDetail';
+import EditImageCover from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditImageCover';
 
 export const history = createBrowserHistory();
 
@@ -54,6 +58,10 @@ function App() {
         <AdminTemplate exact path='/admin/list-job-type/add' component={AddJobType} />
         <AdminTemplate exact path='/admin/list-job-type/edit-job-type/:id' component={EditJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/add' component={AddDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/add/upload-image-cover' component={AddImageCover} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/edit-job-group/:id' component={EditDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/edit/edit-image-cover/:id' component={EditImageCover} />
         <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
 

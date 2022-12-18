@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { Button, Col, Form, Input, InputNumber, Row } from 'antd';
+import { Form, Input } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
-import { addJobTypeAction, getJobTypeByIDAction, updateJobTypeAction } from '../../../../../redux/Admin/action/jobTypeAction';
+import { getJobTypeByIDAction, updateJobTypeAction } from '../../../../../redux/Admin/action/jobTypeAction';
 import { getListJobAction } from '../../../../../redux/Admin/action/JobAction';
 import { history } from '../../../../../App';
 
@@ -43,7 +43,7 @@ function EditJobType(props) {
     initialValues: {
       tenLoaiCongViec: jobTypeInfo.tenLoaiCongViec ?? ''
     }, validationSchema: Yup.object({
-      tenLoaiCongViec: Yup.string().required('Tên loại công việc không được để trống !')
+      tenLoaiCongViec: Yup.string().required('Job type name is not empty !')
     }), onSubmit: (values) => {
       dispatch(updateJobTypeAction(id, values));
       dispatch(getListJobAction());
@@ -52,7 +52,7 @@ function EditJobType(props) {
 
   const paramIsMatch = () => {
     if (localStorage.getItem('Job_Type_ID') !== undefined) {
-      if (id != localStorage.getItem('Job_Type_ID') ) {
+      if (id != localStorage.getItem('Job_Type_ID')) {
         history.push('/error')
       }
     }
@@ -63,15 +63,21 @@ function EditJobType(props) {
     paramIsMatch()
   }, [])
 
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem('Job_Type_ID');
+    }
+  }, [])
+
   return (
     <div className='container mx-auto'>
 
-      <h4 className="text-info my-3"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink> <span className='myNavLink'>Quản lý loại công việc</span> <NavLink className='myNavLink' to='/admin/list-job-type'>/ Loại công việc / </NavLink> Chỉnh sửa loại công việc </h4>
+      <h4 className="text-info my-3"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink><NavLink className='myNavLink' to='/admin/list-job-type'> Manage job type / </NavLink> Edit</h4>
 
       <Form {...layout} form={form} name="control-hooks" onSubmitCapture={formik.handleSubmit}>
 
         <Form.Item
-          label='Tên loại công việc'>
+          label='Job type name'>
           <Input name='tenLoaiCongViec' value={formik.values.tenLoaiCongViec} allowClear onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.tenLoaiCongViec && formik.errors.tenLoaiCongViec ? <>
             <div className="alert alert-danger">{formik.errors.tenLoaiCongViec}</div>
@@ -79,7 +85,7 @@ function EditJobType(props) {
         </Form.Item>
 
         <Form.Item {...tailLayout}>
-          <button className='btn btn-info' type='submit'>Cập nhật loại công việc</button>
+          <button className='btn btn-info' type='submit'>Edit job type</button>
         </Form.Item>
       </Form>
     </div>
