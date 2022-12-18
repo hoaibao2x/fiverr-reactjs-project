@@ -49,7 +49,6 @@ export default function Footer(props) {
                 </div>
               </article>
             </div>
-            {/* cột 1 */}
             <div className='footer-items'>
               <article className='footer-content'>
                 <div className='footer-title'>
@@ -85,7 +84,6 @@ export default function Footer(props) {
                 </div>
               </article>
             </div>
-            {/* cột 2 */}
             <div className='footer-items'>
               <article className='footer-content'>
                 <div className='footer-title'>
@@ -111,7 +109,6 @@ export default function Footer(props) {
                 </div>
               </article>
             </div>
-            {/* cột 3 */}
             <div className='footer-items'>
               <article className='footer-content'>
                 <div className='footer-title'>
@@ -154,7 +151,6 @@ export default function Footer(props) {
                 </div>
               </article>
             </div>
-            {/* cột 4 */}
             <div className='footer-items'>
               <article className='footer-content'>
                 <div className='footer-title'>

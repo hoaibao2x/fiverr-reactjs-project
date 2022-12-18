@@ -10,8 +10,6 @@ import testImg3 from '../../../assets/User/images/big-carousel-3.jpg';
 import { getListJobByNameAction } from '../../../redux/User/action/getListJobByNameAction';
 import { getListMenuAction } from '../../../redux/User/action/getListMenuAction';
 import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from '../../../utils/varsSetting';
-
-
 import './carousel.css';
 
 export default function CarouselComponent(props) {
@@ -152,7 +150,7 @@ export default function CarouselComponent(props) {
 
                     </nav>
                     <div className='container'>
-                        <div className='carousel-title '>
+                        <div className='carousel-title'>
                             <div className="carousel-right">
                                 <h1>Find the perfect <i className='freelance'>freelance</i> <br />
                                     services for your business
@@ -166,7 +164,7 @@ export default function CarouselComponent(props) {
                                     </button>
                                 </form>
                             </div>
-                            <div className="popular row mt-3 ml-1">
+                            <div className="popular mt-3 ml-1 ">
                                 <span>  Popular : </span>
                                 <ul className='popular-text'>
                                     <li className='popular-text-content'><a href="#">Website Design</a></li>

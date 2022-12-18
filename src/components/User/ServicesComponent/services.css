@@ -90,10 +90,8 @@
     transform: rotate(180deg);
 }
 /* Responsive */
-@media screen and (max-width: 992px){
-    .popular {
-        font-size: 9px;
-    }
+
+@media screen and (max-width: 1024px) {
     .slides-item {
         height: 180px !important;
     }
@@ -103,11 +101,24 @@
     .slick-next {
         right: 15% !important;
     }
+}
+
+@media screen and (max-width: 992px){
     .row {
         display: flex;
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         margin: 0;
     }
-    
+}
+@media screen and (max-width:768px){
+    .slides-item {
+        width: 140px;
+    }
+    .slick-prev {
+        left: 16% !important;
+    }
+    .slick-next {
+        right: 17% !important;
+    }
 }

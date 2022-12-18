@@ -1,29 +1,127 @@
-import React from 'react'
-import { useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getInfoDetailJobAction } from '../../../redux/User/action/getInfoDetailJobAction';
+import { getCommentByIdJobAction } from '../../../redux/User/action/getCommentByIdJobAction'
 import './info.css';
-import { RightOutlined, DownOutlined } from '@ant-design/icons';
+import { RightOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
 import { Rate } from 'antd';
+import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from "../../../utils/varsSetting";
+import { addCommentAction } from '../../../redux/User/action/getCommentByIdJobAction';
+import moment from 'moment';
+import { getUserByIDAction } from '../../../redux/User/action/getUserByIDAction';
+import { Avatar } from 'antd';
+import { getInfoHireJobAction } from '../../../redux/User/action/getInfoHireJobAction';
+import { message } from 'antd';
+
+
+
+
+
 
 
 
 export default function InfoDetailJob(props) {
 
-    const { infoJob } = useSelector(state => state.InfoDetailJobReducer)
+    const { infoJob } = useSelector(state => state.InfoDetailJobReducer);
+    const { listComment, userInfo } = useSelector(state => state.ManegeCommentReducer);
     const dispatch = useDispatch();
+
+
 
     useEffect(() => {
         let { id } = props.match.params
+        let userID = localStorage.getItem(USER_ID)
         dispatch(getInfoDetailJobAction(id))
-    }, [])
+        dispatch(getCommentByIdJobAction(id))
+        dispatch(getUserByIDAction(userID))
+    }, []);
+
+    const [userComment, setUserComment] = useState({
+        id: '',
+        maCongViec: '',
+        maNguoiBinhLuan: '',
+        ngayBinhLuan: '',
+        noiDung: '',
+        saoBinhLuan: ''
+    })
+    const [noiDung, setNoiDung] = useState('')
+
+    let handleInput = (e) => {
+        let { id, value } = e.target
+        setNoiDung(value)
+
+        setUserComment({
+            ...userComment,
+            id: 0,
+            maCongViec: props.match.params.id,
+            maNguoiBinhLuan: localStorage.getItem(USER_ID),
+            ngayBinhLuan: moment().format('MMM DD YYYY h:mm A'),
+            noiDung: value,
+            saoBinhLuan: Math.floor(Math.random() * 5) + 1
+        })
+
+    }
+    let handleSubmit = (e) => {
+        e.preventDefault()
+        if (userComment.noiDung.trim() === '') {
+            return null
+        }
+        let action = addCommentAction(userComment)
+        dispatch(action)
+        setNoiDung('')
+    }
 
 
+
+    const renderComment = () => {
+        return listComment.map((user, index) => {
+            return <div className='comments-item' key={index}>
+                <div className='user-comment'>
+                    <div className='avatar-user'>
+                        {user.avatar === '' ? <Avatar icon={<UserOutlined />} /> : <img className='avatar-user-commented' src={user.avatar} alt="" />}
+
+                    </div>
+                    <div className='user-name'>
+                        <span style={{ fontWeight: 'bold', color: 'black' }}>{user.tenNguoiBinhLuan}</span>
+                        <span style={{ color: '#ffb237' }} className="fa-solid fa-star ml-2"> {user.saoBinhLuan}</span>
+
+                    </div>
+                </div>
+                <div className='user-name-comment'>
+                    <p>{user.noiDung}</p>
+                    <p style={{ color: '#ccc' }}>{user.ngayBinhLuan}</p>
+                </div>
+            </div>
+
+        })
+    }
+
+    const addComment = () => {
+        if (localStorage.getItem(USER_ID) !== null) {
+            return <Fragment>
+                <div className='addCmt mt-5'>
+                    <div className='addUser'>
+                        <img className='currentUser' src={userInfo.avatar} alt="" />
+                    </div>
+                    <div>
+                        <form className='form' onSubmit={handleSubmit}>
+                            <textarea className='form-control' onChange={handleInput} type="text" value={noiDung} cols="70" rows="4"></textarea>
+                            <div className='button-addComment mt-2'>
+                                <button className='btn btn-primary' type='submit'> Add Comment</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </Fragment>
+        }
+
+
+    }
 
     const renderInfoJob = () => {
         return infoJob.map((job, index) => {
             const { congViec } = job
-            console.log(job)
             return <div className='row py-5' key={index}>
                 <div className='col-8'>
                     <div className='info-job-right'>
@@ -200,9 +298,9 @@ export default function InfoDetailJob(props) {
                                 </div>
 
                                 <div className='filter'>
-                                <p className='filter-title'>Filters</p>
-                                <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
-                            </div>
+                                    <p className='filter-title'>Filters</p>
+                                    <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
+                                </div>
 
                             </div>
                             <div className='progess-right col-6'>
@@ -219,7 +317,15 @@ export default function InfoDetailJob(props) {
                                     <span className='five-start-text'>Service  as described</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
                                 </div>
                             </div>
-                          
+
+                        </div>
+                        {listComment.length !== 0 ? <div className='comment'>
+                            {renderComment()}
+                        </div> : <div className='mt-4'>
+                            <p>0 Comment</p>
+                        </div>}
+                        <div>
+                            {addComment()}
                         </div>
 
                     </div>
@@ -261,7 +367,41 @@ export default function InfoDetailJob(props) {
                                             <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Include Soucre Code</li>
                                             <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>1 Page</li>
                                             <li className='button-menu-short'>
-                                                <button style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute (${congViec.giaTien})</button>
+                                                <button onClick={() => {
+                                                    if (localStorage.getItem(USER_ID) === null) {
+                                                        document.getElementById('signInBtn').click()
+                                                    } else {
+                                                        const infoHireJob = {
+                                                            id: 0,
+                                                            maCongViec: props.match.params.id,
+                                                            maNguoiThue: localStorage.getItem(USER_ID),
+                                                            ngayThue: moment().format('MMM DD YYYY h:mm A'),
+                                                            hoanThanh: true
+                                                        }
+                                                        dispatch(getInfoHireJobAction(infoHireJob))
+                                                        const key = 'updatable';
+                                                        const openMessage = () => {
+                                                            message.loading({
+                                                                content: 'Loading...',
+                                                                style: {
+                                                                    marginTop: '20vh',
+                                                                },
+                                                                key,
+                                                            })
+                                                            setTimeout(() => {
+                                                                message.success({
+                                                                    content: 'Successful!',
+                                                                    style: {
+                                                                        marginTop: '20vh',
+                                                                    },
+                                                                    key,
+                                                                    duration: 2,
+                                                                });
+                                                            }, 1000);
+                                                        }
+                                                        openMessage();
+                                                    }
+                                                }} style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute (${congViec.giaTien})</button>
                                                 <p className='text-button-menu'>Compare Packages</p>
                                             </li>
                                         </ul>
@@ -279,130 +419,10 @@ export default function InfoDetailJob(props) {
         })
     }
 
+
     return (
         <div className='container-fluid'>
             <div className='info-job container'>
-                {/* <div className='row py-5'>
-                    <div className='col-8'>
-                        <div className='info-job-right'>
-                            <div className='info-type-job'>
-                                TenLoaiCongViec <RightOutlined /> tenNhomChiTietLoai <RightOutlined /> tenChiTietLoai
-                            </div>
-                            <div className='info-detail-job'>
-                                <h4 className='name-job'>I will do custom css, html, javascript, PHP coding</h4>
-                                <div className='info-content'>
-                                    <div className='avatar-people'>
-                                        <img className='img-people' src="https://picsum.photos/40/40" alt="" />
-                                    </div>
-                                    <span className='img-content'>tenNguoiTao</span>
-                                    <span className='img-content'>SaoCongViec</span>
-                                    <span className='img-content'>danhGia</span>
-                                </div>
-                            </div>
-                            <div className='coming-back'>
-                                <div className='coming-back-content'>
-                                    <img className='img-coming' src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/56ff3db8ae625ba1d6493c3c250c5919-1625663632464/3-Trophy-70_alpha.gif" alt="animated trophy" data-impression-collected="true" />
-                                </div>
-                                <div className='coming-text'>
-                                    <span className='conming-text-sp'> People keep coming back!</span> myblue has an exceptional number of repeat buyers.
-                                </div>
-                            </div>
-                            <div className='img-job-cover'>
-                                <img className='img-job' src="https://i.pravatar.cc/100" alt="" />
-                            </div>
-                            <div className='info-difference-bg'>
-                                <div className='info-difference'>
-                                    <p className='text-bold p1'>About This Gig</p>
-                                    <p className='text-own'>Top Rated Seller with all positive revlews</p>
-                                    <p>Hello,</p>
-                                    <p className='section'>Want a custom website built for you business? Or having trouble In recognizing or fixing the Issues/bug In your existing website/blog. It is not a propblem because I'm here to fix any Issues in HTML,CSS,BootStrap,Javascript,PHP or database(Mysql/Oracle)</p>
-                                    <p className='text-bold'>Thing I offter</p>
-                                </div>
-                                <ul className='info-mores'>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Mota</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> E-commcircle Development</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Custom website development (both front-end and back-end) with Larevel, PHP and MySQL</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Vuejs, HTML, CSS, BootStrap, Javascript/Hquery, PHP single/multi web page,</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Complete website creation from scratch using Laravel Rest Api and vuejs</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Web Appllcation with proper exception handlling</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Can work with APIs, Intergrate API's in your appllcations.</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Responsive - Mobile Friendy sites</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Great UI/UX for your site</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> PSD to HTML, XD to HTML or any other design to HTML with best quallty and pixel perfect design</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Fix Issues in front-end or add some changes to it</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> Bug Investigation and Bug fixing</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> MySQL database design and Intergration In website</li>
-                                    <li className='info-mores-li'> <i className="fa-solid fa-circle icon-crile-mota"></i> MySQL database bug fixing and Intergration Issues fixing</li>
-                                </ul>
-                                <p className='text-own'>I will do the work until you are satisfied with fast and responsive communication</p>
-                            </div>
-                            <div className='language'>
-                                <div className='language-left'>
-                                    <p className='text-gray'>Programming Language</p>
-                                    <p className='p2'>PHP</p>
-                                </div>
-                                <div className='language-right'>
-                                    <p className='text-gray'>Expertise</p>
-                                    <p className='p2'>Cross Browser</p>
-                                    <p className='p2'>Compatibility</p>
-                                    <p className='p2'>PSD to HTMl, Performance</p>
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </div>
-                    <div className='col-4 pt-5'>
-                        <div className='card'>
-                            <div className='card-head'>
-                                <ul className="nav nav-tabs" id="myTab" role="tablist">
-                                    <li className="nav-item1" role="presentation">
-                                        <button className="nav-link" id="basic-tab" data-toggle="tab" data-target="#basic" type="button" role="tab">Basic</button>
-                                    </li>
-                                    <li className="nav-item1" role="presentation">
-                                        <button className="nav-link active" id="standard-tab" data-toggle="tab" data-target="#standard" type="button" role="tab" >Standard</button>
-                                    </li>
-                                    <li className="nav-item1" role="presentation">
-                                        <button className="nav-link" id="premium-tab" data-toggle="tab" data-target="#premium" type="button" role="tab" >Premium</button>
-                                    </li>
-                                </ul>
-
-                                <div className="tab-content" id="myTabContent">
-                                    <div className="tab-pane fade show active" id="standard" role="tabpanel" aria-labelledby="standard-tab">
-                                        <div className='tab-pane-content'>
-                                            <div className='tab-content-left'>
-                                                Standard
-                                            </div>
-                                            <div className='tab-content-right'>
-                                                $1,000
-                                            </div>
-                                        </div>
-                                        <div className='tab-pane-text'>
-                                            Create a simple web appllication for your business
-                                        </div>
-                                        <div className='short-description'>
-                                            <i className="fa-regular fa-clock time-icon"></i> short description
-                                            <ul className='menu-short-description'>
-                                                <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Design Customization</li>
-                                                <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Content Upload</li>
-                                                <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Responsive Design</li>
-                                                <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Include Soucre Code</li>
-                                                <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>1 Page</li>
-                                                <li className='button-menu-short'>
-                                                    <button style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute ($1,000)</button>
-                                                    <p className='text-button-menu'>Compare Packages</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className='card-footer'>
-                            <p className='text-quocte'> Do you have any special requiements?</p>
-                            <button className='button-quote'>Get a Quote</button>
-                        </div>
-                    </div>
-                </div> */}
                 {renderInfoJob()}
             </div>
 

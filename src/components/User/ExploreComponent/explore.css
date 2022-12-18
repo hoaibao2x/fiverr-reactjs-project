@@ -124,4 +124,24 @@
     .explore-right {
         right: -2%;
     }
+ }
+@media screen and (max-width: 768px){
+    .explore {
+        padding-bottom: 80px;
+    }
+    .explore-right{
+        top: -80%;
+    }
+    .explore-title {
+        margin-top: 10px;
+    }
+    .explore-content {
+        font-size: 24px;
+    }
+    .explore-product-market {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px 40px;
+        padding: 50px 0;
+    }
 }
