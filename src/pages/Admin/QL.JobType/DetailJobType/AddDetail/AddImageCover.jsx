@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import { uploadImageCoverAction } from '../../../../../redux/Admin/action/jobTypeDetailAction'
+import { history } from '../../../../../App'
 
 function AddImageCover() {
 
@@ -43,7 +44,7 @@ function AddImageCover() {
   return (
     <div className='container mx-auto'>
       <>
-        <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Detail job manager / </NavLink>Upload image</h4>
+        <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'> / Manage Job Type Detail </NavLink>/ Upload Image</h4>
       </>
 
       <Steps
@@ -70,7 +71,9 @@ function AddImageCover() {
         </div>
         <div className="form-group">
           {imgSrc === undefined ? <>
-            <button className='btn btn-warning' type='button'>Cancel upload image</button>
+            <button onClick={() => {
+              history.push('/admin/list-detail-job-type');
+            }} className='btn btn-warning' type='button'>Cancel upload image</button>
           </> : <>
             <button className='btn btn-success' type='submit'>Confirm image cover</button>
             <button onClick={() => {

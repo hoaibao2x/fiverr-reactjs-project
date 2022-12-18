@@ -1,6 +1,5 @@
 import { history } from "../../../App";
 import { addJobDetailGroup, getJobTypeDetail, getJobTypeDetailByID, removeJobDetailGroup, updateJobDetailGroup, uploadImageCover } from "../../../services/Admin/JobService/jopTypeDetailService";
-import { http } from "../../../utils/setting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
 export const getJobSearchAction = (jobTypeID) => {
@@ -90,7 +89,7 @@ export const removeDetailJobGroupAction = (jobGroupID) => {
             dispatch(displayLoadingAction);
 
             let result = await removeJobDetailGroup(jobGroupID);
-            alert('Remove job type grourp success !');
+            alert('Remove job type group success !');
             dispatch(getDetailJobTypeListAction());
 
             dispatch(hideLoadingAction);

@@ -38,8 +38,8 @@ function AddDetail() {
       danhSachChiTiet: []
     },
     validationSchema: Yup.object({
-      maLoaiCongViec: Yup.string().required('Mã loại công việc không được để trống !'),
-      tenChiTiet: Yup.string().required('Tên chi tiết nhóm không được để trống !')
+      maLoaiCongViec: Yup.string().required('Job type id is not empty !'),
+      tenChiTiet: Yup.string().required('Job type group name is not empty !')
     }),
     onSubmit: (values) => {
       dispatch(addDetailJobGroupAction(values));
@@ -67,16 +67,9 @@ function AddDetail() {
     dispatch(getDetailJobTypeListAction());
   }, []);
 
-  const tempArr = [
-    {
-      id: 8,
-      tenChiTiet: "Social Media Marketing"
-    }
-  ]
-
   return (
     <div className='container mx-auto'>
-      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Detail job manager / </NavLink>Add new</h4>
+      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'> / Manage Job Type Detail</NavLink> / Add</h4>
 
       <Steps
         className='w-50 mx-auto my-4'
@@ -132,9 +125,6 @@ function AddDetail() {
             mode="multiple"
             allowClear
             placeholder="Please select"
-            defaultValue={tempArr.map((item) => {
-              return { label: item.tenChiTiet, value: item.id }
-            })}
             onChange={handleChangeDetail}
             options={options}
           />

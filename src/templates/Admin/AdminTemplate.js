@@ -13,6 +13,7 @@ import { Layout, Menu } from 'antd';
 import React, { useState } from 'react';
 import { NavLink, Route } from "react-router-dom";
 import { history } from '../../App';
+import { USER_ID } from '../../utils/varsSetting';
 
 const { Header, Content, Sider } = Layout;
 
@@ -27,15 +28,15 @@ function getItem(label, key, icon, children) {
 
 const items = [
     getItem(<NavLink style={{ fontSize: '22px', fontWeight: 'bold', textDecoration: 'none' }} to='/admin'>Dashboard</NavLink>, '1', <PieChartOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-user'>Q.L người dùng</NavLink>, '2', <UserOutlined />),
-    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-job'>Q.L công việc</NavLink>, '3', <SnippetsOutlined />),
-    getItem('Q.L loại công việc', '4', <OrderedListOutlined />, [
-        getItem(<NavLink to='/admin/list-job-type' style={{ textDecoration: 'none' }}>Loại công việc</NavLink>, '5'),
-        getItem(<NavLink to='/admin/list-detail-job-type' style={{ textDecoration: 'none' }}>Chi tiết loại công việc</NavLink>, '6')
+    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-user'>Manage User</NavLink>, '2', <UserOutlined />),
+    getItem(<NavLink style={{ textDecoration: 'none' }} to='/admin/list-job'>Manage Job</NavLink>, '3', <SnippetsOutlined />),
+    getItem('Manage Job Type', '4', <OrderedListOutlined />, [
+        getItem(<NavLink to='/admin/list-job-type' style={{ textDecoration: 'none' }}>Job Type</NavLink>, '5'),
+        getItem(<NavLink to='/admin/list-detail-job-type' style={{ textDecoration: 'none' }}>Job Type Detail</NavLink>, '6')
     ]),
-    getItem('Q.L dịch vụ', '7', < ApartmentOutlined />, [
-        getItem(<NavLink to='/admin/list-rent-job' style={{ textDecoration: 'none' }}>Thuê công việc</NavLink>, '8'),
-        getItem(<NavLink to='/admin/list-comment' style={{ textDecoration: 'none' }}>Bình luận</NavLink>, '9')
+    getItem('Manage Service', '7', < ApartmentOutlined />, [
+        getItem(<NavLink to='/admin/list-rent-job' style={{ textDecoration: 'none' }}>Rent Job</NavLink>, '8'),
+        getItem(<NavLink to='/admin/list-comment' style={{ textDecoration: 'none' }}>Comment</NavLink>, '9')
     ])
 ];
 
@@ -72,17 +73,25 @@ export const AdminTemplate = (props) => {
                             >
 
                                 <Menu mode="horizontal" style={{ justifyContent: "flex-end", fontWeight: 'bold', verticalAlign: 'center' }}>
-                                    <Menu.SubMenu key="SubMenu" title="Xin chào Admin" icon={<CaretDownOutlined />}>
-                                        <Menu.Item key="info-admin" icon={<InfoCircleOutlined />}>
-                                            Thông tin tài khoản
+                                    <Menu.SubMenu key="SubMenu" title="Hi Admin" icon={<CaretDownOutlined />}>
+                                        <Menu.Item onClick={() => {
+                                            history.push(`/profile/${localStorage.getItem(USER_ID)}`);
+                                        }} key="info-admin" icon={<InfoCircleOutlined />}>
+                                            My Info
                                         </Menu.Item>
                                         <Menu.Item key="exit-admin" onClick={() => {
                                             history.push('/')
                                         }} icon={<ExportOutlined />}>
-                                            Thoát trang admin
+                                            Exit Admin Page
                                         </Menu.Item>
-                                        <Menu.Item key="log-out" icon={<LogoutOutlined />}>
-                                            Đăng xuất
+                                        <Menu.Item onClick={() => {
+                                            if (window.confirm("Do you want to sign out ?")) {
+                                                localStorage.clear();
+                                                history.push('/');
+                                                window.location.reload();
+                                            }
+                                        }} key="log-out" icon={<LogoutOutlined />}>
+                                            Sign Out
                                         </Menu.Item>
                                     </Menu.SubMenu>
                                 </Menu>

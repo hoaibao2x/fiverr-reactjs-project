@@ -4,9 +4,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
-import { getJobInfoAction, getListJobAction, getListJobByNameAction, removeJobAction, updateJobAction } from "../../../../redux/Admin/action/JobAction";
+import { getJobInfoAction, getListJobAction, getListJobByNameAction, removeJobAction } from "../../../../redux/Admin/action/JobAction";
 import { history } from '../../../../App'
-import { getJobTypeDetailAction } from "../../../../redux/Admin/action/jobTypeDetailAction";
 
 const { Search } = Input;
 
@@ -26,7 +25,7 @@ function ListJobPage() {
 
   const columns = [
     {
-      title: "ID",
+      title: "Job ID",
       dataIndex: "id",
       value: (text, object) => {
         return <span>{text}</span>;
@@ -44,7 +43,7 @@ function ListJobPage() {
       sortDirections: ['descend', 'ascend']
     },
     {
-      title: "Hình ảnh",
+      title: "Job Image",
       dataIndex: "hinhAnh",
       render: (text, job, index) => {
         return (
@@ -64,7 +63,7 @@ function ListJobPage() {
       },
     },
     {
-      title: "Tên công việc",
+      title: "Job Name",
       dataIndex: "tenCongViec",
       width: 300,
       sorter: (a, b) => {
@@ -79,7 +78,7 @@ function ListJobPage() {
       sortDirections: ['descend', 'ascend']
     },
     {
-      title: "Mô tả",
+      title: "Job Description",
       dataIndex: "moTa",
       sorter: () => {
 
@@ -91,7 +90,7 @@ function ListJobPage() {
       }
     },
     {
-      title: 'Hành động',
+      title: 'Job Action',
       width: 200,
       render: (text, job) => {
         return <>
@@ -99,7 +98,7 @@ function ListJobPage() {
             dispatch(getJobInfoAction(job.id))
           }} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
           <button key={2} onClick={() => {
-            if (window.confirm(`Bạn có muốn xóa công việc này ?`)) {
+            if (window.confirm(`You want remove job id is ${job.id} ?`)) {
               dispatch(removeJobAction(job.id));
             }
           }} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
@@ -119,13 +118,13 @@ function ListJobPage() {
 
   return (
     <div className="container mx-auto my-3">
-      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink> Quản lý công việc</h4>
+      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink> Manage Job</h4>
 
       <button onClick={() => {
         history.push('/admin/list-job/add')
-      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm công việc</button>
+      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Add job</button>
 
-      <Search className='mb-5' placeholder="Nhập tên công việc cần tìm kiếm" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="Input job name" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

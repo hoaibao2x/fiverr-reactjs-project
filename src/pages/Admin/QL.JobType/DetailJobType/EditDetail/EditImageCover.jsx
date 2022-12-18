@@ -56,10 +56,16 @@ function EditImageCover() {
         setImgSrc(jobTypeDetail.hinhAnh)
     }, [jobTypeDetail])
 
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem('job_group_id');
+        }
+    }, [])
+
     return (
         <div className='container mx-auto'>
             <>
-                <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Detail job manager / </NavLink>Edit image</h4>
+                <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'> / Manage Job Type Detail </NavLink>/ Edit image</h4>
             </>
 
             <Steps

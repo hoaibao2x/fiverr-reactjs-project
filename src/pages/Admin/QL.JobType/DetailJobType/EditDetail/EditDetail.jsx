@@ -6,13 +6,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react';
-import { useState } from 'react';
 import { getListJobTypeAction } from '../../../../../redux/Admin/action/jobTypeAction';
 import { getDetailByIDAction, updateJobDetailAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
 import { getDetailJobTypeListAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
 import './style.css'
 import { history } from '../../../../../App';
-import TextArea from 'antd/lib/input/TextArea';
 
 function EditDetail(props) {
 
@@ -30,7 +28,7 @@ function EditDetail(props) {
     return state.JobTypeReducer;
   });
 
-  let { jobTypeDetail, jobDetailArr, jobArr } = useSelector((state) => {
+  let { jobTypeDetail, jobDetailArr } = useSelector((state) => {
     return state.JobTypeDetailReducer;
   });
 
@@ -61,16 +59,25 @@ function EditDetail(props) {
       id: jobTypeDetail.id,
       maLoaiCongViec: jobTypeDetail.maLoaiCongviec,
       tenChiTiet: jobTypeDetail.tenNhom,
-      danhSachChiTiet: arrByItem
+      danhSachChiTiet: jobTypeDetail.dsChiTietLoai
     },
     validationSchema: Yup.object({
       tenChiTiet: Yup.string().required('Job type group name is not empty !')
     }),
     onSubmit: (values) => {
 
+      let tempArr = [];
+      if (typeof formik.values.danhSachChiTiet[0] === 'object') {
+        formik.values.danhSachChiTiet.map((item) => {
+          tempArr.push(item.id);
+          return formik.setFieldValue('danhSachChiTiet', formik.values.danhSachChiTiet = [...tempArr]);
+        })
+      }
+
       dispatch(updateJobDetailAction(formik.values.id, values));
       alert('Edit job detail list success !');
       history.push(`/admin/list-detail-job-type/edit/edit-image-cover/${jobTypeDetail.id}`);
+
     }
   });
 
@@ -97,7 +104,7 @@ function EditDetail(props) {
 
   return (
     <div className='container mx-autp'>
-      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'>Detail job manager / </NavLink>Edit</h4>
+      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-detail-job-type'> / Manage Job Type Detail </NavLink>/ Edit</h4>
 
       <Steps
         className='w-50 mx-auto my-4'
@@ -152,6 +159,7 @@ function EditDetail(props) {
 
         <Form.Item label="Job Detail">
           <Select
+            name="danhSachChiTiet"
             className='container mx-auto'
             mode='multiple'
             allowClear

@@ -17,7 +17,7 @@ export const loginAction = (formValue) => {
             localStorage.setItem(USER_ID, user.id);
             localStorage.setItem(USER_ROLE, user.role);
 
-            alert('Signin success !');
+            alert('Sign in success !');
 
             if (user.role == 'ADMIN') {
                 history.push('/admin');
