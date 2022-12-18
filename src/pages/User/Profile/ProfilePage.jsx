@@ -572,7 +572,7 @@ function ProfilePage(props) {
                                                         <div className='form-group'>
                                                             <label htmlFor="myGender">Gender:</label>
                                                             {form ? <>
-                                                                <select className="form-control" id="myGender" name='gender' value={formik.values.gender}>
+                                                                <select className="form-control" id="myGender" name='gender' value={formik.values.gender} onChange={formik.handleChange}>
                                                                     <option value="true">Male</option>
                                                                     <option value="false">Female</option>
                                                                 </select>

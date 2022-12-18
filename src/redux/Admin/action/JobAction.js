@@ -1,6 +1,6 @@
 import { history } from "../../../App";
 import { addJob, getJobInfo, getListJob, getListJobByName, removeJob, updateJobInfo, uploadJobImage } from "../../../services/Admin/JobService/jobService"
-import { JOB_ID, JOB_IMG, JOB_INFO } from "../../../utils/varsSetting";
+import { JOB_ID, JOB_IMG } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
 export const getListJobAction = () => {
@@ -53,7 +53,7 @@ export const addJobAction = (formValue) => {
     return async () => {
         try {
             let result = await addJob(formValue);
-            alert('Thêm công việc thành công !');
+            alert('Add job success !');
             localStorage.setItem(JOB_ID, result.data.content.id);
             history.push('/admin/list-job/add/upload-image');
         } catch (errors) {
@@ -68,7 +68,7 @@ export const removeJobAction = (jobID) => {
             dispatch(displayLoadingAction);
 
             let result = await removeJob(jobID);
-            alert('Xóa công việc thành công !');
+            alert('Remove job success !');
             dispatch(getListJobAction());
 
             dispatch(hideLoadingAction);
@@ -83,10 +83,8 @@ export const uploadJobImgAction = (jobID, formValue) => {
     return async () => {
         try {
             let result = await uploadJobImage(jobID, formValue);
-            localStorage.removeItem(JOB_ID);
-            localStorage.removeItem(JOB_INFO);
-            localStorage.removeItem(JOB_IMG);
-            alert('Upload ảnh thành công !');
+
+            alert('Upload job image success !');
             history.push('/admin/list-job');
         } catch (errors) {
             alert(errors.response.data.content);
@@ -117,11 +115,11 @@ export const updateJobInfoAction = (jobID, formData) => {
     return async (dispatch) => {
         try {
             let result = await updateJobInfo(jobID, formData);
-            alert('Cập nhật thành công !');
+            alert('Edit job info success !');
 
-            history.push('/admin/list-job');
-            localStorage.removeItem(JOB_ID);
-            localStorage.removeItem(JOB_IMG);
+            localStorage.setItem(JOB_ID, result.data.content.id);
+            localStorage.setItem(JOB_IMG, result.data.content.hinhAnh);
+            history.push(`/admin/list-job/add/upload-image`);
 
             dispatch(getListJobAction());
         } catch (errors) {

@@ -16,7 +16,7 @@ import { getJobTypeDetail, getJobTypeDetailByID } from '../../../../services/Adm
 import { displayLoadingAction, hideLoadingAction } from '../../../../redux/loadingAction';
 import { addJobAction } from '../../../../redux/Admin/action/JobAction';
 
-const desc = ['Rất tệ', 'Tệ', 'Bình thường', 'Tốt', 'Rất tuyệt vời'];
+const desc = ['Very Bad', 'Bad', 'Normal', 'Good', 'Great'];
 
 function AddJobPage() {
 
@@ -88,15 +88,15 @@ function AddJobPage() {
       saoCongViec: 3
     },
     validationSchema: Yup.object({
-      tenCongViec: Yup.string().required('Tên công việc không được để trống !'),
-      danhGia: Yup.number().min(1, 'Đánh giá không được để trống !'),
-      giaTien: Yup.number().min(1, 'Giá tiền không được để trống !'),
-      hinhAnh: Yup.string().required('Tên hình ảnh không được để trống !'),
-      nguoiTao: Yup.number().min(1, 'Người tạo không được để trống !'),
-      moTa: Yup.string().required('Mô tả không được để trống !'),
-      maChiTietLoaiCongViec: Yup.number().min(1, 'Chi tiết loại công việc không được để trống !'),
-      moTaNgan: Yup.string().required('Mô tả ngắn không được để trống !'),
-      saoCongViec: Yup.number().min(1, 'Số sao thấp nhất là 1 !')
+      tenCongViec: Yup.string().required('Job name is not empty !'),
+      danhGia: Yup.number().min(1, 'Evaluate is not empty !'),
+      giaTien: Yup.number().min(1, 'Price is not empty !'),
+      hinhAnh: Yup.string().required('Image name is not empty !'),
+      nguoiTao: Yup.number().min(1, 'Creater name is not empty !'),
+      moTa: Yup.string().required('Description is not empty !'),
+      maChiTietLoaiCongViec: Yup.number().min(1, 'Job type detail is not empty !'),
+      moTaNgan: Yup.string().required('Short description is not empty !'),
+      saoCongViec: Yup.number().min(1, 'Min star is 1 !')
     }),
     onSubmit: (values) => {
       dispatch(addJobAction(values));
@@ -125,7 +125,7 @@ function AddJobPage() {
 
   return (
     <div className='container mx-auto'>
-      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'>Quản lý công việc / </NavLink>Thêm mới công việc</h4>
+      <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard</NavLink><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin/list-job'> / Manage job </NavLink>/ Add</h4>
 
       <Steps
         className='w-50 mx-auto my-4'
@@ -133,10 +133,10 @@ function AddJobPage() {
         current={0}
         items={[
           {
-            title: 'Thông tin công việc',
+            title: 'Job Info',
           },
           {
-            title: 'Upload hình ảnh',
+            title: 'Upload Job Image',
           }
         ]}
       />
@@ -164,58 +164,58 @@ function AddJobPage() {
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item label="Tên công việc">
-          <Input name='tenCongViec' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <Form.Item label="Job Name">
+          <Input name='tenCongViec' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
           {formik.touched.tenCongViec && formik.errors.tenCongViec ? <span className='alert alert-danger d-block mt-2'>{formik.errors.tenCongViec}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Đánh giá">
+        <Form.Item label="Evaluate">
           <Input className='w-25' type='number' min={1} name='danhGia' onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.danhGia && formik.errors.danhGia ? <span className='w-50 alert alert-danger d-block mt-2'>{formik.errors.danhGia}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Giá tiền">
+        <Form.Item label="Price">
           <Input className='w-25' type='number' name='giaTien' min={1} onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.giaTien && formik.errors.giaTien ? <span className='w-50 alert alert-danger d-block mt-2'>{formik.errors.giaTien}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Người tạo">
+        <Form.Item label="Creater Name">
           <Input className='w-25' type='number' name='nguoiTao' min={1} onChange={formik.handleChange} onBlur={formik.handleBlur} />
           {formik.touched.nguoiTao && formik.errors.nguoiTao ? <span className='w-50 alert alert-danger d-block mt-2'>{formik.errors.nguoiTao}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Tên hình ảnh">
-          <Input name='hinhAnh' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <Form.Item label="Image Name">
+          <Input name='hinhAnh' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
           {formik.touched.hinhAnh && formik.errors.hinhAnh ? <span className='alert alert-danger d-block mt-2'>{formik.errors.hinhAnh}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Mô tả">
-          <TextArea name='moTa' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <Form.Item label="Description">
+          <TextArea name='moTa' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
           {formik.touched.moTa && formik.errors.moTa ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTa}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Nhóm công việc">
-          <Select options={convertSelectJob()} onChange={handleChangeJob} placeholder="Chọn nhóm công việc" />
+        <Form.Item label="Job Group">
+          <Select options={convertSelectJob()} onChange={handleChangeJob} placeholder="Select job group" />
         </Form.Item>
 
-        <Form.Item label="Chi tiết loại công việc">
-          <Select options={convertSelectDetail()} placeholder="Chọn chi tiết loại công việc" name='maChiTietLoaiCongViec' onChange={handleChangeJobDetail} />
+        <Form.Item label="Job Type Detail">
+          <Select options={convertSelectDetail()} placeholder="Select job type detail" name='maChiTietLoaiCongViec' onChange={handleChangeJobDetail} />
           {formik.touched.maChiTietLoaiCongViec && formik.errors.maChiTietLoaiCongViec ? <span className='alert alert-danger d-block mt-2'>{formik.errors.maChiTietLoaiCongViec}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Mô tả ngắn">
-          <TextArea name='moTaNgan' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+        <Form.Item label="Short Description">
+          <TextArea name='moTaNgan' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
           {formik.touched.moTaNgan && formik.errors.moTaNgan ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTaNgan}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Số sao">
+        <Form.Item label="Stars">
           <Rate name='saoCongViec' tooltips={desc} onChange={handleChangeRate} value={saoCongViec} />
           {saoCongViec ? <span className="ant-rate-text">{desc[saoCongViec - 1]}</span> : ''}
           {formik.touched.saoCongViec && formik.errors.saoCongViec ? <span className='w-50 alert alert-danger d-block mt-2'>{formik.errors.saoCongViec}</span> : null}
         </Form.Item>
 
-        <Form.Item label="Hành động">
-          <button type='submit' className='btn btn-success'>Xác nhận thông tin</button>
+        <Form.Item label="Action">
+          <button type='submit' className='btn btn-success'>Next Step</button>
         </Form.Item>
       </Form>
     </div>

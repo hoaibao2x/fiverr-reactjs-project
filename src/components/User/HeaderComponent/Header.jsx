@@ -143,12 +143,12 @@ export default function Header(props) {
                         <NavLink to='/admin' className="dropdown-item" type="button">Admin Page</NavLink>
                       </> : null}
                       <button onClick={() => {
-                        if (window.confirm("Do you really want to signout?")) {
+                        if (window.confirm("Do you want to sign out?")) {
                           localStorage.clear();
                           history.push('/');
                           window.location.reload();
                         }
-                      }} className="dropdown-item" type="button">Sign out</button>
+                      }} className="dropdown-item" type="button">Sign Out</button>
                     </div>
                   </div>
                 </> : <>

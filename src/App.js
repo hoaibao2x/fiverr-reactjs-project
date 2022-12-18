@@ -19,9 +19,13 @@ import RegisterPage from './pages/User/Register/RegisterPage';
 import ListJob from './pages/User/ListJob/ListJob';
 import AddJobType from './pages/Admin/QL.JobType/JobType/AddJobType/AddJobType';
 import EditJobType from './pages/Admin/QL.JobType/JobType/EditJobType/EditJobType';
+import AddDetail from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddDetail';
 import ListDetailJob from './pages/User/ListDetailJob/ListDetailJob';
 import InfoDetailJob from './pages/User/InfoDetailJob/InfoDetailJob'
 import ProfilePage from './pages/User/Profile/ProfilePage'
+import AddImageCover from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddImageCover';
+import EditDetail from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditDetail';
+import EditImageCover from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditImageCover';
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
 import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
@@ -80,6 +84,11 @@ function App() {
         <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
 
+        <AdminTemplate exact path='/admin/list-detail-job-type/add' component={AddDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/add/upload-image-cover' component={AddImageCover} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/edit-job-group/:id' component={EditDetail} />
+        <AdminTemplate exact path='/admin/list-detail-job-type/edit/edit-image-cover/:id' component={EditImageCover} />
+        {/* <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} /> */}
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
         

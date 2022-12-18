@@ -27,7 +27,7 @@ function ListJobType() {
 
   const columns = [
     {
-      title: 'ID',
+      title: 'Job Type ID',
       dataIndex: 'id',
       sorter: (a, b) => {
 
@@ -42,7 +42,7 @@ function ListJobType() {
       sortDirections: ['descend', 'ascend']
     },
     {
-      title: 'Tên loại công việc',
+      title: 'Job Type Name',
       dataIndex: 'tenLoaiCongViec',
       sorter: (a, b) => {
 
@@ -57,7 +57,7 @@ function ListJobType() {
       sortDirections: ['descend', 'ascend']
     },
     {
-      title: 'Hành động',
+      title: 'Job Type Action',
       render: (text, jobType) => {
         return <>
           <button onClick={() => {
@@ -69,7 +69,7 @@ function ListJobType() {
             <i className="fa-solid fa-pen-to-square"></i>
           </button>
           <button onClick={() => {
-            if (window.confirm(`Bạn có muốn xóa loại công việc có ID là ${jobType.id}`)) {
+            if (window.confirm(`You want remove job type ID is ${jobType.id} ?`)) {
               dispatch(removeJobTypeAction(jobType.id));
             }
           }} className="btn btn-danger">
@@ -91,13 +91,13 @@ function ListJobType() {
 
   return (
     <div className="container mx-auto my-3">
-      <h4 className="text-info"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink> <span className='myNavLink'>Quản lý loại công việc</span> / Loại công việc</h4>
+      <h4 className="text-info"><NavLink className='myNavLink' to='/admin'>Dashboard /</NavLink> Manage Job Type</h4>
 
       <button onClick={() => {
         history.push('/admin/list-job-type/add')
-      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm loại công việc</button>
+      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Add job type</button>
 
-      <Search className='mb-5' placeholder="Nhập ID loại công việc cần tìm" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="Input job type ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table id='jobTypeTable' rowKey={'id'} columns={columns} dataSource={data} />
     </div>
