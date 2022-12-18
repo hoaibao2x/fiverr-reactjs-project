@@ -14,9 +14,8 @@ export default function SellingComponent(props) {
         <div className='selling'>
             <div className='container'>
                 <div className="row selling-product">
-                    <div className="col-6 selling-left">
-                        <h2>A whole world of freelance <br />
-                            talent at your fingertips</h2>
+                    <div className="col-12 col-lg-6 selling-left">
+                        <h2>A whole world of freelance talent at your fingertips</h2>
                         <ul className='selling-option'>
                             <li className='selling-item'>
                                 <h4 className='selling-item-title'>
@@ -56,7 +55,7 @@ export default function SellingComponent(props) {
 
                         </ul>
                     </div>
-                    <div className="col-6 selling-right">
+                    <div className="col-12 col-lg-6 selling-right">
                         <img className='img-selling' src={imgSelling} alt="" />
 
                         <Button className='button-play' onClick={() => setLgShow(true)}></Button>

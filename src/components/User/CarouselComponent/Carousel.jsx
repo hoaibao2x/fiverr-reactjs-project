@@ -118,7 +118,7 @@ export default function CarouselComponent(props) {
                                     </button>
                                 </form>
                             </div>
-                            <div className="popular row mt-3 ml-1">
+                            <div className="popular mt-3 ml-1 ">
                                 <span>  Popular : </span>
                                 <ul className='popular-text'>
                                     <li className='popular-text-content'><a href="#">Website Design</a></li>

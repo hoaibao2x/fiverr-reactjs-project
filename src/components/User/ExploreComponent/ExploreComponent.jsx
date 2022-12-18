@@ -13,7 +13,7 @@ export default function ExploreComponent(props) {
         <div className='container'>
             <div className='explore'>
                 <div className="row explore-product">
-                    <div className="col-5">
+                    <div className="col-12 col-lg-5">
                         <img className='explore-img' src={exploreimg} alt="" />
                         <div className='explore-left'></div>
                         <Button className='button-play' onClick={() => setLgShow(true)}></Button>
@@ -29,7 +29,7 @@ export default function ExploreComponent(props) {
                             </Modal.Body>
                         </Modal>
                     </div>
-                    <div className="col-7">
+                    <div className="col-12 col-lg-7">
                         <p className='explore-title'>
                             Kay Kim, Co-Founder | <span className='explore-logo'>rooted</span>
                         </p>
