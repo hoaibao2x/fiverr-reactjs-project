@@ -69,7 +69,7 @@
 .carousel-title {
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 11%;
 }
 .carousel-title h1 {
     color: #fff;
@@ -119,6 +119,18 @@
 }
 
 /* Responsive */
+@media screen and (max-width: 1200px) {
+    .carousel-title {
+        top: 30%;
+        left: 3%;
+    }
+}
+@media screen and (max-width: 1194px){
+    .carousel-title {
+        top: 30%;
+        left: 11%;
+    }
+}
 @media screen and (max-width:1024px) {
     .search {
         width: 467px;

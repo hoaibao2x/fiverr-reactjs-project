@@ -117,13 +117,27 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 992px) {
-    .explore {
-        padding-bottom: 125px;
-    }
+@media screen and (max-width:1200px) {
     .explore-right {
         right: -2%;
     }
+    .explore {
+        padding-bottom: 125px;
+    }
+    .explore-img {
+        height: 230px;
+    }
+    .explore-content {
+        font-size: 24px;
+    }
+}
+@media screen and (max-width:1194px) {
+    .explore-right {
+        right: -6%;
+    }
+}
+@media screen and (max-width: 992px) {
+   
  }
 @media screen and (max-width: 768px){
     .explore {

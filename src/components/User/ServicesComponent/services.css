@@ -90,6 +90,17 @@
     transform: rotate(180deg);
 }
 /* Responsive */
+@media screen and (max-width: 1200px) {
+    .slides-item {
+        height: 210px !important;
+    }
+    .slick-prev {
+        left: 10% !important;
+    }
+    .slick-next {
+        right: 13% !important;
+    }
+}
 @media screen and (max-width: 1194px) {
     .slides-item {
         height: 210px !important;
