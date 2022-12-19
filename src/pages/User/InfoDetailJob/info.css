@@ -397,4 +397,34 @@
     border-bottom: 1px solid #dee2e6;
 }
 
+/* Responsive */
+@media screen and (max-width: 1194px){
+    .nav-tabs .nav-link {
+        padding: 0.5rem;
+    }
+    .text-quocte {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+    .button-quote {
+        padding: 3px 12px;
+        font-size: 12px;
+    }
+    .button-user {
+        margin-top: 0;
+        font-size: 12px;
+    }
+    .img-job {
+        height: 310px;
+    }
+    .addUser {
+        height: 32px;
+        width: 40px;
+    }
+    .btn {
+        font-size: 0.75rem;
+    }
+}
+
 

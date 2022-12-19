@@ -119,18 +119,16 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 1200px) {
-    .carousel-title {
-        top: 40%;
-        left: 3%;
-    }
-}
 @media screen and (max-width:1024px) {
     .search {
         width: 467px;
     }
     .carousel-title h1 {
         font-size: 2rem;
+    }
+    .carousel-title {
+        top: 40%;
+        left: 3%;
     }
 }
 

@@ -330,7 +330,7 @@ export default function InfoDetailJob(props) {
 
                     </div>
                 </div>
-                <div className='col-4 pt-5'>
+                <div className='col-4 pt-4'>
                     <div className='card'>
                         <div className='card-head'>
                             <ul className="nav nav-tabs" id="myTab" role="tablist">
