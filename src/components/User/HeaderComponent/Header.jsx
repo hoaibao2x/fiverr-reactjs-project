@@ -58,7 +58,7 @@ export default function Header(props) {
               const { dsChiTietLoai } = groupName
               return <div className="dropdown show" key={index}>
                 <a className="dropdown-toggle" href="#" data-toggle="dropdown">
-                  {groupName.tenNhom}
+                   {groupName.tenNhom}
                 </a>
                 <div className="dropdown-menu" >
                   {dsChiTietLoai.map((name, index) => {
@@ -132,10 +132,10 @@ export default function Header(props) {
                 </li>
                 {loginOrNot() ? <>
                   <div className="btn-group">
-                    <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
+                    <button type="button" id='btn__info' className="info__dark btn dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
                       <i className="fa-solid fa-circle-user"></i> {localStorage.getItem(USER_NAME) !== null ? <>
                         <span>{localStorage.getItem(USER_NAME)}</span>
-                      </> : null}
+                      </> : null} <i className="fa-solid fa-angle-up"></i>
                     </button>
                     <div className="dropdown-menu dropdown-menu-lg-right">
                       <NavLink  to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">My Info</NavLink>
@@ -146,14 +146,13 @@ export default function Header(props) {
                         if (window.confirm("Do you want to sign out?")) {
                           localStorage.clear();
                           history.push('/');
-                          window.location.reload();
                         }
                       }} className="dropdown-item" type="button">Sign Out</button>
                     </div>
                   </div>
                 </> : <>
                   <li className="nav-item">
-                      <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#loginModal">Sign In</a>
+                      <a id='signInBtn' type='button' className="nav-link" data-toggle="modal" data-target="#loginModal" href='#'>Sign In</a>
                   </li>
                   <form className="form-inline my-2 my-lg-0">
                     <button onClick={() => {

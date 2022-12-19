@@ -64,13 +64,7 @@
     display: flex;
     align-items: center;
 }
-.btn-secondary {
-    margin-right: 10px;
-    color: black !important;
-    background-color: #fff !important;
-    font-weight: 600;
-    border: 1px solid #dadbdd !important;
-}
+
 .btn-right {
     background-color: #dadbdd;
     position: relative;
@@ -106,7 +100,6 @@
 }
 .card-img-job {
     width: 100%;
-    cursor: pointer;
 }
 /* custom card */
 
@@ -133,7 +126,6 @@
 .card-content-adimCV{
     margin-bottom:0;
     margin-left: 15px;
-    color: #dadbdd;
     font-weight: 800;
 }
 .card-title{
@@ -157,3 +149,29 @@
     color: #dadbdd;
 }
 
+#btn__info:focus {
+    box-shadow: none;
+}
+
+#btn__info i:nth-of-type(2) {
+    transition: all .5s;
+}
+
+#btn__info:focus i:nth-of-type(2) {
+    transform: rotate(-180deg);
+}
+
+.info__light {
+    color: white;
+}
+
+.info__light:focus,
+.info__light:hover,
+.info__dark:focus,
+.info__dark:hover {
+    color: green;
+}
+
+.info__dark {
+    color: black;
+}

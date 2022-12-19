@@ -36,8 +36,6 @@ function EditJobType(props) {
     return state.JobTypeReducer
   })
 
-  console.log('reducer id', jobTypeInfo.id)
-
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {

@@ -121,6 +121,7 @@ function AddJobPage() {
 
   useEffect(() => {
     getJobArr();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -165,7 +166,7 @@ function AddJobPage() {
         </Form.Item>
 
         <Form.Item label="Job Name">
-          <Input name='tenCongViec' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
+          <Input name='tenCongViec' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
           {formik.touched.tenCongViec && formik.errors.tenCongViec ? <span className='alert alert-danger d-block mt-2'>{formik.errors.tenCongViec}</span> : null}
         </Form.Item>
 
@@ -185,12 +186,12 @@ function AddJobPage() {
         </Form.Item>
 
         <Form.Item label="Image Name">
-          <Input name='hinhAnh' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
+          <Input name='hinhAnh' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
           {formik.touched.hinhAnh && formik.errors.hinhAnh ? <span className='alert alert-danger d-block mt-2'>{formik.errors.hinhAnh}</span> : null}
         </Form.Item>
 
         <Form.Item label="Description">
-          <TextArea name='moTa' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
+          <TextArea name='moTa' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
           {formik.touched.moTa && formik.errors.moTa ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTa}</span> : null}
         </Form.Item>
 
@@ -204,7 +205,7 @@ function AddJobPage() {
         </Form.Item>
 
         <Form.Item label="Short Description">
-          <TextArea name='moTaNgan' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear/>
+          <TextArea name='moTaNgan' onChange={formik.handleChange} onBlur={formik.handleBlur} allowClear />
           {formik.touched.moTaNgan && formik.errors.moTaNgan ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTaNgan}</span> : null}
         </Form.Item>
 

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
-import { Rate } from 'antd';
+import { BackTop, Rate } from 'antd';
 import { Pagination } from 'antd';
-import {history} from '../../../App'
+import { history } from '../../../App'
 
 
 
@@ -18,6 +18,9 @@ export default function ListJob(props) {
     setCurrent(page);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   if (listjob.length === 0) {
     return <div className='container empty-br'>
@@ -34,16 +37,14 @@ export default function ListJob(props) {
     </div>
   }
 
-
-
   const renderListJob = () => {
     return listjob.map((job, index) => {
       const { congViec } = job
-      return <div className="card" key={index}>
+      return <div onClick={() => {
+        history.push(`/user/infojob/${job.id}`)
+      }} className="card job__card" key={index}>
         <div className='card-img'>
-          <img onClick={() => {
-           history.push(`/user/infojob/${job.id}`)
-          }} src={congViec.hinhAnh} className="card-img-job" alt="..." />
+          <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
         </div>
         <div className="card-body">
           <div className='card-avatar'>
@@ -57,12 +58,12 @@ export default function ListJob(props) {
           </div>
           <p className="card-title">{congViec.tenCongViec}</p>
 
-          <Rate allowHalf value={congViec.saoCongViec} />
+          <Rate allowHalf value={congViec.saoCongViec} disabled />
           <span className='card-text'>{congViec.danhGia}</span>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item"><i className="fa-solid fa-heart icon-heart"></i></li>
-          <li className='list-group-item'>STARTING AT ${congViec.giaTien}</li>
+          <li className='list-group-item font-weight-bold'>STARTING AT ${congViec.giaTien}</li>
         </ul>
       </div>
     })
@@ -130,6 +131,12 @@ export default function ListJob(props) {
         <div>
         </div>
       </div>
+
+      <BackTop>
+        <div className="backTopStyle">
+          <i className="fa-solid fa-angles-up backTopStyle"></i>
+        </div>
+      </BackTop>
     </div>
   )
 }

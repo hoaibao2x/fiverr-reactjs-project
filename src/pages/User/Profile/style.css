@@ -71,3 +71,15 @@
     font-size: 16px;
     color: #00698c;
 }
+
+.hire__job__list {
+    height: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.hire__job__item {
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 10px;
+}

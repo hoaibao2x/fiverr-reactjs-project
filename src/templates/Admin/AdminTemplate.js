@@ -41,9 +41,8 @@ const items = [
 ];
 
 export const AdminTemplate = (props) => {
+    
     const [collapsed, setCollapsed] = useState(false);
-
-
 
     return (
         <Route exact path={props.path} render={(propsRoute) => {
@@ -71,7 +70,6 @@ export const AdminTemplate = (props) => {
                                     margin: '0 16px',
                                 }}
                             >
-
                                 <Menu mode="horizontal" style={{ justifyContent: "flex-end", fontWeight: 'bold', verticalAlign: 'center' }}>
                                     <Menu.SubMenu key="SubMenu" title="Hi Admin" icon={<CaretDownOutlined />}>
                                         <Menu.Item onClick={() => {
@@ -95,7 +93,6 @@ export const AdminTemplate = (props) => {
                                         </Menu.Item>
                                     </Menu.SubMenu>
                                 </Menu>
-
                                 <props.component {...propsRoute} />
                             </Content>
                         </Layout>
