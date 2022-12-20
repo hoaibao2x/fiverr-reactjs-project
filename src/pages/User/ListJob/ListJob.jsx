@@ -86,19 +86,19 @@ export default function ListJob(props) {
       <div className='result'>
         <h2 className='result-html'>Result for "html"</h2>
         <div className='result-btn'>
-          <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Category
           </button>
-          <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Service Options
           </button>
-          <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Seller Details
           </button>
-          <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Budget
           </button>
-          <button className="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+          <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Delivery time
           </button>
           <div className='result-right-cover'>

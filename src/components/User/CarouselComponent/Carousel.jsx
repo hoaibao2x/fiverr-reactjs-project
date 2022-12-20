@@ -42,6 +42,8 @@ export default function CarouselComponent(props) {
         }, onSubmit: (values) => {
             if (values.nameJob !== "") {
                 dispatch(getListJobByNameAction(values.nameJob))
+            } else {
+                history.push('/user/listjob');
             }
         }
     });
