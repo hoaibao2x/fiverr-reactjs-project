@@ -108,14 +108,16 @@
     grid-gap: 40px;
 }
 
-.card-img {
+.card-img{
     height: 180px;
     border-bottom: 1px solid #dadbdd;
     overflow: hidden;
+    height: 200px;
 }
 
 .card-img-job {
     width: 100%;
+    cursor: pointer;
 }
 
 /* custom card */
@@ -171,32 +173,6 @@
     color: #dadbdd;
 }
 
-#btn__info:focus {
-    box-shadow: none;
-}
-
-#btn__info i:nth-of-type(2) {
-    transition: all .5s;
-}
-
-#btn__info:focus i:nth-of-type(2) {
-    transform: rotate(-180deg);
-}
-
-.info__light {
-    color: white;
-}
-
-.info__light:focus,
-.info__light:hover,
-.info__dark:focus,
-.info__dark:hover {
-    color: green;
-}
-
-.info__dark {
-    color: black;
-}
 
 .btn__job__filter {
     margin-right: 10px;
