@@ -49,6 +49,15 @@ export const listThueCongViec = () => {
 export const postThueCongViec = () => {
     return http.post("/thue-cong-viec")
 }
+
+export const getTCV = (id) => {
+    return http.get(`/thue-cong-viec/${id}`);
+}
+export const putTCV = (id) => {
+    return http.put(`/thue-cong-viec/${id}`);
+}
+
+
 export const xoaTCV = (id) => {
     return http.delete(`/thue-cong-viec/${id}`);
 }
@@ -62,6 +71,9 @@ export const postBinhLuan = () => {
     return http.post(`/binh-luan`)
 }
 
+export const getBinhLuan = (id) => {
+    return http.get(`/binh-luan/lay-binh-luan-theo-cong-viec/${id}`)
+}
 
 export const xoaBL = (id) => {
     return http.delete(`/binh-luan/${id}`);

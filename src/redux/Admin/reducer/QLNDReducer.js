@@ -3,6 +3,7 @@ const initialState = {
     thongTinUser: {},
     timUser: {},
     arrTCV: [],
+    thongtinTCV: {},
     arrBL: [],
 
 
@@ -31,6 +32,9 @@ export const QLNDreducer = (state = initialState, action) => {
             return { ...state }
         case "LIST_BL":
             state.arrBL = action.arrBL
+            return { ...state }
+        case "GET_THONG_TIN_TCV":
+            state.thongtinTCV = action.thongtinTCV
             return { ...state }
 
         default:

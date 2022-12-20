@@ -67,13 +67,23 @@ const columns = [
       dataIndex: "id",
       render: (text, users) => {  
         return <>
-          <NavLink key={1} className="" to={`/admin/list-comment/${users.id}`}><EditOutlined /> </NavLink>
+          <NavLink key={1} className="" to={`/admin/list-comment/edit/${users.id}`}><EditOutlined /> </NavLink>
           <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
             if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
               dispatch(xoaBLAction(users.id));
             }
           }}><DeleteOutlined /></span>
         </>
+      //    return <>
+      //    <button key={1} onClick={() => {
+      //      dispatch(getJobInfoAction(users.id))
+      //    }} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
+      //    <button key={2} onClick={() => {
+      //        if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
+       // dispatch(xoaBLAction(users.id));
+     // }
+      //    }} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+      //  </>
       }
     }
   ];

@@ -40,6 +40,8 @@ const ThemUser2 = () => {
       gender: true,
       role: "",
      
+    
+     
     },
     onSubmit: (values) => {
       dispatch(ThemUserAction(values))
@@ -58,8 +60,10 @@ const ThemUser2 = () => {
     return (value) => {
       formik.setFieldValue(name, value)
     }
-
-  }
+  };
+  const handleChangeskill = async (value) => {
+    await formik.setFieldValue('certification', value);
+  };
 
   return (
     <Form
@@ -141,10 +145,12 @@ const ThemUser2 = () => {
         <Input name='role' onChange={formik.handleChange} onBlur={formik.handleBlur} />
       </Form.Item>
 
-        {/* <Form.Item label="kỹ năng">
-        <Input name='skill' onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        </Form.Item>
-        <Form.Item label="chứng nhận">
+        {/* <Form.Item label="chứng nhận">
+        <Input name='certification' onChange={handleChangeskill} onBlur={formik.handleBlur} />
+        </Form.Item> */}
+        
+       
+        {/* <Form.Item label="chứng nhận">
         <Input name='certification' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         </Form.Item> */}
       {/* <Form.Item label="đặt công việc">

@@ -21,6 +21,8 @@ import { useEffect } from 'react';
 
 
 const EditUser = (props) => {
+ 
+  const dispatch = useDispatch();
   const [componentSize, setComponentSize] = useState('default');
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
@@ -29,7 +31,7 @@ const EditUser = (props) => {
   let { thongTinUser } = useSelector((state) => {
     return state.QLNDreducer
   })
-  const dispatch = useDispatch();
+ 
   useEffect(() => {
     let { id } = props.match.params;
     dispatch(LayThongTinUserAction(id));
@@ -63,7 +65,7 @@ const EditUser = (props) => {
 
     },
     onSubmit: (values) => {
-      dispatch(CapNhatUserAction(values))
+      dispatch(CapNhatUserAction(thongTinUser.id,values))
      
     }
   })

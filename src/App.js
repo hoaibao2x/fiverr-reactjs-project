@@ -36,6 +36,7 @@ import EditTCV from './pages/Admin/QL.Service/RentJob/EditRentJob/EditTCV';
 import ThemUserUpAvatar from './pages/Admin/QL.User/UpAvatar/UpAvatar';
 import ThemUser2 from './pages/Admin/QL.User/AddUserPage/AddUser2';
 import AddComment from './pages/Admin/QL.Service/Comment/AddComment/AddComment';
+import EditComment from './pages/Admin/QL.Service/Comment/EditComment/EditComment';
 
 
 
@@ -80,19 +81,21 @@ function App() {
         
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
         <AdminTemplate exact path='/admin/list-user/add' component={ThemUser2} />
-
         <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
+
+        {/* <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} /> */}
+        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+        <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
+        <AdminTemplate exact path='/admin/list-comment/edit/:id' component={EditComment} />
+        
+
+
 
         <AdminTemplate exact path='/admin/list-detail-job-type/add' component={AddDetail} />
         <AdminTemplate exact path='/admin/list-detail-job-type/add/upload-image-cover' component={AddImageCover} />
         <AdminTemplate exact path='/admin/list-detail-job-type/edit-job-group/:id' component={EditDetail} />
         <AdminTemplate exact path='/admin/list-detail-job-type/edit/edit-image-cover/:id' component={EditImageCover} />
-        {/* <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} /> */}
-        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
-        <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
-        
-        
 
 
 

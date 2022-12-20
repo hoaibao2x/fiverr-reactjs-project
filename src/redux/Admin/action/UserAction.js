@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { binhLuan, CapNhatUser, danhSachUser, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, searchUser, ThemUser, ThemUserupload, xoaBL, xoaTCV, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { binhLuan, CapNhatUser, danhSachUser, getBinhLuan, getTCV, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, putBinhLuan, putTCV, searchUser, ThemUser, ThemUserupload, xoaBL, xoaTCV, xoaUser } from "../../../services/Admin/UserService/UserService";
 import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
@@ -37,10 +37,16 @@ export const LayThongTinUserAction = (id) => {
     return async (dispatch) => {
         try {
             const result = await LayThongTinUser(id)
-            dispatch({
+            // dispatch({
+            //     type : "GET_THONG_TIN_USER",
+            //     thongTinUser : result.data.content,
+            // }) 
+            let action = {
                 type : "GET_THONG_TIN_USER",
                 thongTinUser : result.data.content,
-            })  
+            } 
+            dispatch(action);
+            history.push(`/admin/list-user/edituser/${result.data.content.id}`)
         } catch (error) {
             console.log(error);
 
@@ -53,6 +59,10 @@ export const LayThongTinUserAction = (id) => {
         try {
             const result = await CapNhatUser(id)
             alert('Cập nhật người dùng thành công !');
+
+
+
+
            
         } catch (error) {
             console.log(error.response?.data);
@@ -154,6 +164,42 @@ export const ThemCongViecAction = () => {
     }
 
 }
+export const getTCVAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await getTCV(id);
+            
+            console.log(result.data.content);
+            dispatch({
+                type : "GET_THONG_TIN_TCV",
+                thongtinTCV : result.data.content
+            });
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
+export const putTCVAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await putTCV(id);
+            alert("cập nhật thành công!")
+            console.log(result.data.content);
+         
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
+
 
 export const xoaTCVAction = (id) => {
     return async (dispatch) => {
@@ -207,6 +253,22 @@ export const BinhLuanAction = () => {
     }
 
 }
+
+export const getBinhLuanAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await getBinhLuan(id);
+            console.log(result.data.content);
+         
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
 
 export const xoaBLAction = (id) => {
     return async (dispatch) => {

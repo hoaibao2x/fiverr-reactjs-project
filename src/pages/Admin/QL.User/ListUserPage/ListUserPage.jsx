@@ -5,7 +5,7 @@ import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { history } from '../../../../App';
-import { danhSachUserAction, searchUserAction, xoaUserAction } from '../../../../redux/Admin/action/UserAction';
+import { danhSachUserAction, LayThongTinUserAction, searchUserAction, xoaUserAction } from '../../../../redux/Admin/action/UserAction';
 import { QLNDreducer } from '../../../../redux/Admin/reducer/QLNDReducer';
 
 
@@ -102,32 +102,42 @@ function DanhSachUser() {
       title: 'phân loại',
       dataIndex: 'role',
     },
-    {
-      title: 'kỹ năng',
-      dataIndex: 'skill',
+    // {
+    //   title: 'kỹ năng',
+    //   dataIndex: 'skill',
     
-    },
-    {
-      title: 'chứng nhận',
-      dataIndex: 'certification',
+    // },
+    // {
+    //   title: 'chứng nhận',
+    //   dataIndex: 'certification',
      
-    },
-    {
-      title: 'đặt công việc',
-      dataIndex: 'bookingJob',
-    },
+    // },
+    // {
+    //   title: 'đặt công việc',
+    //   dataIndex: 'bookingJob',
+    // },
     {
       title: "Chỉnh Sửa",
       dataIndex: "id",
       render: (text, users) => {  
+        // return <>
+        //   <NavLink key={1} className="" to={`/admin/list-user/edituser/${users.id}`}><EditOutlined /> </NavLink>
+        //   <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
+        //     if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
+        //       dispatch(xoaUserAction(users.id));
+        //     }
+        //   }}><DeleteOutlined /></span>
+        // </>
         return <>
-          <NavLink key={1} className="" to={`/admin/list-user/edituser/${users.id}`}><EditOutlined /> </NavLink>
-          <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
+        <button key={1} onClick={() => {
+          dispatch(LayThongTinUserAction(users.id))
+        }} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
+        <button key={2} onClick={() => {
             if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
-              dispatch(xoaUserAction(users.id));
-            }
-          }}><DeleteOutlined /></span>
-        </>
+       dispatch(xoaUserAction(users.id));
+      }
+        }} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
+      </>
       }
     }
   ];
