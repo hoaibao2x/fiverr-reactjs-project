@@ -136,3 +136,11 @@
     height: 1em;
     font-size: 0.8em;
 }
+
+.dropdown-toggle i {
+    transition: all .5s;
+}
+
+.dropdown-toggle:focus i {
+    transform: rotate(180deg);
+}

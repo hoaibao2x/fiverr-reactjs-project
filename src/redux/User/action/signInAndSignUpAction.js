@@ -18,12 +18,7 @@ export const loginAction = (formValue) => {
             localStorage.setItem(USER_ROLE, user.role);
 
             alert('Sign in success !');
-
-            if (user.role == 'ADMIN') {
-                history.push('/admin');
-            } else {
-                window.location.reload();
-            }
+            window.location.reload();
 
             dispatch(hideLoadingAction);
         } catch (errors) {

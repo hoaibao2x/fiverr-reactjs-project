@@ -10,7 +10,7 @@ import {
     ApartmentOutlined
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Route } from "react-router-dom";
 import { history } from '../../App';
 import { USER_ID } from '../../utils/varsSetting';
@@ -41,9 +41,18 @@ const items = [
 ];
 
 export const AdminTemplate = (props) => {
+
     const [collapsed, setCollapsed] = useState(false);
 
+    const isYourAdmin = () => {
+        if (localStorage.getItem('user_role') !== 'ADMIN' || localStorage.getItem('token') === null) {
+            history.push('/error')
+        }
+    }
 
+    useEffect(() => {
+        isYourAdmin();
+    }, [])
 
     return (
         <Route exact path={props.path} render={(propsRoute) => {
@@ -71,7 +80,6 @@ export const AdminTemplate = (props) => {
                                     margin: '0 16px',
                                 }}
                             >
-
                                 <Menu mode="horizontal" style={{ justifyContent: "flex-end", fontWeight: 'bold', verticalAlign: 'center' }}>
                                     <Menu.SubMenu key="SubMenu" title="Hi Admin" icon={<CaretDownOutlined />}>
                                         <Menu.Item onClick={() => {
@@ -95,7 +103,6 @@ export const AdminTemplate = (props) => {
                                         </Menu.Item>
                                     </Menu.SubMenu>
                                 </Menu>
-
                                 <props.component {...propsRoute} />
                             </Content>
                         </Layout>

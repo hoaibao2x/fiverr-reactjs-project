@@ -2,12 +2,12 @@ import React, { useRef } from 'react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { history } from '../../../App';
-import { getInfoByIDAction, updateUserAvatarAction, updateUserInfoAction } from '../../../redux/User/action/getInfoAndUpdateAction';
+import { deleteHireJobsAcion, getHireJobsAction, getInfoByIDAction, updateUserAvatarAction, updateUserInfoAction } from '../../../redux/User/action/getInfoAndUpdateAction';
 import { USER_ID } from '../../../utils/varsSetting';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './style.css';
-import { DatePicker } from 'antd';
+import { BackTop, DatePicker, Rate } from 'antd';
 import moment from 'moment';
 import { useState } from 'react';
 import { Input, Tag } from 'antd';
@@ -22,7 +22,7 @@ function ProfilePage(props) {
 
     let [form, disFormOrNot] = useState(true);
 
-    let { userInfo, userSkillArr, userCertArr } = useSelector((state) => {
+    let { userInfo, userSkillArr, userCertArr, jobHireArr } = useSelector((state) => {
         return state.UserReducer;
     });
 
@@ -42,6 +42,7 @@ function ProfilePage(props) {
 
     const getUserInfo = () => {
         dispatch(getInfoByIDAction(localStorage.getItem(USER_ID)));
+        dispatch(getHireJobsAction());
     }
 
     // Skill Tag Ant Design Config
@@ -222,6 +223,40 @@ function ProfilePage(props) {
         })
     }
 
+    const renderHireJob = () => {
+        return jobHireArr.map((jobItem) => {
+            return <div className="col-md-12" key={jobItem.id}>
+                <div className="card mb-3">
+                    <div className="row no-gutters hire__job__item">
+                        <div className="col-md-4">
+                            <img className='img-fluid' src={jobItem.congViec.hinhAnh} alt="..." />
+                        </div>
+                        <div className="col-md-8">
+                            <div className="card-body">
+                                <h5 className="card-title">{jobItem.congViec.tenCongViec.length > 50 ? jobItem.congViec.tenCongViec.substr(0, 30) + ' ...' : jobItem.congViec.tenCongViec}</h5>
+                                <p className="card-text">{jobItem.congViec.moTa.length > 50 ? jobItem.congViec.moTa.substr(0, 150) + ' ...' : jobItem.congViec.moTa}</p>
+                                <span className='font-weight-bold'>Rate:</span> <Rate name='saoCongViec' value={jobItem.congViec.saoCongViec} disabled />
+                                <h5 className='font-weight-bold'>Price: {jobItem.congViec.giaTien}$</h5>
+                                <div className="form-group">
+                                    <button onClick={() => {
+                                        history.push(`/user/infojob/${jobItem.congViec.id}`);
+                                    }} className='btn btn-info mr-3' type='button'><i className="fa-solid fa-circle-info"></i> Detail</button>
+                                    {!form ? <>
+                                        <button onClick={() => {
+                                            if (window.confirm(`Do you want delete hire job ID is ${jobItem.id} ?`)) {
+                                                dispatch(deleteHireJobsAcion(jobItem.id));
+                                            }
+                                        }} className='btn btn-danger' type='button'><i className="fa-solid fa-trash-can"></i> Delete</button>
+                                    </> : null}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        })
+    }
+
     const handleChangeFile = async (e) => {
         let file = e.target.files[0];
 
@@ -240,6 +275,11 @@ function ProfilePage(props) {
         infoIsMatch();
         getUserInfo();
         renderSkillTags();
+        renderCertTags();
+        renderHireJob();
+
+        window.scrollTo(0, 0);
+
     }, []);
 
     useEffect(() => {
@@ -508,8 +548,8 @@ function ProfilePage(props) {
                                         </button>
                                     </li>
                                     <li className="nav-item" role="presentation">
-                                        <button className="nav-link" id="pills-rent-job-tab" data-toggle="pill" data-target="#pills-rent" type="button" role="tab">
-                                            Book Jobs
+                                        <button className="nav-link" id="pills-rent-job-tab" data-toggle="pill" data-target="#pills-hire" type="button" role="tab">
+                                            Hire Jobs
                                         </button>
                                     </li>
                                 </ul>
@@ -602,14 +642,25 @@ function ProfilePage(props) {
                                             </fieldset>
                                         </form>
                                     </div>
-                                    <div className="tab-pane fade" id="pills-rent" role="tabpanel">...</div>
-
+                                    <div className="tab-pane fade" id="pills-hire" role="tabpanel">
+                                        <div className={jobHireArr.length >= 2 ? "hire__job__list" : ""}>
+                                            <div className="row">
+                                                {renderHireJob()}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <BackTop>
+                <div className="backTopStyle">
+                    <i className="fa-solid fa-angles-up backTopStyle"></i>
+                </div>
+            </BackTop>
         </>
     )
 }
