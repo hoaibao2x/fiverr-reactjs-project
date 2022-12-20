@@ -4,9 +4,13 @@ import { history } from '../../App'
 function ErrorPage() {
   return (
     <div className='container mx-auto'>
-          <img className='img-fluid' onClick={() => {
-            history.push('/admin');
-          }} src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-17.png.webp" alt="" style={{cursor: 'pointer'}}/>
+      <img className='img-fluid' onClick={() => {
+        if (localStorage.getItem('user_role') === 'ADMIN') {
+          history.push('/admin');
+        } else {
+          history.push('/');
+        }
+      }} src="https://colorlib.com/wp/wp-content/uploads/sites/2/404-error-template-17.png.webp" alt="" style={{ cursor: 'pointer' }} />
     </div>
   )
 }

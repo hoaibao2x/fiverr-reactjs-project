@@ -69,7 +69,7 @@
 .carousel-title {
     position: absolute;
     top: 30%;
-    left: 10%;
+    left: 11%;
 }
 .carousel-title h1 {
     color: #fff;
@@ -88,6 +88,10 @@
     align-items: center;
     font-size: 12px;
     font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    
 }
 .popular-text {
     display: flex;
@@ -114,17 +118,39 @@
     background-color: #fff;
 }
 
-/* Responsive */
-/* @media screen and (max-width: 1199.98px) {
-} */
+.dropdown-toggle::after {
+    content: none;
+}
 
-@media screen and (max-width: 992px) {
+/* Responsive */
+@media screen and (max-width: 1200px) {
+    .carousel-title {
+        top: 30%;
+        left: 3%;
+    }
+}
+@media screen and (max-width: 1194px){
+    .carousel-title {
+        top: 30%;
+        left: 11%;
+    }
+}
+@media screen and (max-width:1024px) {
+    .search {
+        width: 467px;
+    }
+    .carousel-title h1 {
+        font-size: 2rem;
+    }
     .carousel-title {
         top: 40%;
         left: 3%;
     }
-    .carousel-title h1 {
-        font-size: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+    .popular {
+        font-size: 9px;
     }
     .carousel-caption {
         right: -40% !important;
@@ -132,6 +158,17 @@
     .search {
         width: 374px;
     }
-    
-   
+}
+
+@media screen and (max-width: 768px) {
+    .popular{
+        display: none;
+    }
+    .carousel-title h1 {
+        font-size: 1.75rem;
+    }
+    .search {
+        width: 330px;
+    }
+
 }

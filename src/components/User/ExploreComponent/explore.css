@@ -117,11 +117,45 @@
 }
 
 /* Responsive */
-@media screen and (max-width: 992px) {
+@media screen and (max-width:1200px) {
+    .explore-right {
+        right: -2%;
+    }
     .explore {
         padding-bottom: 125px;
     }
+    .explore-img {
+        height: 230px;
+    }
+    .explore-content {
+        font-size: 24px;
+    }
+}
+@media screen and (max-width:1194px) {
     .explore-right {
-        right: -2%;
+        right: -6%;
+    }
+}
+@media screen and (max-width: 992px) {
+   
+ }
+@media screen and (max-width: 768px){
+    .explore {
+        padding-bottom: 80px;
+    }
+    .explore-right{
+        top: -80%;
+    }
+    .explore-title {
+        margin-top: 10px;
+    }
+    .explore-content {
+        font-size: 24px;
+    }
+    .explore-product-market {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 30px 40px;
+        padding: 50px 0;
     }
 }

@@ -13,7 +13,6 @@ export const InfoDetailJobReducer = (state = initialState, action) => {
             return { ...state }
         }
 
-
         default:
             return state
     }

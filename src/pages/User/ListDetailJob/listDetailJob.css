@@ -213,3 +213,50 @@
     justify-content: space-between;
     align-items: center;
 }
+
+/* Responsive */
+@media screen and (max-width:1194px){
+    .services-graphic {
+        padding: 0;
+    }
+    .graphic-bg {
+        min-height: 280px;
+    }
+    .img-logo {
+        height: 40px;
+    }
+    .text-logo {
+        font-size: 12px;
+    }
+    .button-top {
+        padding: 0px 100px;
+    }
+    .button-item {
+        font-size: 10px;
+        padding: 3px 5px;
+        border-radius: 8px;
+    }
+    .button-middle {
+        padding: 0px 60px;
+    }
+    .button-bottom {
+        margin: 0 300px;
+    }
+.job__card {
+    transform: translate(0, 0);
+    transition: all .5s;
+}
+
+.job__card:hover {
+    cursor: pointer;
+    transform: translate(0, -10px);
+}
+.card-img-job {
+    transform: scale(1);
+    transition: all .5s;
+}
+
+.job__card:hover .card-img-job {
+    transform: scale(1.10);
+}
+}

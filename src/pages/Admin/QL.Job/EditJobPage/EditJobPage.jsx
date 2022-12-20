@@ -155,7 +155,8 @@ function EditJobPage(props) {
     getJobArr();
     dispatch(getJobInfoAction(id));
     dispatch(getJobTypeValue());
-    paramIsMatch()
+    paramIsMatch();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -204,7 +205,7 @@ function EditJobPage(props) {
         </Form.Item>
 
         <Form.Item label="Job Name">
-          <Input name='tenCongViec' onChange={formik.handleChange} value={formik.values.tenCongViec} onBlur={formik.handleBlur} allowClear/>
+          <Input name='tenCongViec' onChange={formik.handleChange} value={formik.values.tenCongViec} onBlur={formik.handleBlur} allowClear />
           {formik.touched.tenCongViec && formik.errors.tenCongViec ? <span className='alert alert-danger d-block mt-2'>{formik.errors.tenCongViec}</span> : null}
         </Form.Item>
 
@@ -228,7 +229,7 @@ function EditJobPage(props) {
         </Form.Item>
 
         <Form.Item label="Description">
-          <TextArea name='moTa' onChange={formik.handleChange} value={formik.values.moTa} onBlur={formik.handleBlur} allowClear/>
+          <TextArea name='moTa' onChange={formik.handleChange} value={formik.values.moTa} onBlur={formik.handleBlur} />
           {formik.touched.moTa && formik.errors.moTa ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTa}</span> : null}
         </Form.Item>
 
@@ -241,7 +242,7 @@ function EditJobPage(props) {
         </Form.Item>
 
         <Form.Item label="Short Description">
-          <TextArea name='moTaNgan' onChange={formik.handleChange} value={formik.values.moTaNgan} onBlur={formik.handleBlur} allowClear/>
+          <TextArea name='moTaNgan' onChange={formik.handleChange} value={formik.values.moTaNgan} onBlur={formik.handleBlur} />
           {formik.touched.moTaNgan && formik.errors.moTaNgan ? <span className='alert alert-danger d-block mt-2'>{formik.errors.moTaNgan}</span> : null}
         </Form.Item>
 

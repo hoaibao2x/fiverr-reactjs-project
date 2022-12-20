@@ -1,4 +1,4 @@
-import { getInfoByID, updateUserAvatar, updateUserInfo } from "../../../services/User/getInfoAndUpdate";
+import { deleteHireJobs, getHireJobs, getInfoByID, updateUserAvatar, updateUserInfo } from "../../../services/User/getInfoAndUpdate";
 import { USER_ID, USER_NAME } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
 
@@ -57,6 +57,39 @@ export const updateUserAvatarAction = (formData) => {
         } catch (errors) {
             dispatch(hideLoadingAction);
             alert(errors.response.data.content);
+        }
+    }
+}
+
+export const getHireJobsAction = () => {
+    return async (dispatch) => {
+        try {
+            let result = await getHireJobs();
+
+            let action = {
+                type: 'JOB_HIRE_ARRS',
+                jobHireArr: result.data.content
+            }
+            dispatch(action)
+        } catch (errors) {
+            console.log(errors);
+        }
+    }
+}
+
+export const deleteHireJobsAcion = (hireID) => {
+    return async (dispatch) => {
+        try {
+            dispatch(displayLoadingAction);
+
+            let result = await deleteHireJobs(hireID);
+            alert('Delete hire job success !');
+            dispatch(getHireJobsAction());
+
+            dispatch(hideLoadingAction);
+        } catch (errors) {
+            dispatch(hideLoadingAction);
+            console.log(errors);
         }
     }
 }
