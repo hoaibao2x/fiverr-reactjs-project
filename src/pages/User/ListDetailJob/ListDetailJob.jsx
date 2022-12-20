@@ -6,8 +6,10 @@ import imgHouse from '../../../assets/User/images/Architecture _ Interior Design
 import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
 import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
-import { Rate } from 'antd';
+import { BackTop, Rate } from 'antd';
 import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
+import { history } from '../../../App';
+import { useEffect } from 'react';
 
 
 
@@ -60,7 +62,9 @@ export default function ListDetailJob(props) {
   const renderJob = () => {
     return listjob.map((job, index) => {
       const { congViec } = job
-      return <div className="card" key={index}>
+      return <div onClick={() => {
+        history.push(`/user/infojob/${job.id}`)
+      }} className="card job__card" key={index}>
         <div className='card-img'>
           <img src={congViec.hinhAnh} className="card-img-job" alt="..." />
         </div>
@@ -75,18 +79,21 @@ export default function ListDetailJob(props) {
             </div>
           </div>
           <p className="card-title">{congViec.tenCongViec}</p>
-
-          <Rate allowHalf value={congViec.saoCongViec} />
+          <Rate allowHalf value={congViec.saoCongViec} disabled />
           <span className='card-text'>{congViec.danhGia}</span>
         </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item"><i className="fa-solid fa-heart icon-heart"></i></li>
-          <li className='list-group-item'>STARTING AT ${congViec.giaTien}</li>
+          <li className='list-group-item font-weight-bold'>STARTING AT ${congViec.giaTien}</li>
         </ul>
       </div>
     })
   }
 
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
     <div className='graphic'>
@@ -175,6 +182,12 @@ export default function ListDetailJob(props) {
           <button className='button-item'>Logo Ideas</button>
         </div>
       </div>
+
+      <BackTop>
+        <div className="backTopStyle">
+          <i className="fa-solid fa-angles-up backTopStyle"></i>
+        </div>
+      </BackTop>
     </div>
   )
 }

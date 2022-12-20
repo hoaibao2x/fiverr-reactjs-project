@@ -36,6 +36,18 @@ ul {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #74b9ff;
+  background-color: #28a745;
   border-radius: 10px;
+}
+
+
+.backTopStyle {
+  height: 40;
+  width: 40;
+  line-height: 40px;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: #fff;
+  text-align: center;
+  font-size: 14;
 }

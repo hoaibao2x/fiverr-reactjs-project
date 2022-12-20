@@ -4,7 +4,7 @@ import { getInfoDetailJobAction } from '../../../redux/User/action/getInfoDetail
 import { getCommentByIdJobAction } from '../../../redux/User/action/getCommentByIdJobAction'
 import './info.css';
 import { RightOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
-import { Rate } from 'antd';
+import { BackTop, Rate } from 'antd';
 import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from "../../../utils/varsSetting";
 import { addCommentAction } from '../../../redux/User/action/getCommentByIdJobAction';
 import moment from 'moment';
@@ -419,6 +419,9 @@ export default function InfoDetailJob(props) {
         })
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     return (
         <div className='container-fluid'>
@@ -426,6 +429,11 @@ export default function InfoDetailJob(props) {
                 {renderInfoJob()}
             </div>
 
+            <BackTop>
+                <div className="backTopStyle">
+                    <i className="fa-solid fa-angles-up backTopStyle"></i>
+                </div>
+            </BackTop>
         </div>
     )
 }

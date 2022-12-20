@@ -1,7 +1,8 @@
 const initialState = {
     userInfo: {},
     userSkillArr: [],
-    userCertArr: []
+    userCertArr: [],
+    jobHireArr: []
 }
 
 export const UserReducer = (state = initialState, action) => {
@@ -12,6 +13,10 @@ export const UserReducer = (state = initialState, action) => {
             state.userSkillArr = action.userSkillArr;
             state.userCertArr = action.userCertArr;
             return { ...state }
+
+        case "JOB_HIRE_ARRS":
+            state.jobHireArr = action.jobHireArr;
+            return {...state}
 
         default:
             return state

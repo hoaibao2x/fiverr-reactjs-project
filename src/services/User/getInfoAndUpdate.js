@@ -11,3 +11,11 @@ export const updateUserInfo = (userID, formValue) => {
 export const updateUserAvatar = (formData) => {
     return http.post(`/users/upload-avatar`, formData);
 }
+
+export const getHireJobs = () => {
+    return http.get(`/thue-cong-viec/lay-danh-sach-da-thue`);
+}
+
+export const deleteHireJobs = (hireID) => {
+    return http.delete(`/thue-cong-viec/${hireID}`);
+}

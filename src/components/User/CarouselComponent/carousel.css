@@ -118,6 +118,10 @@
     background-color: #fff;
 }
 
+.dropdown-toggle::after {
+    content: none;
+}
+
 /* Responsive */
 @media screen and (max-width: 1200px) {
     .carousel-title {

@@ -5,11 +5,14 @@ import { Route } from "react-router-dom"
 
 
 export const UserTemplate = (props) => {
-    return <Route exact path={props.path} render={(propsRouter) => {
-        return <Fragment>
-          <Header/>
-            <props.component {...propsRouter} />
-         <Footer/>
-        </Fragment>
-    }} />
+
+  return <Route exact path={props.path} render={(propsRouter) => {
+    return <Fragment>
+      {window.location.pathname !== '/' ? <>
+        <Header />
+      </> : null}
+      <props.component {...propsRouter} />
+      <Footer />
+    </Fragment>
+  }} />
 }
