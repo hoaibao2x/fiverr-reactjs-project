@@ -77,7 +77,7 @@ export default function ServicesComponent(props) {
             <div className='container-fluid'>
                 <Slider className='slider' {...settings}>
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides1} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Build your brand</span>
@@ -87,7 +87,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides2} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Customize your site</span>
@@ -97,7 +97,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides3} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Share your message</span>
@@ -107,7 +107,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides4} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Engage your audience</span>
@@ -117,7 +117,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides5} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Reach more customers</span>
@@ -127,7 +127,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides6} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Unlock growth online</span>
@@ -137,7 +137,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides7} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Color your dreams</span>
@@ -147,7 +147,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides8} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Go global</span>
@@ -157,7 +157,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides9} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Learn your business</span>
@@ -167,7 +167,7 @@ export default function ServicesComponent(props) {
                     </div>
 
                     <div>
-                        <div style={{ position: 'relative', marginRight: '30px' }}>
+                        <div className='slides-item-bg'>
                             <img className='slides-item' src={imgSlides10} alt="" />
                             <div className='slides-item-content'>
                                 <span className='text-item-title'>Showcase your story</span>

@@ -126,7 +126,7 @@ export default function Header(props) {
                   </form>
                 </div>
               </div>
-              <ul className="navbar-nav mr-auto">
+              <ul className="navbar-nav mr-auto" id='seller'>
                 <li className="nav-item active">
                   <a className="nav-link" href="#">Become a Seller</a>
                 </li>

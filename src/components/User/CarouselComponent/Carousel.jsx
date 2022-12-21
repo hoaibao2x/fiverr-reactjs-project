@@ -132,7 +132,7 @@ export default function CarouselComponent(props) {
                                 </NavLink>
                             </div>
                             <ul className="navbar-nav">
-                                <li className="nav-item active">
+                                <li className="nav-itemcrl active">
                                     <a className="nav-link nav-cr" href="#">Become a Seller</a>
                                 </li>
                                 {loginOrNot() ? <>

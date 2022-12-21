@@ -53,7 +53,6 @@
     font-size: 18px;
 }
 
-
 .footer-bottom {
     display: flex;
     justify-content: space-between;
@@ -64,7 +63,7 @@
 .footer-bottom .right {
     padding-top: 16px;
 }
-.section-right{
+.section-right {
     padding-left: 10px;
 }
 .footer-bottom .text-body-left {
@@ -86,7 +85,7 @@
     margin-right: 24px;
     padding-bottom: 0;
 }
-.footer-bottom .right-icon i{
+.footer-bottom .right-icon i {
     font-size: 25px;
 }
 .label {
@@ -100,15 +99,15 @@
     color: #74767e;
     font-weight: 600;
     font-size: 16px;
-    transition: all .5s ;
+    transition: all 0.5s;
 }
-.button-right:hover{
-    background-color: #EFEFEF;
+.button-right:hover {
+    background-color: #efefef;
 }
 .collapse:not(.show) {
     display: block;
 }
-.icon-menu-footer{
+.icon-menu-footer {
     display: none;
 }
 
@@ -119,8 +118,18 @@
         font-size: 12px;
         padding-top: 12px;
     }
- }
- @media screen and (max-width:768px){
+}
+@media screen and (max-width: 834px) {
+    .footer-bottom {
+        display: block;
+        padding-bottom: 30px;
+    }
+    .footer-bottom .left,
+    .footer-bottom .right {
+        justify-content: center;
+    }
+}
+@media screen and (max-width:736px){
     .footer-collapsibles {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -129,24 +138,15 @@
         padding: 60px 0;
         border-top: 1px solid #e4e5e7;
     }
-    .footer-bottom {
-        display: block;
-        align-items: center;
-        padding-bottom: 30px;
-    }
-    .footer-bottom .right {
-       display: flex;
-       justify-content: flex-start;
-    }
     .footer-bottom .right-icon {
        padding: 0;
     }
- }
+}
 
- @media screen and (max-width:567px){
-    .footer-title-text{
+@media screen and (max-width: 567px) {
+    .footer-title-text {
         display: flex;
-        justify-content:space-between;
+        justify-content: space-between;
         cursor: pointer;
     }
     .footer-collapsibles {
@@ -167,7 +167,7 @@
     .collapse:not(.show) {
         display: none;
     }
-    .icon-menu-footer{
+    .icon-menu-footer {
         display: block;
     }
     .footer-bottom {
@@ -191,13 +191,12 @@
     }
     .footer-bottom .right-icon {
         display: flex;
-        padding-left: 32px;
+        padding-left: 60px;
         align-items: center;
         justify-content: center;
     }
     .section-right {
-        padding-left: 10px;
+        padding-left: 30px;
         margin-top: 10px;
     }
-    
- }
+}
