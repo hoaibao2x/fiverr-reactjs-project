@@ -137,10 +137,14 @@
     font-size: 0.8em;
 }
 
-.dropdown-toggle i {
+.dropdown-toggle i:nth-of-type(2) {
     transition: all .5s;
 }
 
-.dropdown-toggle:focus i {
+.dropdown-toggle:focus i:nth-of-type(2) {
     transform: rotate(180deg);
+}
+
+.btn:focus {
+    box-shadow: none;
 }

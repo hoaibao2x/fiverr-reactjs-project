@@ -228,13 +228,13 @@ function ProfilePage(props) {
             return <div className="col-md-12" key={jobItem.id}>
                 <div className="card mb-3">
                     <div className="row no-gutters hire__job__item">
-                        <div className="col-md-4">
-                            <img className='img-fluid' src={jobItem.congViec.hinhAnh} alt="..." />
+                        <div className="col-md-12 col-lg-4">
+                            <img className='img-fluid item__cover' src={jobItem.congViec.hinhAnh} alt="..." />
                         </div>
-                        <div className="col-md-8">
+                        <div className="col-md-12 col-lg-8">
                             <div className="card-body">
                                 <h5 className="card-title">{jobItem.congViec.tenCongViec.length > 50 ? jobItem.congViec.tenCongViec.substr(0, 30) + ' ...' : jobItem.congViec.tenCongViec}</h5>
-                                <p className="card-text">{jobItem.congViec.moTa.length > 50 ? jobItem.congViec.moTa.substr(0, 150) + ' ...' : jobItem.congViec.moTa}</p>
+                                <p className="card-text text-dark m-0">{jobItem.congViec.moTa.length > 50 ? jobItem.congViec.moTa.substr(0, 150) + ' ...' : jobItem.congViec.moTa}</p>
                                 <span className='font-weight-bold'>Rate:</span> <Rate name='saoCongViec' value={jobItem.congViec.saoCongViec} disabled />
                                 <h5 className='font-weight-bold'>Price: {jobItem.congViec.giaTien}$</h5>
                                 <div className="form-group">
@@ -313,15 +313,15 @@ function ProfilePage(props) {
                                         <button onClick={() => {
                                             disFormOrNot(!form);
                                         }} className='btn btn-info' type='button'>Edit Info</button>
-                                    </> : <>
+                                    </> : <div className='action__info d-flex justify-content-center'>
                                         <button onClick={() => {
                                             disFormOrNot(!form);
                                             setImgSrc(localStorage.getItem('user_avatar'));
-                                        }} className='btn btn-danger' type='button'>Cancel Edit</button>
+                                        }} className='btn btn-danger btn__cancel__edit mb-2' type='button'>Cancel Edit</button>
                                         {!upAvatarStatus ? <>
                                             <button onClick={() => {
                                                 setAvatarStatus(!upAvatarStatus)
-                                            }} className='btn btn-success ml-2' type='button'>Change Avatar</button>
+                                            }} className='btn btn-success' type='button'>Change Avatar</button>
 
                                         </> : <>
                                             <button onClick={() => {
@@ -329,7 +329,7 @@ function ProfilePage(props) {
                                                 setImgSrc(localStorage.getItem('user_avatar'));
                                             }} className='btn btn-danger ml-2' type='button'>Cancel Change</button>
                                         </>}
-                                    </>}
+                                    </div>}
                                     <hr />
                                     <div className="card__info">
                                         <div className="info__top">
@@ -540,7 +540,7 @@ function ProfilePage(props) {
                             </div>
                         </div>
                         <div className="col-md-8">
-                            <div>
+                            <div className='content__right'>
                                 <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li className="nav-item" role="presentation">
                                         <button className="nav-link active" id="pills-info-tab" data-toggle="pill" data-target="#pills-info" type="button" role="tab">

@@ -83,3 +83,62 @@
     padding-left: 30px;
     padding-right: 10px;
 }
+
+.action__info {
+    flex-direction: column;
+}
+
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1194px) {
+
+    .card__info .info__bottom {
+        flex-direction: column;
+        text-align: left;
+        margin-top: 5px;
+    }
+
+    .card__bottom h5 {
+        font-size: 20px;
+    }
+
+    .desc__top,
+    .desc__mid {
+        flex-direction: column;
+    }
+
+    .hire__job__item {
+        padding-left: 0;
+    }
+
+    .hire__job__item .item__cover {
+        margin-top: 18px;
+        padding-left: 18px;
+    }
+
+}
+
+@media screen and (max-width: 1112px) {
+
+    .card__info .info__bottom {
+        flex-direction: row;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    .content__right {
+        margin-top: 18px;
+    }
+
+    .hire__job__item .item__cover {
+        margin-top: 8px;
+        padding-left: 10px;
+    }
+
+}
+
+/* END RESPONSIVE */
