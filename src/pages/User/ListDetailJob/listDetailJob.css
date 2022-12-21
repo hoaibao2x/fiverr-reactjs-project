@@ -1,33 +1,11 @@
 .graphic {
     margin: 0 60px;
 }
-.graphic-bg {
-    background-image: url(../../../assets/User/images/graphics-design-desktop.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    min-height: 320px;
-    position: relative;
+
+.graphic-bg img {
+    margin: 30px 0;
 }
-.graphic-content {
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-}
-.graphic-title {
-    margin: 0;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 50px;
-}
-.graphic-text {
-    font-size: 18px;
-    letter-spacing: 3px;
-}
+
 .graphic-bg-under {
     position: relative;
     display: flex;
@@ -219,9 +197,7 @@
     .services-graphic {
         padding: 0;
     }
-    .graphic-bg {
-        min-height: 280px;
-    }
+
     .img-logo {
         height: 40px;
     }
