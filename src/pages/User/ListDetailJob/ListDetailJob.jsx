@@ -99,7 +99,7 @@ export default function ListDetailJob(props) {
   return (
     <div className='graphic'>
       <div className='graphic-bg'>
-        {window.screen.width >= 414 && window.screen.height >= 736 ? <>
+        {window.innerWidth >= 414 && window.innerHeight >= 736 ? <>
           <img className='img-fluid' src={imgBgUpdate} alt="" />
         </> : <>
           Haha
