@@ -49,6 +49,13 @@ export default function ServicesComponent(props) {
         prevArrow: <SamplePrevArrow />,
         responsive: [
             {
+                breakpoint: 1194,
+                settings: {
+                    slidesToShow: 3,
+                    rows: 1,
+                }
+            },
+            {
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 3,
@@ -59,7 +66,6 @@ export default function ServicesComponent(props) {
                 breakpoint: 576,
                 settings: {
                     slidesToShow: 1,
-                    rows: 1,
                 }
             }
         ]

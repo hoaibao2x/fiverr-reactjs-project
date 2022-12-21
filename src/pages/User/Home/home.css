@@ -27,3 +27,27 @@
 .ant-back-top {
     right: 50px;
 }
+
+/* Responsive */
+@media screen and (max-width:567px){
+    .item-none{
+        display: none;
+    }
+    .tructed-by {
+        padding-top: 0;
+    }
+    .tructed{
+        display: none;
+    }
+    .tructed-img {
+      padding: 0;
+      margin: 0;
+    }
+    .tructed-img-item {
+        margin-right: 20px;
+    }
+    .ant-back-top {
+        right: 20px;
+        bottom: 20px;
+    }
+}
