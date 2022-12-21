@@ -120,22 +120,6 @@ const EditUser = (props) => {
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      {/* {
-  "id": 0,
-  "name": "string",
-  "email": "long@gmail.com",
-  "password": "string",
-  "phone": "string",
-  "birthday": "string",
-  "gender": true,
-  "role": "string",
-  "skill": [
-    "string"
-  ],
-  "certification": [
-    "string"
-  ]
-} */}
       <Form.Item label="họ tên">
         <Input name='name' onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur} />
       </Form.Item>

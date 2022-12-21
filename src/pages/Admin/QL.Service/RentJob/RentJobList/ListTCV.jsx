@@ -3,7 +3,7 @@ import { Table, Input, Button } from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { listThueCongViec } from '../../../../../services/Admin/UserService/UserService';
-import { listThueCongViecAction, xoaTCVAction } from '../../../../../redux/Admin/action/UserAction';
+import { listThueCongViecAction, searchTCVAction, xoaTCVAction } from '../../../../../redux/Admin/action/UserAction';
 import { NavLink } from 'react-router-dom';
 import { DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
 import { history } from '../../../../../App';
@@ -12,47 +12,37 @@ import { history } from '../../../../../App';
 const { Search } = Input;
 
 function ListTCV() {
-    let dispatch = useDispatch();
-    let {arrTCV} =  useSelector((state) => state.QLNDreducer);
-    useEffect(() => {
-        listThueCongViec();
-      }, []);
-      const listThueCongViec = () => {
-        let action = listThueCongViecAction();
-        dispatch(action);
-      };
+  let dispatch = useDispatch();
+  let { arrTCV } = useSelector((state) => state.QLNDreducer);
+  useEffect(() => {
+    listThueCongViec();
+  }, []);
+  const listThueCongViec = () => {
+    let action = listThueCongViecAction();
+    dispatch(action);
+  };
 
-      	
-// Example Value
-// Model
-// {
-//   "id": 0,
-//   "maCongViec": 0,
-//   "maNguoiThue": 0,
-//   "ngayThue": "string",
-//   "hoanThanh": true
-// }
-const columns = [
+  const columns = [
     {
       title: "ID",
       dataIndex: "id",
-    //   width:'3%',
+      //   width:'3%',
     },
     {
       title: 'Mã Công Việc',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
-    //   width:'5%'  
+      //   width:'5%'  
     },
     {
       title: 'Mã Người Thuê',
       dataIndex: 'maNguoiThue',
-    //   width:'5%'
+      //   width:'5%'
     },
     {
       title: 'ngày thuê',
       dataIndex: 'ngayThue',
-    //   width:'7%'
+      //   width:'7%'
       // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       // sortDirections: ['descend','ascend'],
     },
@@ -63,10 +53,10 @@ const columns = [
     {
       title: "Chỉnh Sửa",
       dataIndex: "id",
-      render: (text, users) => {  
+      render: (text, users) => {
         return <>
           <NavLink key={1} className="" to={`/admin/list-rent-job/edit/${users.id}`}><EditOutlined /> </NavLink>
-          <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
+          <span style={{ cursor: 'pointer' }} key={2} className="" onClick={() => {
             if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
               dispatch(xoaTCVAction(users.id));
             }
@@ -78,11 +68,11 @@ const columns = [
 
   const data = arrTCV;
 
-  const onSearch = value => {
-    // console.log(value)
-    // dispatch(searchUserAction(value))
-
-
+  const onSearch = (value) => {
+    if (value !== '') {
+      dispatch(searchTCVAction(value));
+    }
+    listThueCongViec()
   };
 
   const onChange = (pagination, filters, sorter, extra) => {
@@ -97,7 +87,7 @@ const columns = [
         history.push('/admin/list-rent-job/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm người thuê</button>
 
-      <Search className='mb-5' placeholder="input search text" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="nhập mã ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

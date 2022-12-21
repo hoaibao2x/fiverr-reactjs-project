@@ -25,20 +25,6 @@ function DanhSachUser() {
     dispatch(action);
   };
 
-  // {
-  //   "id": 1459,
-  //   "name": "Khánh",
-  //   "email": "trongtin2309@gmail.com",
-  //   "password": "",
-  //   "phone": null,
-  //   "birthday": "Invalid date",
-  //   "avatar": null,
-  //   "gender": false,
-  //   "role": "ADMIN",
-  //   "skill": null,
-  //   "certification": null,
-  //   "bookingJob": []
-  // },
 
   const columns = [
     {
@@ -102,32 +88,10 @@ function DanhSachUser() {
       title: 'phân loại',
       dataIndex: 'role',
     },
-    // {
-    //   title: 'kỹ năng',
-    //   dataIndex: 'skill',
-    
-    // },
-    // {
-    //   title: 'chứng nhận',
-    //   dataIndex: 'certification',
-     
-    // },
-    // {
-    //   title: 'đặt công việc',
-    //   dataIndex: 'bookingJob',
-    // },
     {
       title: "Chỉnh Sửa",
       dataIndex: "id",
       render: (text, users) => {  
-        // return <>
-        //   <NavLink key={1} className="" to={`/admin/list-user/edituser/${users.id}`}><EditOutlined /> </NavLink>
-        //   <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
-        //     if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
-        //       dispatch(xoaUserAction(users.id));
-        //     }
-        //   }}><DeleteOutlined /></span>
-        // </>
         return <>
         <button key={1} onClick={() => {
           dispatch(LayThongTinUserAction(users.id))
@@ -144,11 +108,12 @@ function DanhSachUser() {
 
   const data = arrUser;
 
+
   const onSearch = (value) => {
     if (value !== '') {
       dispatch(searchUserAction(value));
     }
-    DanhSachUser()
+    danhSachUser()
   };
 
   const onChange = (pagination, filters, sorter, extra) => {
@@ -157,13 +122,13 @@ function DanhSachUser() {
 
   return (
     <div className=" mx-auto my-3">
-      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink> Quản lý người dùng</h4>
+      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>  Quản lý người dùng</h4>
 
       <button onClick={() => {
         history.push('/admin/list-user/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm người dùng</button>
 
-      <Search className='mb-5' placeholder="input search text" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="nhập họ tên người dùng" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

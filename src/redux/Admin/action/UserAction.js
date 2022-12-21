@@ -1,5 +1,5 @@
 import { history } from "../../../App";
-import { binhLuan, CapNhatUser, danhSachUser, getBinhLuan, getTCV, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, putBinhLuan, putTCV, searchUser, ThemUser, ThemUserupload, xoaBL, xoaTCV, xoaUser } from "../../../services/Admin/UserService/UserService";
+import { binhLuan, CapNhatUser, danhSachUser, getBinhLuan, getTCV, LayThongTinUser, listThueCongViec, postBinhLuan, postThueCongViec, putBinhLuan, putTCV, searchCMT, searchTCV, searchUser, ThemUser, ThemUserupload, xoaBL, xoaTCV, xoaUser } from "../../../services/Admin/UserService/UserService";
 import { USER_AVATAR,USER_ID } from "../../../utils/varsSetting";
 
 
@@ -113,7 +113,7 @@ export const searchUserAction = (name) => {
             console.log(result.data.content);
             dispatch({
                 type : "TIM_USER",
-                timUser:result.data.content
+                arrUser:result.data.content
             })
 
 
@@ -217,6 +217,25 @@ export const xoaTCVAction = (id) => {
     }
 }
 
+export const searchTCVAction = (id) => {
+    return async (dispatch) => {
+        try {
+            const result = await searchTCV(id);         
+            console.log(result.data.content);
+            dispatch({
+                type : "TIM_TCV",
+                arrTCV:result.data.content
+            })
+
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}
+
 
 
 
@@ -286,3 +305,21 @@ export const xoaBLAction = (id) => {
     }
 }
 
+export const searchCMTAction = (maCongViec) => {
+    return async (dispatch) => {
+        try {
+            const result = await searchCMT(maCongViec);         
+            console.log(result.data.content);
+            dispatch({
+                type : "TIM_CMT",
+                arrBL:result.data.content
+            })
+
+
+        } catch (error) {
+            console.log(error.response?.data);
+            alert("Thao tác thất bại!")
+        }
+
+    }
+}

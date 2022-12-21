@@ -3,7 +3,7 @@ import { Table, Input, Button } from "antd";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { binhLuan } from '../../../../../services/Admin/UserService/UserService';
-import { BinhLuanAction, xoaBLAction } from '../../../../../redux/Admin/action/UserAction';
+import { BinhLuanAction, searchCMTAction, xoaBLAction } from '../../../../../redux/Admin/action/UserAction';
 import { NavLink } from 'react-router-dom';
 import { DeleteOutlined, EditOutlined, SearchOutlined } from '@ant-design/icons';
 import { history } from '../../../../../App';
@@ -12,44 +12,36 @@ import { history } from '../../../../../App';
 const { Search } = Input;
 
 function ListComment() {
-    let dispatch = useDispatch();
-    let {arrBL} =  useSelector((state) => state.QLNDreducer);
-    useEffect(() => {
-      binhLuan();
-      }, []);
-      const binhLuan = () => {
-        let action = BinhLuanAction();
-        dispatch(action);
-      };
-
-      	
-      // "id": 331,
-      // "maCongViec": 6,
-      // "maNguoiBinhLuan": 1581,
-      // "ngayBinhLuan": "17/11/2022",
-      // "noiDung": "duong1",
-      // "saoBinhLuan": 5
-const columns = [
+  let dispatch = useDispatch();
+  let { arrBL } = useSelector((state) => state.QLNDreducer);
+  useEffect(() => {
+    binhLuan();
+  }, []);
+  const binhLuan = () => {
+    let action = BinhLuanAction();
+    dispatch(action);
+  };
+  const columns = [
     {
       title: "ID",
       dataIndex: "id",
-    //   width:'3%',
+      //   width:'3%',
     },
     {
       title: 'Mã Công Việc',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
-    //   width:'5%'  
+      //   width:'5%'  
     },
     {
       title: 'Mã Người Thuê',
       dataIndex: 'maNguoiBinhLuan',
-    //   width:'5%'
+      //   width:'5%'
     },
     {
       title: 'ngày thuê',
       dataIndex: 'ngayBinhLuan',
-    //   width:'7%'
+      //   width:'7%'
       // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       // sortDirections: ['descend','ascend'],
     },
@@ -65,36 +57,28 @@ const columns = [
     {
       title: "Chỉnh Sửa",
       dataIndex: "id",
-      render: (text, users) => {  
+      render: (text, users) => {
         return <>
           <NavLink key={1} className="" to={`/admin/list-comment/edit/${users.id}`}><EditOutlined /> </NavLink>
-          <span style={{cursor:'pointer'}} key={2} className="" onClick={() => {
+          <span style={{ cursor: 'pointer' }} key={2} className="" onClick={() => {
             if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
               dispatch(xoaBLAction(users.id));
             }
           }}><DeleteOutlined /></span>
         </>
-      //    return <>
-      //    <button key={1} onClick={() => {
-      //      dispatch(getJobInfoAction(users.id))
-      //    }} className="btn btn-info mr-2"><i className="fa-solid fa-pen-to-square"></i></button>
-      //    <button key={2} onClick={() => {
-      //        if (window.confirm("bạn có chắt muốn xoá dữ liệu của ID : " + users.id)) {
-       // dispatch(xoaBLAction(users.id));
-     // }
-      //    }} className="btn btn-danger"><i className="fa-solid fa-trash-can"></i></button>
-      //  </>
+        
       }
     }
   ];
 
   const data = arrBL;
 
-  const onSearch = value => {
-    // console.log(value)
-    // dispatch(searchUserAction(value))
 
-
+  const onSearch = (value) => {
+    if (value !== '') {
+      dispatch(searchCMTAction(value));
+    }
+    binhLuan()
   };
 
   const onChange = (pagination, filters, sorter, extra) => {
@@ -109,7 +93,7 @@ const columns = [
         history.push('/admin/list-comment/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm Bình Luận</button>
 
-      <Search className='mb-5' placeholder="input search text" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="nhập mã công việc" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

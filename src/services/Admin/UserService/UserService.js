@@ -24,8 +24,11 @@ export const xoaUser = (id) => {
     return http.delete(`/users?id=${id}`);
 }
 
-export const searchUser = (name) => {
-    return http.get(`/users/search/${name}`)
+export const searchUser = (name = "") => {
+    if (name.trim() !== "") {
+        return http.get(`/users/search/${name}`)
+    }
+    return http.get('/users');
 }
 
 
@@ -62,6 +65,15 @@ export const xoaTCV = (id) => {
     return http.delete(`/thue-cong-viec/${id}`);
 }
 
+
+
+
+export const searchTCV = (id) => {
+    return http.post(`/thue-cong-viec/hoan-thanh-cong-viec/${id}`)
+}
+
+
+
 // BÌNH LUẬN
 export const binhLuan = () => {
     return http.get(`/binh-luan`)
@@ -77,4 +89,11 @@ export const getBinhLuan = (id) => {
 
 export const xoaBL = (id) => {
     return http.delete(`/binh-luan/${id}`);
+}
+
+export const searchCMT = (maCongViec = "") => {
+    if (maCongViec.trim() !== "") {
+        return http.get(`/binh-luan/lay-binh-luan-theo-cong-viec/${maCongViec}`)
+    }
+
 }

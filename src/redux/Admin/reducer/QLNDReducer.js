@@ -18,7 +18,7 @@ export const QLNDreducer = (state = initialState, action) => {
             return { ...state }
         case "TIM_USER":
             console.log(action.timUser);
-            state.timUser = action.timUser
+            state.arrUser = action.arrUser
             return { ...state }
         case "GET_THONG_TIN_USER":
 
@@ -30,11 +30,24 @@ export const QLNDreducer = (state = initialState, action) => {
         case "LIST_TCV":
             state.arrTCV = action.arrTCV
             return { ...state }
+
+        case "GET_THONG_TIN_TCV":
+            state.thongtinTCV = action.thongtinTCV
+            return { ...state }
+            
+            case "TIM_TCV":
+                console.log(action.arrTCV);
+                state.arrTCV = action.arrTCV
+                return { ...state }
+
+        // BÌNH LUẬN
+
         case "LIST_BL":
             state.arrBL = action.arrBL
             return { ...state }
-        case "GET_THONG_TIN_TCV":
-            state.thongtinTCV = action.thongtinTCV
+        case "TIM_CMT":
+            console.log(action.arrBL);
+            state.arrBL = action.arrBL
             return { ...state }
 
         default:
