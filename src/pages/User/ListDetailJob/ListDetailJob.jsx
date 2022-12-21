@@ -10,6 +10,7 @@ import { BackTop, Rate } from 'antd';
 import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
 import { history } from '../../../App';
 import { useEffect } from 'react';
+import imgBgUpdate from '../../../assets/User/images/graphics-design-desktop-update.jpg'
 
 
 
@@ -98,10 +99,11 @@ export default function ListDetailJob(props) {
   return (
     <div className='graphic'>
       <div className='graphic-bg'>
-        <div className='graphic-content'>
-          <h2 className='graphic-title'>Graphic & Design</h2>
-          <p className='graphic-text'>Design to make you stand out </p>
-        </div>
+        {window.screen.width >= 414 && window.screen.height >= 736 ? <>
+          <img className='img-fluid' src={imgBgUpdate} alt="" />
+        </> : <>
+          Haha
+        </>}
       </div>
       <div className='graphic-bg-under'>
         <div className='graphic-left'>

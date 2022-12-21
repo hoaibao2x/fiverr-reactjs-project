@@ -137,7 +137,7 @@ export default function CarouselComponent(props) {
                                 </li>
                                 {loginOrNot() ? <>
                                     <div className="btn-group">
-                                        <button type="button" id='btn__info' className="info__light btn dropdown-toggle" data-toggle="dropdown" data-display="static" aria-expanded="false">
+                                        <button type="button" id='btn__info' className="info__light btn dropdown-toggle text-white" data-toggle="dropdown" data-display="static" aria-expanded="false">
                                             <i className="fa-solid fa-circle-user"></i> {localStorage.getItem(USER_NAME) !== null ? <>
                                                 <span>{localStorage.getItem(USER_NAME)}</span>
                                             </> : null} <i className="fa-solid fa-angle-up"></i>
