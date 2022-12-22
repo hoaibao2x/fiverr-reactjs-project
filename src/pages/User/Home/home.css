@@ -1,6 +1,5 @@
-
-.bg-tructed-by{
-    background-color: #FAFAFA;
+.bg-tructed-by {
+    background-color: #fafafa;
 }
 
 .tructed-by {
@@ -26,4 +25,49 @@
 
 .ant-back-top {
     right: 50px;
+}
+
+/* Responsive */
+@media screen and (max-width: 736px) {
+    .tructed {
+        display: none;
+    }
+    .tructed-img {
+        padding: 0;
+        margin: 0;
+    }
+    .ant-back-top {
+        right: 10px;
+        bottom: 20px;
+    }
+}
+@media screen and (max-width: 567px) {
+    .item-none {
+        display: none;
+    }
+    .tructed-by {
+        padding-top: 0;
+    }
+    .tructed-img-item {
+        margin-right: 20px;
+    }
+    .ant-back-top {
+        right: 5px;
+        bottom: 5px;
+    }
+    .backTopStyle {
+        height: 30;
+        width: 30;
+        line-height: 35px;
+        border-radius: 5px;
+        background-color: #28a745;
+        color: #fff;
+        text-align: center;
+        font-size: 14;
+    }
+}
+@media screen and (max-width:375px){
+    .tructed-img-item {
+        margin-right: 10px;
+    }
 }

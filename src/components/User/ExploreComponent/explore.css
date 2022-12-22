@@ -117,9 +117,10 @@
 }
 
 /* Responsive */
-@media screen and (max-width:1200px) {
+
+@media  screen and (max-width:1194px) {
     .explore-right {
-        right: -2%;
+        right: -8%;
     }
     .explore {
         padding-bottom: 125px;
@@ -131,31 +132,83 @@
         font-size: 24px;
     }
 }
-@media screen and (max-width:1194px) {
+@media screen and (max-width:1024px) {
     .explore-right {
-        right: -6%;
+        right: -4%;
     }
 }
-@media screen and (max-width: 992px) {
-   
+
+@media screen and (max-width: 834px) {
+    .explore-right {
+        right: -2%;
+        top: -73%;
+    }
  }
-@media screen and (max-width: 768px){
-    .explore {
-        padding-bottom: 80px;
-    }
-    .explore-right{
-        top: -80%;
-    }
-    .explore-title {
-        margin-top: 10px;
-    }
-    .explore-content {
-        font-size: 24px;
+
+@media screen and (max-width:736px){
+    .explore-right {
+        right: 0;
+        top: -63%;
     }
     .explore-product-market {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        grid-gap: 30px 40px;
-        padding: 50px 0;
+        grid-gap: 20px 20px;
+        text-align: center;
+        padding: 30px 0;
+    }
+    .explore-item {
+        font-size: 38px;
+        color: #a2f4c0;
+    }
+    .explore {
+        padding-bottom: 80px;
+    }
+}
+
+@media screen and (max-width: 567px){
+    .explore-img {
+        height: 180px;
+    }
+    .explore-left {
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        left: 1%;
+    }
+    .explore-left::before {
+        margin-top: 8px;
+        left: 27%;
+    }
+    .explore-right {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        right: 2%;
+        top: -44%;
+    }
+    .explore-right::before {
+        margin-top: 8px;
+        left: 27%;
+    }
+    .explore-content {
+        font-size: 20px;
+    }
+    .explore {
+        padding-bottom: 80px;
+    }
+    .explore-product-market {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+        text-align: center;
+        padding: 30px 0;
+    }
+    .explore-market h2 {
+      font-size: 30px;
+    }
+    .explore-item {
+        font-size: 36px;
     }
 }
