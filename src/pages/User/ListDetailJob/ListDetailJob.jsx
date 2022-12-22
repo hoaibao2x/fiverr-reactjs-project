@@ -23,6 +23,8 @@ export default function ListDetailJob(props) {
 
   const { listDetail, listjob } = useSelector(state => state.ManegeListJobReducer);
 
+  console.log(window.innerWidth)
+
 
   const listGp = () => {
     return listDetail.map((nameJob, index) => {
@@ -145,7 +147,7 @@ export default function ListDetailJob(props) {
             <div className='graphic-arrow-right' onClick={() => slider?.current?.slickNext()}></div>
           </div>
         </> : null}
-        
+
       </div>
 
       {renderResponsive() ? <>
@@ -204,50 +206,50 @@ export default function ListDetailJob(props) {
         <Slider ref={slider} {...settings}>
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgLogo} alt="logo_design_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>Logo Design</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Logo Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgHouse} alt="interior_design_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>Interior Design</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Interior Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgStart} alt="image_edit_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>Image Editing</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Image Editing</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgMonkey} alt="nft_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>NFT Art</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>NFT Art</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgShirt} alt="t_shirt_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>T-Shirts Design</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>T-Shirts Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
             <img className='img-logo' src={imgHeart} alt="media_design_img" />
-              <div className="d-inline-flex justify-content-center align-items-center">
-                <span className='text-logo'>Media Design</span>
-                <i className="fa-solid fa-arrow-right"></i>
-              </div>
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Media Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
         </Slider>
@@ -264,32 +266,47 @@ export default function ListDetailJob(props) {
       </div>
       <div className='services-graphic'>
         <h3 className='services-graphic-title'>Services Ralated To Graphic & Design</h3>
+
         <div className='button-top'>
           <button className='button-item'>Minimalist Logo Design</button>
           <button className='button-item'>Signature logo design</button>
           <button className='button-item'>Mascot logo design</button>
           <button className='button-item'>3d logo design</button>
           <button className='button-item'>Hand drawn logo design</button>
-          <button className='button-item'>VItage logo design</button>
-          <button className='button-item'>Remove background</button>
+          <button className='button-item'>Vintage design</button>
+          <button className='button-item'>Remove texture</button>
         </div>
+
         <div className='button-middle'>
           <button className='button-item'>Photo restoration</button>
           <button className='button-item'>Photo retouChing</button>
           <button className='button-item'>Image resize</button>
-          <button className='button-item'>Product label design</button>
+          <button className='button-item'>Product design</button>
           <button className='button-item'>Custom twitch overlay</button>
-          <button className='button-item'>Custom twitch emotes</button>
+          <button className='button-item'>Custom emotes</button>
           <button className='button-item'>Gaming logo</button>
-          <button className='button-item'>Children book llustration</button>
+          <button className='button-item'>Book llustration</button>
         </div>
-        <div className='button-bottom'>
-          <button className='button-item'>Instagram design</button>
-          <button className='button-item'>Movle poster design</button>
-          <button className='button-item'>Box design</button>
-          <button className='button-item'>Logo maker</button>
-          <button className='button-item'>Logo Ideas</button>
-        </div>
+
+        {renderResponsive() ? <>
+          <div className="d-flex justify-content-center">
+            <button className='button-item mr-3'>Instagram design</button>
+            <button className='button-item'>Movie poster design</button>
+          </div>
+          <div className="d-flex justify-content-center mt-3">
+            <button className='button-item'>Box design</button>
+            <button className='button-item mx-3'>Logo maker</button>
+            <button className='button-item'>Logo Ideas</button>
+          </div>
+        </> : <>
+          <div className='button-bottom'>
+            <button className='button-item'>Instagram design</button>
+            <button className='button-item'>Movie poster design</button>
+            <button className='button-item px-2'>Box design</button>
+            <button className='button-item'>Logo maker</button>
+            <button className='button-item'>Logo Ideas</button>
+          </div>
+        </>}
       </div>
 
       <BackTop>

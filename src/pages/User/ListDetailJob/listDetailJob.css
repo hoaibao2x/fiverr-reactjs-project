@@ -78,11 +78,6 @@
 }
 
 /*  */
-/* .graphic-btn {
-    margin-bottom: 50px;
-    display: flex;
-    justify-content: space-between;
-} */
 
 .graphic-left h3 {
     margin: 0;
@@ -184,8 +179,8 @@
 
 .button-item {
     border: 1px solid transparent;
-    border-radius: 10px;
-    padding: 3px 12px;
+    border-radius: 20px;
+    padding: 3px 0;
     background: #efeff0;
     border-color: #efeff0;
     color: #74767e;
@@ -193,30 +188,35 @@
 
 }
 
-.button-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
+.button-top,
+.button-middle,
+.button-bottom {
+    display: grid;
+    grid-gap: 10px;
 }
 
-.button-bottom {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 0 300px;
+.button-top {
+    width: 95%;
+    grid-template-columns: repeat(7, 1fr);
+    margin: 0 auto;
 }
 
 .button-middle {
     margin: 18px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    grid-template-columns: repeat(8, 1fr);
 }
+
+.button-bottom {
+    width: 60%;
+    margin: 0 auto;
+    grid-template-columns: repeat(5, 1fr);
+}
+
 
 /* Responsive */
 
 @media screen and (max-width:1194px) {
+
     .services-graphic {
         padding: 0;
     }
@@ -229,22 +229,10 @@
         font-size: 12px;
     }
 
-    .button-top {
-        padding: 0px 100px;
-    }
-
     .button-item {
         font-size: 10px;
         padding: 3px 5px;
         border-radius: 8px;
-    }
-
-    .button-middle {
-        padding: 0px 60px;
-    }
-
-    .button-bottom {
-        margin: 0 300px;
     }
 
     .job__card {
@@ -304,6 +292,52 @@
 
     .groupJob {
         grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* Button top grid style */
+
+    .button-top .button-item:nth-of-type(1),
+    .button-top .button-item:nth-of-type(2),
+    .button-top .button-item:nth-of-type(5) {
+        grid-column: 1/9;
+    }
+
+    .button-top .button-item:nth-of-type(3),
+    .button-top .button-item:nth-of-type(6) {
+        grid-column: 1/5;
+    }
+
+    .button-top .button-item:nth-of-type(4),
+    .button-top .button-item:nth-of-type(7) {
+        grid-column: 5/9;
+    }
+
+    /* Button middle grid style */
+
+    .button-middle .button-item:nth-of-type(1),
+    .button-middle .button-item:nth-of-type(3) {
+        grid-column: 1/5;
+    }
+
+    .button-middle .button-item:nth-of-type(2),
+    .button-middle .button-item:nth-of-type(4) {
+        grid-column: 5/9;
+    }
+
+    .button-middle .button-item:nth-of-type(5) {
+        grid-column: 1/9;
+    }
+
+    .button-middle .button-item:nth-of-type(6) {
+        grid-column: 1/4;
+    }
+
+    .button-middle .button-item:nth-of-type(7) {
+        grid-column: 4/9;
+    }
+
+    .button-middle .button-item:nth-of-type(8) {
+        grid-column: 1/9;
     }
 
 }

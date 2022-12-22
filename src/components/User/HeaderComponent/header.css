@@ -152,3 +152,27 @@
 .btn:focus {
     box-shadow: none;
 }
+
+/* RESPONSIVE */
+
+    @media screen and (max-width: 1194px) {
+
+        .categories-menu {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+    }
+
+    @media screen and (max-width: 736px) {
+
+        .categories-menu {
+            display: grid;
+            grid-template-columns: repeat(2, 2fr);
+            grid-gap: 20px;
+        }
+
+    }
+
+/* END RESPONSIVE */
