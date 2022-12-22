@@ -57,7 +57,7 @@ export default function Header(props) {
             {dsNhomChiTietLoai.map((groupName, index) => {
               const { dsChiTietLoai } = groupName
               return <div className="dropdown show" key={index}>
-                <a className="dropdown-toggle" href="#" data-toggle="dropdown">
+                <a className="dropdown-toggle toogle__item" href="#" data-toggle="dropdown">
                   {groupName.tenNhom} <i className="fa-solid fa-angle-up"></i>
                 </a>
                 <div className="dropdown-menu" >
@@ -160,9 +160,7 @@ export default function Header(props) {
                     }} className="btn btn-outline-success btnicon2" type="button">Join</button>
                   </form>
                 </>}
-
               </ul>
-
             </nav>
           </div>
         </div>
