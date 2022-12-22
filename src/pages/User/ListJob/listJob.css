@@ -117,7 +117,6 @@
 
 .card-img-job {
     width: 100%;
-    cursor: pointer;
 }
 
 /* custom card */
@@ -180,4 +179,21 @@
     background-color: #fff;
     font-weight: 600;
     border: 1px solid #dadbdd;
+}
+
+.job__card {
+    transition: all .5s;
+}
+
+.job__card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+.job__card .card-img-job {
+    transition: all .5s;
+}
+
+.job__card:hover .card-img-job {
+    transform: scale(1.10);
 }

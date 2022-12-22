@@ -269,6 +269,10 @@
     .graphic-arrow-left {
         left: 85%;
     }
+
+    .groupJob {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (max-width: 736px) {
@@ -281,6 +285,25 @@
         width: 100%;
         text-align: left;
         margin-bottom: 15px;
+    }
+
+    .btn-logo .d-inline-flex span {
+        position: relative;
+    }
+
+    .btn-logo .d-inline-flex i {
+        position: absolute;
+        right: 20%;
+    }
+
+    .graphic-left h3,
+    .explore-graphic-design h3,
+    .services-graphic h3 {
+        font-size: 18px;
+    }
+
+    .groupJob {
+        grid-template-columns: repeat(1, 1fr);
     }
 
 }
