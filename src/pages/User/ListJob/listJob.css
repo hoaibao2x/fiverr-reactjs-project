@@ -108,7 +108,7 @@
     grid-gap: 40px;
 }
 
-.card-img{
+.card-img {
     height: 180px;
     border-bottom: 1px solid #dadbdd;
     overflow: hidden;
@@ -197,3 +197,53 @@
 .job__card:hover .card-img-job {
     transform: scale(1.10);
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1194px) {
+
+    .result-btn {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .result-btn .btn__job__filter {
+        margin-bottom: 10px;
+    }
+
+    .list-job {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .suggested {
+        margin-top: 15px;
+        padding: 15px 15px;
+    }
+
+}
+
+@media screen and (max-width: 736px) {
+
+    .list-job {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .suggested {
+        flex-direction: column;
+        align-items: normal;
+        height: 120px;
+        overflow-y: scroll;
+    }
+
+    .suggested p {
+        margin-bottom: 10px;
+    }
+
+    .suggested .sug {
+        margin-bottom: 10px;
+    }
+
+}
+
+
+/* END RESPONSIVE */

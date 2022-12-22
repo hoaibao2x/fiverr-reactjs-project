@@ -14,17 +14,13 @@ import { useEffect } from 'react';
 import bgDesktop from '../../../assets/User/images/graphics-design-desktop-update.jpg'
 import bgMobile from '../../../assets/User/images/graphics-design-mobile-update.png'
 import Slider from "react-slick";
-
-
+import { renderResponsive } from '../../../utils/checkScreen'
 
 export default function ListDetailJob(props) {
 
   const dispatch = useDispatch()
 
   const { listDetail, listjob } = useSelector(state => state.ManegeListJobReducer);
-
-  console.log(window.innerWidth)
-
 
   const listGp = () => {
     return listDetail.map((nameJob, index) => {
@@ -94,14 +90,6 @@ export default function ListDetailJob(props) {
         </ul>
       </div>
     })
-  }
-
-  const renderResponsive = () => {
-    if (window.innerWidth <= 414 && window.innerHeight <= 736) {
-      return true;
-    } else {
-      return false;
-    }
   }
 
   const settings = {
