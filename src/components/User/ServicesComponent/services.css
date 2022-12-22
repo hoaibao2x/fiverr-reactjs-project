@@ -9,7 +9,7 @@
 }
 
 .slick-slider .slick-list {
-    margin: 0 140px !important;
+    margin: 0 137px !important;
     overflow: hidden;
 }
 
@@ -38,6 +38,10 @@
     width: 100%;
     z-index: 10;
     color: #fff;
+}
+.slides-item-bg{
+    position: relative;
+    margin-right: 30px;
 }
 
 .text-item-title {
@@ -93,6 +97,7 @@
 @media screen and (max-width: 1200px) {
     .slides-item {
         height: 210px !important;
+        width: 100%;
     }
     .slick-prev {
         left: 10% !important;
@@ -103,13 +108,17 @@
 }
 @media screen and (max-width: 1194px) {
     .slides-item {
-        height: 210px !important;
+        height: 180px !important;
+        width: 100%;
     }
     .slick-prev {
         left: 10% !important;
     }
     .slick-next {
         right: 13% !important;
+    }
+    .slick-slider .slick-list {
+        margin: 0px 140px !important;
     }
 }
 
@@ -125,22 +134,64 @@
     }
 }
 
-@media screen and (max-width: 992px) {
-    .row {
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        margin: 0;
+
+@media screen and (max-width:834px) {
+    .slick-slider .slick-list {
+        margin: 0 116px !important;
     }
 }
-@media screen and (max-width: 768px) {
-    .slides-item {
-        width: 140px;
+@media screen and (max-width:736px){
+    .slick-slider .slick-list {
+        margin: 0 100px !important;
     }
-    .slick-prev {
-        left: 16% !important;
-    }
+}
+@media screen and (max-width:667px){
     .slick-next {
         right: 17% !important;
+    }
+}
+@media screen and (max-width: 567px) {
+    .slides-item-bg{
+        margin: 0;
+    }
+   
+    .services-title h3 {
+        padding-top: 20px;
+        padding: 15px 35px;
+        font-weight: 700;
+        font-size: 16px;
+    }
+    .slides-item {
+        width: 100%;
+    }
+    .text-item-title {
+        font-size: 14px;
+    }
+    .text-item-logo {
+        font-size: 18px;
+        margin: 0;
+    }
+    .services-title .slick-prev,
+    .services-title .slick-next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .services-title .slick-prev:before {
+        margin-top: 8px;
+        font-size: 12px;
+    }
+    .slick-prev {
+        left: 22% !important;
+    }
+    .slick-next {
+        right: 23% !important;
+    }
+    .services-title .slick-next:before {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+    .services-title {
+        padding-bottom: 50px;
     }
 }
