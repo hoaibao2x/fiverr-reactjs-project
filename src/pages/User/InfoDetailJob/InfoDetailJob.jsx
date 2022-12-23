@@ -26,8 +26,6 @@ export default function InfoDetailJob(props) {
     const { listComment, userInfo } = useSelector(state => state.ManegeCommentReducer);
     const dispatch = useDispatch();
 
-
-
     useEffect(() => {
         let { id } = props.match.params
         let userID = localStorage.getItem(USER_ID)
@@ -35,6 +33,10 @@ export default function InfoDetailJob(props) {
         dispatch(getCommentByIdJobAction(id))
         dispatch(getUserByIDAction(userID))
     }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     const [userComment, setUserComment] = useState({
         id: '',
@@ -99,7 +101,7 @@ export default function InfoDetailJob(props) {
     const addComment = () => {
         if (localStorage.getItem(USER_ID) !== null) {
             return <Fragment>
-                <div className='addCmt mt-5'>
+                <div className='addCmt'>
                     <div className='addUser'>
                         <img className='currentUser' src={userInfo.avatar} alt="" />
                     </div>
@@ -122,36 +124,138 @@ export default function InfoDetailJob(props) {
     const renderInfoJob = () => {
         return infoJob.map((job, index) => {
             const { congViec } = job
-            return <div className='row py-5' key={index}>
-                <div className='col-8'>
-                    <div className='info-job-right'>
-                        <div className='info-type-job'>
-                            <span className='text-type-name'>{job.tenLoaiCongViec}</span>  <RightOutlined style={{ marginRight: '5px' }} />  <span className='text-type-name'>{job.tenNhomChiTietLoai}</span> <RightOutlined style={{ marginRight: '5px' }} />  <span className='text-type-name'>{job.tenChiTietLoai}</span>
-                        </div>
-                        <div className='info-detail-job'>
-                            <h4 className='name-job'>{congViec.tenCongViec}</h4>
-                            <div className='info-content'>
-                                <div className='avatar-people'>
-                                    <img className='img-people' src={job.avatar} alt="" />
+            return <div className='info-top' key={index}>
+                <div className='row'>
+                    <div className='col-12 col-lg-8'>
+                        <div className='info-col-left'>
+                            <div className='info-job-right'>
+                                <div className='info-type-job'>
+                                    <span className='text-type-name'>{job.tenLoaiCongViec}</span> <RightOutlined style={{ marginRight: '5px' }} />  <span className='text-type-name'>{job.tenNhomChiTietLoai}</span> <RightOutlined style={{ marginRight: '5px' }} />  <span className='text-type-name'>{job.tenChiTietLoai}</span>
                                 </div>
-                                <span className='img-content'>{job.tenNguoiTao}</span>
-                                <span className='img-start'>
-                                    <Rate allowHalf value={congViec.saoCongViec} /> ( <span className='img-rate'>{congViec.danhGia}</span> )
-                                </span>
+                                <div className='info-detail-job'>
+                                    <h4 className='name-job'>{congViec.tenCongViec}</h4>
+                                    <div className='info-content'>
+                                        <div className='avatar-people'>
+                                            <img className='img-people' src={job.avatar} alt="" />
+                                        </div>
+                                        <span className='img-content'>{job.tenNguoiTao}</span>
+                                        <span className='img-start'>
+                                            <Rate disabled allowHalf value={congViec.saoCongViec} /> ( <span className='img-rate'>{congViec.danhGia}</span> )
+                                        </span>
 
+                                    </div>
+                                </div>
+                                <div className='coming-back'>
+                                    <div className='coming-back-content'>
+                                        <img className='img-coming' src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/56ff3db8ae625ba1d6493c3c250c5919-1625663632464/3-Trophy-70_alpha.gif" alt="animated trophy" data-impression-collected="true" />
+                                    </div>
+                                    <div className='coming-text'>
+                                        <span className='conming-text-sp'> People keep coming back!</span> myblue has an exceptional number of repeat buyers.
+                                    </div>
+                                </div>
+                                <div className='img-job-cover'>
+                                    <img className='img-job' src={congViec.hinhAnh} alt="" />
+                                </div>
                             </div>
                         </div>
-                        <div className='coming-back'>
-                            <div className='coming-back-content'>
-                                <img className='img-coming' src="https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto/v1/attachments/generic_asset/asset/56ff3db8ae625ba1d6493c3c250c5919-1625663632464/3-Trophy-70_alpha.gif" alt="animated trophy" data-impression-collected="true" />
-                            </div>
-                            <div className='coming-text'>
-                                <span className='conming-text-sp'> People keep coming back!</span> myblue has an exceptional number of repeat buyers.
+
+                    </div>
+                    <div className='col-12 col-lg-4 info-table'>
+                        <div className='card'>
+                            <div className='card-head'>
+                                <ul className="nav nav-tabs" id="myTab" role="tablist">
+                                    <li className="nav-item1" role="presentation">
+                                        <button className="nav-link" id="basic-tab" data-toggle="tab" data-target="#basic" type="button" role="tab">Basic</button>
+                                    </li>
+                                    <li className="nav-item1" role="presentation">
+                                        <button className="nav-link active" id="standard-tab" data-toggle="tab" data-target="#standard" type="button" role="tab" >Standard</button>
+                                    </li>
+                                    <li className="nav-item1" role="presentation">
+                                        <button className="nav-link" id="premium-tab" data-toggle="tab" data-target="#premium" type="button" role="tab" >Premium</button>
+                                    </li>
+                                </ul>
+
+                                <div className="tab-content" id="myTabContent">
+                                    <div className="tab-pane fade show active" id="standard" role="tabpanel" aria-labelledby="standard-tab">
+                                        <div className='tab-pane-content'>
+                                            <div className='tab-content-left'>
+                                                Standard
+                                            </div>
+                                            <div className='tab-content-right'>
+                                                ${congViec.giaTien}
+                                            </div>
+                                        </div>
+                                        <div className='tab-pane-text'>
+                                            Create a simple web appllication for your business
+                                        </div>
+                                        <div className='short-description'>
+                                            <i className="fa-regular fa-clock time-icon"></i>{congViec.moTaNgan.length > 35 ? <span className='time-text'>{congViec.moTaNgan.slice(0, 35)}...</span> : <span className='time-text'>{congViec.moTaNgan}</span>}
+                                            <ul className='menu-short-description'>
+                                                <li className='menu-short-text'><i className="fa-solid fa-check menu-short-icon-color"></i>Design Customization</li>
+                                                <li className='menu-short-text'><i className="fa-solid fa-check menu-short-icon"></i>Content Upload</li>
+                                                <li className='menu-short-text'><i className="fa-solid fa-check menu-short-icon-color"></i>Responsive Design</li>
+                                                <li className='menu-short-text'><i className="fa-solid fa-check menu-short-icon-color"></i>Include Soucre Code</li>
+                                                <li className='menu-short-text'><i className="fa-solid fa-check menu-short-icon"></i>1 Page</li>
+                                                <li className='button-menu-short'>
+                                                    <button onClick={() => {
+                                                        if (localStorage.getItem(USER_ID) === null) {
+                                                            document.getElementById('signInBtn').click()
+                                                        } else {
+                                                            const infoHireJob = {
+                                                                id: 0,
+                                                                maCongViec: props.match.params.id,
+                                                                maNguoiThue: localStorage.getItem(USER_ID),
+                                                                ngayThue: moment().format('MMM DD YYYY h:mm A'),
+                                                                hoanThanh: true
+                                                            }
+                                                            dispatch(getInfoHireJobAction(infoHireJob))
+                                                            const key = 'updatable';
+                                                            const openMessage = () => {
+                                                                message.loading({
+                                                                    content: 'Loading...',
+                                                                    style: {
+                                                                        marginTop: '20vh',
+                                                                    },
+                                                                    key,
+                                                                })
+                                                                setTimeout(() => {
+                                                                    message.success({
+                                                                        content: 'Successful!',
+                                                                        style: {
+                                                                            marginTop: '20vh',
+                                                                        },
+                                                                        key,
+                                                                        duration: 2,
+                                                                    });
+                                                                }, 1000);
+                                                            }
+                                                            openMessage();
+                                                        }
+                                                    }} className='btn btn-success btn-continute'>Continute (${congViec.giaTien})</button>
+                                                    <p className='text-button-menu'>Compare Packages</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div className='img-job-cover'>
-                            <img className='img-job' src={congViec.hinhAnh} alt="" />
+                        <div className='card-footer'>
+                            <p className='text-quocte'> Do you have any special requiements?</p>
+                            <button className='button-quote'>Get a Quote</button>
                         </div>
+                    </div>
+                </div>
+            </div>
+        })
+    }
+    const renderRelatedInfo = () => {
+        return infoJob.map((job, index) => {
+            const { congViec } = job
+            let commentScroll = 'commentScroll'
+            return <div className='row' key={index}>
+                <div className='col-12 col-lg-8'>
+                    <div className='info-job-right'>
                         <div className='info-difference-bg'>
                             <div className='info-difference'>
                                 <p className='text-bold p1'>About This Gig</p>
@@ -199,7 +303,7 @@ export default function InfoDetailJob(props) {
                                 <div className='info-user-right'>
                                     <span style={{ fontWeight: 'bold' }} >{job.tenNguoiTao}</span> <br />
                                     <span style={{ fontWeight: 'bold' }} >{job.tenLoaiCongViec}</span> <br />
-                                    <Rate allowHalf value={congViec.saoCongViec} /> ( <span className='img-rate'>{congViec.danhGia}</span> ) <br />
+                                    <Rate disabled allowHalf value={congViec.saoCongViec} /> ( <span className='img-rate'>{congViec.danhGia}</span> ) <br />
                                     <button className='button-user'>Contact me</button>
                                 </div>
                             </div>
@@ -263,14 +367,15 @@ export default function InfoDetailJob(props) {
                         </div>
                         <div className='reviews'>
                             <div className='review'>
-                                <span style={{ fontWeight: 'bold', fontSize: '16px' }}>335 Reviews</span> <Rate className='rate' allowHalf value={5} />  <span style={{ color: '#FFB237', fontWeight: 'bold' }}>5</span>
+                                <span className='text-review'>335 Reviews</span> <Rate
+                                    disabled className='rate' allowHalf value={5} />  <span style={{ color: '#FFB237', fontWeight: 'bold' }}>5</span>
                             </div>
                             <div className='relevant'>
-                                Sort By <span style={{ fontWeight: 'bold' }}>Most relevant <DownOutlined className='arrowsDown' /></span>
+                                <span>Sort By</span> <span style={{ fontWeight: 'bold' }}>Most relevant <DownOutlined className='arrowsDown' /></span>
                             </div>
                         </div>
                         <div className='progess'>
-                            <div className='progess-left col-6'>
+                            <div className='progess-left col-12 col-lg-6'>
                                 <div className='starts'>
                                     <span className='info-start'>5 Starts</span>
                                     <span className='progess-middle'></span>
@@ -296,14 +401,8 @@ export default function InfoDetailJob(props) {
                                     <span className='progess-g'></span>
                                     <span className='info-g'>(0)</span>
                                 </div>
-
-                                <div className='filter'>
-                                    <p className='filter-title'>Filters</p>
-                                    <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
-                                </div>
-
                             </div>
-                            <div className='progess-right col-6'>
+                            <div className='progess-right col-12 col-lg-6'>
                                 <div className='starts own'>
                                     Rating Breakdown
                                 </div>
@@ -317,116 +416,37 @@ export default function InfoDetailJob(props) {
                                     <span className='five-start-text'>Service  as described</span> <span className='five-start'>5 <i style={{ color: '#ffb237' }} className="fa-solid fa-star"></i></span>
                                 </div>
                             </div>
-
                         </div>
-                        {listComment.length !== 0 ? <div className='comment'>
-                            {renderComment()}
-                        </div> : <div className='mt-4'>
+                        <div className='filter'>
+                            <p className='filter-title'>Filters</p>
+                            <p className='filter-under'>Industry <span style={{ fontWeight: 'bold' }}>All Industries <DownOutlined className='arrowsDown' /></span> </p>
+                        </div>
+                        {listComment.length !== 0 ? (listComment.length >= 3 ? <div className={commentScroll}>
+                            {renderComment()} </div> : <div className='comment'>
+                            {renderComment()} </div>) : <div className='mt-4'>
                             <p>0 Comment</p>
                         </div>}
                         <div>
                             {addComment()}
                         </div>
-
                     </div>
                 </div>
-                <div className='col-4 pt-4'>
-                    <div className='card'>
-                        <div className='card-head'>
-                            <ul className="nav nav-tabs" id="myTab" role="tablist">
-                                <li className="nav-item1" role="presentation">
-                                    <button className="nav-link" id="basic-tab" data-toggle="tab" data-target="#basic" type="button" role="tab">Basic</button>
-                                </li>
-                                <li className="nav-item1" role="presentation">
-                                    <button className="nav-link active" id="standard-tab" data-toggle="tab" data-target="#standard" type="button" role="tab" >Standard</button>
-                                </li>
-                                <li className="nav-item1" role="presentation">
-                                    <button className="nav-link" id="premium-tab" data-toggle="tab" data-target="#premium" type="button" role="tab" >Premium</button>
-                                </li>
-                            </ul>
 
-                            <div className="tab-content" id="myTabContent">
-                                <div className="tab-pane fade show active" id="standard" role="tabpanel" aria-labelledby="standard-tab">
-                                    <div className='tab-pane-content'>
-                                        <div className='tab-content-left'>
-                                            Standard
-                                        </div>
-                                        <div className='tab-content-right'>
-                                            ${congViec.giaTien}
-                                        </div>
-                                    </div>
-                                    <div className='tab-pane-text'>
-                                        Create a simple web appllication for your business
-                                    </div>
-                                    <div className='short-description'>
-                                        <i className="fa-regular fa-clock time-icon"></i>{congViec.moTaNgan.length > 35 ? <span>{congViec.moTaNgan.slice(0, 35)}...</span> : <span>{congViec.moTaNgan}</span>}
-                                        <ul className='menu-short-description'>
-                                            <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Design Customization</li>
-                                            <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Content Upload</li>
-                                            <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Responsive Design</li>
-                                            <li><i style={{ color: '#28a745', fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>Include Soucre Code</li>
-                                            <li><i style={{ fontSize: '20px' }} className="fa-solid fa-check pr-3"></i>1 Page</li>
-                                            <li className='button-menu-short'>
-                                                <button onClick={() => {
-                                                    if (localStorage.getItem(USER_ID) === null) {
-                                                        document.getElementById('signInBtn').click()
-                                                    } else {
-                                                        const infoHireJob = {
-                                                            id: 0,
-                                                            maCongViec: props.match.params.id,
-                                                            maNguoiThue: localStorage.getItem(USER_ID),
-                                                            ngayThue: moment().format('MMM DD YYYY h:mm A'),
-                                                            hoanThanh: true
-                                                        }
-                                                        dispatch(getInfoHireJobAction(infoHireJob))
-                                                        const key = 'updatable';
-                                                        const openMessage = () => {
-                                                            message.loading({
-                                                                content: 'Loading...',
-                                                                style: {
-                                                                    marginTop: '20vh',
-                                                                },
-                                                                key,
-                                                            })
-                                                            setTimeout(() => {
-                                                                message.success({
-                                                                    content: 'Successful!',
-                                                                    style: {
-                                                                        marginTop: '20vh',
-                                                                    },
-                                                                    key,
-                                                                    duration: 2,
-                                                                });
-                                                            }, 1000);
-                                                        }
-                                                        openMessage();
-                                                    }
-                                                }} style={{ width: '100%', fontWeight: '600', marginBottom: '15px' }} className='btn btn-success'>Continute (${congViec.giaTien})</button>
-                                                <p className='text-button-menu'>Compare Packages</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='card-footer'>
-                        <p className='text-quocte'> Do you have any special requiements?</p>
-                        <button className='button-quote'>Get a Quote</button>
-                    </div>
-                </div>
             </div>
         })
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+
 
     return (
         <div className='container-fluid'>
             <div className='info-job container'>
-                {renderInfoJob()}
+                <div className='job-content'>
+                    {renderInfoJob()}
+                </div>
+                <div>
+                    {renderRelatedInfo()}
+                </div>
             </div>
 
             <BackTop>
