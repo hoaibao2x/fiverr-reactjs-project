@@ -89,10 +89,10 @@ const EditComment = (props) => {
       <Form.Item label="Commentator ID">
         <Input name='maNguoiBinhLuan'   onChange={formik.handleChange} onBlur={formik.handleBlur}/>
       </Form.Item>  
-      <Form.Item label="Content">
+      <Form.Item label="Comment Day">
         <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDAY} />
       </Form.Item>
-      <Form.Item label="Nội Dung Bình Luận">
+      <Form.Item label="Content">
         <TextArea name='noiDung' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.touched.noiDung && formik.errors.noiDung ? <span className='alert alert-danger d-block mt-2'>{formik.errors.noiDung}</span> : null}
       </Form.Item>
