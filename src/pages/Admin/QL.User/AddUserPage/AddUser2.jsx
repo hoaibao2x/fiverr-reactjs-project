@@ -96,7 +96,7 @@ const ThemUser2 = () => {
         current={0}
         items={[
           {
-            title: 'Thông tin người dùng',
+            title: 'User Info',
           },
         
         ]}
@@ -108,7 +108,7 @@ const ThemUser2 = () => {
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item label="họ tên">
+      <Form.Item label="name">
         <Input name='name' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.name ? (
                     <div className='alert alert-danger'>{formik.errors.name}</div>
@@ -126,28 +126,28 @@ const ThemUser2 = () => {
                     <div className='alert alert-danger'>{formik.errors.password}</div>
                 ) : null}
       </Form.Item>
-      <Form.Item label="số điện thoại">
+      <Form.Item label="phone">
         <Input name='phone' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.phone ? (
                     <div className='alert alert-danger'>{formik.errors.phone}</div>
                 ) : null}
       </Form.Item>
-      <Form.Item label="ngày sinh">
+      <Form.Item label="Birthday">
         <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeBirthday} />
         {formik.errors.birthday ? (
                     <div className='alert alert-danger'>{formik.errors.birthday}</div>
                 ) : null}
       </Form.Item>
-      <Form.Item label="giới tính" valuePropName="checked">
-        Nữ <Switch onChange={handleChangGender('gender')} /> Nam
+      <Form.Item label="gender" valuePropName="checked">
+      Female <Switch onChange={handleChangGender('gender')} /> Male
       </Form.Item>
-      <Form.Item label="phân loại">
+      <Form.Item label="role">
         <Input name='role' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.hoTen ? (
                     <div className='alert alert-danger'>{formik.errors.hoTen}</div>
                 ) : null}
       </Form.Item>
-      <Form.Item label="tác vụ">
+      <Form.Item label="submit">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin</button>
       </Form.Item>
     </Form>

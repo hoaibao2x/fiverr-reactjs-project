@@ -33,7 +33,7 @@ function DanhSachUser() {
       width:'3%',
     },
     {
-      title: 'Họ Tên',
+      title: 'name',
       dataIndex: 'name',
       defaultSortOrder: 'descend',
       width:'5%'  
@@ -44,24 +44,24 @@ function DanhSachUser() {
       width:'5%'
     },
     {
-      title: 'Mật Khẩu',
+      title: 'password',
       dataIndex: 'password',
       width:'7%'
     },
     {
-      title: 'Số Điện Thoại',
+      title: 'phone',
       dataIndex: 'phone',
       width:'7%'
     },
     {
-      title: 'ngày sinh',
+      title: 'birthday',
       dataIndex: 'birthday',
       width:'7%'
       // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
       // sortDirections: ['descend','ascend'],
     },
     {
-      title: "Hình ảnh",  
+      title: "avatar",  
       dataIndex: "avatar",
       render: (text, users, index) => {
         return (
@@ -81,15 +81,15 @@ function DanhSachUser() {
       },
     },
     {
-      title: 'giới tính',
+      title: 'gender',
       dataIndex: 'gender',
     },
     {
-      title: 'phân loại',
+      title: 'role',
       dataIndex: 'role',
     },
     {
-      title: "Chỉnh Sửa",
+      title: "Edit",
       dataIndex: "id",
       render: (text, users) => {  
         return <>

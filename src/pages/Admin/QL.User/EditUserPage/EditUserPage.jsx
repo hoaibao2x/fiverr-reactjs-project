@@ -109,7 +109,7 @@ const EditUser = (props) => {
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item label="họ tên">
+      <Form.Item label="name">
         <Input name='name' onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur} />
       </Form.Item>
       <Form.Item label="email">
@@ -118,20 +118,20 @@ const EditUser = (props) => {
       <Form.Item label="password">
         <Input name='password' onChange={formik.handleChange} value={formik.values.password} onBlur={formik.handleBlur} />
       </Form.Item>
-      <Form.Item label="số điện thoại">
+      <Form.Item label="phone">
         <Input name='phone' onChange={formik.handleChange} value={formik.values.phone} onBlur={formik.handleBlur} />
       </Form.Item>
-      <Form.Item label="ngày sinh">
+      <Form.Item label="birthday">
         <DatePicker format="DD/MM/YYYY" onChange={handleChangeBirthday} value={moment(formik.values.birthday)} />
       </Form.Item>
 
-      <Form.Item label="giới tính" valuePropName="checked">
-        Nữ <Switch onChange={handleChangGender('gender')} checked={formik.values.gender} /> Nam
+      <Form.Item label="gender" valuePropName="checked">
+      Female<Switch onChange={handleChangGender('gender')} checked={formik.values.gender} /> Male
       </Form.Item>
-      <Form.Item label="phân loại">
+      <Form.Item label="role">
         <Input name='role' onChange={formik.handleChange} value={formik.values.role} onBlur={formik.handleBlur} />
       </Form.Item>
-      <Form.Item label="tác vụ">
+      <Form.Item label="submit">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin cập nhật</button>
       </Form.Item>
     </Form>

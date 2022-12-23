@@ -28,32 +28,32 @@ function ListComment() {
       //   width:'3%',
     },
     {
-      title: 'Mã Công Việc',
+      title: 'Rent Job ID',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
       //   width:'5%'  
     },
     {
-      title: 'Mã Người Thuê',
+      title: 'Commentator ID',
       dataIndex: 'maNguoiBinhLuan',
       //   width:'5%'
     },
     {
-      title: 'ngày thuê',
+      title: 'Comment Day',
       dataIndex: 'ngayBinhLuan',
      
     },
     {
-      title: 'nội dung bình luận',
+      title: 'Content',
       dataIndex: 'noiDung',
     },
     {
-      title: 'đánh giá bình luận',
+      title: 'Evaluate',
       dataIndex: 'saoBinhLuan',
     },
 
     {
-      title: "Chỉnh Sửa",
+      title: "Edit",
       dataIndex: "id",
       render: (text, users) => {
         return <>

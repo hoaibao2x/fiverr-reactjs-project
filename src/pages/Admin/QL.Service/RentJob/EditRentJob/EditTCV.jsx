@@ -83,21 +83,21 @@ const EditTCV = (props) => {
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      <Form.Item label="Mã Thuê Công Việc">
+      <Form.Item label="Rent Job ID">
         <Input name='maCongViec'  onChange={formik.handleChange} value={formik.values.maCongViec} onBlur={formik.handleBlur}/>
       </Form.Item>
-      <Form.Item label="Mã Người Thuê Công Việc" >
+      <Form.Item label="user ID" >
         <Input name='maNguoiThue' onChange={formik.handleChange} value={formik.values.maNguoiThue} onBlur={formik.handleBlur}/>
       </Form.Item>
-      <Form.Item label="Ngay Thuê Công Việc">
+      <Form.Item label="Working Day">
         <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDAYTCV} value={moment(formik.values.ngayThue)}/>
       </Form.Item>
 
-      <Form.Item label="Tình Trạng Công Việc:" valuePropName="checked">
+      <Form.Item label="Status :" valuePropName="checked">
 
-        chưa hoàn thành <Switch onChange={handleChangTCV('hoanThanh')}checked={formik.values.hoanThanh} /> đã hoàn thành
+      Unfinished <Switch onChange={handleChangTCV('hoanThanh')}checked={formik.values.hoanThanh} /> Finish
       </Form.Item>
-      <Form.Item label="tác vụ">
+      <Form.Item label="submit">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin</button>
       </Form.Item>
     </Form>

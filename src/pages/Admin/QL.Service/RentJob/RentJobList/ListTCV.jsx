@@ -29,27 +29,27 @@ function ListTCV() {
       //   width:'3%',
     },
     {
-      title: 'Mã Công Việc',
+      title: 'Rent Job ID',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
       //   width:'5%'  
     },
     {
-      title: 'Mã Người Thuê',
+      title: 'user ID',
       dataIndex: 'maNguoiThue',
       //   width:'5%'
     },
     {
-      title: 'ngày thuê',
+      title: 'Working Day',
       dataIndex: 'ngayThue',
 
     },
     {
-      title: 'hoàng thành',
+      title: 'Status',
       dataIndex: 'hoanThanh',
     },
     {
-      title: "Chỉnh Sửa",
+      title: "Edit",
       dataIndex: "id",
       render: (text, users) => {
         return <>
