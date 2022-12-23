@@ -93,7 +93,6 @@ export default function CarouselComponent(props) {
                             src={testImg2}
                             alt="Second slide"
                         />
-
                         <Carousel.Caption>
                             <p className='title-hero'>Ritika ,
                                 <span style={{ fontWeight: 'bold' }}>Shoemaker and Designer</span>
