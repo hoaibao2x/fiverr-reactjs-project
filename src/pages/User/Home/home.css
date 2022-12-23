@@ -28,6 +28,12 @@
 }
 
 /* Responsive */
+@media screen and (max-width:1194px){
+    .ant-back-top {
+        right: 20px;
+        bottom: 20px;
+    }
+}
 @media screen and (max-width: 736px) {
     .tructed {
         display: none;
