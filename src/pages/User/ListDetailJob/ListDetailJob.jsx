@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './listDetailJob.css';
-import imgLogo from '../../../assets/User/images/Logo design_2x.png';
-import imgHouse from '../../../assets/User/images/Architecture _ Interior Design_2x.png';
-import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
-import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
+import imgLogo from '../../../assets/User/images/Logo_design_2x.png';
+import imgHouse from '../../../assets/User/images/Architecture_Interior_Design_2x.png';
+import imgStart from '../../../assets/User/images/Photoshop_Editing_2x.png';
+import imgMonkey from '../../../assets/User/images/Nft_Art.png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
 import imgHeart from '../../../assets/User/images/Social_Media_Design_2x.png';
 import { BackTop, Rate } from 'antd';
