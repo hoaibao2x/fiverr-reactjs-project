@@ -137,9 +137,9 @@ export default function Header(props) {
                             </> : null} <i className="fa-solid fa-angle-up"></i>
                           </button>
                           <div id='drop__info' className="dropdown-menu dropdown-menu-lg-right">
-                            <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">My Info</NavLink>
+                            <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="btn dropdown-item" type="button">My Info</NavLink>
                             {adminOrUser() ? <>
-                              <NavLink to='/admin' className="dropdown-item" type="button">Admin Page</NavLink>
+                              <NavLink to='/admin' className="btn dropdown-item" type="button">Admin Page</NavLink>
                             </> : null}
                             <button onClick={() => {
                               if (window.confirm("Do you want to sign out?")) {
