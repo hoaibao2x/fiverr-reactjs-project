@@ -6,6 +6,7 @@ import imgHouse from '../../../assets/User/images/Architecture _ Interior Design
 import imgStart from '../../../assets/User/images/Photoshop Editing_2x.png';
 import imgMonkey from '../../../assets/User/images/Nft Art (1).png';
 import imgShirt from '../../../assets/User/images/T-Shirts _ Merchandise_2x.png';
+import imgHeart from '../../../assets/User/images/Social_Media_Design_2x.png';
 import { BackTop, Rate } from 'antd';
 import { getListJobByIDAction } from '../../../redux/User/action/getListJobByIDAction';
 import { history } from '../../../App';
@@ -13,15 +14,13 @@ import { useEffect } from 'react';
 import bgDesktop from '../../../assets/User/images/graphics-design-desktop-update.jpg'
 import bgMobile from '../../../assets/User/images/graphics-design-mobile-update.png'
 import Slider from "react-slick";
-
-
+import { renderResponsive } from '../../../utils/checkScreen'
 
 export default function ListDetailJob(props) {
 
   const dispatch = useDispatch()
 
   const { listDetail, listjob } = useSelector(state => state.ManegeListJobReducer);
-
 
   const listGp = () => {
     return listDetail.map((nameJob, index) => {
@@ -93,14 +92,6 @@ export default function ListDetailJob(props) {
     })
   }
 
-  const renderResponsive = () => {
-    if (window.innerWidth <= 414 && window.innerHeight <= 736) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   const settings = {
     dots: true,
     infinite: true,
@@ -138,91 +129,119 @@ export default function ListDetailJob(props) {
         <div className='graphic-left'>
           <h3>Most popular in Graphic & Design</h3>
         </div>
-        <div className='graphic-right'>
-          <div className='graphic-arrow-left' onClick={() => slider?.current?.slickPrev()}></div>
-          <div className='graphic-arrow-right' onClick={() => slider?.current?.slickNext()}></div>
-        </div>
+        {!renderResponsive() ? <>
+          <div className='graphic-right'>
+            <div className='graphic-arrow-left' onClick={() => slider?.current?.slickPrev()}></div>
+            <div className='graphic-arrow-right' onClick={() => slider?.current?.slickNext()}></div>
+          </div>
+        </> : null}
+
       </div>
 
       {renderResponsive() ? <>
         <div className="graphic__btn">
-          <button className='btn-logo'>
-            <img className='img-logo' src={imgLogo} alt="" />
-            <span className='text-logo'>Minimalist Logo Design</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
 
-          </button>
           <button className='btn-logo'>
-            <img className='img-logo' src={imgHouse} alt="" />
-            <span className='text-logo'>Architecture & Interior Design</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
-
+            <img className='img-logo' src={imgLogo} alt="logo_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Minimalist Logo Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
+
           <button className='btn-logo'>
-            <img className='img-logo' src={imgStart} alt="" />
-            <span className='text-logo'>Image Editing</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
-
+            <img className='img-logo' src={imgHouse} alt="interior_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Architecture & Interior Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
+
           <button className='btn-logo'>
-            <img className='img-logo' src={imgMonkey} alt="" />
-            <span className='text-logo'>NFT Art</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
-
+            <img className='img-logo' src={imgStart} alt="image_edit_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Image Editing</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
+
           <button className='btn-logo'>
-            <img className='img-logo' src={imgShirt} alt="" />
-            <span className='text-logo'>T-Shirts & Merchandise</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
-
+            <img className='img-logo' src={imgMonkey} alt="nft_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>NFT Art</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
+
+          <button className='btn-logo'>
+            <img className='img-logo' src={imgShirt} alt="t_shirt_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>T-Shirts & Merchandise</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
+          </button>
+
+          <button className='btn-logo d-flex'>
+            <img className='img-logo' src={imgHeart} alt="media_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Social Media Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
+          </button>
+
         </div>
       </> : <>
         <Slider ref={slider} {...settings}>
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgLogo} alt="" />
-            <span className='text-logo'>Logo Design</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgLogo} alt="logo_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Logo Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgHouse} alt="" />
-            <span className='text-logo'>Interior Design</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgHouse} alt="interior_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Interior Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgStart} alt="" />
-            <span className='text-logo'>Image Editing</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgStart} alt="image_edit_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Image Editing</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgMonkey} alt="" />
-            <span className='text-logo'>NFT Art</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgMonkey} alt="nft_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>NFT Art</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgShirt} alt="" />
-            <span className='text-logo'>T-Shirts & Merchandise</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgShirt} alt="t_shirt_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>T-Shirts Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
           <button className='btn-logo d-flex'>
-            <img className='img-logo' src={imgStart} alt="" />
-            <span className='text-logo'>Image Editing</span>
-            <span className="XQskgrQ arrow m-l-12" aria-hidden="true" style={{ width: 16, height: 16 }}><svg width={16} height={16} viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M9.92332 2.96885C9.63854 2.66807 9.1768 2.66807 8.89202 2.96885C8.60723 3.26963 8.60723 3.75729 8.89202 4.05807L11.6958 7.01931H1.48616C1.08341 7.01931 0.756918 7.36413 0.756918 7.7895C0.756918 8.21487 1.08341 8.5597 1.48616 8.5597H11.8436L8.89202 11.677C8.60723 11.9778 8.60723 12.4654 8.89202 12.7662C9.1768 13.067 9.63854 13.067 9.92332 12.7662L14.0459 8.41213C14.3307 8.11135 14.3307 7.62369 14.0459 7.32291L13.977 7.25011C13.9737 7.24661 13.9704 7.24315 13.9671 7.23972L9.92332 2.96885Z" /></svg></span>
+            <img className='img-logo' src={imgHeart} alt="media_design_img" />
+            <div className="d-inline-flex justify-content-center align-items-center">
+              <span className='text-logo'>Media Design</span>
+              <i className="fa-solid fa-arrow-right"></i>
+            </div>
           </button>
 
         </Slider>
       </>}
-
-
-
-
-
-
 
       <div className='explore-graphic-design'>
         <h3>Explore Graphic & Design</h3>
@@ -235,32 +254,47 @@ export default function ListDetailJob(props) {
       </div>
       <div className='services-graphic'>
         <h3 className='services-graphic-title'>Services Ralated To Graphic & Design</h3>
+
         <div className='button-top'>
           <button className='button-item'>Minimalist Logo Design</button>
           <button className='button-item'>Signature logo design</button>
           <button className='button-item'>Mascot logo design</button>
           <button className='button-item'>3d logo design</button>
           <button className='button-item'>Hand drawn logo design</button>
-          <button className='button-item'>VItage logo design</button>
-          <button className='button-item'>Remove background</button>
+          <button className='button-item'>Vintage design</button>
+          <button className='button-item'>Remove texture</button>
         </div>
+
         <div className='button-middle'>
           <button className='button-item'>Photo restoration</button>
           <button className='button-item'>Photo retouChing</button>
           <button className='button-item'>Image resize</button>
-          <button className='button-item'>Product label design</button>
+          <button className='button-item'>Product design</button>
           <button className='button-item'>Custom twitch overlay</button>
-          <button className='button-item'>Custom twitch emotes</button>
+          <button className='button-item'>Custom emotes</button>
           <button className='button-item'>Gaming logo</button>
-          <button className='button-item'>Children book llustration</button>
+          <button className='button-item'>Book llustration</button>
         </div>
-        <div className='button-bottom'>
-          <button className='button-item'>Instagram design</button>
-          <button className='button-item'>Movle poster design</button>
-          <button className='button-item'>Box design</button>
-          <button className='button-item'>Logo maker</button>
-          <button className='button-item'>Logo Ideas</button>
-        </div>
+
+        {renderResponsive() ? <>
+          <div className="d-flex justify-content-center">
+            <button className='button-item mr-3'>Instagram design</button>
+            <button className='button-item'>Movie poster design</button>
+          </div>
+          <div className="d-flex justify-content-center mt-3">
+            <button className='button-item'>Box design</button>
+            <button className='button-item mx-3'>Logo maker</button>
+            <button className='button-item'>Logo Ideas</button>
+          </div>
+        </> : <>
+          <div className='button-bottom'>
+            <button className='button-item'>Instagram design</button>
+            <button className='button-item'>Movie poster design</button>
+            <button className='button-item px-2'>Box design</button>
+            <button className='button-item'>Logo maker</button>
+            <button className='button-item'>Logo Ideas</button>
+          </div>
+        </>}
       </div>
 
       <BackTop>

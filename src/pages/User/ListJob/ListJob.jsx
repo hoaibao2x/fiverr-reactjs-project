@@ -4,10 +4,8 @@ import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
 import { BackTop, Rate } from 'antd';
 import { Pagination } from 'antd';
-import { history } from '../../../App'
-
-
-
+import { history } from '../../../App';
+import { renderResponsive } from '../../../utils/checkScreen'
 
 export default function ListJob(props) {
 
@@ -25,13 +23,21 @@ export default function ListJob(props) {
   if (listjob.length === 0) {
     return <div className='container empty-br'>
       <div className='imgEmpty text-center'>
-        <img className='empty' src={emptyImg} alt="empty-search-results" />
+        <img className='empty img-fluid' src={emptyImg} alt="empty-search-results" />
       </div>
       <div className='text-empty text-center'>
-        <h2 className='text-notification'>No Results Found Your For Search</h2>
-        <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
-          from our community of freelancers.
-        </p>
+        {renderResponsive() ? <>
+          <h4 className='text-notification'>No Results Found</h4>
+          <p className='text-notification-ct'>Try a new search or get a free quote for your project
+            from our community of freelancers.
+          </p>
+        </> : <>
+            <h2 className='text-notification'>No Results Found</h2>
+            <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
+              from our community of freelancers.
+            </p>
+        </>}
+        
       </div>
 
     </div>
@@ -69,8 +75,6 @@ export default function ListJob(props) {
     })
   }
 
-
-
   return (
     <div>
       <div className='suggested'>
@@ -101,28 +105,32 @@ export default function ListJob(props) {
           <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Delivery time
           </button>
-          <div className='result-right-cover'>
-            <div className='result-right'>
-              <button className='btn-right'>
-                <div className='cricle-btn'></div>
-              </button>
-              <span>Pro services</span>
-            </div>
 
-            <div className='result-right'>
-              <button className='btn-right'>
-                <div className='cricle-btn'></div>
-              </button>
-              <span>Local sellers</span>
-            </div>
+          {!renderResponsive() ? <>
+            <div className='result-right-cover'>
+              <div className='result-right'>
+                <button className='btn-right'>
+                  <div className='cricle-btn'></div>
+                </button>
+                <span>Pro services</span>
+              </div>
 
-            <div className='result-right'>
-              <button className='btn-right'>
-                <div className='cricle-btn'></div>
-              </button>
-              <span>Online sellers</span>
+              <div className='result-right'>
+                <button className='btn-right'>
+                  <div className='cricle-btn'></div>
+                </button>
+                <span>Local sellers</span>
+              </div>
+
+              <div className='result-right'>
+                <button className='btn-right'>
+                  <div className='cricle-btn'></div>
+                </button>
+                <span>Online sellers</span>
+              </div>
             </div>
-          </div>
+          </> : null}
+
         </div>
         <div className='list-job'>
           {renderListJob()}
