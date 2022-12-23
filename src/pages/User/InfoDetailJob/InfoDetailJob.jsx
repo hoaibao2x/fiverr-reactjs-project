@@ -367,7 +367,7 @@ export default function InfoDetailJob(props) {
                         </div>
                         <div className='reviews'>
                             <div className='review'>
-                                <span style={{ fontWeight: 'bold', fontSize: '16px' }}>335 Reviews</span> <Rate
+                                <span className='text-review'>335 Reviews</span> <Rate
                                     disabled className='rate' allowHalf value={5} />  <span style={{ color: '#FFB237', fontWeight: 'bold' }}>5</span>
                             </div>
                             <div className='relevant'>
