@@ -42,9 +42,7 @@ function ListTCV() {
     {
       title: 'ngày thuê',
       dataIndex: 'ngayThue',
-      //   width:'7%'
-      // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      // sortDirections: ['descend','ascend'],
+
     },
     {
       title: 'hoàng thành',
@@ -81,11 +79,11 @@ function ListTCV() {
 
   return (
     <div className=" mx-auto my-3">
-      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>Lịch Sữ Thuê Công Việc</h4>
+      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>Hiring history</h4>
 
       <button onClick={() => {
         history.push('/admin/list-rent-job/add')
-      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm người thuê</button>
+      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i>Add Hiring</button>
 
       <Search className='mb-5' placeholder="nhập mã ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 

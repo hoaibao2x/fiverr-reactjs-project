@@ -17,7 +17,7 @@ export const QLNDreducer = (state = initialState, action) => {
             state.arrUser = action.arrUser
             return { ...state }
         case "TIM_USER":
-            console.log(action.timUser);
+  
             state.arrUser = action.arrUser
             return { ...state }
         case "GET_THONG_TIN_USER":
@@ -36,7 +36,7 @@ export const QLNDreducer = (state = initialState, action) => {
             return { ...state }
             
             case "TIM_TCV":
-                console.log(action.arrTCV);
+               
                 state.arrTCV = action.arrTCV
                 return { ...state }
 
@@ -46,7 +46,7 @@ export const QLNDreducer = (state = initialState, action) => {
             state.arrBL = action.arrBL
             return { ...state }
         case "TIM_CMT":
-            console.log(action.arrBL);
+       
             state.arrBL = action.arrBL
             return { ...state }
 

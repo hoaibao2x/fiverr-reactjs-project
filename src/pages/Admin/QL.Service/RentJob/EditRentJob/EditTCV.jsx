@@ -23,7 +23,6 @@ const EditTCV = (props) => {
     setComponentSize(size);
   }
   const { thongtinTCV } = useSelector(state => state.QLNDreducer)
-  // console.log(thongtinTCV)
   const dispatch = useDispatch();
   useEffect(() => {
     let { id } = props.match.params;
@@ -40,7 +39,6 @@ const EditTCV = (props) => {
       hoanThanh: thongtinTCV.hoanThanh,
     },
     onSubmit: (values) => {
-      console.log(values);
       dispatch(putTCVAction(thongtinTCV.id,values))
     },
   })
@@ -77,7 +75,7 @@ const EditTCV = (props) => {
 
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }}
         to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }}
-          to='/admin/list-rent-job'>Lịch Sữ Thuê Công Việc / </NavLink>Chỉnh sửa thông tin</h4>
+          to='/admin/list-rent-job'>Hiring history  / </NavLink>Edit</h4>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>

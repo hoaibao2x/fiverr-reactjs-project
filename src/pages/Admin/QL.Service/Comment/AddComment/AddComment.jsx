@@ -43,7 +43,7 @@ const AddComment = () => {
       saoBinhLuan: Yup.number().required('Số sao không được để trống !').min(1, 'Đánh giá tối thiểu là 1 !').max(5, 'Đánh giá tối thiểu là 5 !')
     }),
     onSubmit: (values) => {
-      console.log(values);
+
       dispatch(postBinhLuanAction(values));
     },
   })
@@ -79,7 +79,7 @@ const AddComment = () => {
 
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }}
         to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }}
-          to='/admin/list-comment'>Lịch Sữ Bình Luận / </NavLink>Thêm Bình Luận</h4>
+          to='/admin/list-comment'>Comment History / </NavLink>Add Comment </h4>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>

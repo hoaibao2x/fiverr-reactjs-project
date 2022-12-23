@@ -38,7 +38,6 @@ const AddTCV = () => {
       ngayThue: Yup.string().required('Thời gian không được để trống !').length(10, 'Thời gian không được để trống !'),
     }),
     onSubmit: (values) => {
-      console.log(values);
       dispatch(ThemCongViecAction(values));
     },
   })
@@ -75,7 +74,7 @@ const AddTCV = () => {
 
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }}
         to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }}
-          to='/admin/list-rent-job'>Lịch Sữ Thuê Công Việc / </NavLink>Thêm Người Thuê</h4>
+          to='/admin/list-rent-job'>Hiring history / </NavLink>Add Hiring history</h4>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>

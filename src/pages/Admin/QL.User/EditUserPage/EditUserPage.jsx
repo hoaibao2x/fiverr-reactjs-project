@@ -52,17 +52,6 @@ const EditUser = (props) => {
       birthday: thongTinUser.birthday,
       gender: thongTinUser.gender,
       role: thongTinUser.role,
-      // skill: [
-      //   thongTinUser.skill
-      // ],
-      // certification: [
-      //   thongTinUser.certification
-      // ],
-      // bookingJob: [
-      //   thongTinUser.
-      // ]
-
-
     },
     onSubmit: (values) => {
       dispatch(CapNhatUserAction(thongTinUser.id,values))
@@ -112,7 +101,7 @@ const EditUser = (props) => {
     >
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }}
         to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }}
-          to='/admin/list-user'>Quản lý người dùng / </NavLink>chỉnh sửa thông tin </h4>
+          to='/admin/list-user'>Manage User / </NavLink>Edit </h4>
       <Form.Item label="Form Size" name="size">
         <Radio.Group>
           <Radio.Button value="small">Small</Radio.Button>
@@ -142,16 +131,6 @@ const EditUser = (props) => {
       <Form.Item label="phân loại">
         <Input name='role' onChange={formik.handleChange} value={formik.values.role} onBlur={formik.handleBlur} />
       </Form.Item>
-
-      {/* <Form.Item label="kỹ năng">
-        <Input name='skill' onChange={formik.handleChange} value={formik.values.skill} onBlur={formik.handleBlur} />
-      </Form.Item>
-      <Form.Item label="chứng nhận">
-        <Input name='certification' onChange={formik.handleChange} value={formik.values.certification} onBlur={formik.handleBlur} />
-      </Form.Item> */}
-      {/* <Form.Item label="đặt công việc">
-      <Input name='bookingJob' onChange={formik.handleChange} onBlur={formik.handleBlur} />
-    </Form.Item> */}
       <Form.Item label="tác vụ">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin cập nhật</button>
       </Form.Item>

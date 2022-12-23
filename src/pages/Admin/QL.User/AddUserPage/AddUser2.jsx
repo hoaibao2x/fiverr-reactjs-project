@@ -51,7 +51,7 @@ const ThemUser2 = () => {
     }),
     onSubmit: (values) => {
       dispatch(ThemUserAction(values))
-      console.log(values);
+      
      
     }
   })
@@ -89,7 +89,7 @@ const ThemUser2 = () => {
     >
       <h4 className='text-info my-3'><NavLink style={{ textDecoration: 'none', color: 'black' }}
         to='/admin'>Dashboard</NavLink> / <NavLink style={{ textDecoration: 'none', color: 'black' }}
-          to='/admin/list-user'>Quản lý người dùng / </NavLink>Thêm người dùng mới !</h4>
+          to='/admin/list-user'>Manage User / </NavLink>Add User !</h4>
       <Steps
         className='w-50 mx-auto my-4'
         size="small"
@@ -108,23 +108,6 @@ const ThemUser2 = () => {
           <Radio.Button value="large">Large</Radio.Button>
         </Radio.Group>
       </Form.Item>
-      {/* {
-  "id": 0,
-  "name": "string",
-  "email": "long@gmail.com",
-  "password": "string",
-  "phone": "string",
-  "birthday": "string",
-  "gender": true,
-  "role": "string",
-  "skill": [
-    "string"
-  ],
-  "certification": [
-    "string"
-  ]
-} */}
-
       <Form.Item label="họ tên">
         <Input name='name' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.name ? (
@@ -155,10 +138,6 @@ const ThemUser2 = () => {
                     <div className='alert alert-danger'>{formik.errors.birthday}</div>
                 ) : null}
       </Form.Item>
-        {/* <Form.Item label="Tên hình ảnh">
-            <Input name='avatar' onChange={formik.handleChange} onBlur={formik.handleBlur} />
-            {formik.touched.avatar && formik.errors.avatar ? <span className='alert alert-danger d-block mt-2'>{formik.errors.avatar}</span> : null}
-        </Form.Item> */}
       <Form.Item label="giới tính" valuePropName="checked">
         Nữ <Switch onChange={handleChangGender('gender')} /> Nam
       </Form.Item>
@@ -168,18 +147,6 @@ const ThemUser2 = () => {
                     <div className='alert alert-danger'>{formik.errors.hoTen}</div>
                 ) : null}
       </Form.Item>
-
-        {/* <Form.Item label="chứng nhận">
-        <Input name='certification' onChange={handleChangeskill} onBlur={formik.handleBlur} />
-        </Form.Item> */}
-        
-       
-        {/* <Form.Item label="chứng nhận">
-        <Input name='certification' onChange={formik.handleChange} onBlur={formik.handleBlur} />
-        </Form.Item> */}
-      {/* <Form.Item label="đặt công việc">
-      <Input name='bookingJob' onChange={formik.handleChange} onBlur={formik.handleBlur} />
-    </Form.Item> */}
       <Form.Item label="tác vụ">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin</button>
       </Form.Item>

@@ -13,7 +13,7 @@ export const danhSachUserAction = (name="") => {
             })
 
         } catch (error) {
-            console.log(error);
+          
 
         }
     }
@@ -26,8 +26,8 @@ export const ThemUserAction = (formData) => {
             alert('Thêm người dùng thành công !');
             history.push('/admin/list-user');
         } catch (error) {
-            console.log(error.response?.data);
-            alert("Thêm thất bại!")
+            
+            alert("Thêm thất bại! Email bị trùng    ")
         }
 
     }
@@ -48,7 +48,7 @@ export const LayThongTinUserAction = (id) => {
             dispatch(action);
             history.push(`/admin/list-user/edituser/${result.data.content.id}`)
         } catch (error) {
-            console.log(error);
+        
 
         }
     }
@@ -65,7 +65,7 @@ export const LayThongTinUserAction = (id) => {
 
            
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Cập nhật thất bại!")
 
         }
@@ -79,10 +79,10 @@ export const ThemUseruploadAction = (formData,USER_ID) => {
             alert('Thêm người dùng thành công !');
             localStorage.removeItem(USER_ID);
             localStorage.removeItem(USER_AVATAR);
-            console.log(result.data.content);
+          
 
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Thêm thất bại!")
         }
 
@@ -95,11 +95,11 @@ export const xoaUserAction = (id) => {
         try {
             const result = await xoaUser(id);
             alert('Xoá người dùng thành công !');
-            console.log(result.data.content);
+           
             dispatch(danhSachUserAction());
 
         } catch (error) {
-            console.log(error.response?.data);
+          
             alert("Thao tác thất bại!")
         }
 
@@ -110,7 +110,7 @@ export const searchUserAction = (name) => {
     return async (dispatch) => {
         try {
             const result = await searchUser(name);         
-            console.log(result.data.content);
+
             dispatch({
                 type : "TIM_USER",
                 arrUser:result.data.content
@@ -118,7 +118,7 @@ export const searchUserAction = (name) => {
 
 
         } catch (error) {
-            console.log(error.response?.data);
+          
             alert("Thao tác thất bại!")
         }
 
@@ -142,7 +142,7 @@ export const listThueCongViecAction = () => {
             })
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
         }
     }
@@ -154,10 +154,10 @@ export const ThemCongViecAction = () => {
         try {
             const result = await postThueCongViec();
             alert('Thêm người thuê công việc thành công !');
-            console.log(result.data.content);
+           
 
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Thêm thất bại!")
         }
 
@@ -169,14 +169,14 @@ export const getTCVAction = (id) => {
         try {
             const result = await getTCV(id);
             
-            console.log(result.data.content);
+         
             dispatch({
                 type : "GET_THONG_TIN_TCV",
                 thongtinTCV : result.data.content
             });
 
         } catch (error) {
-            console.log(error.response?.data);
+           
             alert("Thao tác thất bại!")
         }
 
@@ -188,11 +188,11 @@ export const putTCVAction = (id) => {
         try {
             const result = await putTCV(id);
             alert("cập nhật thành công!")
-            console.log(result.data.content);
+         
          
 
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Thao tác thất bại!")
         }
 
@@ -206,11 +206,11 @@ export const xoaTCVAction = (id) => {
         try {
             const result = await xoaTCV(id);
             alert('Xoá thành công !');
-            console.log(result.data.content);
+           
             dispatch(listThueCongViecAction());
 
         } catch (error) {
-            console.log(error.response?.data);
+          
             alert("Thao tác thất bại!")
         }
 
@@ -221,7 +221,7 @@ export const searchTCVAction = (id) => {
     return async (dispatch) => {
         try {
             const result = await searchTCV(id);         
-            console.log(result.data.content);
+         
             dispatch({
                 type : "TIM_TCV",
                 arrTCV:result.data.content
@@ -229,7 +229,7 @@ export const searchTCVAction = (id) => {
 
 
         } catch (error) {
-            console.log(error.response?.data);
+          
             alert("Thao tác thất bại!")
         }
 
@@ -250,7 +250,7 @@ export const BinhLuanAction = () => {
             })
 
         } catch (error) {
-            console.log(error);
+          
 
         }
     }
@@ -262,10 +262,10 @@ export const BinhLuanAction = () => {
         try {
             const result = await postBinhLuan();
             alert('Thêm Bình Luận thành công !');
-            console.log(result.data.content);
+          
 
         } catch (error) {
-            console.log(error.response?.data);
+          
             alert("Thêm thất bại!")
         }
 
@@ -277,11 +277,11 @@ export const getBinhLuanAction = (id) => {
     return async (dispatch) => {
         try {
             const result = await getBinhLuan(id);
-            console.log(result.data.content);
+         
          
 
         } catch (error) {
-            console.log(error.response?.data);
+           
             alert("Thao tác thất bại!")
         }
 
@@ -294,11 +294,11 @@ export const xoaBLAction = (id) => {
         try {
             const result = await xoaBL(id);
             alert('Xoá thành công !');
-            console.log(result.data.content);
+         
             dispatch(BinhLuanAction());
 
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Thao tác thất bại!")
         }
 
@@ -317,7 +317,7 @@ export const searchCMTAction = (maCongViec) => {
 
 
         } catch (error) {
-            console.log(error.response?.data);
+         
             alert("Thao tác thất bại!")
         }
 

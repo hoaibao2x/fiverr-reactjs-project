@@ -41,9 +41,7 @@ function ListComment() {
     {
       title: 'ngày thuê',
       dataIndex: 'ngayBinhLuan',
-      //   width:'7%'
-      // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      // sortDirections: ['descend','ascend'],
+     
     },
     {
       title: 'nội dung bình luận',
@@ -87,11 +85,11 @@ function ListComment() {
 
   return (
     <div className=" mx-auto my-3">
-      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>Lịch Sữ Bình Luận</h4>
+      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>Comment History</h4>
 
       <button onClick={() => {
         history.push('/admin/list-comment/add')
-      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm Bình Luận</button>
+      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Add Comment</button>
 
       <Search className='mb-5' placeholder="nhập mã công việc" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 

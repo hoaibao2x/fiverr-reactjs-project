@@ -122,11 +122,11 @@ function DanhSachUser() {
 
   return (
     <div className=" mx-auto my-3">
-      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>  Quản lý người dùng</h4>
+      <h4 className="text-info"><NavLink style={{ textDecoration: 'none', color: 'black' }} to='/admin'>Dashboard /</NavLink>  Manage User</h4>
 
       <button onClick={() => {
         history.push('/admin/list-user/add')
-      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Thêm người dùng</button>
+      }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i>Add User</button>
 
       <Search className='mb-5' placeholder="nhập họ tên người dùng" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
