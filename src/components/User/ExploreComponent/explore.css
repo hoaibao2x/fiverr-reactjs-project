@@ -9,73 +9,6 @@
     position: relative;
 }
 
-.explore-left {
-    background-color: #fff !important;
-    position: absolute;
-    z-index: 10;
-    left: -2%;
-    top: 50%;
-    width: 40px;
-    height: 40px;
-    margin-top: -24px;
-    text-align: center;
-    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
-    border: 0;
-    font-size: 16px;
-    line-height: 100%;
-    border-radius: 30px;
-    opacity: 1 !important;
-    cursor: pointer;
-}
-
-.explore-right {
-    background-color: #fff !important;
-    position: absolute;
-    z-index: 10;
-    right: -4%;
-    top: 50%;
-    width: 40px;
-    height: 40px;
-    margin-top: -24px;
-    text-align: center;
-    -webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 15%);
-    border: 0;
-    font-size: 16px;
-    line-height: 100%;
-    border-radius: 30px;
-    opacity: 1 !important;
-    cursor: pointer;
-}
-
-.explore-left::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
-        no-repeat;
-    background-size: 16px 64px;
-    width: 16px;
-    height: 16px;
-    margin-top: 13px;
-    left: 31%;
-}
-
-.explore-right::before {
-    content: "";
-    position: absolute;
-    display: inline-block;
-    background: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/arrows.a8b0bad.svg)
-        no-repeat;
-    background-size: 16px 64px;
-    width: 16px;
-    height: 16px;
-    margin-top: 13px;
-    left: 31%;
-    transform: rotate(180deg);
-}
-
 .explore-title {
     color: #74767e;
     font-size: 20px;
@@ -126,7 +59,7 @@
         padding-bottom: 125px;
     }
     .explore-img {
-        height: 230px;
+        height: 330px;
     }
     .explore-content {
         font-size: 24px;

@@ -264,6 +264,7 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+    flex-direction: column;
 }
 .col-6 {
     padding: 0;
@@ -462,6 +463,10 @@
     .img-job {
         height: 338px;
         overflow: hidden;
+    }
+
+    .progess-right {
+        margin-top: 18px;
     }
 }
 @media screen and (max-width: 834px) {

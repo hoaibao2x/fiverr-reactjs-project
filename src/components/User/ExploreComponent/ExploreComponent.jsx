@@ -15,7 +15,6 @@ export default function ExploreComponent(props) {
                 <div className="row explore-product">
                     <div className="col-12 col-lg-5">
                         <img className='explore-img' src={exploreimg} alt="" />
-                        <div className='explore-left'></div>
                         <Button className='button-play' onClick={() => setLgShow(true)}></Button>
                         <Modal
                             size="lg"

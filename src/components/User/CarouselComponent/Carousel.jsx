@@ -141,7 +141,7 @@ export default function CarouselComponent(props) {
                                                 <span>{localStorage.getItem(USER_NAME)}</span>
                                             </> : null} <i className="fa-solid fa-angle-up"></i>
                                         </button>
-                                        <div className="dropdown-menu dropdown-menu-lg-right">
+                                        <div id='drop__info' className="dropdown-menu dropdown-menu-lg-right">
                                             <NavLink to={`/profile/${localStorage.getItem(USER_ID)}`} className="dropdown-item" type="button">My Info</NavLink>
                                             {adminOrUser() ? <>
                                                 <NavLink to='/admin' className="dropdown-item" type="button">Admin Page</NavLink>
