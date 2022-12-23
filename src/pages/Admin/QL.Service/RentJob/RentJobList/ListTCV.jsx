@@ -68,7 +68,7 @@ function ListTCV() {
 
   const onSearch = (value) => {
     if (value !== '') {
-      dispatch(searchTCVAction(value));
+      // dispatch(searchTCVAction(value)); 
     }
     listThueCongViec()
   };
@@ -85,7 +85,7 @@ function ListTCV() {
         history.push('/admin/list-rent-job/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i>Add Hiring</button>
 
-      <Search className='mb-5' placeholder="nhập mã ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="Input Rent Job ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

@@ -31,7 +31,7 @@ function ListComment() {
       title: 'Rent Job ID',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
-      //   width:'5%'  
+      //   width:'5%'   
     },
     {
       title: 'Commentator ID',
@@ -91,7 +91,7 @@ function ListComment() {
         history.push('/admin/list-comment/add')
       }} className="btn btn-success my-3"><i className="fa-solid fa-plus"></i> Add Comment</button>
 
-      <Search className='mb-5' placeholder="nhập mã công việc" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
+      <Search className='mb-5' placeholder="Input ID" onSearch={onSearch} enterButton={<SearchOutlined />} size="large" />
 
       <Table rowKey={'id'} columns={columns} dataSource={data} />
     </div>

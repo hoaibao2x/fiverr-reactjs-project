@@ -2,17 +2,12 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Formik, useFormik } from 'formik';
 import {
-  Button,
-  Cascader,
   DatePicker,
   Form,
   Input,
-  InputNumber,
   Radio,
   Rate,
-  Select,
-  Switch,
-  TreeSelect,
+
 } from 'antd';
 import moment from 'moment';
 import { getBinhLuanAction, postBinhLuanAction, putBinhLuanAction, ThemCongViecAction } from '../../../../../redux/Admin/action/UserAction';

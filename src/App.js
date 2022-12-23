@@ -73,17 +73,19 @@ function App() {
         <AdminTemplate exact path='/admin/list-job-type/add' component={AddJobType} />
         <AdminTemplate exact path='/admin/list-job-type/edit-job-type/:id' component={EditJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
-
+        
+        {/* thuê công viêc */}
         <AdminTemplate exact path='/admin/list-rent-job' component={ListTCV} />
         <AdminTemplate exact path='/admin/list-rent-job/add' component={AddTCV} />
         <AdminTemplate exact path='/admin/list-rent-job/edit/:id' component={EditTCV} />
         
-        
+        {/* người dùng */}
         <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
         <AdminTemplate exact path='/admin/list-user/add' component={ThemUser2} />
         <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
 
+        {/* bình luận */}
         {/* <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} /> */}
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
