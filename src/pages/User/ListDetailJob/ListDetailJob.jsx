@@ -30,7 +30,7 @@ export default function ListDetailJob(props) {
       const { dsNhomChiTietLoai } = nameJob
       if (dsNhomChiTietLoai.length == 0) {
         return <div className='container' key={index}>
-          <h2 className='text-center'>This Group is updating</h2>
+          <h2 className='text-center'>This group is updating</h2>
         </div>
       }
     })
