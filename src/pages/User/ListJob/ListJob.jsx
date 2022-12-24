@@ -11,6 +11,8 @@ import { upperFirstLett } from '../../../utils/customStyle'
 
 export default function ListJob(props) {
 
+  document.title = `Fiverr / Search results for '${localStorage.getItem('job_name_search')}'`;
+
   const { listjob } = useSelector(state => state.ManegeListJobReducer);
 
   const [current, setCurrent] = useState(1);
@@ -20,6 +22,12 @@ export default function ListJob(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem('job_name_search')
+    }
   }, [])
 
   if (listjob.length === 0) {
@@ -92,7 +100,7 @@ export default function ListJob(props) {
         <button className='sug'>javascript</button>
       </div>
       <div className='result'>
-        <h2 className='result-html'>Result for "html"</h2>
+        <h2 className='result-html'>Result for "{localStorage.getItem('job_name_search')}"</h2>
         <div className='result-btn'>
           <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Category

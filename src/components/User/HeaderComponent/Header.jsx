@@ -85,6 +85,7 @@ export default function Header(props) {
     },
     onSubmit: (values) => {
       if (values.nameJob !== "") {
+        localStorage.setItem('job_name_search', values.nameJob);
         dispatch(getListJobByNameAction(values.nameJob))
       }
     }
@@ -120,7 +121,7 @@ export default function Header(props) {
               <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <div >
                   <form onSubmitCapture={formik.handleSubmit} className="search profile__header">
-                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob' placeholder="html?" aria-label="Search" />
+                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob'  aria-label="Search" placeholder={localStorage.getItem('job_name_search') !== undefined ? localStorage.getItem('job_name_search') : ""}/>
                     <button className="btn btn-success btnicon" type="submit">
                       Search
                     </button>

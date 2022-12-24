@@ -41,9 +41,8 @@ export default function CarouselComponent(props) {
             nameJob: ""
         }, onSubmit: (values) => {
             if (values.nameJob !== "") {
+                localStorage.setItem('job_name_search', values.nameJob);
                 dispatch(getListJobByNameAction(values.nameJob))
-            } else {
-                history.push('/user/listjob');
             }
         }
     });
