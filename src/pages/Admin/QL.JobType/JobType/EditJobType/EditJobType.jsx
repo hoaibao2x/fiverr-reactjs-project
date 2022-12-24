@@ -26,7 +26,6 @@ const tailLayout = {
 function EditJobType(props) {
 
   let { id } = props.match.params;
-  console.log('id of param', id);
 
   const dispatch = useDispatch();
 

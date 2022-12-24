@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,6 +53,7 @@ export default function Header(props) {
           <NavLink onClick={() => {
             let action = getDetailJobAction(typeJob.id)
             dispatch(action)
+            localStorage.setItem('user_job_type_name', typeJob.tenLoaiCongViec)
           }} className='drop-menu' to={'/user/listdetail'}>{typeJob.tenLoaiCongViec}</NavLink>
           <div className="dropdown-content">
             {dsNhomChiTietLoai.map((groupName, index) => {
@@ -219,7 +220,7 @@ export default function Header(props) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
-              <h4 className="modal-title text-white" id="loginModalLabel">Signin Form</h4>
+              <h4 className="modal-title text-white" id="loginModalLabel">Sign In Form</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
               </button>

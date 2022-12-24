@@ -5,7 +5,7 @@ import { getCommentByIdJobAction } from '../../../redux/User/action/getCommentBy
 import './info.css';
 import { RightOutlined, DownOutlined, UserOutlined } from '@ant-design/icons';
 import { BackTop, Rate } from 'antd';
-import { TOKEN, USER_ID, USER_NAME, USER_ROLE } from "../../../utils/varsSetting";
+import { USER_ID } from "../../../utils/varsSetting";
 import { addCommentAction } from '../../../redux/User/action/getCommentByIdJobAction';
 import moment from 'moment';
 import { getUserByIDAction } from '../../../redux/User/action/getUserByIDAction';
@@ -13,14 +13,9 @@ import { Avatar } from 'antd';
 import { getInfoHireJobAction } from '../../../redux/User/action/getInfoHireJobAction';
 import { message } from 'antd';
 
-
-
-
-
-
-
-
 export default function InfoDetailJob(props) {
+
+    document.title = `${localStorage.getItem('job__title')} | Fiverr`;
 
     const { infoJob } = useSelector(state => state.InfoDetailJobReducer);
     const { listComment, userInfo } = useSelector(state => state.ManegeCommentReducer);
@@ -73,20 +68,16 @@ export default function InfoDetailJob(props) {
         setNoiDung('')
     }
 
-
-
     const renderComment = () => {
         return listComment.map((user, index) => {
             return <div className='comments-item' key={index}>
                 <div className='user-comment'>
                     <div className='avatar-user'>
                         {user.avatar === '' ? <Avatar icon={<UserOutlined />} /> : <img className='avatar-user-commented' src={user.avatar} alt="" />}
-
                     </div>
                     <div className='user-name'>
                         <span style={{ fontWeight: 'bold', color: 'black' }}>{user.tenNguoiBinhLuan}</span>
                         <span style={{ color: '#ffb237' }} className="fa-solid fa-star ml-2"> {user.saoBinhLuan}</span>
-
                     </div>
                 </div>
                 <div className='user-name-comment'>
@@ -113,12 +104,9 @@ export default function InfoDetailJob(props) {
                             </div>
                         </form>
                     </div>
-
                 </div>
             </Fragment>
         }
-
-
     }
 
     const renderInfoJob = () => {
@@ -142,7 +130,6 @@ export default function InfoDetailJob(props) {
                                         <span className='img-start'>
                                             <Rate disabled allowHalf value={congViec.saoCongViec} /> ( <span className='img-rate'>{congViec.danhGia}</span> )
                                         </span>
-
                                     </div>
                                 </div>
                                 <div className='coming-back'>
@@ -158,7 +145,6 @@ export default function InfoDetailJob(props) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div className='col-12 col-lg-4 info-table'>
                         <div className='card'>
@@ -307,7 +293,6 @@ export default function InfoDetailJob(props) {
                                     <button className='button-user'>Contact me</button>
                                 </div>
                             </div>
-
                         </div>
                         <div className='FAQ'>
                             <h5>FAQ</h5>
@@ -320,9 +305,7 @@ export default function InfoDetailJob(props) {
                                                 <span className='text-faq'>Do you provide regular updates on order?</span>
                                                 <span className='icon-faq'><DownOutlined /></span>
                                             </div>
-
                                         </button>
-
                                     </div>
                                 </div>
                                 <div className='ques2'>
@@ -332,9 +315,7 @@ export default function InfoDetailJob(props) {
                                                 <span className='text-faq'>How do you guarantee product quallty and rellabllty</span>
                                                 <span className='icon-faq'><DownOutlined /></span>
                                             </div>
-
                                         </button>
-
                                     </div>
                                 </div>
                                 <div className='ques3'>
@@ -345,9 +326,7 @@ export default function InfoDetailJob(props) {
                                                 <span className='text-faq'>Do you give post-development support</span>
                                                 <span className='icon-faq'><DownOutlined /></span>
                                             </div>
-
                                         </button>
-
                                     </div>
                                 </div>
                                 <div className='ques4'>
@@ -358,9 +337,7 @@ export default function InfoDetailJob(props) {
                                                 <span className='text-faq'>Do you convert PSD to HTML</span>
                                                 <span className='icon-faq'><DownOutlined /></span>
                                             </div>
-
                                         </button>
-
                                     </div>
                                 </div>
                             </div>
@@ -431,12 +408,15 @@ export default function InfoDetailJob(props) {
                         </div>
                     </div>
                 </div>
-
             </div>
         })
     }
 
-
+    useEffect(() => {
+        return () => {
+            localStorage.removeItem('job__title')
+        }
+    }, [])
 
     return (
         <div className='container-fluid'>

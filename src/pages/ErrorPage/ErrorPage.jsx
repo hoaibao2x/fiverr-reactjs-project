@@ -2,6 +2,9 @@ import React from 'react'
 import { history } from '../../App'
 
 function ErrorPage() {
+
+  document.title = 'Error'
+
   return (
     <div className='container mx-auto'>
       <img className='img-fluid' onClick={() => {

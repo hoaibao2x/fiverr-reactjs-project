@@ -42,6 +42,8 @@ const items = [
 
 export const AdminTemplate = (props) => {
 
+    document.title = 'Admin | Fiverr';
+
     const [collapsed, setCollapsed] = useState(false);
 
     const isYourAdmin = () => {

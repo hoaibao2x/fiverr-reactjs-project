@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
 import { BackTop, Rate } from 'antd';
 import { Pagination } from 'antd';
 import { history } from '../../../App';
 import { renderResponsive } from '../../../utils/checkScreen'
+import { upperFirstLett } from '../../../utils/customStyle'
+
 
 export default function ListJob(props) {
 
@@ -32,12 +34,12 @@ export default function ListJob(props) {
             from our community of freelancers.
           </p>
         </> : <>
-            <h2 className='text-notification'>No Results Found</h2>
-            <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
-              from our community of freelancers.
-            </p>
+          <h2 className='text-notification'>No Results Found</h2>
+          <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
+            from our community of freelancers.
+          </p>
         </>}
-        
+
       </div>
 
     </div>
@@ -47,6 +49,8 @@ export default function ListJob(props) {
     return listjob.map((job, index) => {
       const { congViec } = job
       return <div onClick={() => {
+        let tempTitle = congViec.tenCongViec.substr(7, 300);
+        upperFirstLett(tempTitle);
         history.push(`/user/infojob/${job.id}`)
       }} className="card job__card" key={index}>
         <div className='card-img'>

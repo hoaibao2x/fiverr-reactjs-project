@@ -3,7 +3,6 @@ import Footer from "../../components/User/FooterComponent/Footer"
 import Header from "../../components/User/HeaderComponent/Header"
 import { Route } from "react-router-dom"
 
-
 export const UserTemplate = (props) => {
 
   return <Route exact path={props.path} render={(propsRouter) => {

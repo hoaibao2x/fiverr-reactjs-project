@@ -50,23 +50,28 @@ function ProfilePage(props) {
     const [inputSkillVisible, setInputSkillVisible] = useState(false);
     const [inputSkillValue, setInputSkillValue] = useState("");
     const inputSkillRef = useRef(null);
+
     useEffect(() => {
         if (inputSkillVisible) {
             inputSkillRef.current?.focus();
         }
     }, []);
+
     const handleSkillClose = (removedTag) => {
         const newTags = skill_tags.filter((tag) => tag !== removedTag);
         setSkillTags(newTags);
     };
+
     const showSkillInput = () => {
         setInputSkillVisible(true);
     };
+
     const handleSkillInputChange = (e) => {
         if (e.target.value !== ' ') {
             setInputSkillValue(e.target.value);
         }
     };
+
     const handleSkillInputConfirm = () => {
         if (inputSkillValue && skill_tags.indexOf(inputSkillValue) === -1) {
             setSkillTags([...skill_tags, inputSkillValue]);
@@ -74,6 +79,7 @@ function ProfilePage(props) {
         setInputSkillVisible(false);
         setInputSkillValue("");
     };
+
     const forSkillMap = (tag) => {
         const tagSkillElem = (
             <Tag
@@ -102,6 +108,7 @@ function ProfilePage(props) {
             </span>
         );
     };
+
     const tagSkillChild = skill_tags.map(forSkillMap);
 
     // Cert Tag Ant Design Config
@@ -109,23 +116,28 @@ function ProfilePage(props) {
     const [inputCertVisible, setInputCertVisible] = useState(false);
     const [inputCertValue, setInputCertValue] = useState("");
     const inputCertRef = useRef(null);
+
     useEffect(() => {
         if (inputCertVisible) {
             inputCertRef.current?.focus();
         }
     }, []);
+
     const handleCertClose = (removedTag) => {
         const newTags = cert_tags.filter((tag) => tag !== removedTag);
         setCertTags(newTags);
     };
+
     const showCertInput = () => {
         setInputCertVisible(true);
     };
+
     const handleCertInputChange = (e) => {
         if (e.target.value !== ' ') {
             setInputCertValue(e.target.value);
         }
     };
+
     const handleCertInputConfirm = () => {
         if (inputCertValue && cert_tags.indexOf(inputCertValue) === -1) {
             setCertTags([...cert_tags, inputCertValue]);
@@ -133,6 +145,7 @@ function ProfilePage(props) {
         setInputCertVisible(false);
         setInputCertValue("");
     };
+
     const forCertMap = (tag) => {
         const tagCertElem = (
             <Tag
@@ -161,6 +174,7 @@ function ProfilePage(props) {
             </span>
         );
     };
+
     const tagCertChild = cert_tags.map(forCertMap);
 
     const formik = useFormik({
@@ -293,6 +307,8 @@ function ProfilePage(props) {
     useEffect(() => {
         setImgSrc(userInfo.avatar)
     }, [userInfo.avatar])
+
+    document.title = `${formik.values.name} | Fiverr`
 
     return (
         <>
@@ -534,7 +550,6 @@ function ProfilePage(props) {
                                                 placeholder="Add new your cert"
                                             />
                                         )}
-
                                     </>}
                                 </div>
                             </div>

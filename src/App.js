@@ -30,8 +30,8 @@ import EditImageCover from './pages/Admin/QL.JobType/DetailJobType/EditDetail/Ed
 
 export const history = createBrowserHistory();
 
-
 function App() {
+  
   return (
 
     <Router history={history}>

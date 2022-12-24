@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import { useDispatch } from "react-redux";
 import './style.css'
-import { Button, Col, Form, Input, Row, Select, Space, Tag, DatePicker, Alert } from 'antd';
+import { Button, Col, Form, Input, Row, Select, Space, Tag, DatePicker } from 'antd';
 import { useFormik } from 'formik';
 import { TweenOneGroup } from "rc-tween-one";
 import moment from "moment";
@@ -10,6 +10,9 @@ import { history } from "../../../App";
 import * as Yup from 'yup';
 
 function RegisterPage() {
+
+    document.title = 'Register | Fiverr'
+
     const dispatch = useDispatch();
 
     const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -19,23 +22,28 @@ function RegisterPage() {
     const [inputSkillVisible, setInputSkillVisible] = useState(false);
     const [inputSkillValue, setInputSkillValue] = useState("");
     const inputSkillRef = useRef(null);
+
     useEffect(() => {
         if (inputSkillVisible) {
             inputSkillRef.current?.focus();
         }
     }, []);
+
     const handleSkillClose = (removedTag) => {
         const newTags = skill_tags.filter((tag) => tag !== removedTag);
         setSkillTags(newTags);
     };
+
     const showSkillInput = () => {
         setInputSkillVisible(true);
     };
+    
     const handleSkillInputChange = (e) => {
         if (e.target.value !== ' ') {
             setInputSkillValue(e.target.value);
         }
     };
+
     const handleSkillInputConfirm = () => {
         if (inputSkillValue && skill_tags.indexOf(inputSkillValue) === -1) {
             setSkillTags([...skill_tags, inputSkillValue]);
@@ -43,6 +51,7 @@ function RegisterPage() {
         setInputSkillVisible(false);
         setInputSkillValue("");
     };
+
     const forSkillMap = (tag) => {
         const tagSkillElem = (
             <Tag
@@ -66,6 +75,7 @@ function RegisterPage() {
             </span>
         );
     };
+
     const tagSkillChild = skill_tags.map(forSkillMap);
 
     // Cert Tag Ant Design Config
@@ -73,23 +83,28 @@ function RegisterPage() {
     const [inputCertVisible, setInputCertVisible] = useState(false);
     const [inputCertValue, setInputCertValue] = useState("");
     const inputCertRef = useRef(null);
+
     useEffect(() => {
         if (inputCertVisible) {
             inputCertRef.current?.focus();
         }
     }, []);
+
     const handleCertClose = (removedTag) => {
         const newTags = cert_tags.filter((tag) => tag !== removedTag);
         setCertTags(newTags);
     };
+
     const showCertInput = () => {
         setInputCertVisible(true);
     };
+
     const handleCertInputChange = (e) => {
         if (e.target.value !== ' ') {
             setInputCertValue(e.target.value);
         }
     };
+
     const handleCertInputConfirm = () => {
         if (inputCertValue && cert_tags.indexOf(inputCertValue) === -1) {
             setCertTags([...cert_tags, inputCertValue]);
@@ -97,6 +112,7 @@ function RegisterPage() {
         setInputCertVisible(false);
         setInputCertValue("");
     };
+
     const forCertMap = (tag) => {
         const tagSkillElem = (
             <Tag
@@ -120,6 +136,7 @@ function RegisterPage() {
             </span>
         );
     };
+    
     const tagCertChild = cert_tags.map(forCertMap);
 
     const emptyOrNot = (value) => {
@@ -174,7 +191,7 @@ function RegisterPage() {
         <div className='register__content' >
             <div className="content__form container my-5">
                 <div className="my__form">
-                    <h3 className='text-center text-white'>Signup Form</h3>
+                    <h3 className='text-center text-white'>Sign Up Form</h3>
                     <Form
                         layout="vertical"
                         onSubmitCapture={formik.handleSubmit}
@@ -201,7 +218,7 @@ function RegisterPage() {
                         </Form.Item>
 
                         <Form.Item>
-                            <Row>
+                            <Row className="pass__field">
                                 <Col xl={12}>
                                     <Space direction="vertical">
                                         <Input.Password
@@ -256,7 +273,7 @@ function RegisterPage() {
 
                         <Form.Item>
                             <Row>
-                                <Col xl={12}>
+                                <Col span={12}>
                                     <Form.Item>
                                         <Space direction="vertical">
                                             <DatePicker name="birthday" format={'DD/MM/YYYY'} onChange={handleChangeDatePicker} onBlur={formik.handleBlur} placeholder="Birthday" />
@@ -264,7 +281,7 @@ function RegisterPage() {
                                         </Space>
                                     </Form.Item>
                                 </Col>
-                                <Col xl={12}>
+                                <Col span={12}>
                                     <Form.Item extra="Default gender is male">
                                         <Select
                                             name="gender"
@@ -293,7 +310,7 @@ function RegisterPage() {
 
                         <Form.Item>
                             <Row>
-                                <Col xl={8}>
+                                <Col span={12}>
                                     <div
                                         style={{
                                             marginBottom: 16,
@@ -342,7 +359,7 @@ function RegisterPage() {
                                         </Tag>
                                     )}
                                 </Col>
-                                <Col xl={8}>
+                                <Col span={8}>
                                     <div
                                         style={{
                                             marginBottom: 16,

@@ -9,8 +9,6 @@ const initialState = {
   listDetail:[]
 }
 
-
-
 export const ManegeListJobReducer = (state = initialState, action) => {
   switch (action.type) {
 

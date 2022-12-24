@@ -2,6 +2,7 @@ import { history } from "../../../App";
 import { addJob, getJobInfo, getListJob, getListJobByName, removeJob, updateJobInfo, uploadJobImage } from "../../../services/Admin/JobService/jobService"
 import { JOB_ID, JOB_IMG } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
+import { GET_LIST_JOB, GET_LIST_JOB_BY_NAME, JOB_INFO } from '../type/JobType'
 
 export const getListJobAction = () => {
     return async (dispatch) => {
@@ -10,7 +11,7 @@ export const getListJobAction = () => {
             let result = await getListJob();
 
             let action = {
-                type: 'GET_LIST_JOB',
+                type: GET_LIST_JOB,
                 jobArr: result.data.content
             }
             dispatch(action);
@@ -36,7 +37,7 @@ export const getListJobByNameAction = (tenJob) => {
             })
 
             let action = {
-                type: 'GET_LIST_JOB_BY_NAME',
+                type: GET_LIST_JOB_BY_NAME,
                 jobArr: tempArr
             }
             dispatch(action);
@@ -99,7 +100,7 @@ export const getJobInfoAction = (jobID) => {
             let result = await getJobInfo(jobID);
 
             let action = {
-                type: 'JOB_INFO',
+                type: JOB_INFO,
                 jobInfo: result.data.content
             }
             dispatch(action);

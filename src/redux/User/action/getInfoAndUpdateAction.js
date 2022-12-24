@@ -1,6 +1,7 @@
 import { deleteHireJobs, getHireJobs, getInfoByID, updateUserAvatar, updateUserInfo } from "../../../services/User/getInfoAndUpdate";
-import { USER_ID, USER_NAME } from "../../../utils/varsSetting";
+import { USER_NAME } from "../../../utils/varsSetting";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
+import { USER_INFO, JOB_HIRE_ARRS } from '../type/UserType'
 
 export const getInfoByIDAction = (userID) => {
     return async (dispatch) => {
@@ -11,7 +12,7 @@ export const getInfoByIDAction = (userID) => {
             JSON.stringify(localStorage.setItem('user_avatar', result.data.content.avatar));
 
             let action = {
-                type: 'USER_INFO',
+                type: USER_INFO,
                 userInfo: result.data.content,
                 userSkillArr: result.data.content.skill,
                 userCertArr: result.data.content.certification
@@ -67,7 +68,7 @@ export const getHireJobsAction = () => {
             let result = await getHireJobs();
 
             let action = {
-                type: 'JOB_HIRE_ARRS',
+                type: JOB_HIRE_ARRS,
                 jobHireArr: result.data.content
             }
             dispatch(action)
