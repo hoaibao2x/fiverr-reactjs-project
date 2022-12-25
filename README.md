@@ -1,10 +1,45 @@
 # Tasks of member
 <h3>📌 Tô Minh Ý:</h3>
-<h4>UI:</h4>
+<h4>UI & Feature:</h4>
 <ul> 
   <li>Home Page</li>
   <li>List Job On Search Page</li>
   <li>List Job On Menu Page</li>
+  <li>Job Detail Page</li>
+</ul>
+
+<h4>Responsive:</h4>
+<ul> 
+  <li>Home Page</li>
+  <li>Job Detail Page</li>
+  <li>List Job On Search Page</li>
+</ul>
+<hr>
+
+<h3>📌 Lý Hoài Bảo:</h3>
+<h4>UI & Feature:</h4>
+<ul> 
+  <li>Register Page</li>
+  <li>User Info Page</li>
+  <li>Admin Job Page (CRUD)</li>
+  <li>Admin Job Type (CRUD)</li>
+  <li>Admin Detail Job Tye Page (CRUD)</li>
+</ul>
+
+<h4>Responsive:</h4>
+<ul> 
+  <li>Register Page</li>
+  <li>User Info Page</li>
+  <li>List Job On Menu Page</li>
+</ul>
+<hr>
+
+<h3>📌 Phạm Long:</h3>
+<h4>UI & Feature:</h4>
+<ul> 
+  <li>Admin User Page (CRUD)</li>
+  <li>Admin Hired Job Page (CRUD)</li>
+  <li>Admin Comments Page (CRUD)</li>
 </ul>
 <hr>
 
