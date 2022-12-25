@@ -1,3 +1,13 @@
+# Tasks of member
+<h3>📌 Tô Minh Ý:</h3>
+<h4>UI:</h4>
+<ul> 
+  <li>Home Page</li>
+  <li>List Job On Search Page</li>
+  <li>List Job On Menu Page</li>
+</ul>
+<hr>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
