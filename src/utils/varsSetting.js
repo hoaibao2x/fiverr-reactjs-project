@@ -10,3 +10,4 @@ export const JOB_IMG = 'job_image';
 export const USER_ID = 'user_id';
 export const USER_NAME = 'user_name';
 export const USER_ROLE = 'user_role';
+export const USER_AVATAR = 'user_avatar';

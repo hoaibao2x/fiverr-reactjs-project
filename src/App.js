@@ -8,7 +8,6 @@ import Dashboard from './pages/Admin/Dashboard';
 import ListJobPage from './pages/Admin/QL.Job/ListJobPage/ListJobPage';
 import ListJobType from './pages/Admin/QL.JobType/JobType/ListJobType/ListJobType';
 import ListDetail from './pages/Admin/QL.JobType/DetailJobType/ListDetail/ListDetail';
-import RentJobList from './pages/Admin/QL.Service/RentJob/RentJobList/RentJobList';
 import ListComment from './pages/Admin/QL.Service/Comment/ListComment/ListComment';
 import { UserTemplate } from './templates/User/UserTemplate';
 import Home from './pages/User/Home/Home';
@@ -27,6 +26,23 @@ import ProfilePage from './pages/User/Profile/ProfilePage'
 import AddImageCover from './pages/Admin/QL.JobType/DetailJobType/AddDetail/AddImageCover';
 import EditDetail from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditDetail';
 import EditImageCover from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditImageCover';
+
+import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
+
+import EditUser from './pages/Admin/QL.User/EditUserPage/EditUserPage';
+import ListTCV from './pages/Admin/QL.Service/RentJob/RentJobList/ListTCV';
+import AddTCV from './pages/Admin/QL.Service/RentJob/AddRentJob/AddTCV';
+import EditTCV from './pages/Admin/QL.Service/RentJob/EditRentJob/EditTCV';
+import ThemUserUpAvatar from './pages/Admin/QL.User/UpAvatar/UpAvatar';
+import ThemUser2 from './pages/Admin/QL.User/AddUserPage/AddUser2';
+import AddComment from './pages/Admin/QL.Service/Comment/AddComment/AddComment';
+import EditComment from './pages/Admin/QL.Service/Comment/EditComment/EditComment';
+
+
+
+
+
+
 
 export const history = createBrowserHistory();
 
@@ -49,7 +65,6 @@ function App() {
 
         {/* Admin Route */}
         <AdminTemplate exact path='/admin' component={Dashboard} />
-        <AdminTemplate exact path='/admin/list-user' component={ListUserPage} />
         <AdminTemplate exact path='/admin/list-job' component={ListJobPage} />
         <AdminTemplate exact path='/admin/list-job/add' component={AddJobPage} />
         <AdminTemplate exact path='/admin/list-job/add/upload-image' component={UploadImageJob} />
@@ -58,12 +73,33 @@ function App() {
         <AdminTemplate exact path='/admin/list-job-type/add' component={AddJobType} />
         <AdminTemplate exact path='/admin/list-job-type/edit-job-type/:id' component={EditJobType} />
         <AdminTemplate exact path='/admin/list-detail-job-type' component={ListDetail} />
+        
+        {/* thuê công viêc */}
+        <AdminTemplate exact path='/admin/list-rent-job' component={ListTCV} />
+        <AdminTemplate exact path='/admin/list-rent-job/add' component={AddTCV} />
+        <AdminTemplate exact path='/admin/list-rent-job/edit/:id' component={EditTCV} />
+        
+        {/* người dùng */}
+        <AdminTemplate exact path='/admin/list-user' component={DanhSachUser} />
+        <AdminTemplate exact path='/admin/list-user/add' component={ThemUser2} />
+        <AdminTemplate exact path='/admin/list-user/add/upload-avatar' component={ThemUserUpAvatar} />
+        <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
+
+        {/* bình luận */}
+        
+        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+        <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
+        <AdminTemplate exact path='/admin/list-comment/edit/:id' component={EditComment} />
+        
+
+
+
         <AdminTemplate exact path='/admin/list-detail-job-type/add' component={AddDetail} />
         <AdminTemplate exact path='/admin/list-detail-job-type/add/upload-image-cover' component={AddImageCover} />
         <AdminTemplate exact path='/admin/list-detail-job-type/edit-job-group/:id' component={EditDetail} />
         <AdminTemplate exact path='/admin/list-detail-job-type/edit/edit-image-cover/:id' component={EditImageCover} />
-        <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} />
-        <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
+
+
 
         {/* Default Route */}
         <UserTemplate exact path='/' component={Home} />
