@@ -11,10 +11,7 @@ export const danhSachUserAction = (name="") => {
                 type: 'GET_USER_LIST',
                 arrUser: result.data.content
             })
-
         } catch (error) {
-          
-
         }
     }
 }
@@ -25,31 +22,23 @@ export const ThemUserAction = (formData) => {
             const result = await ThemUser(formData);
             alert('Thêm người dùng thành công !');
             history.push('/admin/list-user');
-        } catch (error) {
-            
+        } catch (error) {          
             alert("Thêm thất bại! Email bị trùng    ")
         }
 
     }
-
 }
 export const LayThongTinUserAction = (id) => { 
     return async (dispatch) => {
         try {
             const result = await LayThongTinUser(id)
-            // dispatch({
-            //     type : "GET_THONG_TIN_USER",
-            //     thongTinUser : result.data.content,
-            // }) 
             let action = {
                 type : "GET_THONG_TIN_USER",
                 thongTinUser : result.data.content,
             } 
             dispatch(action);
             history.push(`/admin/list-user/edituser/${result.data.content.id}`)
-        } catch (error) {
-        
-
+        } catch (error) {       
         }
     }
  }
@@ -58,16 +47,10 @@ export const LayThongTinUserAction = (id) => {
     return async (dispatch) => {
         try {
             const result = await CapNhatUser(id)
-            alert('Cập nhật người dùng thành công !');
-
-
-
-
-           
+            alert('Cập nhật người dùng thành công !');         
         } catch (error) {
-         
+        
             alert("Cập nhật thất bại!")
-
         }
     }
   }
@@ -115,8 +98,6 @@ export const searchUserAction = (name) => {
                 type : "TIM_USER",
                 arrUser:result.data.content
             })
-
-
         } catch (error) {
           
             alert("Thao tác thất bại!")
@@ -124,13 +105,6 @@ export const searchUserAction = (name) => {
 
     }
 }
-
-
-
-
-
-
-
 // dịch vụ action
 export const listThueCongViecAction = () => {
     return async (dispatch) => {
@@ -142,7 +116,7 @@ export const listThueCongViecAction = () => {
             })
 
         } catch (error) {
-            // console.log(error);
+        
 
         }
     }
@@ -235,10 +209,6 @@ export const searchTCVAction = (id) => {
 
     }
 }
-
-
-
-
 // bình luận
 export const BinhLuanAction = () => { 
     return async (dispatch) => {
@@ -255,8 +225,6 @@ export const BinhLuanAction = () => {
         }
     }
  }
-
-
  export const postBinhLuanAction = () => {
     return async (dispatch) => {
         try {

@@ -25,18 +25,18 @@ function ListComment() {
     {
       title: "ID",
       dataIndex: "id",
-      //   width:'3%',
+     
     },
     {
       title: 'Rent Job ID',
       dataIndex: 'maCongViec',
       defaultSortOrder: 'descend',
-      //   width:'5%'   
+      
     },
     {
       title: 'Commentator ID',
       dataIndex: 'maNguoiBinhLuan',
-      //   width:'5%'
+      
     },
     {
       title: 'Comment Day',

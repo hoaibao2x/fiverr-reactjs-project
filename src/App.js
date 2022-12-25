@@ -28,7 +28,7 @@ import EditDetail from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditDe
 import EditImageCover from './pages/Admin/QL.JobType/DetailJobType/EditDetail/EditImageCover';
 
 import DanhSachUser from './pages/Admin/QL.User/ListUserPage/ListUserPage';
-import ThemUser from './pages/Admin/QL.User/AddUserPage/AddUserPage';
+
 import EditUser from './pages/Admin/QL.User/EditUserPage/EditUserPage';
 import ListTCV from './pages/Admin/QL.Service/RentJob/RentJobList/ListTCV';
 import AddTCV from './pages/Admin/QL.Service/RentJob/AddRentJob/AddTCV';
@@ -86,7 +86,7 @@ function App() {
         <AdminTemplate exact path='/admin/list-user/edituser/:id' component={EditUser} />
 
         {/* bình luận */}
-        {/* <AdminTemplate exact path='/admin/list-rent-job' component={RentJobList} /> */}
+        
         <AdminTemplate exact path='/admin/list-comment' component={ListComment} />
         <AdminTemplate exact path='/admin/list-comment/add' component={AddComment} />
         <AdminTemplate exact path='/admin/list-comment/edit/:id' component={EditComment} />

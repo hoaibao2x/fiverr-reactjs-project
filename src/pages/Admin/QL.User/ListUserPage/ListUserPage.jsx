@@ -57,8 +57,7 @@ function DanhSachUser() {
       title: 'birthday',
       dataIndex: 'birthday',
       width:'7%'
-      // sorter: (a, b) => a.taiKhoan.length - b.taiKhoan.length,
-      // sortDirections: ['descend','ascend'],
+  
     },
     {
       title: "avatar",  
