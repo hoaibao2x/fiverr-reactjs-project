@@ -417,7 +417,7 @@ function RegisterPage() {
                             <Row>
                                 <Col xl={4}>
                                     <button className="site-tag-plus" type="submit">
-                                        Sign up
+                                        Sign Up
                                     </button>
                                 </Col>
                                 <Col xl={4}>

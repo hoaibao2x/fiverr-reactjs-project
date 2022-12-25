@@ -149,7 +149,7 @@ export default function CarouselComponent(props) {
                                                     localStorage.clear();
                                                     history.push('/');
                                                 }
-                                            }} className="dropdown-item" type="button">Sign out</button>
+                                            }} className="dropdown-item" type="button">Sign Out</button>
                                         </div>
                                     </div>
                                 </> : <>
@@ -221,11 +221,11 @@ export default function CarouselComponent(props) {
                                     ) : null}
                                 </div>
                                 <div className="form-group">
-                                    <button type='submit' className='btn btn-success mr-3'>Signin</button>
+                                    <button type='submit' className='btn btn-success mr-3'>Sign In</button>
                                     <button onClick={() => {
                                         document.getElementById('signInBtn').click()
                                         history.push('/register')
-                                    }} type='button' className='btn btn-secondary'>Signup</button>
+                                    }} type='button' className='btn btn-secondary'>Sign Up</button>
                                 </div>
                             </form>
                         </div>
