@@ -309,7 +309,7 @@ export const searchCMTAction = (maCongViec) => {
     return async (dispatch) => {
         try {
             const result = await searchCMT(maCongViec);         
-            console.log(result.data.content);
+           
             dispatch({
                 type : "TIM_CMT",
                 arrBL:result.data.content
