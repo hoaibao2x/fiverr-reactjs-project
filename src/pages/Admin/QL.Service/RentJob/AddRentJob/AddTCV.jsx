@@ -4,7 +4,7 @@ import { Formik, useFormik } from 'formik';
 import * as Yup from 'yup';
 import {
   Button,
-  
+
   DatePicker,
   Form,
   Input,
@@ -90,7 +90,7 @@ const AddTCV = () => {
 
       </Form.Item>
       <Form.Item label="User ID" >
-        <Input name='maNguoiThue' onChange={formik.handleChange} onBlur={formik.handleBlur}/>
+        <Input name='maNguoiThue' onChange={formik.handleChange} onBlur={formik.handleBlur} />
         {formik.errors.maNguoiThue ? (
           <div className='alert alert-danger'>{formik.errors.maNguoiThue}</div>
         ) : null}
@@ -98,14 +98,14 @@ const AddTCV = () => {
       <Form.Item label="Working Day">
         <DatePicker format={"DD/MM/YYYY"} onChange={handleChangeDAYTCV} />
         {formik.errors.ngayThue ? (
-        <div className='alert alert-danger'>{formik.errors.ngayThue}</div>
-      ) : null}
+          <div className='alert alert-danger'>{formik.errors.ngayThue}</div>
+        ) : null}
       </Form.Item>
-    
+
       <Form.Item label="Status:" valuePropName="checked">
 
-           Unfinished <Switch onChange={handleChangTCV('hoanThanh')} /> 
-Finish
+        Unfinished <Switch onChange={handleChangTCV('hoanThanh')} />
+        Finish
       </Form.Item>
       <Form.Item label="submit">
         <button type='submit' className='btn btn-success'>Xác nhận thông tin</button>
