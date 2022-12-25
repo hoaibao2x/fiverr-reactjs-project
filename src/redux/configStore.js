@@ -11,7 +11,6 @@ import { ManegeCommentReducer } from './User/reducer/ManegeCommentReducer';
 import { ManegeListJobReducer } from './User/reducer/ManegeListJobReducer';
 import { UserReducer } from './User/reducer/UserReducer';
 
-
 const rootReducer = combineReducers({
     LoadingReducer,
     JobReducer,

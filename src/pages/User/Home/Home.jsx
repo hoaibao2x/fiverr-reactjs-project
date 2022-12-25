@@ -8,6 +8,8 @@ import './home.css';
 
 export default function Home(props) {
 
+  document.title = 'Fiverr - Freelance Services Marketplaces'
+
   return (
     <div>
 

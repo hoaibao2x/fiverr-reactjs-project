@@ -1,6 +1,7 @@
 import { history } from "../../../App";
 import { addJobType, getJobTypeByID, getListJobType, removeJobType, updateJobType } from "../../../services/Admin/JobService/jobTypeService";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
+import { GET_LIST_JOB_TYPE, GET_JOB_TYPE_BY_ID } from '../type/JobTypeType'
 
 export const getListJobTypeAction = () => {
     return async (dispatch) => {
@@ -9,7 +10,7 @@ export const getListJobTypeAction = () => {
 
             let result = await getListJobType();
             let action = {
-                type: 'GET_LIST_JOB_TYPE',
+                type: GET_LIST_JOB_TYPE,
                 jobTypeArr: result.data.content
             }
             dispatch(action)
@@ -32,7 +33,7 @@ export const getJobTypeByIDAction = (jobTypeID) => {
             let objToArr = [];
             objToArr.push(result.data.content);
             let action = {
-                type: 'GET_JOB_TYPE_BY_ID',
+                type: GET_JOB_TYPE_BY_ID,
                 jobTypeByID: objToArr,
                 jobTypeInfo: result.data.content
             }

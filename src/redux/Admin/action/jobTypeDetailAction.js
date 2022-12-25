@@ -1,6 +1,7 @@
 import { history } from "../../../App";
 import { addJobDetailGroup, getJobTypeDetail, getJobTypeDetailByID, removeJobDetailGroup, updateJobDetailGroup, uploadImageCover } from "../../../services/Admin/JobService/jopTypeDetailService";
 import { displayLoadingAction, hideLoadingAction } from "../../loadingAction";
+import { GET_JOB_TYPE_DETAIL, GET_LIST_JOB_TYPE_DETAIL, ADD_JOB_GROUP, GET_JOB_GROUP_INFO } from '../type/JobTypeDetailType'
 
 export const getJobSearchAction = (jobTypeID) => {
     return async (dispatch) => {
@@ -10,7 +11,7 @@ export const getJobSearchAction = (jobTypeID) => {
             resultArr.push(result.data.content);
 
             let action = {
-                type: 'GET_JOB_TYPE_DETAIL',
+                type: GET_JOB_TYPE_DETAIL,
                 jobTypeDetail: result.data.content,
                 jobTypeDetailOnSearch: resultArr
             }
@@ -42,7 +43,7 @@ export const getDetailJobTypeListAction = () => {
             })
 
             let action = {
-                type: 'GET_LIST_JOB_TYPE_DETAIL',
+                type: GET_LIST_JOB_TYPE_DETAIL,
                 jobTypeDetailArr: result.data.content,
                 jobDetailArr: tempArr
             }
@@ -67,7 +68,7 @@ export const addDetailJobGroupAction = (formValue) => {
             JSON.stringify(localStorage.setItem('job_group_id', result.data.content.id));
 
             let action = {
-                type: 'ADD_JOB_GROUP',
+                type: ADD_JOB_GROUP,
                 jobTypeDetail: result.data.content
             }
             dispatch(action);
@@ -106,7 +107,7 @@ export const updateJobDetailAction = (jobGroupID, formValue) => {
             dispatch(displayLoadingAction);
 
             let result = await updateJobDetailGroup(jobGroupID, formValue);
-            
+
             dispatch(hideLoadingAction);
         } catch (errors) {
             dispatch(hideLoadingAction);
@@ -143,7 +144,7 @@ export const getDetailByIDAction = (jobGroupID) => {
             localStorage.setItem('job_group_id', result.data.content.id);
 
             let action = {
-                type: "GET_JOB_GROUP_INFO",
+                type: GET_JOB_GROUP_INFO,
                 jobGroupInfo: result.data.content,
             }
             dispatch(action);

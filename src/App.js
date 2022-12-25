@@ -46,8 +46,8 @@ import EditComment from './pages/Admin/QL.Service/Comment/EditComment/EditCommen
 
 export const history = createBrowserHistory();
 
-
 function App() {
+  
   return (
 
     <Router history={history}>

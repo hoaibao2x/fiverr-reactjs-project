@@ -1,4 +1,4 @@
-import { JOB_INFO } from "../../../utils/varsSetting";
+import { GET_LIST_JOB, GET_LIST_JOB_BY_NAME, JOB_INFO } from '../type/JobType'
 
 const initialState = {
   jobArr: [],
@@ -8,15 +8,15 @@ const initialState = {
 export const JobReducer = (state = initialState, action) => {
   switch (action.type) {
 
-    case 'GET_LIST_JOB':
+    case GET_LIST_JOB:
       state.jobArr = action.jobArr;
       return { ...state }
 
-    case 'GET_LIST_JOB_BY_NAME':
+    case GET_LIST_JOB_BY_NAME:
       state.jobArr = action.jobArr;
       return { ...state }
 
-    case 'JOB_INFO':
+    case JOB_INFO:
       state.jobInfo = action.jobInfo;
       return { ...state }
 

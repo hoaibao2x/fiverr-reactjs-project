@@ -6,7 +6,6 @@ import Modal from 'react-bootstrap/Modal';
 
 export default function ExploreComponent(props) {
 
-    const [smShow, setSmShow] = useState(false);
     const [lgShow, setLgShow] = useState(false);
 
     return (

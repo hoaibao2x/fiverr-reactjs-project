@@ -11,6 +11,7 @@ import { getDetailByIDAction, updateJobDetailAction } from '../../../../../redux
 import { getDetailJobTypeListAction } from '../../../../../redux/Admin/action/jobTypeDetailAction';
 import './style.css'
 import { history } from '../../../../../App';
+import { CLEAR__ARR } from '../../../../../redux/Admin/type/JobTypeDetailType'
 
 function EditDetail(props) {
 
@@ -95,7 +96,7 @@ function EditDetail(props) {
 
       let emptyArr = []
       let action = {
-        type: 'CLEAR__ARR',
+        type: CLEAR__ARR,
         emptyArr: emptyArr
       }
       dispatch(action)

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
@@ -53,6 +53,7 @@ export default function Header(props) {
           <NavLink onClick={() => {
             let action = getDetailJobAction(typeJob.id)
             dispatch(action)
+            localStorage.setItem('user_job_type_name', typeJob.tenLoaiCongViec)
           }} className='drop-menu' to={'/user/listdetail'}>{typeJob.tenLoaiCongViec}</NavLink>
           <div className="dropdown-content">
             {dsNhomChiTietLoai.map((groupName, index) => {
@@ -84,6 +85,7 @@ export default function Header(props) {
     },
     onSubmit: (values) => {
       if (values.nameJob !== "") {
+        localStorage.setItem('job_name_search', values.nameJob);
         dispatch(getListJobByNameAction(values.nameJob))
       }
     }
@@ -119,7 +121,7 @@ export default function Header(props) {
               <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <div >
                   <form onSubmitCapture={formik.handleSubmit} className="search profile__header">
-                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob' placeholder="html?" aria-label="Search" />
+                    <input onChange={formik.handleChange} className="form-control" type="search" name='nameJob'  aria-label="Search" placeholder={localStorage.getItem('job_name_search') !== undefined ? localStorage.getItem('job_name_search') : ""}/>
                     <button className="btn btn-success btnicon" type="submit">
                       Search
                     </button>
@@ -219,7 +221,7 @@ export default function Header(props) {
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header bg-info">
-              <h4 className="modal-title text-white" id="loginModalLabel">Signin Form</h4>
+              <h4 className="modal-title text-white" id="loginModalLabel">Sign In Form</h4>
               <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true"><i className="fa-solid fa-circle-xmark"></i></span>
               </button>
@@ -241,11 +243,11 @@ export default function Header(props) {
                   ) : null}
                 </div>
                 <div className="form-group">
-                  <button type='submit' className='btn btn-success mr-3'>Signin</button>
+                  <button type='submit' className='btn btn-success mr-3'>Sign In</button>
                   <button onClick={() => {
                     document.getElementById('signInBtn').click()
                     history.push('/register')
-                  }} type='button' className='btn btn-secondary'>Signup</button>
+                  }} type='button' className='btn btn-secondary'>Sign Up</button>
                 </div>
               </form>
             </div>

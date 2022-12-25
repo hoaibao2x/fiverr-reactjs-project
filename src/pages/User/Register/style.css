@@ -56,3 +56,19 @@
     background: #0e1d32;
     color: white;
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1194px) {
+    .pass__field {
+        justify-content: space-between;
+    }
+}
+
+@media screen and (max-width: 736px) {
+    .my__form {
+        padding: 30px;
+    }
+}
+
+/* END RESPONSIVE */

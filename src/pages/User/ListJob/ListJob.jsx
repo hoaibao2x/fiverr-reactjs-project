@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import emptyImg from '../../../assets/User/images/empty-search-results.png';
 import './listJob.css';
 import { BackTop, Rate } from 'antd';
 import { Pagination } from 'antd';
 import { history } from '../../../App';
 import { renderResponsive } from '../../../utils/checkScreen'
+import { upperFirstLett } from '../../../utils/customStyle'
+
 
 export default function ListJob(props) {
+
+  document.title = `Fiverr / Search results for '${localStorage.getItem('job_name_search')}'`;
 
   const { listjob } = useSelector(state => state.ManegeListJobReducer);
 
@@ -18,6 +22,12 @@ export default function ListJob(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem('job_name_search')
+    }
   }, [])
 
   if (listjob.length === 0) {
@@ -32,12 +42,12 @@ export default function ListJob(props) {
             from our community of freelancers.
           </p>
         </> : <>
-            <h2 className='text-notification'>No Results Found</h2>
-            <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
-              from our community of freelancers.
-            </p>
+          <h2 className='text-notification'>No Results Found</h2>
+          <p className='text-notification-ct'>Try a new search or get a free quote for your project <br />
+            from our community of freelancers.
+          </p>
         </>}
-        
+
       </div>
 
     </div>
@@ -47,6 +57,8 @@ export default function ListJob(props) {
     return listjob.map((job, index) => {
       const { congViec } = job
       return <div onClick={() => {
+        let tempTitle = congViec.tenCongViec.substr(7, 300);
+        upperFirstLett(tempTitle);
         history.push(`/user/infojob/${job.id}`)
       }} className="card job__card" key={index}>
         <div className='card-img'>
@@ -88,7 +100,7 @@ export default function ListJob(props) {
         <button className='sug'>javascript</button>
       </div>
       <div className='result'>
-        <h2 className='result-html'>Result for "html"</h2>
+        <h2 className='result-html'>Result for "{localStorage.getItem('job_name_search')}"</h2>
         <div className='result-btn'>
           <button className="btn btn__job__filter dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
             Category

@@ -15,8 +15,11 @@ import bgDesktop from '../../../assets/User/images/graphics-design-desktop-updat
 import bgMobile from '../../../assets/User/images/graphics-design-mobile-update.png'
 import Slider from "react-slick";
 import { renderResponsive } from '../../../utils/checkScreen'
+import { upperFirstLett } from '../../../utils/customStyle'
 
 export default function ListDetailJob(props) {
+
+  document.title = `${localStorage.getItem('user_job_type_name')} Services by Freelance Digital Marketers | Fiverr`;
 
   const dispatch = useDispatch()
 
@@ -27,7 +30,7 @@ export default function ListDetailJob(props) {
       const { dsNhomChiTietLoai } = nameJob
       if (dsNhomChiTietLoai.length == 0) {
         return <div className='container' key={index}>
-          <h2 className='text-center'>This Group is updating</h2>
+          <h2 className='text-center'>This group is updating</h2>
         </div>
       }
     })
@@ -65,6 +68,8 @@ export default function ListDetailJob(props) {
     return listjob.map((job, index) => {
       const { congViec } = job
       return <div onClick={() => {
+        let tempTitle = congViec.tenCongViec.substr(7, 300);
+        upperFirstLett(tempTitle);
         history.push(`/user/infojob/${job.id}`)
       }} className="card job__card" key={index}>
         <div className='card-img'>
@@ -244,7 +249,7 @@ export default function ListDetailJob(props) {
       </>}
 
       <div className='explore-graphic-design'>
-        <h3>Explore Graphic & Design</h3>
+        <h3>Explore {localStorage.getItem('user_job_type_name')}</h3>
         <div className='groupJob'>
           {listjob.length === 0 ? renderGroupJob() : renderJob()}
         </div>

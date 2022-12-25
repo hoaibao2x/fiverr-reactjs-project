@@ -15,7 +15,6 @@ import imgSlides10 from '../../../assets/User/images/small-carousel-10.png'
 
 export default function ServicesComponent(props) {
 
-
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
         return (
